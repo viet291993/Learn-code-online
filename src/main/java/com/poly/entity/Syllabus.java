@@ -19,8 +19,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Syllabus", schema = "dbo", catalog = "Learn_code_db")
-public class Syllabus {
+public class Syllabus implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Course course;
 	private String name;
