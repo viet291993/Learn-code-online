@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -22,13 +21,15 @@ import javax.persistence.Table;
 @Table(name = "Lession", schema = "dbo", catalog = "Learn_code_db")
 public class Lession implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private LessionType lessionType;
 	private Syllabus syllabus;
-	private Serializable name;
+	private String name;
 	private int order;
-	private Serializable description;
-	private Serializable content;
+	private String description;
+	private String content;
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
@@ -38,8 +39,8 @@ public class Lession implements java.io.Serializable {
 	public Lession() {
 	}
 
-	public Lession(LessionType lessionType, Syllabus syllabus, Serializable name, int order, Serializable description,
-			Serializable content, String code, boolean isActive, boolean isDeleted) {
+	public Lession(LessionType lessionType, Syllabus syllabus, String name, int order, String description,
+			String content, String code, boolean isActive, boolean isDeleted) {
 		this.lessionType = lessionType;
 		this.syllabus = syllabus;
 		this.name = name;
@@ -51,8 +52,8 @@ public class Lession implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Lession(LessionType lessionType, Syllabus syllabus, Serializable name, int order, Serializable description,
-			Serializable content, String code, boolean isActive, boolean isDeleted, Set<Question> questions,
+	public Lession(LessionType lessionType, Syllabus syllabus, String name, int order, String description,
+			String content, String code, boolean isActive, boolean isDeleted, Set<Question> questions,
 			Set<Record> records) {
 		this.lessionType = lessionType;
 		this.syllabus = syllabus;
@@ -100,11 +101,11 @@ public class Lession implements java.io.Serializable {
 	}
 
 	@Column(name = "name", nullable = false)
-	public Serializable getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Serializable name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -118,20 +119,20 @@ public class Lession implements java.io.Serializable {
 	}
 
 	@Column(name = "description", nullable = false)
-	public Serializable getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(Serializable description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	@Column(name = "content", nullable = false)
-	public Serializable getContent() {
+	public String getContent() {
 		return this.content;
 	}
 
-	public void setContent(Serializable content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 

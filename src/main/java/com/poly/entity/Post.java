@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,11 +21,13 @@ import javax.persistence.TemporalType;
 @Table(name = "Post", schema = "dbo", catalog = "Learn_code_db")
 public class Post implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Topic topic;
 	private User user;
-	private Serializable body;
-	private Serializable parentId;
+	private String body;
+	private String parentId;
 	private Date createdAt;
 	private Date updatedAt;
 	private int isDelete;
@@ -34,7 +35,7 @@ public class Post implements java.io.Serializable {
 	public Post() {
 	}
 
-	public Post(Topic topic, User user, Serializable body, Serializable parentId, Date createdAt, Date updatedAt,
+	public Post(Topic topic, User user, String body, String parentId, Date createdAt, Date updatedAt,
 			int isDelete) {
 		this.topic = topic;
 		this.user = user;
@@ -78,20 +79,20 @@ public class Post implements java.io.Serializable {
 	}
 
 	@Column(name = "body", nullable = false)
-	public Serializable getBody() {
+	public String getBody() {
 		return this.body;
 	}
 
-	public void setBody(Serializable body) {
+	public void setBody(String body) {
 		this.body = body;
 	}
 
 	@Column(name = "parent_id", nullable = false)
-	public Serializable getParentId() {
+	public String getParentId() {
 		return this.parentId;
 	}
 
-	public void setParentId(Serializable parentId) {
+	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
 

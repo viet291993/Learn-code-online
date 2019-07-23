@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,10 +18,12 @@ import javax.persistence.Table;
 @Table(name = "Record_Question", schema = "dbo", catalog = "Learn_code_db")
 public class RecordQuestion implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Question question;
 	private Record record;
-	private Serializable tempCode;
+	private String tempCode;
 	private int resultQuiz;
 	private boolean isActive;
 	private boolean isDeleted;
@@ -30,7 +31,7 @@ public class RecordQuestion implements java.io.Serializable {
 	public RecordQuestion() {
 	}
 
-	public RecordQuestion(Question question, Record record, Serializable tempCode, int resultQuiz, boolean isActive,
+	public RecordQuestion(Question question, Record record, String tempCode, int resultQuiz, boolean isActive,
 			boolean isDeleted) {
 		this.question = question;
 		this.record = record;
@@ -73,11 +74,11 @@ public class RecordQuestion implements java.io.Serializable {
 	}
 
 	@Column(name = "temp_code", nullable = false)
-	public Serializable getTempCode() {
+	public String getTempCode() {
 		return this.tempCode;
 	}
 
-	public void setTempCode(Serializable tempCode) {
+	public void setTempCode(String tempCode) {
 		this.tempCode = tempCode;
 	}
 

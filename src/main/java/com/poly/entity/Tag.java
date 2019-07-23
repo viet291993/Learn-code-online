@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,9 +22,11 @@ import javax.persistence.TemporalType;
 @Table(name = "Tag", schema = "dbo", catalog = "Learn_code_db")
 public class Tag implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
-	private Serializable title;
-	private Serializable body;
+	private String title;
+	private String body;
 	private Date createdAt;
 	private Date updatedAt;
 	private Set<TopicTag> topicTags = new HashSet<TopicTag>(0);
@@ -33,14 +34,14 @@ public class Tag implements java.io.Serializable {
 	public Tag() {
 	}
 
-	public Tag(Serializable title, Serializable body, Date createdAt, Date updatedAt) {
+	public Tag(String title, String body, Date createdAt, Date updatedAt) {
 		this.title = title;
 		this.body = body;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
 
-	public Tag(Serializable title, Serializable body, Date createdAt, Date updatedAt, Set<TopicTag> topicTags) {
+	public Tag(String title, String body, Date createdAt, Date updatedAt, Set<TopicTag> topicTags) {
 		this.title = title;
 		this.body = body;
 		this.createdAt = createdAt;
@@ -61,20 +62,20 @@ public class Tag implements java.io.Serializable {
 	}
 
 	@Column(name = "title", nullable = false)
-	public Serializable getTitle() {
+	public String getTitle() {
 		return this.title;
 	}
 
-	public void setTitle(Serializable title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
 	@Column(name = "body", nullable = false)
-	public Serializable getBody() {
+	public String getBody() {
 		return this.body;
 	}
 
-	public void setBody(Serializable body) {
+	public void setBody(String body) {
 		this.body = body;
 	}
 

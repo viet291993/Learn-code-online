@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @Table(name = "Topic_Tag", schema = "dbo", catalog = "Learn_code_db")
 public class TopicTag implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Tag tag;
 	private Topic topic;

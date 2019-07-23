@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -22,12 +21,14 @@ import javax.persistence.Table;
 @Table(name = "Member", schema = "dbo", catalog = "Learn_code_db")
 public class Member implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private User user;
-	private Serializable name;
+	private String name;
 	private String email;
-	private Serializable address;
-	private Serializable profileimage;
+	private String address;
+	private String profileimage;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Record> records = new HashSet<Record>(0);
@@ -35,7 +36,7 @@ public class Member implements java.io.Serializable {
 	public Member() {
 	}
 
-	public Member(User user, Serializable name, String email, Serializable address, Serializable profileimage,
+	public Member(User user, String name, String email, String address, String profileimage,
 			boolean isActive, boolean isDeleted) {
 		this.user = user;
 		this.name = name;
@@ -46,7 +47,7 @@ public class Member implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Member(User user, Serializable name, String email, Serializable address, Serializable profileimage,
+	public Member(User user, String name, String email, String address, String profileimage,
 			boolean isActive, boolean isDeleted, Set<Record> records) {
 		this.user = user;
 		this.name = name;
@@ -81,11 +82,11 @@ public class Member implements java.io.Serializable {
 	}
 
 	@Column(name = "name", nullable = false)
-	public Serializable getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Serializable name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -99,20 +100,20 @@ public class Member implements java.io.Serializable {
 	}
 
 	@Column(name = "address", nullable = false)
-	public Serializable getAddress() {
+	public String getAddress() {
 		return this.address;
 	}
 
-	public void setAddress(Serializable address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
 	@Column(name = "profileimage", nullable = false)
-	public Serializable getProfileimage() {
+	public String getProfileimage() {
 		return this.profileimage;
 	}
 
-	public void setProfileimage(Serializable profileimage) {
+	public void setProfileimage(String profileimage) {
 		this.profileimage = profileimage;
 	}
 

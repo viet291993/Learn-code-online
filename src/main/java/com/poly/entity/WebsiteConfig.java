@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,23 +13,25 @@ import javax.persistence.Table;
 @Table(name = "Website_Config", schema = "dbo", catalog = "Learn_code_db")
 public class WebsiteConfig implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String lang;
-	private Serializable name;
-	private Serializable email;
-	private Serializable openHour;
+	private String name;
+	private String email;
+	private String openHour;
 	private String mobile;
-	private Serializable copyRight;
+	private String copyRight;
 	private String hotline;
 	private String link;
-	private Serializable headScript;
-	private Serializable startBodyScript;
-	private Serializable endBodyScript;
-	private Serializable googleMap;
-	private Serializable address;
-	private Serializable facebookLink;
-	private Serializable googleLink;
-	private Serializable twitterLink;
-	private Serializable youtubeLink;
+	private String headScript;
+	private String startBodyScript;
+	private String endBodyScript;
+	private String googleMap;
+	private String address;
+	private String facebookLink;
+	private String googleLink;
+	private String twitterLink;
+	private String youtubeLink;
 	private Boolean isDeleted;
 
 	public WebsiteConfig() {
@@ -40,10 +41,10 @@ public class WebsiteConfig implements java.io.Serializable {
 		this.lang = lang;
 	}
 
-	public WebsiteConfig(String lang, Serializable name, Serializable email, Serializable openHour, String mobile,
-			Serializable copyRight, String hotline, String link, Serializable headScript, Serializable startBodyScript,
-			Serializable endBodyScript, Serializable googleMap, Serializable address, Serializable facebookLink,
-			Serializable googleLink, Serializable twitterLink, Serializable youtubeLink, Boolean isDeleted) {
+	public WebsiteConfig(String lang, String name, String email, String openHour, String mobile,
+			String copyRight, String hotline, String link, String headScript, String startBodyScript,
+			String endBodyScript, String googleMap, String address, String facebookLink,
+			String googleLink, String twitterLink, String youtubeLink, Boolean isDeleted) {
 		this.lang = lang;
 		this.name = name;
 		this.email = email;
@@ -76,29 +77,29 @@ public class WebsiteConfig implements java.io.Serializable {
 	}
 
 	@Column(name = "name")
-	public Serializable getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Serializable name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
 	@Column(name = "email")
-	public Serializable getEmail() {
+	public String getEmail() {
 		return this.email;
 	}
 
-	public void setEmail(Serializable email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	@Column(name = "openHour")
-	public Serializable getOpenHour() {
+	public String getOpenHour() {
 		return this.openHour;
 	}
 
-	public void setOpenHour(Serializable openHour) {
+	public void setOpenHour(String openHour) {
 		this.openHour = openHour;
 	}
 
@@ -112,11 +113,11 @@ public class WebsiteConfig implements java.io.Serializable {
 	}
 
 	@Column(name = "copyRight")
-	public Serializable getCopyRight() {
+	public String getCopyRight() {
 		return this.copyRight;
 	}
 
-	public void setCopyRight(Serializable copyRight) {
+	public void setCopyRight(String copyRight) {
 		this.copyRight = copyRight;
 	}
 
@@ -139,83 +140,83 @@ public class WebsiteConfig implements java.io.Serializable {
 	}
 
 	@Column(name = "headScript")
-	public Serializable getHeadScript() {
+	public String getHeadScript() {
 		return this.headScript;
 	}
 
-	public void setHeadScript(Serializable headScript) {
+	public void setHeadScript(String headScript) {
 		this.headScript = headScript;
 	}
 
 	@Column(name = "startBodyScript")
-	public Serializable getStartBodyScript() {
+	public String getStartBodyScript() {
 		return this.startBodyScript;
 	}
 
-	public void setStartBodyScript(Serializable startBodyScript) {
+	public void setStartBodyScript(String startBodyScript) {
 		this.startBodyScript = startBodyScript;
 	}
 
 	@Column(name = "endBodyScript")
-	public Serializable getEndBodyScript() {
+	public String getEndBodyScript() {
 		return this.endBodyScript;
 	}
 
-	public void setEndBodyScript(Serializable endBodyScript) {
+	public void setEndBodyScript(String endBodyScript) {
 		this.endBodyScript = endBodyScript;
 	}
 
 	@Column(name = "googleMap")
-	public Serializable getGoogleMap() {
+	public String getGoogleMap() {
 		return this.googleMap;
 	}
 
-	public void setGoogleMap(Serializable googleMap) {
+	public void setGoogleMap(String googleMap) {
 		this.googleMap = googleMap;
 	}
 
 	@Column(name = "address")
-	public Serializable getAddress() {
+	public String getAddress() {
 		return this.address;
 	}
 
-	public void setAddress(Serializable address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
 	@Column(name = "facebookLink")
-	public Serializable getFacebookLink() {
+	public String getFacebookLink() {
 		return this.facebookLink;
 	}
 
-	public void setFacebookLink(Serializable facebookLink) {
+	public void setFacebookLink(String facebookLink) {
 		this.facebookLink = facebookLink;
 	}
 
 	@Column(name = "googleLink")
-	public Serializable getGoogleLink() {
+	public String getGoogleLink() {
 		return this.googleLink;
 	}
 
-	public void setGoogleLink(Serializable googleLink) {
+	public void setGoogleLink(String googleLink) {
 		this.googleLink = googleLink;
 	}
 
 	@Column(name = "twitterLink")
-	public Serializable getTwitterLink() {
+	public String getTwitterLink() {
 		return this.twitterLink;
 	}
 
-	public void setTwitterLink(Serializable twitterLink) {
+	public void setTwitterLink(String twitterLink) {
 		this.twitterLink = twitterLink;
 	}
 
 	@Column(name = "youtubeLink")
-	public Serializable getYoutubeLink() {
+	public String getYoutubeLink() {
 		return this.youtubeLink;
 	}
 
-	public void setYoutubeLink(Serializable youtubeLink) {
+	public void setYoutubeLink(String youtubeLink) {
 		this.youtubeLink = youtubeLink;
 	}
 

@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -20,13 +19,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Syllabus", schema = "dbo", catalog = "Learn_code_db")
-public class Syllabus implements java.io.Serializable {
+public class Syllabus {
 
 	private Integer id;
 	private Course course;
-	private Serializable name;
+	private String name;
 	private int order;
-	private Serializable description;
+	private String description;
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
@@ -35,7 +34,7 @@ public class Syllabus implements java.io.Serializable {
 	public Syllabus() {
 	}
 
-	public Syllabus(Course course, Serializable name, int order, Serializable description, String code,
+	public Syllabus(Course course, String name, int order, String description, String code,
 			boolean isActive, boolean isDeleted) {
 		this.course = course;
 		this.name = name;
@@ -46,7 +45,7 @@ public class Syllabus implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Syllabus(Course course, Serializable name, int order, Serializable description, String code,
+	public Syllabus(Course course, String name, int order, String description, String code,
 			boolean isActive, boolean isDeleted, Set<Lession> lessions) {
 		this.course = course;
 		this.name = name;
@@ -81,11 +80,11 @@ public class Syllabus implements java.io.Serializable {
 	}
 
 	@Column(name = "name", nullable = false)
-	public Serializable getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Serializable name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -99,11 +98,11 @@ public class Syllabus implements java.io.Serializable {
 	}
 
 	@Column(name = "description", nullable = false)
-	public Serializable getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(Serializable description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

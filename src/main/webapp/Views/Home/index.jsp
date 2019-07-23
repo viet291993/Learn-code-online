@@ -8,8 +8,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="/Resources/css/bootstrap.css">
-    <link rel="stylesheet" href="/Resources/css/animate.css">
+    <link rel="stylesheet" href="Resources/css/bootstrap.css">
+    <link rel="stylesheet" href="Resources/css/animate.css">
     <link rel="stylesheet" href="Resources/css/owl.carousel.min.css">
 
     <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">

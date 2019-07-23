@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -20,9 +19,11 @@ import javax.persistence.Table;
 @Table(name = "Course", schema = "dbo", catalog = "Learn_code_db")
 public class Course implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
-	private Serializable name;
-	private Serializable description;
+	private String name;
+	private String description;
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
@@ -31,7 +32,7 @@ public class Course implements java.io.Serializable {
 	public Course() {
 	}
 
-	public Course(Serializable name, Serializable description, String code, boolean isActive, boolean isDeleted) {
+	public Course(String name, String description, String code, boolean isActive, boolean isDeleted) {
 		this.name = name;
 		this.description = description;
 		this.code = code;
@@ -39,7 +40,7 @@ public class Course implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Course(Serializable name, Serializable description, String code, boolean isActive, boolean isDeleted,
+	public Course(String name, String description, String code, boolean isActive, boolean isDeleted,
 			Set<Syllabus> syllabuses) {
 		this.name = name;
 		this.description = description;
@@ -62,20 +63,20 @@ public class Course implements java.io.Serializable {
 	}
 
 	@Column(name = "name", nullable = false)
-	public Serializable getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Serializable name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
 	@Column(name = "description", nullable = false)
-	public Serializable getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(Serializable description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

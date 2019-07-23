@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -22,14 +21,16 @@ import javax.persistence.Table;
 @Table(name = "Question", schema = "dbo", catalog = "Learn_code_db")
 public class Question implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Lession lession;
-	private Serializable instruction;
-	private Serializable hint;
-	private Serializable result;
+	private String instruction;
+	private String hint;
+	private String result;
 	private int order;
-	private Serializable description;
-	private Serializable defaultCode;
+	private String description;
+	private String defaultCode;
 	private String code;
 	private int resultQuiz;
 	private boolean isActive;
@@ -40,8 +41,8 @@ public class Question implements java.io.Serializable {
 	public Question() {
 	}
 
-	public Question(Lession lession, Serializable instruction, Serializable hint, Serializable result, int order,
-			Serializable description, Serializable defaultCode, String code, int resultQuiz, boolean isActive,
+	public Question(Lession lession, String instruction, String hint, String result, int order,
+			String description, String defaultCode, String code, int resultQuiz, boolean isActive,
 			boolean isDeleted) {
 		this.lession = lession;
 		this.instruction = instruction;
@@ -56,8 +57,8 @@ public class Question implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Question(Lession lession, Serializable instruction, Serializable hint, Serializable result, int order,
-			Serializable description, Serializable defaultCode, String code, int resultQuiz, boolean isActive,
+	public Question(Lession lession, String instruction, String hint, String result, int order,
+			String description, String defaultCode, String code, int resultQuiz, boolean isActive,
 			boolean isDeleted, Set<Quiz> quizs, Set<RecordQuestion> recordQuestions) {
 		this.lession = lession;
 		this.instruction = instruction;
@@ -97,29 +98,29 @@ public class Question implements java.io.Serializable {
 	}
 
 	@Column(name = "instruction", nullable = false)
-	public Serializable getInstruction() {
+	public String getInstruction() {
 		return this.instruction;
 	}
 
-	public void setInstruction(Serializable instruction) {
+	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
 
 	@Column(name = "hint", nullable = false)
-	public Serializable getHint() {
+	public String getHint() {
 		return this.hint;
 	}
 
-	public void setHint(Serializable hint) {
+	public void setHint(String hint) {
 		this.hint = hint;
 	}
 
 	@Column(name = "result", nullable = false)
-	public Serializable getResult() {
+	public String getResult() {
 		return this.result;
 	}
 
-	public void setResult(Serializable result) {
+	public void setResult(String result) {
 		this.result = result;
 	}
 
@@ -133,20 +134,20 @@ public class Question implements java.io.Serializable {
 	}
 
 	@Column(name = "description", nullable = false)
-	public Serializable getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(Serializable description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	@Column(name = "default_code", nullable = false)
-	public Serializable getDefaultCode() {
+	public String getDefaultCode() {
 		return this.defaultCode;
 	}
 
-	public void setDefaultCode(Serializable defaultCode) {
+	public void setDefaultCode(String defaultCode) {
 		this.defaultCode = defaultCode;
 	}
 

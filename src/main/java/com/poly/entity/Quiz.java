@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,9 +18,11 @@ import javax.persistence.Table;
 @Table(name = "Quiz", schema = "dbo", catalog = "Learn_code_db")
 public class Quiz implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Question question;
-	private Serializable answer;
+	private String answer;
 	private boolean isActive;
 	private boolean isDeleted;
 
@@ -34,7 +35,7 @@ public class Quiz implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Quiz(Question question, Serializable answer, boolean isActive, boolean isDeleted) {
+	public Quiz(Question question, String answer, boolean isActive, boolean isDeleted) {
 		this.question = question;
 		this.answer = answer;
 		this.isActive = isActive;
@@ -64,11 +65,11 @@ public class Quiz implements java.io.Serializable {
 	}
 
 	@Column(name = "answer")
-	public Serializable getAnswer() {
+	public String getAnswer() {
 		return this.answer;
 	}
 
-	public void setAnswer(Serializable answer) {
+	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
 

@@ -1,7 +1,6 @@
 package com.poly.entity;
 // Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -20,8 +19,10 @@ import javax.persistence.Table;
 @Table(name = "AdminRole", schema = "dbo", catalog = "Learn_code_db")
 public class AdminRole implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
-	private Serializable name;
+	private String name;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Admin> admins = new HashSet<Admin>(0);
@@ -29,13 +30,13 @@ public class AdminRole implements java.io.Serializable {
 	public AdminRole() {
 	}
 
-	public AdminRole(Serializable name, boolean isActive, boolean isDeleted) {
+	public AdminRole(String name, boolean isActive, boolean isDeleted) {
 		this.name = name;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
 	}
 
-	public AdminRole(Serializable name, boolean isActive, boolean isDeleted, Set<Admin> admins) {
+	public AdminRole(String name, boolean isActive, boolean isDeleted, Set<Admin> admins) {
 		this.name = name;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
@@ -55,11 +56,11 @@ public class AdminRole implements java.io.Serializable {
 	}
 
 	@Column(name = "name", nullable = false)
-	public Serializable getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Serializable name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
