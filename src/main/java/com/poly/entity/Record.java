@@ -1,5 +1,5 @@
 package com.poly.entity;
-// Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 24, 2019 11:22:08 PM by Hibernate Tools 5.0.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,8 +21,10 @@ import javax.persistence.Table;
 @Table(name = "Record", schema = "dbo", catalog = "Learn_code_db")
 public class Record implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3098402535888938134L;
 	private Integer id;
 	private Lession lession;
 	private Member member;

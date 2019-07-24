@@ -18,9 +18,9 @@ public class AdminAuthenticationInterceptor extends HandlerInterceptorAdapter {
 		String uri = request.getRequestURI();
 		if (adminSession == null) {
 			if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
-				response.getWriter().println("<script>window.location.href='/Admin/Login'</script>");
+				response.getWriter().println("<script>window.location.href='"+request.getContextPath()+"/Admin/Login'</script>");
 			} else {
-				response.sendRedirect("/Admin/Login");
+				response.sendRedirect(request.getContextPath()+"/Admin/Login");
 			}
 			return false;
 		} else if (uri.endsWith("/Admin") || uri.endsWith("/admin")) {

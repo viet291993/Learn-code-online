@@ -1,13 +1,15 @@
 package com.poly.entity;
-// Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 24, 2019 11:22:08 PM by Hibernate Tools 5.0.6.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,12 +23,14 @@ import javax.persistence.Table;
 @Table(name = "Syllabus", schema = "dbo", catalog = "Learn_code_db")
 public class Syllabus implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3612032275709361257L;
 	private Integer id;
 	private Course course;
 	private String name;
-	private int order;
+	private int orderDisplay;
 	private String description;
 	private String code;
 	private boolean isActive;
@@ -36,22 +40,22 @@ public class Syllabus implements java.io.Serializable {
 	public Syllabus() {
 	}
 
-	public Syllabus(Course course, String name, int order, String description, String code,
+	public Syllabus(Course course, String name, int orderDisplay, String description, String code,
 			boolean isActive, boolean isDeleted) {
 		this.course = course;
 		this.name = name;
-		this.order = order;
+		this.orderDisplay = orderDisplay;
 		this.description = description;
 		this.code = code;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
 	}
 
-	public Syllabus(Course course, String name, int order, String description, String code,
+	public Syllabus(Course course, String name, int orderDisplay, String description, String code,
 			boolean isActive, boolean isDeleted, Set<Lession> lessions) {
 		this.course = course;
 		this.name = name;
-		this.order = order;
+		this.orderDisplay = orderDisplay;
 		this.description = description;
 		this.code = code;
 		this.isActive = isActive;
@@ -90,13 +94,13 @@ public class Syllabus implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "order", nullable = false)
-	public int getOrder() {
-		return this.order;
+	@Column(name = "orderDisplay", nullable = false)
+	public int getOrderDisplay() {
+		return this.orderDisplay;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setOrderDisplay(int orderDisplay) {
+		this.orderDisplay = orderDisplay;
 	}
 
 	@Column(name = "description", nullable = false)

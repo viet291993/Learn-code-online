@@ -1,14 +1,16 @@
 package com.poly.entity;
-// Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 24, 2019 11:22:08 PM by Hibernate Tools 5.0.6.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,9 +25,11 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "Topic", schema = "dbo", catalog = "Learn_code_db")
 public class Topic implements java.io.Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7639650392692866708L;
 	private Integer id;
 	private User user;
 	private String title;

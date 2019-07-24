@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="Resources/css/animate.css">
     <link rel="stylesheet" href="Resources/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="Resources/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="Resources/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Resources/fonts/flaticon/font/flaticon.css">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="Resources/css/style.css">
   </head>
   <body>
     
@@ -258,15 +258,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="Resources/js/jquery-3.2.1.min.js"></script>
+    <script src="Resources/js/jquery-migrate-3.0.0.js"></script>
+    <script src="Resources/js/popper.min.js"></script>
+    <script src="Resources/js/bootstrap.min.js"></script>
+    <script src="Resources/js/owl.carousel.min.js"></script>
+    <script src="Resources/js/jquery.waypoints.min.js"></script>
+    <script src="Resources/js/jquery.stellar.min.js"></script>
 
     
-    <script src="js/main.js"></script>
+    <script src="Resources/js/main.js"></script>
   </body>
 </html>

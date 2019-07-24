@@ -13,11 +13,9 @@ import com.poly.dao.WebsiteConfigDAO;
 import com.poly.entity.WebsiteConfig;
 import com.poly.utils.ConfigUtils;
 
-
-
 public class GeneralContextListener implements ServletContextListener {
 
-	@Override
+	@Override 
 	public void contextInitialized(ServletContextEvent sce) {
 		String configPath = sce.getServletContext().getRealPath("/WEB-INF/config.system.properties");
 		String configPathERP = sce.getServletContext().getRealPath("/WEB-INF/config.erp.mapping.properties");
@@ -33,6 +31,7 @@ public class GeneralContextListener implements ServletContextListener {
 			try {
 				HashMap<String, WebsiteConfig> websiteConfigs = new WebsiteConfigDAO().findAllConfigs();
 				sce.getServletContext().setAttribute("WEBSITE_CONFIGS", websiteConfigs);
+				sce.getServletContext().setAttribute("WEBSERVICE_NAMESERVER", nameServer);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

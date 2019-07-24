@@ -12,6 +12,11 @@ import com.poly.entity.WebsiteConfig;
 
 public class WebsiteConfigDAO extends AbstractDAO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6707316813962607622L;
+
 	public WebsiteConfigDAO() {
 		super(WebsiteConfig.class);
 	}
