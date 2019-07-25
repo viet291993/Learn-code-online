@@ -26,7 +26,7 @@ public class Syllabus implements java.io.Serializable {
 	private Integer id;
 	private Course course;
 	private String name;
-	private int order;
+	private int orderDisplay;
 	private String description;
 	private String code;
 	private boolean isActive;
@@ -36,22 +36,22 @@ public class Syllabus implements java.io.Serializable {
 	public Syllabus() {
 	}
 
-	public Syllabus(Course course, String name, int order, String description, String code,
+	public Syllabus(Course course, String name, int orderDisplay, String description, String code,
 			boolean isActive, boolean isDeleted) {
 		this.course = course;
 		this.name = name;
-		this.order = order;
+		this.orderDisplay = orderDisplay;
 		this.description = description;
 		this.code = code;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
 	}
 
-	public Syllabus(Course course, String name, int order, String description, String code,
+	public Syllabus(Course course, String name, int orderDisplay, String description, String code,
 			boolean isActive, boolean isDeleted, Set<Lession> lessions) {
 		this.course = course;
 		this.name = name;
-		this.order = order;
+		this.orderDisplay = orderDisplay;
 		this.description = description;
 		this.code = code;
 		this.isActive = isActive;
@@ -90,13 +90,13 @@ public class Syllabus implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "order", nullable = false)
-	public int getOrder() {
-		return this.order;
+	@Column(name = "orderDisplay", nullable = false)
+	public int getOrderDisplay() {
+		return this.orderDisplay;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setOrderDisplay(int orderDisplay) {
+		this.orderDisplay = orderDisplay;
 	}
 
 	@Column(name = "description", nullable = false)

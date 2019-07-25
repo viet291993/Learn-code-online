@@ -14,6 +14,9 @@
     <definition name="HomeIndex" template="/Views/Home/index.jsp">
     </definition>
     
+    <definition name="HomeCourse" template="/Views/Home/course.jsp">
+    </definition>
+    
     <definition name="HomeLogin" extends="HomeLayout">
         <put-attribute name="Content" value="/Views/Home/Auth/login.jsp" />
     </definition>

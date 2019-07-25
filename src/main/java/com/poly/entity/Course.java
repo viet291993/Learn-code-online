@@ -3,6 +3,8 @@ package com.poly.entity;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 /**
@@ -27,7 +30,7 @@ public class Course implements java.io.Serializable {
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
-	private Set<Syllabus> syllabuses = new HashSet<Syllabus>(0);
+	private Set<Syllabus> syllabuses;
 
 	public Course() {
 	}
@@ -107,7 +110,9 @@ public class Course implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "course")
+	@Column(nullable = false, updatable = false, insertable = false)
+    @OrderColumn(name = "orderDisplay")
 	public Set<Syllabus> getSyllabuses() {
 		return this.syllabuses;
 	}
