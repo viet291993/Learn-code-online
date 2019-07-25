@@ -95,15 +95,7 @@ public class AdminController {
 			Map adminSession = new HashMap();
 			adminSession.put("ADMIN_ID", admin.getId());
 			session.setAttribute("ADMIN", adminSession);
-			/*
-			 * if (session.getAttribute("CUSTOMER") == null) { Member mem = new
-			 * CustomerDAO().findCustomerByUsername(admin.getUserID().getUsername()); if
-			 * (mem != null) { HashMap memberSession = new HashMap();
-			 * customerSession.put("MEMBER", mem);
-			 * request.getSession().setAttribute("MEMBER", memberSession); } }
-			 */
-
-			result = new Pair(1, Alert.createRedirectPage(request.getContextPath()+"/Admin"));
+			result = new Pair(1, Alert.createRedirectPage(request.getContextPath() + "/Admin"));
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,7 +116,7 @@ public class AdminController {
 		cookie.setPath("/");
 		response.addCookie(cookie);
 		try {
-			response.sendRedirect(request.getContextPath()+"/Admin/Login");
+			response.sendRedirect(request.getContextPath() + "/Admin/Login");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

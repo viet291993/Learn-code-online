@@ -15,7 +15,7 @@ import com.poly.utils.ConfigUtils;
 
 public class GeneralContextListener implements ServletContextListener {
 
-	@Override 
+	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		String configPath = sce.getServletContext().getRealPath("/WEB-INF/config.system.properties");
 		String configPathERP = sce.getServletContext().getRealPath("/WEB-INF/config.erp.mapping.properties");

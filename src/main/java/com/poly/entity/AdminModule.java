@@ -41,6 +41,10 @@ public class AdminModule implements java.io.Serializable {
 	public AdminModule() {
 	}
 
+	public AdminModule(int id) {
+		this.id = id;
+	}
+
 	public AdminModule(AdminModule adminModule, String name, String controller, String icon, Boolean isShow,
 			Boolean isDeleted, Integer orderNumber, Set<AdminModuleInRole> adminModuleInRoles,
 			Set<AdminModule> adminModules) {

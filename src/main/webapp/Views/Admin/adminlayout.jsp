@@ -5,7 +5,7 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="t"%>
 
 <c:set var="ADMIN_ID" value="${sessionScope['ADMIN']['ADMIN_ID']}"/>
-<%-- <c:set var="ADMIN" value="${f:findAdminById(ADMIN_ID)}"/> --%>
+<c:set var="ADMIN" value="${f:findAdminById(ADMIN_ID)}"/>
 <c:choose>    
     <c:when test="${cookie.adminLang.value!=null}">
         <c:set var="LANG" value="${cookie.adminLang.value}"/>
@@ -27,8 +27,10 @@
         <link rel="shortcut icon" type="image/x-icon" href="/Resources/shared/img/favicon.ico" />
         <!-- END META SECTION -->
         
+        
          <!-- Bootstrap -->
 	    <link href="Resources/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	    
 	    <!-- Font Awesome -->
 	    <link href="Resources/Admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	    <!-- NProgress -->

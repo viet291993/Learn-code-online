@@ -4,6 +4,7 @@ package com.poly.entity;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -29,8 +30,8 @@ public class AdminRole implements java.io.Serializable {
 	private String name;
 	private boolean isActive;
 	private boolean isDeleted;
-	private Set<AdminModuleInRole> adminModuleInRoles = new HashSet<AdminModuleInRole>(0);
-	private Set<Admin> admins = new HashSet<Admin>(0);
+	private List<AdminModuleInRole> adminModuleInRoles;
+	private List<Admin> admins;
 
 	public AdminRole() {
 	}
@@ -41,8 +42,11 @@ public class AdminRole implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public AdminRole(String name, boolean isActive, boolean isDeleted, Set<AdminModuleInRole> adminModuleInRoles,
-			Set<Admin> admins) {
+	public AdminRole(int id) {
+	}
+
+	public AdminRole(String name, boolean isActive, boolean isDeleted, List<AdminModuleInRole> adminModuleInRoles,
+			List<Admin> admins) {
 		this.name = name;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
@@ -90,20 +94,20 @@ public class AdminRole implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminRole")
-	public Set<AdminModuleInRole> getAdminModuleInRoles() {
+	public List<AdminModuleInRole> getAdminModuleInRoles() {
 		return this.adminModuleInRoles;
 	}
 
-	public void setAdminModuleInRoles(Set<AdminModuleInRole> adminModuleInRoles) {
+	public void setAdminModuleInRoles(List<AdminModuleInRole> adminModuleInRoles) {
 		this.adminModuleInRoles = adminModuleInRoles;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminRole")
-	public Set<Admin> getAdmins() {
+	public List<Admin> getAdmins() {
 		return this.admins;
 	}
 
-	public void setAdmins(Set<Admin> admins) {
+	public void setAdmins(List<Admin> admins) {
 		this.admins = admins;
 	}
 
