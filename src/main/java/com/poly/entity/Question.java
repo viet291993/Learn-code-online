@@ -1,13 +1,15 @@
 package com.poly.entity;
-// Generated Jul 22, 2019 3:26:12 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 24, 2019 11:22:08 PM by Hibernate Tools 5.0.6.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,8 +23,10 @@ import javax.persistence.Table;
 @Table(name = "Question", schema = "dbo", catalog = "Learn_code_db")
 public class Question implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4965841764265309538L;
 	private Integer id;
 	private Lession lession;
 	private String instruction;
@@ -102,7 +106,7 @@ public class Question implements java.io.Serializable {
 		return this.instruction;
 	}
 
-	public void setInstruction(String instruction) {
+	public void setInstruction (String instruction) {
 		this.instruction = instruction;
 	}
 
@@ -111,7 +115,7 @@ public class Question implements java.io.Serializable {
 		return this.hint;
 	}
 
-	public void setHint(String hint) {
+	public void setHint (String hint) {
 		this.hint = hint;
 	}
 
@@ -120,7 +124,7 @@ public class Question implements java.io.Serializable {
 		return this.result;
 	}
 
-	public void setResult(String result) {
+	public void setResult (String result) {
 		this.result = result;
 	}
 
@@ -138,7 +142,7 @@ public class Question implements java.io.Serializable {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription (String description) {
 		this.description = description;
 	}
 
@@ -147,7 +151,7 @@ public class Question implements java.io.Serializable {
 		return this.defaultCode;
 	}
 
-	public void setDefaultCode(String defaultCode) {
+	public void setDefaultCode (String defaultCode) {
 		this.defaultCode = defaultCode;
 	}
 

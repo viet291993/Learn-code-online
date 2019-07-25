@@ -12,7 +12,6 @@
 
 	<name>LearnCode Maven Webapp</name>
 	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
