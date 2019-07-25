@@ -40,29 +40,6 @@ public class Syllabus implements java.io.Serializable {
 	public Syllabus() {
 	}
 
-	public Syllabus(Course course, String name, int orderDisplay, String description, String code,
-			boolean isActive, boolean isDeleted) {
-		this.course = course;
-		this.name = name;
-		this.orderDisplay = orderDisplay;
-		this.description = description;
-		this.code = code;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public Syllabus(Course course, String name, int orderDisplay, String description, String code,
-			boolean isActive, boolean isDeleted, Set<Lession> lessions) {
-		this.course = course;
-		this.name = name;
-		this.orderDisplay = orderDisplay;
-		this.description = description;
-		this.code = code;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.lessions = lessions;
-	}
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
@@ -76,7 +53,7 @@ public class Syllabus implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Language_id", nullable = false)
+	@JoinColumn(name = "Course_id", nullable = false)
 	public Course getCourse() {
 		return this.course;
 	}

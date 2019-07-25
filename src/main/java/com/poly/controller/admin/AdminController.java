@@ -84,11 +84,11 @@ public class AdminController {
 
 			Admin admin = new AdminDAO().checkLogin(username, password);
 			if (admin == null) {
-				result = new Pair(0, Alert.createErrorAlert("Sai tên đăng nhập hoặc mật khẩu!"));
+				result = new Pair<Integer, String>(0, Alert.createErrorAlert("Sai tên đăng nhập hoặc mật khẩu!"));
 				return result;
 			}
 			if (!admin.isIsActive()) {
-				result = new Pair(0, Alert.createErrorAlert("Tài khoản của bạn đã bị khóa!"));
+				result = new Pair<Integer, String>(0, Alert.createErrorAlert("Tài khoản của bạn đã bị khóa!"));
 				return result;
 			}
 
@@ -103,11 +103,11 @@ public class AdminController {
 			 * request.getSession().setAttribute("MEMBER", memberSession); } }
 			 */
 
-			result = new Pair(1, Alert.createRedirectPage(request.getContextPath()+"/Admin"));
+			result = new Pair<Integer, String>(1, Alert.createRedirectPage(request.getContextPath()+"/Admin"));
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			result = new Pair<Integer, String>(0, Alert.createErrorAlert2("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
 			return result;
 		}
 	}

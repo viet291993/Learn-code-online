@@ -26,6 +26,8 @@ public class CourseDAO extends AbstractDAO {
 				Criteria cr = session.createCriteria(Course.class);
 				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
 				cr.setFetchMode("syllabuses", FetchMode.JOIN);
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("isDeleted", false));
 				list = (List<Course>) cr.list();
 			}
 		} catch (Exception e) {
@@ -34,5 +36,66 @@ public class CourseDAO extends AbstractDAO {
 			HibernateConfiguration.getInstance().closeSession(session);
 		}
 		return list;
+	}
+
+	public List<Course> findAllCourseEager() {
+		Session session = null;
+		List<Course> list = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Course.class);
+				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("syllabuses", FetchMode.JOIN);
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("isDeleted", false));
+				list = (List<Course>) cr.list();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return list;
+	}
+
+	public Course findCoursebyNameAsciiEager(String nameAscii, String lang) {
+		Session session = null;
+		Course course = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Course.class);
+				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("syllabuses", FetchMode.JOIN);
+				cr.createAlias("syllabuses.lessions", "syllabuses.lessions", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("syllabuses.lessions", FetchMode.JOIN);
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("nameAscii", nameAscii));
+				course = (Course) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return course;
+	}
+
+	public int findIdByNameAscii(String urlNameAscii, String lang) {
+		Session session = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				return (int) session.createSQLQuery("select id from Course where nameAscii = '" + urlNameAscii + "'")
+						.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return -1;
 	}
 }

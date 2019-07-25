@@ -76,6 +76,17 @@ public class Alert {
                 .append("</script>");
         return sB.toString();
     }
+    
+    public static String createErrorAlert2(String text) {
+        StringBuilder sB = new StringBuilder();
+        sB.append("<script>")
+                .append("alert(\"")
+                .append(text)
+                .append("\")")
+                .append("</script>");
+        return sB.toString();
+    }
+    
     public static String createInfoAlert(String text) {
         StringBuilder sB = new StringBuilder();
         sB.append("<script>")

@@ -8,11 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${LIST_COURSE}" var="course">
-		Name: ${course.name}<br/>
-		<c:forEach items="${course.syllabuses}" var="syllabus">
-			Name: ${syllabus.id}<br/>
-		</c:forEach>
+	Course detail
+	<c:forEach items="${SELECTED_COURSE.syllabuses}" var="syllabus">
+		<ul>
+			<li>Syllabus: ${syllabus.name}<br />
+				<ul>
+					<c:forEach items="${syllabus.lessions}" var="lession">
+						<li>Lession: <a href="${SELECTED_COURSE.nameAscii}/${lession.nameAscii}">${lession.name}</a></li>
+					</c:forEach>
+				</ul>
+			</li>
+		</ul>
 	</c:forEach>
+	
 </body>
 </html>

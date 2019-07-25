@@ -31,9 +31,10 @@ public class Lession implements java.io.Serializable {
 	private LessionType lessionType;
 	private Syllabus syllabus;
 	private String name;
-	private int order;
+	private int orderDisplay;
 	private String description;
 	private String content;
+	private String nameAscii;
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
@@ -41,35 +42,6 @@ public class Lession implements java.io.Serializable {
 	private Set<Record> records = new HashSet<Record>(0);
 
 	public Lession() {
-	}
-
-	public Lession(LessionType lessionType, Syllabus syllabus, String name, int order, String description,
-			String content, String code, boolean isActive, boolean isDeleted) {
-		this.lessionType = lessionType;
-		this.syllabus = syllabus;
-		this.name = name;
-		this.order = order;
-		this.description = description;
-		this.content = content;
-		this.code = code;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public Lession(LessionType lessionType, Syllabus syllabus, String name, int order, String description,
-			String content, String code, boolean isActive, boolean isDeleted, Set<Question> questions,
-			Set<Record> records) {
-		this.lessionType = lessionType;
-		this.syllabus = syllabus;
-		this.name = name;
-		this.order = order;
-		this.description = description;
-		this.content = content;
-		this.code = code;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.questions = questions;
-		this.records = records;
 	}
 
 	@Id
@@ -113,13 +85,13 @@ public class Lession implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "order", nullable = false)
-	public int getOrder() {
-		return this.order;
+	@Column(name = "orderDisplay", nullable = false)
+	public int getOrderDisplay() {
+		return this.orderDisplay;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setOrderDisplay(int orderDisplay) {
+		this.orderDisplay = orderDisplay;
 	}
 
 	@Column(name = "description", nullable = false)
@@ -138,6 +110,15 @@ public class Lession implements java.io.Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	@Column(name = "nameAscii", nullable = false)
+	public String getNameAscii() {
+		return nameAscii;
+	}
+
+	public void setNameAscii(String nameAscii) {
+		this.nameAscii = nameAscii;
 	}
 
 	@Column(name = "code", nullable = false, length = 32)

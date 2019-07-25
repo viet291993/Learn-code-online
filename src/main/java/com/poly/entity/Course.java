@@ -3,7 +3,6 @@ package com.poly.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -23,37 +22,18 @@ import javax.persistence.Table;
 @Table(name = "Course", schema = "dbo", catalog = "Learn_code_db")
 public class Course implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6340725410099344755L;
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String name;
 	private String description;
+	private String nameAscii;
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Syllabus> syllabuses;
 
 	public Course() {
-	}
-
-	public Course(String name, String description, String code, boolean isActive, boolean isDeleted) {
-		this.name = name;
-		this.description = description;
-		this.code = code;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public Course(String name, String description, String code, boolean isActive, boolean isDeleted,
-			Set<Syllabus> syllabuses) {
-		this.name = name;
-		this.description = description;
-		this.code = code;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.syllabuses = syllabuses;
 	}
 
 	@Id
@@ -84,6 +64,19 @@ public class Course implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Column(name = "nameAscii", nullable = false)
+	public String getNameAscii() {
+		return nameAscii;
+	}
+
+	public void setNameAscii(String nameAscii) {
+		this.nameAscii = nameAscii;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	@Column(name = "code", nullable = false, length = 32)
