@@ -258,7 +258,7 @@ form button:hover {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laern Code | Quản trị hệ thống</title>
+        <title>Learn Code | Quản trị hệ thống</title>
         <link rel="icon" href="images/favicon.png"/>
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
         <!-- Custom styles for this template -->
@@ -266,7 +266,7 @@ form button:hover {
     <body>
         <div class="wrapper">
             <div class="container">
-                <h1>LEAR CODE ADMIN</h1>
+                <h1>LEARN CODE ADMIN</h1>
                 <form id="login-form" class="form" novalidate action="<c:url value="/Admin/Login"/>" method="post">
                     <input name="username" type="text" placeholder="Tên đăng nhập">
                     <input name="password" type="password" placeholder="Mật khẩu">

@@ -53,7 +53,7 @@
     <definition name="Ajax.AdminListModuleViewEdit" template="/Views/Admin/Permission/listmoduleedit_modal.jsp"/>
     
     <definition name="AdminInformation" extends="AdminLayout">
-        <put-attribute name="Content" value="/Views/Admin/information.jsp" />
+        <put-attribute name="Content" value="/Views/Admin/Permission/list_role.jsp" />
     </definition>
     <definition name="Ajax.AdminInformation" template="/Views/Admin/information.jsp_ajax.jsp"/>    
     
@@ -65,11 +65,11 @@
     <definition name="Ajax.AdminListAdminEditModal" template="/Views/Admin/Permission/listadmin_edit_ajax.jsp"/>
     
     <definition name="AdminListRole" extends="AdminLayout">
-        <put-attribute name="Content" value="/Views/Admin/Permission/listrole.jsp" />
+        <put-attribute name="Content" value="/Views/Admin/Permission/list_role.jsp" />
     </definition>
-    <definition name="Ajax.AdminListRole" template="/Views/Admin/Permission/listrole_ajax.jsp"/>
-    <definition name="Ajax.AdminListRoleInsertModal" template="/Views/Admin/Permission/listrole_insert_ajax.jsp"/>
-    <definition name="Ajax.AdminListRoleChangePermision" template="/Views/Admin/Permission/listrole_change_permission_modal_ajax.jsp"/>
+    <definition name="Ajax.AdminListRole" template="/Views/Admin/Permission/list_role_ajax.jsp"/>
+    <definition name="Ajax.AdminListRoleInsertModal" template="/Views/Admin/Permission/list_role_insert_ajax.jsp"/>
+    <definition name="Ajax.AdminListRoleChangePermision" template="/Views/Admin/Permission/list_role_change_permission_modal_ajax.jsp"/>
     
     <definition name="AdminListWebsiteModulePosition" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Content/listmoduleposition.jsp" />

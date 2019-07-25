@@ -151,9 +151,9 @@ public class AdminDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Admin.class);
-				cr.createAlias("adminRoleId", "adminRoleId", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("adminRoleId", FetchMode.JOIN);
-				cr.createAlias("adminRoleId.adminModuleInRoles", "adminModuleInRoles", JoinType.LEFT_OUTER_JOIN);
+				cr.createAlias("adminRole", "adminRole", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("adminRole", FetchMode.JOIN);
+				cr.createAlias("adminRole.adminModuleInRoles", "adminModuleInRoles", JoinType.LEFT_OUTER_JOIN);
 				cr.setFetchMode("adminModuleInRoles", FetchMode.JOIN);
 				cr.add(Restrictions.eq("id", id));
 				cr.add(Restrictions.eq("isDeleted", false));
@@ -169,7 +169,7 @@ public class AdminDAO extends AbstractDAO {
 								int orderNumber2 = module2.getAdminModule().getOrderNumber() == null ? 0
 										: module2.getAdminModule().getOrderNumber();
 								return Integer.compare(orderNumber2, orderNumber1);
-							}).collect(Collectors.toSet()));
+							}).collect(Collectors.toList()));
 				}
 			}
 		} catch (Exception e) {

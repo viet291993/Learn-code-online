@@ -2,19 +2,29 @@
 package com.poly.utils;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -22,6 +32,12 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import com.google.gson.Gson;
+import com.poly.bean.Pager;
+import com.poly.dao.AdminDAO;
+import com.poly.entity.Admin;
+import com.poly.entity.AdminModuleInRole;
 
 public class CustomFunction {
 
@@ -91,32 +107,40 @@ public class CustomFunction {
 		return output;
 	}
 
+	public static List<AdminModuleInRole> filterAdminModuleInRoleList(List<AdminModuleInRole> AdminModuleInRoles,
+			Integer parentId) {
+		return AdminModuleInRoles.stream().filter(m -> {
+			return m.getAdminModule().getAdminModule().getId() == parentId;
+		}).collect(Collectors.toList());
+	}
+
+	public static Admin findAdminById(Integer id) {
+		return new AdminDAO().findAdminById(id);
+	}
+
+	public static int size(Collection c) {
+		return c == null ? 0 : c.size();
+	}
+
+	public static String buildPager(Pager pager) {
+		String url = "?currentPage=" + pager.getCurrentPage() + "&displayPerPage=" + pager.getDisplayPerPage()
+				+ "&orderColumn=" + pager.getOrderColumn() + "&asc=" + pager.getAsc() + "&keyword="
+				+ pager.getKeyword();
+		return url;
+	}
+
 	/*
-	 * public static List<AdminModuleInRole>
-	 * filterAdminModuleInRoleList(List<AdminModuleInRole> AdminModuleInRoles,
-	 * Integer parentId) { return AdminModuleInRoles.stream().filter(m -> { return
-	 * m.getAdminModuleId().getParentId().getId() == parentId;
-	 * }).collect(Collectors.toList()); }
-	 * 
-	 * public static Admin findAdminById(Integer id) { return new
-	 * AdminFacade().findAdminById(id); }
-	 * 
-	 * public static int size(Collection c) { return c == null ? 0 : c.size(); }
-	 * 
-	 * public static String buildPager(Pager pager) { String url = "?currentPage=" +
-	 * pager.getCurrentPage() + "&displayPerPage=" + pager.getDisplayPerPage() +
-	 * "&orderColumn=" + pager.getOrderColumn() + "&asc=" + pager.getAsc() +
-	 * "&keyword=" + pager.getKeyword(); return url; }
-	 * 
 	 * public static List findAllAvailableAdminRole() { return new
-	 * AdminRoleFacade().findAll(); }
-	 * 
-	 * public static boolean checkAdminModuleInRole(List<AdminModuleInRole>
-	 * AdminModuleInRoles, int moduleId) { return
-	 * AdminModuleInRoles.stream().filter(m -> { return
-	 * Objects.equals(m.getAdminModuleId().getId(), moduleId);
-	 * }).collect(Collectors.toList()).size() > 0; }
-	 * 
+	 * AdminRoleDAO().findAll(); }
+	 */
+
+	public static boolean checkAdminModuleInRole(List<AdminModuleInRole> AdminModuleInRoles, int moduleId) {
+		return AdminModuleInRoles.stream().filter(m -> {
+			return Objects.equals(m.getAdminModule().getId(), moduleId);
+		}).collect(Collectors.toList()).size() > 0;
+	}
+
+	/*
 	 * private static boolean checkModuleHaveChildren(List<WebsiteModule>
 	 * websiteModules, Integer parentId) { List<WebsiteModule> filterItems = null;
 	 * try { filterItems = websiteModules.stream().filter(m -> { if (parentId ==
@@ -213,52 +237,77 @@ public class CustomFunction {
 	 * sb.append(buildCheckboxWebsiteModules(websiteModules, item.getId(),
 	 * selectedId)); sb.append("</ul>"); } sb.append("</li>"); }); } return
 	 * sb.toString(); }
-	 * 
-	 * public static String formatDate(Date date) { return new
-	 * SimpleDateFormat("MMMM dd, yyyy").format(date); }
-	 * 
-	 * public static String customFormatDate(String format, Date date) { return date
-	 * == null ? null : new SimpleDateFormat(format).format(date); }
-	 * 
-	 * public static String customFormatDecimal(String format, BigDecimal num) { num
-	 * = num == null ? BigDecimal.ZERO : num; return new
-	 * DecimalFormat(format).format(num.setScale(0, RoundingMode.HALF_UP)); }
-	 * 
-	 * public static String getJSON(Object object) { Gson gson = new Gson(); return
-	 * gson.toJson(object); }
-	 * 
-	 * public static int getDay(Date startDate) { Date endDate = new Date(); long
-	 * startTime = startDate.getTime(); long endTime = endDate.getTime(); long
-	 * diffTime = endTime - startTime; long diffDays = diffTime / (1000 * 60 * 60 *
-	 * 24); return ((Long) diffDays).intValue(); }
-	 * 
-	 * public static Date getCurrentTime() { return new Date(); }
-	 * 
-	 * public static int dateDiffToDays(Date startDate, Date enddate) { return (int)
-	 * (enddate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24) + 1; }
-	 * 
-	 * public static boolean dateOfTheWeek(Date date) { Date dt = new Date();
-	 * Calendar c = Calendar.getInstance(); c.setTime(dt); c.add(Calendar.DATE, -7);
-	 * if (date.after(c.getTime()) && date.before(dt)) { return true; } return
-	 * false; }
-	 * 
-	 * public static boolean compareString(String str1, String str2) { return
-	 * StringUtils.isEquals(str1, str2); }
-	 * 
+	 */
+
+	public static String formatDate(Date date) {
+		return new SimpleDateFormat("MMMM dd, yyyy").format(date);
+	}
+
+	public static String customFormatDate(String format, Date date) {
+		return date == null ? null : new SimpleDateFormat(format).format(date);
+	}
+
+	public static String customFormatDecimal(String format, BigDecimal num) {
+		num = num == null ? BigDecimal.ZERO : num;
+		return new DecimalFormat(format).format(num.setScale(0, RoundingMode.HALF_UP));
+	}
+
+	public static String getJSON(Object object) {
+		Gson gson = new Gson();
+		return gson.toJson(object);
+	}
+
+	public static int getDay(Date startDate) {
+		Date endDate = new Date();
+		long startTime = startDate.getTime();
+		long endTime = endDate.getTime();
+		long diffTime = endTime - startTime;
+		long diffDays = diffTime / (1000 * 60 * 60 * 24);
+		return ((Long) diffDays).intValue();
+	}
+
+	public static Date getCurrentTime() {
+		return new Date();
+	}
+
+	public static int dateDiffToDays(Date startDate, Date enddate) {
+		return (int) (enddate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24) + 1;
+	}
+
+	public static boolean dateOfTheWeek(Date date) {
+		Date dt = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(dt);
+		c.add(Calendar.DATE, -7);
+		if (date.after(c.getTime()) && date.before(dt)) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean compareString(String str1, String str2) {
+		return StringUtils.isEquals(str1, str2);
+	}
+
+	/*
 	 * public static List findAllAvailableRoleAdmin() { return new
-	 * AdminRoleFacade().findAll(); }
-	 * 
-	 * public static List<AdminModuleInRole>
-	 * filterModuleInRoleList(List<AdminModuleInRole> moduleInRoles, Integer
-	 * parentId) { return moduleInRoles.stream().filter(m -> { return
-	 * m.getAdminModuleId().getParentId().getId() == parentId;
-	 * }).collect(Collectors.toList()); }
-	 * 
-	 * public static boolean checkModuleInrole(List<AdminModuleInRole>
-	 * moduleInRoles, int moduleId) { return moduleInRoles.stream().filter(m -> {
-	 * return Objects.equals(m.getAdminModuleId().getId(), moduleId);
-	 * }).collect(Collectors.toList()).size() > 0; }
-	 * 
+	 * AdminRoleDAO().findAll(); }
+	 */
+
+	public static List<AdminModuleInRole> filterModuleInRoleList(List<AdminModuleInRole> moduleInRoles,
+			Integer parentId) {
+		return moduleInRoles.stream().filter(m -> {
+			return m.getAdminModule().getAdminModule().getId() == parentId;
+		}).collect(Collectors.toList());
+	}
+
+	public static boolean checkModuleInrole(List<AdminModuleInRole> moduleInRoles, int moduleId) {
+		return moduleInRoles.stream().filter(m -> {
+			return Objects.equals(m.getAdminModule().getId(), moduleId);
+		}).collect(Collectors.toList()).size() > 0;
+	}
+
+	/*
 	 * public static ArrayList filterChildrenWebsiteModules(List<WebsiteModule>
 	 * mappings, String parentCode) { return (ArrayList) mappings.stream().filter(m
 	 * -> { return Objects.equals(m.getParentId().getModuleCode(), parentCode);
@@ -282,24 +331,37 @@ public class CustomFunction {
 	 * (ArrayList<WebsiteContent>) contents.stream().filter(c -> { return
 	 * c.getModuleIDs() != null && c.getModuleIDs().contains("," + moduleId + ",");
 	 * }).collect(Collectors.toList()); }
-	 * 
-	 * public static String subString(String str, Integer beginIndex, Integer
-	 * endIndex) { if (beginIndex < 0 || beginIndex == null || beginIndex > endIndex
-	 * || beginIndex > str.length()) { return str; } if (endIndex == null) { return
-	 * str.substring(beginIndex); } return str.length() > endIndex ?
-	 * str.substring(beginIndex, endIndex) + "..." : str.substring(beginIndex); }
-	 * 
-	 * public static List subList(List input, Integer beginIndex, Integer endIndex)
-	 * { if (input == null) { return null; } if (endIndex == null || endIndex >
-	 * input.size()) { return input.subList(beginIndex, input.size()); } if
-	 * (beginIndex < 0 || beginIndex == null || beginIndex > endIndex || beginIndex
-	 * >= input.size()) { return input; } return input.subList(beginIndex,
-	 * endIndex); }
-	 * 
-	 * public static Set subSet(Set input, Integer beginIndex, Integer endIndex) {
-	 * LinkedList<Integer> list = new LinkedList(input); List subList =
-	 * subList(list, beginIndex, endIndex); return new HashSet(subList); }
-	 * 
+	 */
+	public static String subString(String str, Integer beginIndex, Integer endIndex) {
+		if (beginIndex < 0 || beginIndex == null || beginIndex > endIndex || beginIndex > str.length()) {
+			return str;
+		}
+		if (endIndex == null) {
+			return str.substring(beginIndex);
+		}
+		return str.length() > endIndex ? str.substring(beginIndex, endIndex) + "..." : str.substring(beginIndex);
+	}
+
+	public static List subList(List input, Integer beginIndex, Integer endIndex) {
+		if (input == null) {
+			return null;
+		}
+		if (endIndex == null || endIndex > input.size()) {
+			return input.subList(beginIndex, input.size());
+		}
+		if (beginIndex < 0 || beginIndex == null || beginIndex > endIndex || beginIndex >= input.size()) {
+			return input;
+		}
+		return input.subList(beginIndex, endIndex);
+	}
+
+	public static Set subSet(Set input, Integer beginIndex, Integer endIndex) {
+		LinkedList<Integer> list = new LinkedList(input);
+		List subList = subList(list, beginIndex, endIndex);
+		return new HashSet(subList);
+	}
+
+	/*
 	 * public static Integer totalBill(Integer companyID, Integer saleTableID,
 	 * Integer customerID) { return new
 	 * SaleTableFacade().sumTotalBillbyCustomerID(companyID, saleTableID,
@@ -374,7 +436,6 @@ public class CustomFunction {
 	 * code) { final WebsitePanel websitePanel = list.stream().filter(m ->
 	 * m.getCode().equals(code)).findFirst().get(); return websitePanel; }
 	 */
-
 	public static String generateProperties(String type, String str1, String str2) {
 		final StringBuilder sb = new StringBuilder();
 		switch (type) {
