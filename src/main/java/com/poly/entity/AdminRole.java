@@ -1,11 +1,9 @@
 package com.poly.entity;
-// Generated Jul 24, 2019 11:22:08 PM by Hibernate Tools 5.0.6.Final
+// Generated Jul 26, 2019 9:48:09 PM by Hibernate Tools 5.0.6.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,24 +23,24 @@ public class AdminRole implements java.io.Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7588412055616917350L;
+	private static final long serialVersionUID = -6060033486430780326L;
 	private Integer id;
 	private String name;
 	private boolean isActive;
 	private boolean isDeleted;
-	private List<AdminModuleInRole> adminModuleInRoles;
-	private List<Admin> admins;
+	private List<AdminModuleInRole> adminModuleInRoles ;
+	private List<Admin> admins ;
 
 	public AdminRole() {
+	}
+	
+	public AdminRole(int id) {
 	}
 
 	public AdminRole(String name, boolean isActive, boolean isDeleted) {
 		this.name = name;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
-	}
-
-	public AdminRole(int id) {
 	}
 
 	public AdminRole(String name, boolean isActive, boolean isDeleted, List<AdminModuleInRole> adminModuleInRoles,

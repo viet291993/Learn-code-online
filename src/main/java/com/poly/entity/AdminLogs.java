@@ -18,6 +18,10 @@ import javax.persistence.TemporalType;
 @Table(name = "AdminLogs")
 public class AdminLogs implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1555781330310552538L;
 	private int id;
 	private Admin adminId;
 	private String logContent;

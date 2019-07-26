@@ -1,5 +1,5 @@
 package com.poly.entity;
-// Generated Jul 24, 2019 11:22:08 PM by Hibernate Tools 5.0.6.Final
+// Generated Jul 26, 2019 9:48:09 PM by Hibernate Tools 5.0.6.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -26,7 +26,7 @@ public class AdminModule implements java.io.Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1244574887826371749L;
+	private static final long serialVersionUID = 1437172546843694577L;
 	private Integer id;
 	private AdminModule adminModule;
 	private String name;
@@ -40,9 +40,8 @@ public class AdminModule implements java.io.Serializable {
 
 	public AdminModule() {
 	}
-
+	
 	public AdminModule(int id) {
-		this.id = id;
 	}
 
 	public AdminModule(AdminModule adminModule, String name, String controller, String icon, Boolean isShow,

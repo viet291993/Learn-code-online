@@ -1,7 +1,6 @@
 package com.poly.dao;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.hibernate.Criteria;
@@ -22,7 +21,6 @@ import com.poly.entity.Admin;
 import com.poly.entity.AdminModuleInRole;
 import com.poly.entity.User;
 import com.poly.utils.CustomFunction;
-import com.poly.utils.StringUtils;
 
 public class AdminDAO extends AbstractDAO {
 

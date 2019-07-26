@@ -2,21 +2,4 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name=".*"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Admin"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="AdminRole"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Course"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Lession"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="LessionType"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Member"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Post"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Question"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Quiz"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Record"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Record_Question"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Syllabus"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Tag"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Topic"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="Topic_Tag"/>
-  <table-filter match-catalog="Learn_code_db" match-schema="dbo" match-name="User"/>
 </hibernate-reverse-engineering>
