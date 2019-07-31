@@ -28,12 +28,12 @@ public class AdminRole implements java.io.Serializable {
 	private String name;
 	private boolean isActive;
 	private boolean isDeleted;
-	private List<AdminModuleInRole> adminModuleInRoles ;
-	private List<Admin> admins ;
+	private List<AdminModuleInRole> adminModuleInRoles;
+	private List<Admin> admins;
 
 	public AdminRole() {
 	}
-	
+
 	public AdminRole(int id) {
 	}
 
@@ -73,7 +73,7 @@ public class AdminRole implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "isActive", nullable = false)
+	@Column(name = "isActive", nullable = false, insertable = false, updatable = false)
 	public boolean isIsActive() {
 		return this.isActive;
 	}
@@ -82,7 +82,7 @@ public class AdminRole implements java.io.Serializable {
 		this.isActive = isActive;
 	}
 
-	@Column(name = "isDeleted", nullable = false)
+	@Column(name = "isDeleted", nullable = false, insertable = false, updatable = false)
 	public boolean isIsDeleted() {
 		return this.isDeleted;
 	}

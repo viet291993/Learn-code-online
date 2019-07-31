@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="f" uri="/WEB-INF/tlds/functions.tld" %>
-<%-- <input type="hidden" id="reloadController" value="<c:url value='/Admin/Permission/ListRole/Ajax${f:buildPager(PAGER)}'/>"> --%>
+<input type="hidden" id="reloadController" value="<c:url value='/Admin/Permission/ListRole/Ajax'/>">
 <div class="">
 	<div class="page-title">
 		<div class="title_left">
@@ -43,7 +43,7 @@
 				</div>
 				<div class="x_content">
 				<div class="ajax-content">
-                    <c:import url="/Views/Admin/Permission/listrole_ajax.jsp"/> 
+                    <c:import url="/Views/Admin/Permission/list_role_ajax.jsp"/> 
                 </div>
 				</div>
 			</div>

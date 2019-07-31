@@ -65,21 +65,14 @@ public class AdminRoleDAO extends AbstractDAO {
 		return obj;
 	}
 
-	public List pager(Pager pager) {
+	public List<AdminRole> fillAll(Boolean isDelete) {
 		Session session = null;
-		List list = null;
+		List<AdminRole> list = null;
 		try {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(AdminRole.class);
-				cr.add(Restrictions.eq("isDeleted", false));
-				cr.setProjection(Projections.rowCount());
-				pager.setTotalResult(((Long) cr.uniqueResult()).intValue());
-				cr = session.createCriteria(AdminRole.class);
-				cr.add(Restrictions.eq("isDeleted", false));
-				cr.setFirstResult(pager.getFirstResult());
-				cr.setMaxResults(pager.getDisplayPerPage());
-				cr.addOrder(pager.getAsc() ? Order.asc(pager.getOrderColumn()) : Order.desc(pager.getOrderColumn()));
+				cr.add(Restrictions.eq("isDeleted", isDelete));
 				list = cr.list();
 			}
 		} catch (HibernateException e) {

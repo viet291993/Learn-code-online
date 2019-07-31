@@ -41,37 +41,18 @@ import javafx.util.Pair;
 public class AdminPermissionController {
 
 	@RequestMapping(value = "/ListRole", method = RequestMethod.GET)
-	public String ListRole(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			@RequestParam(value = "displayPerPage", required = false, defaultValue = "10") int displayPerPage,
-			@RequestParam(value = "orderColumn", required = false, defaultValue = "id") String orderColmn,
-			@RequestParam(value = "asc", required = false, defaultValue = "true") boolean asc, ModelMap mm) {
-		System.out.println("HELLO");
-		Pager pager = new Pager();
-		pager.setAsc(asc);
-		pager.setCurrentPage(currentPage);
-		pager.setDisplayPerPage(displayPerPage);
-		pager.setOrderColumn(orderColmn);
-		List result = new AdminRoleDAO().pager(pager);
+	public String ListRole(ModelMap mm) {
+		List<AdminRole> result = new AdminRoleDAO().fillAll(false);
 		mm.put("ITEMS_LIST", result);
-		mm.put("PAGER", pager);
 		return "AdminListRole";
 	}
 
 	@RequestMapping(value = "/ListRole/Ajax", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView ListRoleAjax(
-			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			@RequestParam(value = "displayPerPage", required = false, defaultValue = "10") int displayPerPage,
-			@RequestParam(value = "orderColumn", required = false, defaultValue = "id") String orderColmn,
-			@RequestParam(value = "asc", required = false, defaultValue = "true") boolean asc, ModelMap mm) {
-		Pager pager = new Pager();
-		pager.setAsc(asc);
-		pager.setCurrentPage(currentPage);
-		pager.setDisplayPerPage(displayPerPage);
-		pager.setOrderColumn(orderColmn);
-		List result = new AdminRoleDAO().pager(pager);
+	public ModelAndView ListRoleAjax(ModelMap mm) {
+		List<AdminRole> result = new AdminRoleDAO().fillAll(false);
 		mm.put("ITEMS_LIST", result);
-		mm.put("PAGER", pager);
+
 		return new ModelAndView("Ajax.AdminListRole");
 	}
 
@@ -144,36 +125,17 @@ public class AdminPermissionController {
 	}
 
 	@RequestMapping(value = "/ListAdmin", method = RequestMethod.GET)
-	public String ListAdmin(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			@RequestParam(value = "displayPerPage", required = false, defaultValue = "10") int displayPerPage,
-			@RequestParam(value = "orderColumn", required = false, defaultValue = "id") String orderColmn,
-			@RequestParam(value = "asc", required = false, defaultValue = "true") boolean asc, ModelMap mm) {
-		Pager pager = new Pager();
-		pager.setAsc(asc);
-		pager.setCurrentPage(currentPage);
-		pager.setDisplayPerPage(displayPerPage);
-		pager.setOrderColumn(orderColmn);
-		List result = new AdminDAO().pager(pager);
+	public String ListAdmin(ModelMap mm) {
+		List result = new AdminDAO().fillAll(true);
 		mm.put("ITEMS_LIST", result);
-		mm.put("PAGER", pager);
 		return "AdminListAdmin";
 	}
 
 	@RequestMapping(value = "/ListAdmin/Ajax", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView ListAdminAjax(
-			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			@RequestParam(value = "displayPerPage", required = false, defaultValue = "10") int displayPerPage,
-			@RequestParam(value = "orderColumn", required = false, defaultValue = "id") String orderColmn,
-			@RequestParam(value = "asc", required = false, defaultValue = "true") boolean asc, ModelMap mm) {
-		Pager pager = new Pager();
-		pager.setAsc(asc);
-		pager.setCurrentPage(currentPage);
-		pager.setDisplayPerPage(displayPerPage);
-		pager.setOrderColumn(orderColmn);
-		List result = new AdminDAO().pager(pager);
+	public ModelAndView ListAdminAjax(ModelMap mm) {
+		List result = new AdminDAO().fillAll(true);
 		mm.put("ITEMS_LIST", result);
-		mm.put("PAGER", pager);
 		return new ModelAndView("Ajax.AdminListAdmin");
 	}
 
@@ -222,7 +184,7 @@ public class AdminPermissionController {
 	@RequestMapping(value = "/ListAdmin/ViewInsert", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView ListAdminViewInsert(ModelMap mm) {
-		return new ModelAndView("Ajax.ListAdminViewInsert");
+		return new ModelAndView("Ajax.AdminListAdminViewInsert");
 	}
 
 	@RequestMapping(value = "/ListAdmin/Insert", method = RequestMethod.POST)
@@ -233,8 +195,7 @@ public class AdminPermissionController {
 		String username = map.get("userName");
 		String password = map.get("password");
 		String name = map.get("name");
-		int adminRoleId = Integer.valueOf(map.get("adminRoleId"));
-		int companyID = Integer.valueOf(map.get("companyID"));
+		int adminRoleId = Integer.valueOf(map.get("adminRoleID"));
 		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(name) || StringUtils.isEmpty(password)) {
 			LogUtils.logs(myId, "Tạo tài khoản quản trị không thành công");
 			return new Pair(0, Alert.createErrorAlert("Vui lòng nhập tất cả các trường!"));
@@ -245,21 +206,18 @@ public class AdminPermissionController {
 		}
 		try {
 			User temp = new User();
+			String salt = CustomFunction.randomKey();
 			temp.setUsername(username);
-			temp.setPassword(CustomFunction.md5(password));
+			temp.setPassword(CustomFunction.passwordEncryption(password, salt));
+			temp.setSalt(salt);
 			User usr = (User) new UserDAO().create(temp);
 			if (usr != null) {
 				Admin adm = new Admin();
 				adm.setName(name);
 				adm.setUser(usr);
-				adm.setAdminRole(new AdminRole(adminRoleId));
+				adm.setAdminRole(new AdminRoleDAO().find(adminRoleId));
 				adm.setIsActive(true);
 				adm.setIsDeleted(false);
-				/*
-				 * if (!StringUtils.isEmpty(map.get("expiredDate"))) { adm.setExpiredDate( new
-				 * Timestamp(new
-				 * SimpleDateFormat("dd-MM-yyyy").parse(map.get("expiredDate")).getTime())); }
-				 */
 				if (new AdminDAO().create(adm) != null) {
 					LogUtils.logs(myId, "Tạo tài khoản quản trị " + adm.getName() + " thành công");
 					return new Pair(1, Alert.createSuccessAlert("Tạo tài khoản quản trị thành công!"));
@@ -285,14 +243,8 @@ public class AdminPermissionController {
 			@CookieValue(value = "adminLang", defaultValue = StaticEnum.LANGUAGE_DEFAULT_CODE) String lang,
 			@PathVariable(value = "id") Integer id, ModelMap mm, HttpSession session) {
 		Map adminSession = (Map) session.getAttribute("ADMIN");
-		Integer companyIDsession = (int) adminSession.get("COMPANY_ID");
 		Admin adm = new AdminDAO().findEager(id);
 		mm.put("SELECTED_ADMIN", adm);
-		/*
-		 * if (adm.getExpiredDate() != null) { mm.put("SELECTED_ADMIN_EXPIREDDATE", new
-		 * SimpleDateFormat("dd-MM-yyyy").format(adm.getExpiredDate().getTime())); }
-		 * else { mm.put("SELECTED_ADMIN_EXPIREDDATE", ""); }
-		 */
 		return new ModelAndView("Ajax.AdminListAdminEditModal");
 	}
 
@@ -302,25 +254,16 @@ public class AdminPermissionController {
 		Map adminSession = (Map) session.getAttribute("ADMIN");
 		int myId = (int) adminSession.get("ADMIN_ID");
 		String name = map.get("name");
-		int adminRole = Integer.valueOf(map.get("adminRole"));
+		int id = Integer.valueOf(map.get("id"));
+		int adminRole = Integer.valueOf(map.get("adminRoleId"));
 		if (StringUtils.isEmpty(name)) {
 			LogUtils.logs(myId, "Cập nhật tài khoản quản trị " + name + " không thành công");
 			return new Pair(0, Alert.createErrorAlert("Vui lòng nhập tất cả các trường!"));
 		}
 		try {
-			User usr = new UserDAO().getUser(map.get("username"));
-			Admin adm = new Admin();
-			adm.setId(Integer.parseInt(map.get("id")));
+			Admin adm = (Admin) new AdminDAO().find(id);
 			adm.setName(name);
-			adm.setUser(usr);
-			adm.setAdminRole(new AdminRole(adminRole));
-			adm.setIsActive(true);
-			adm.setIsDeleted(false);
-			/*
-			 * if (!StringUtils.isEmpty(map.get("expiredDate"))) { adm.setExpiredDate( new
-			 * Timestamp(new
-			 * SimpleDateFormat("dd-MM-yyyy").parse(map.get("expiredDate")).getTime())); }
-			 */
+			adm.setAdminRole(new AdminRoleDAO().find(adminRole));
 			new AdminDAO().edit(adm);
 			LogUtils.logs(myId, "Cập nhật tài khoản quản trị " + adm.getName() + " thành công");
 			return new Pair(1, Alert.createSuccessAlert("Cập nhật tài khoản quản trị thành công!"));
@@ -396,9 +339,8 @@ public class AdminPermissionController {
 		Map adminSession = (Map) session.getAttribute("ADMIN");
 		int admId = (int) adminSession.get("ADMIN_ID");
 		try {
-			AdminModule Adm = (AdminModule) module;
-			new AdminModuleDAO().create(module);
-			LogUtils.logs(admId, "Thêm module " + Adm.getName() + " thành công");
+			int moduleID = new AdminModuleDAO().create(module);
+			LogUtils.logs(admId, "Thêm module " + module.get("name").toString() + " thành công");
 			return new Pair(1, Alert.createSuccessAlert("Thêm module thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -422,9 +364,8 @@ public class AdminPermissionController {
 		Map adminSession = (Map) session.getAttribute("ADMIN");
 		int admId = (int) adminSession.get("ADMIN_ID");
 		try {
-			AdminModule Adm = (AdminModule) module;
 			new AdminModuleDAO().edit(module);
-			LogUtils.logs(admId, "Cập nhật module " + Adm.getName() + " thành công");
+			LogUtils.logs(admId, "Cập nhật module " + module.get("name").toString() + " thành công");
 			return new Pair(1, Alert.createSuccessAlert("Cập nhật module thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();

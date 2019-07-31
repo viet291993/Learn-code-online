@@ -31,9 +31,9 @@ public class AdminModuleDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(AdminModule.class, "m");
-				cr.createAlias("childrenModules", "childrenModules", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("childrenModules", FetchMode.JOIN);
-				cr.add(Restrictions.eq("m.parentId.id", parentId));
+				cr.createAlias("adminModules", "adminModules", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("adminModules", FetchMode.JOIN);
+				cr.add(Restrictions.eq("m.adminModule.id", parentId));
 				cr.add(Restrictions.eq("isDeleted", false));
 				cr.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
 				cr.addOrder(Order.desc("m.orderNumber"));
@@ -59,13 +59,14 @@ public class AdminModuleDAO extends AbstractDAO {
 					module.get("name") == null ? null : StringUtils.escapeHtmlEntity(module.get("name").toString()));
 			obj.setController(module.get("controller") == null ? null
 					: StringUtils.escapeHtmlEntity(module.get("controller").toString()));
-			obj.setAdminModule(new AdminModule(Integer.valueOf(module.get("module").toString())));
+			obj.setAdminModule(session.get(AdminModule.class, (Integer.valueOf(module.get("module").toString()))));
 			obj.setIcon(
 					module.get("icon") == null ? null : StringUtils.escapeHtmlEntity(module.get("icon").toString()));
 			obj.setIsShow(Boolean.valueOf(module.get("isShow").toString()));
 			obj.setOrderNumber(
 					module.get("orderNumber") == null ? null : Integer.valueOf(module.get("orderNumber").toString()));
 			result = (Integer) session.save(obj);
+			session.flush();
 			HibernateConfiguration.getInstance().commitTransaction(trans);
 		} catch (HibernateException e) {
 			HibernateConfiguration.getInstance().rollbackTransaction(trans);

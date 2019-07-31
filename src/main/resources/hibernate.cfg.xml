@@ -3,29 +3,37 @@
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="hibernate.connection.password">duan@2</property>
-        <property name="hibernate.connection.url">jdbc:sqlserver://45.76.176.78:1433;databaseName=Learn_code_db</property>
-        <property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-        <property name="hibernate.search.autoregister_listeners">true</property>
-        <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping class="com.poly.entity.RecordQuestion" />
-        <mapping class="com.poly.entity.AdminRole" />
-        <mapping class="com.poly.entity.Record" />
-        <mapping class="com.poly.entity.Question" />
-        <mapping class="com.poly.entity.Syllabus" />
-        <mapping class="com.poly.entity.TopicTag" />
-        <mapping class="com.poly.entity.Post" />
-        <mapping class="com.poly.entity.Topic" />
-        <mapping class="com.poly.entity.Member" />
-        <mapping class="com.poly.entity.Quiz" />
-        <mapping class="com.poly.entity.Course" />
-        <mapping class="com.poly.entity.Tag" />
-        <mapping class="com.poly.entity.Lession" />
-        <mapping class="com.poly.entity.Admin" />
-        <mapping class="com.poly.entity.User" />
-        <mapping class="com.poly.entity.LessionType" />
-    </session-factory>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.password">duan@2</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://45.76.176.78:1433;databaseName=Learn_code_db</property>
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="hibernate.search.autoregister_listeners">true</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.globally_quoted_identifiers">true</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.connection.release_mode">auto</property>
+		<property name="hibernate.connection.autoReconnect">true</property>
+		<property name="hibernate.transaction.flush_before_completion">true</property>
+		<mapping class="com.poly.entity.RecordQuestion" />
+		<mapping class="com.poly.entity.AdminRole" />
+		<mapping class="com.poly.entity.Record" />
+		<mapping class="com.poly.entity.Question" />
+		<mapping class="com.poly.entity.Syllabus" />
+		<mapping class="com.poly.entity.TopicTag" />
+		<mapping class="com.poly.entity.Post" />
+		<mapping class="com.poly.entity.Topic" />
+		<mapping class="com.poly.entity.Member" />
+		<mapping class="com.poly.entity.Quiz" />
+		<mapping class="com.poly.entity.Course" />
+		<mapping class="com.poly.entity.Tag" />
+		<mapping class="com.poly.entity.Lession" />
+		<mapping class="com.poly.entity.Admin" />
+		<mapping class="com.poly.entity.User" />
+		<mapping class="com.poly.entity.LessionType" />
+	</session-factory>
 </hibernate-configuration>

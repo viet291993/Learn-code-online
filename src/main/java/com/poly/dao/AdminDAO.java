@@ -33,26 +33,19 @@ public class AdminDAO extends AbstractDAO {
 		super(Admin.class);
 	}
 
-	public List pager(Pager pager) {
+	public List<Admin> fillAll(Boolean isDeleted) {
 		Session session = null;
-		List list = null;
+		List<Admin> list = null;
 		try {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Admin.class);
 				cr.add(Restrictions.eq("isDeleted", false));
-				cr.setProjection(Projections.rowCount());
-				pager.setTotalResult(((Long) cr.uniqueResult()).intValue());
-				cr = session.createCriteria(Admin.class);
-				cr.add(Restrictions.eq("isDeleted", false));
-				cr.setFirstResult(pager.getFirstResult());
-				cr.setMaxResults(pager.getDisplayPerPage());
-				cr.addOrder(pager.getAsc() ? Order.asc(pager.getOrderColumn()) : Order.desc(pager.getOrderColumn()));
+				cr.createAlias("adminRole", "adminRole", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("adminRole", FetchMode.JOIN);
+				cr.createAlias("user", "user", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("user", FetchMode.JOIN);
 				list = cr.list();
-				for (Object obj : list) {
-					Admin admin = (Admin) obj;
-					Hibernate.initialize(admin.getAdminRole());
-				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -256,10 +249,10 @@ public class AdminDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Admin.class);
-				cr.createAlias("companyID", "companyID", JoinType.LEFT_OUTER_JOIN);
-				cr.createAlias("adminRoleId", "adminRoleId", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("companyID", FetchMode.JOIN);
-				cr.setFetchMode("adminRoleId", FetchMode.JOIN);
+				cr.createAlias("adminRole", "adminRole", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("adminRole", FetchMode.JOIN);
+				cr.createAlias("user", "user", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("user", FetchMode.JOIN);
 				cr.add(Restrictions.eq("id", adminID));
 				obj = (Admin) cr.uniqueResult();
 			}

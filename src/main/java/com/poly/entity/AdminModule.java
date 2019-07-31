@@ -6,6 +6,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,7 +41,7 @@ public class AdminModule implements java.io.Serializable {
 
 	public AdminModule() {
 	}
-	
+
 	public AdminModule(int id) {
 	}
 
@@ -61,7 +62,7 @@ public class AdminModule implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "ID", unique = true, nullable = false)
+	@Column(name = "ID", unique = true, nullable = false, insertable = false, updatable = false)
 	public Integer getId() {
 		return this.id;
 	}
@@ -70,8 +71,8 @@ public class AdminModule implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ParentID")
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "ParentID", updatable = false)
 	public AdminModule getAdminModule() {
 		return this.adminModule;
 	}
@@ -116,7 +117,7 @@ public class AdminModule implements java.io.Serializable {
 		this.isShow = isShow;
 	}
 
-	@Column(name = "IsDeleted")
+	@Column(name = "IsDeleted", insertable = false, updatable = false)
 	public Boolean getIsDeleted() {
 		return this.isDeleted;
 	}
@@ -143,7 +144,7 @@ public class AdminModule implements java.io.Serializable {
 		this.adminModuleInRoles = adminModuleInRoles;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminModule")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminModule", cascade =  CascadeType.ALL )
 	public Set<AdminModule> getAdminModules() {
 		return this.adminModules;
 	}

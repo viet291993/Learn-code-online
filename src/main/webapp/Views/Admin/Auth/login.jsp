@@ -270,7 +270,7 @@ form button:hover {
                 <form id="login-form" class="form" novalidate action="<c:url value="/Admin/Login"/>" method="post">
                     <input name="username" type="text" placeholder="Tên đăng nhập">
                     <input name="password" type="password" placeholder="Mật khẩu">
-                    <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LdYzKUUAAAAAJss2Dvme3pPwEhwNpgwPW3cHI35"></div>
+                    <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LehgLAUAAAAAFZAtkNm0IWxz-nIQt7s4cJaANv1"></div>
                     <button type="submit" id="login-button">Đăng nhập</button>
                 </form>
             </div>

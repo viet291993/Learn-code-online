@@ -36,6 +36,7 @@ import javax.crypto.spec.SecretKeySpec;
 import com.google.gson.Gson;
 import com.poly.bean.Pager;
 import com.poly.dao.AdminDAO;
+import com.poly.dao.AdminRoleDAO;
 import com.poly.entity.Admin;
 import com.poly.entity.AdminModuleInRole;
 
@@ -289,10 +290,9 @@ public class CustomFunction {
 		return StringUtils.isEquals(str1, str2);
 	}
 
-	/*
-	 * public static List findAllAvailableRoleAdmin() { return new
-	 * AdminRoleDAO().findAll(); }
-	 */
+	public static List findAllAvailableRoleAdmin() {
+		return new AdminRoleDAO().findAll();
+	}
 
 	public static List<AdminModuleInRole> filterModuleInRoleList(List<AdminModuleInRole> moduleInRoles,
 			Integer parentId) {

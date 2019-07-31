@@ -28,7 +28,7 @@ import com.poly.utils.StringUtils;
 import javafx.util.Pair;
 
 @Controller
-@RequestMapping(value = { "/Admin", "/admin" })
+@RequestMapping(value = { "/Admin/home", "/admin" })
 public class AdminController {
 
 	@RequestMapping(method = RequestMethod.GET)

@@ -26,7 +26,7 @@ public class CaptchaController {
 
     public static final String FILE_TYPE = "jpeg";
     
-    @RequestMapping(value = "/CellxAdminLogin/{random}", method = RequestMethod.GET)
+    @RequestMapping(value = "/AdminLogin/{random}", method = RequestMethod.GET)
     public void getAdminLoginCaptcha(@PathVariable(value = "random") String random, HttpServletRequest request, HttpServletResponse response) {
         setCaptcha(request, response, "ADMIN_LOGIN");
     }

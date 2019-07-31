@@ -30,8 +30,6 @@
         <put-attribute name="Content" value="/Views/Home/Auth/profile.jsp" />
     </definition>
    
-     
-   
     
     <definition name="MessageLayout" template="/Views/Message/messagelayout.jsp"/>
     
@@ -46,11 +44,11 @@
     </definition>
     
     <definition name="AdminListModule" extends="AdminLayout">
-        <put-attribute name="Content" value="/Views/Admin/Permission/listmodule.jsp" />
+        <put-attribute name="Content" value="/Views/Admin/Permission/list_module.jsp" />
     </definition>
-    <definition name="Ajax.AdminListModule" template="/Views/Admin/Permission/listmodule_ajax.jsp"/>    
-    <definition name="Ajax.AdminListModuleViewInsert" template="/Views/Admin/Permission/listmoduleinsert_modal.jsp"/>
-    <definition name="Ajax.AdminListModuleViewEdit" template="/Views/Admin/Permission/listmoduleedit_modal.jsp"/>
+    <definition name="Ajax.AdminListModule" template="/Views/Admin/Permission/list_module_ajax.jsp"/>    
+    <definition name="Ajax.AdminListModuleViewInsert" template="/Views/Admin/Permission/list_module_insert_modal.jsp"/>
+    <definition name="Ajax.AdminListModuleViewEdit" template="/Views/Admin/Permission/list_module_edit_modal.jsp"/>
     
     <definition name="AdminInformation" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Permission/list_role.jsp" />
@@ -58,11 +56,11 @@
     <definition name="Ajax.AdminInformation" template="/Views/Admin/information.jsp_ajax.jsp"/>    
     
     <definition name="AdminListAdmin" extends="AdminLayout">
-        <put-attribute name="Content" value="/Views/Admin/Permission/listadmin.jsp" />
+        <put-attribute name="Content" value="/Views/Admin/Permission/list_admin.jsp" />
     </definition>    
-    <definition name="Ajax.AdminListAdmin" template="/Views/Admin/Permission/listadmin_ajax.jsp"/>
-    <definition name="Ajax.ListAdminViewInsert" template="/Views/Admin/Permission/listadmin_insert_ajax.jsp"/>
-    <definition name="Ajax.AdminListAdminEditModal" template="/Views/Admin/Permission/listadmin_edit_ajax.jsp"/>
+    <definition name="Ajax.AdminListAdmin" template="/Views/Admin/Permission/list_admin_ajax.jsp"/>
+    <definition name="Ajax.AdminListAdminViewInsert" template="/Views/Admin/Permission/list_admin_insert_ajax.jsp"/>
+    <definition name="Ajax.AdminListAdminEditModal" template="/Views/Admin/Permission/list_admin_edit_ajax.jsp"/>
     
     <definition name="AdminListRole" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Permission/list_role.jsp" />

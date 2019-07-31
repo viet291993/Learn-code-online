@@ -7982,3 +7982,125 @@ none
 .dataTables_wrapper>.row {
 	overflow: auto !important
 }
+
+.text-primary {
+  color: #337ab7;
+}
+a.text-primary:hover,
+a.text-primary:focus {
+  color: #2e6da4;
+}
+.text-success {
+  color: #26B99A;
+}
+a.text-success:hover,
+a.text-success:focus {
+  color: #169F85;
+}
+.text-info {
+  color: #5bc0de;
+}
+a.text-info:hover,
+a.text-info:focus {
+  color: #46b8da;
+}
+.text-warning {
+  color: #f0ad4e;
+}
+a.text-warning:hover,
+a.text-warning:focus {
+  color: #eea236;
+}
+.text-danger {
+  color: #d9534f;
+}
+a.text-danger:hover,
+a.text-danger:focus {
+  color: #d43f3a;
+}
+
+/* Treeview */
+
+.tree, .tree ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-size: 14px;
+}
+.tree i {
+    font-size: 16px;
+    padding-left: 1.5px;
+}
+.tree .branch label{
+   display: inline-block;
+}
+
+.tree label{
+   display: block;
+}
+
+.tree label>span {
+    float: left;
+    margin-right: 5px;
+}
+
+.tree ul {
+    margin-left:1em;
+    position:relative
+}
+.tree ul ul {
+    margin-left:.5em
+}
+.tree ul:before {
+    content:"";
+    display:block;
+    width:0;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    border-left:1px solid
+}
+.tree li {
+    margin:0;
+    padding:0 1em;
+    line-height:2.3em;
+    font-weight:700;
+    position:relative
+}
+.tree ul li:before {
+    content:"";
+    display:block;
+    width:10px;
+    height:0;
+    border-top:1px solid;
+    margin-top:-1px;
+    position:absolute;
+    top:1em;
+    left:0
+}
+.tree ul li:last-child:before {
+    background:#fff;
+    height:auto;
+    top:1em;
+    bottom:0
+}
+.indicator {
+    margin-right:5px;
+}
+.tree li a {
+    text-decoration: none;
+}
+.tree li button, .tree li button:active, .tree li button:focus {
+    text-decoration: none;
+    border:none;
+    background:transparent;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    outline: 0;
+}
+
+.ml-13{
+	margin-left: 13px;
+}
+
