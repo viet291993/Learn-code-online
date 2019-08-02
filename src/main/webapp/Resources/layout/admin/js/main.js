@@ -71,6 +71,7 @@ function reloadAjaxContent() {
     var url = $('#reloadController').val();
     sendAjax(url, 'GET', null, function (data) {
         $('.ajax-content').html(data);
+        
     });
 }
 

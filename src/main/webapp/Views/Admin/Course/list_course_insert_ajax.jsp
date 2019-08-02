@@ -8,14 +8,14 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <div class="modal-title">
                     <div class="content-title">
-                        <h3 class="text-center">Thêm mới quyền quản trị</h3>
+                        <h3 class="text-center">Thêm mới khóa học</h3>
                     </div>
                 </div>
             </div>
-            <form id="form-insert" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Permission/ListRole/Insert'/>">
+            <form id="form-insert" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Course/ListCourse/Insert'/>">
                 <div class="modal-body"> 
                     <div class="form-group">
-                        <label for="name" class="control-label col-sm-3">Tên</label>
+                        <label for="name" class="control-label col-sm-3">Tên khóa học</label>
                         <div class="col-sm-9">
                             <input type="text" id="name" required name="name" class="form-control" placeholder="">
                         </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="form-group clearfix">
-                        <button type="button" class="  btn btn-danger btn-sm pull-left" data-dismiss="modal"><span aria-hidden="true">Đóng</span><span class="sr-only">Close</span></button>
+                        <button type="button" class="btn btn-danger btn-sm pull-left" data-dismiss="modal"><span aria-hidden="true">Đóng</span><span class="sr-only">Close</span></button>
                         <button type="submit" class="btn btn-success btn-sm pull-right">Lưu <i class="fa fa-check fa-right"></i></button>
                     </div>
                 </div>

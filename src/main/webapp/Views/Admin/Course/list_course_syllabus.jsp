@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="f" uri="/WEB-INF/tlds/functions.tld" %>
-<input type="hidden" id="reloadController" value="<c:url value='/Admin/Permission/ListRole/Ajax'/>">
-<div class="">
+<input type="hidden" id="reloadController" value="<c:url value='/Admin/Permission/ListModule/Ajax'/>"><div class="">
 	<div class="page-title">
 		<div class="title_left">
-			<h3>Quản lý phân quyền </h3>
+			<h3>Quản lý khóa học </h3>
 		</div>
+
 	</div>
 	<div class="clearfix"></div>
 
@@ -14,7 +14,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Danh sách quyền quản trị</h2>
+					<h2>Danh sách giáo trình</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -31,7 +31,7 @@
 				</div>
 				<div class="x_content">
 				<div class="ajax-content">
-                    <c:import url="/Views/Admin/Permission/list_role_ajax.jsp"/> 
+                    <c:import url="/Views/Admin/Course/list_course_syllabus_ajax.jsp"/> 
                 </div>
 				</div>
 			</div>

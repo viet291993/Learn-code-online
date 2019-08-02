@@ -2,10 +2,10 @@ package com.poly.bean;
 
 public class Alert {
 
-    private static final String TYPE_ERROR = "error";
-    private static final String TYPE_SUCCESS = "success";
-    private static final String TYPE_WARNING = "warning";
-    private static final String TYPE_INFO = "information";
+    public static final String TYPE_ERROR = "error";
+    public static final String TYPE_SUCCESS = "success";
+    public static final String TYPE_WARNING = "warning";
+    public static final String TYPE_INFO = "info";
 
     public static String createIntervalRedirect(String title, String redirectString, String redirectUrl, int timeInMiliseconds) {
         StringBuilder sB = new StringBuilder();
@@ -43,61 +43,34 @@ public class Alert {
         return sB.toString();
     }
 
-    public static String createSuccessAlert(String text) {
+    public static String createAlert(String type,String title,String text) {
         StringBuilder sB = new StringBuilder();
         sB.append("<script>")
-                .append("new Noty({theme: 'nest',type: '")
-                .append(TYPE_SUCCESS)
-                .append("',layout: 'topCenter',text:'<p><i class=\"fas fa-check-circle\"></i>&nbsp;&nbsp;")
+                .append("new PNotify({title:'")
+                .append(title)
+                .append("',text:'")
                 .append(text)
-                .append("</p>'}).show();")
-                .append("</script>");
-        return sB.toString();
-    }
-    public static String createWarningAlert(String text) {
-        StringBuilder sB = new StringBuilder();
-        sB.append("<script>")
-                .append("new Noty({theme: 'nest',type: '")
-                .append(TYPE_WARNING)
-                .append("',layout: 'topCenter',text:'<p><i class=\"fas fa-exclamation\"></i>&nbsp;&nbsp;")
-                .append(text)
-                .append("'}).show();")
-                .append("</script>");
-        return sB.toString();
-    }
-    public static String createErrorAlert(String text) {
-        StringBuilder sB = new StringBuilder();
-        sB.append("<script>")
-                .append("new Noty({theme: 'nest',type: '")
-                .append(TYPE_ERROR)
-                .append("',layout: 'topCenter',text:'<p><i class=\"fas fa-exclamation-triangle\"></i>&nbsp;&nbsp;")
-                .append(text)
-                .append("'}).show();")
+                .append("',type:'")
+                .append(type)
+                .append("',styling: 'bootstrap3'});")
                 .append("</script>");
         return sB.toString();
     }
     
-    public static String createErrorAlert2(String text) {
+    public static String createAlertTopCenter(String type,String title,String text) {
         StringBuilder sB = new StringBuilder();
         sB.append("<script>")
-                .append("alert(\"")
+                .append("new PNotify({title:'")
+                .append(title)
+                .append("',text:'")
                 .append(text)
-                .append("\")")
+                .append("',type:'")
+                .append(type)
+                .append("',styling: 'bootstrap3', addclass: 'pnotify-center'});")
                 .append("</script>");
         return sB.toString();
     }
-    
-    public static String createInfoAlert(String text) {
-        StringBuilder sB = new StringBuilder();
-        sB.append("<script>")
-                .append("new Noty({theme: 'nest',type: '")
-                .append(TYPE_INFO)
-                .append("',layout: 'topCenter',text:'<p><i class=\"fas fa-info-circle\"></i>&nbsp;&nbsp;")
-                .append(text)
-                .append("'}).show();")
-                .append("</script>");
-        return sB.toString();
-    }
+  
     public static String createScript(String script) {
         StringBuilder sB = new StringBuilder();
         sB.append("<script>")

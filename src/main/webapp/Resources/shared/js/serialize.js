@@ -75,7 +75,6 @@ $.fn.serializeObject = function () {
 
 var alertInterval;
 function openAlert(data, callback) {
-    $('#noty_layout__topCenter').remove();
     clearInterval(alertInterval);
     $('body').append(data);
     if (typeof callback === 'function') {

@@ -44,7 +44,7 @@ public class AdminController {
 		cookie.setMaxAge(0);
 		cookie.setPath("/");
 		response.addCookie(cookie);
-		return "AdminInformation";
+		return "AdminDashboard";
 	}
 
 	@RequestMapping(value = "/Ajax", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class AdminController {
 			@RequestParam(value = "startDate", required = false, defaultValue = "") String startDate,
 			@RequestParam(value = "endDate", required = false, defaultValue = "null") String endDate, ModelMap mm,
 			HttpSession session) {
-		return new ModelAndView("Ajax.AdminInformation");
+		return new ModelAndView("Ajax.AdminDashboard");
 	}
 
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
@@ -73,22 +73,24 @@ public class AdminController {
 		CaptchaUtil cUtil = new CaptchaUtil();
 		boolean verifyCaptcha = cUtil.verifyReCaptcha(secret, recaptchaResponse);
 		if (!verifyCaptcha) {
-			return new Pair(0, "Invalid captcha!");
+			return new Pair(0, Alert.createAlertTopCenter(Alert.TYPE_WARNING, "Cảnh báo", "Bạn chưa xác nhận Captcha!"));
 		}
 		Pair<Integer, String> result;
 		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-			result = new Pair(0, "All fields are required!");
+			result = new Pair(0,Alert.createAlertTopCenter(Alert.TYPE_WARNING, "Cảnh báo", "Bạn phải điền đầy đủ các trường!"));
 			return result;
 		}
 		try {
 
 			Admin admin = new AdminDAO().checkLogin(username, password);
 			if (admin == null) {
-				result = new Pair<Integer, String>(0, Alert.createErrorAlert("Sai tên đăng nhập hoặc mật khẩu!"));
+				result = new Pair<Integer, String>(0,
+						Alert.createAlertTopCenter(Alert.TYPE_ERROR, "Lỗi đăng nhập", "Sai tên đăng nhập hoặc mật khẩu!"));
 				return result;
 			}
 			if (!admin.isIsActive()) {
-				result = new Pair<Integer, String>(0, Alert.createErrorAlert("Tài khoản của bạn đã bị khóa!"));
+				result = new Pair<Integer, String>(0,
+						Alert.createAlertTopCenter(Alert.TYPE_ERROR, "Lỗi đăng nhập", "Tài khoản của bạn đã bị khóa!"));
 				return result;
 			}
 
@@ -99,7 +101,8 @@ public class AdminController {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = new Pair<Integer, String>(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			result = new Pair<Integer, String>(0,
+					Alert.createAlertTopCenter(Alert.TYPE_ERROR, "Đã xảy ra lỗi.", " Vui lòng thử lại sau!"));
 			return result;
 		}
 	}

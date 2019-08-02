@@ -87,11 +87,10 @@
                 }, error: function () {
                     openAlert(null, function () {
                     	new PNotify({
-                            title: 'Lỗi',
-                            text: 'Đã xảy ra lỗi. Vui lòng thử lại sau!',
+                            title: 'Đã xảy ra lỗi !',
+                            text: 'Vui lòng thử lại sau!',
                             type: 'error',
-                            hide: true,
-                            styling: 'bootstrap4'
+                            styling: 'bootstrap3'
                         });
                         reloadAjaxContent();
                     });

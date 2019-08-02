@@ -76,11 +76,11 @@ public class AdminPermissionController {
 		try {
 			new AdminModuleInRoleDAO().create(id, ids);
 			LogUtils.logs(myId, "Phân quyền quản trị thành công");
-			return new Pair(1, Alert.createSuccessAlert("Phân quyền quản trị thành công"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Phân quyền quản trị thành công"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Phân quyền quản trị không thành công");
-			return new Pair(0, Alert.createErrorAlert("Phân quyền quản trị không thành công"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Phân quyền quản trị không thành công"));
 		}
 	}
 
@@ -92,11 +92,11 @@ public class AdminPermissionController {
 		try {
 			new AdminRoleDAO().delete(id);
 			LogUtils.logs(myId, "Xóa quyền quản trị thành công");
-			return new Pair(1, Alert.createSuccessAlert("Xóa quyền quản trị thành công"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Xóa quyền quản trị thành công"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Xóa quyền quản trị không thành công");
-			return new Pair(0, Alert.createErrorAlert("Xóa quyền quản trị không thành công"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Xóa quyền quản trị không thành công"));
 		}
 	}
 
@@ -116,11 +116,11 @@ public class AdminPermissionController {
 			roleAdmin.setName(name);
 			new AdminRoleDAO().create(roleAdmin);
 			LogUtils.logs(myId, "Tạo quyền quản trị " + roleAdmin.getName() + " thành công");
-			return new Pair(1, Alert.createSuccessAlert("Tạo quyền quản trị thành công"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Tạo quyền quản trị thành công"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Tạo quyền quản trị thất bại");
-			return new Pair(0, Alert.createErrorAlert("Tạo quyền quản trị không thành công"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Tạo quyền quản trị không thành công"));
 		}
 	}
 
@@ -146,17 +146,17 @@ public class AdminPermissionController {
 		int myId = (int) adminSession.get("ADMIN_ID");
 		if (Objects.equals(myId, id)) {
 			LogUtils.logs(myId, "Xóa tài khoản quản trị không thành công: " + id);
-			return new Pair(0, Alert.createErrorAlert("Không thể xóa tài khoản của chính mình!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Không thể xóa tài khoản của chính mình!"));
 		}
 		try {
 
 			new AdminDAO().deleteAdmin(id);
 			LogUtils.logs(myId, "Xóa tài khoản quản trị thành công: " + id);
-			return new Pair(1, Alert.createSuccessAlert("Xóa tài khoản quản trị thành công!"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Xóa tài khoản quản trị thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Xóa tài khoản quản trị không thành công: " + id);
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -167,17 +167,17 @@ public class AdminPermissionController {
 		int myId = (int) adminSession.get("ADMIN_ID");
 		if (Objects.equals(myId, id)) {
 			LogUtils.logs(myId, (status ? "Mở khóa" : "Khóa") + " tài khoản quản trị không thành công: " + id);
-			return new Pair(0, Alert.createErrorAlert("Không thể khóa tài khoản của chính mình!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Không thể khóa tài khoản của chính mình!"));
 		}
 		try {
 			new AdminDAO().block(id, status);
 			LogUtils.logs(myId, (status ? "Mở khóa" : "Khóa") + " tài khoản quản trị thành công: " + id);
 			return new Pair(1,
-					Alert.createSuccessAlert((status ? "Mở khóa" : "Khóa") + " tài khoản quản trị thành công!"));
+					Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công",(status ? "Mở khóa" : "Khóa") + " tài khoản quản trị thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, (status ? "Mở khóa" : "Khóa") + " tài khoản quản trị không thành công: " + id);
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -198,11 +198,11 @@ public class AdminPermissionController {
 		int adminRoleId = Integer.valueOf(map.get("adminRoleID"));
 		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(name) || StringUtils.isEmpty(password)) {
 			LogUtils.logs(myId, "Tạo tài khoản quản trị không thành công");
-			return new Pair(0, Alert.createErrorAlert("Vui lòng nhập tất cả các trường!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng nhập tất cả các trường!"));
 		}
 		if (new UserDAO().checkUsernameExist(username)) {
 			LogUtils.logs(myId, "Tạo tài khoản quản trị không thành công");
-			return new Pair(0, Alert.createErrorAlert("Tên đăng nhập đã tồn tại!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Tên đăng nhập đã tồn tại!"));
 		}
 		try {
 			User temp = new User();
@@ -220,20 +220,20 @@ public class AdminPermissionController {
 				adm.setIsDeleted(false);
 				if (new AdminDAO().create(adm) != null) {
 					LogUtils.logs(myId, "Tạo tài khoản quản trị " + adm.getName() + " thành công");
-					return new Pair(1, Alert.createSuccessAlert("Tạo tài khoản quản trị thành công!"));
+					return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Tạo tài khoản quản trị thành công!"));
 				} else {
 					new UserDAO().deleteUserWhenRegError(usr.getId());
 					LogUtils.logs(myId, "Tạo tài khoản quản trị không thành công");
-					return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+					return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 				}
 			} else {
 				LogUtils.logs(myId, "Tạo tài khoản quản trị không thành công");
-				return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+				return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Tạo tài khoản quản trị không thành công");
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -258,7 +258,7 @@ public class AdminPermissionController {
 		int adminRole = Integer.valueOf(map.get("adminRoleId"));
 		if (StringUtils.isEmpty(name)) {
 			LogUtils.logs(myId, "Cập nhật tài khoản quản trị " + name + " không thành công");
-			return new Pair(0, Alert.createErrorAlert("Vui lòng nhập tất cả các trường!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng nhập tất cả các trường!"));
 		}
 		try {
 			Admin adm = (Admin) new AdminDAO().find(id);
@@ -266,11 +266,11 @@ public class AdminPermissionController {
 			adm.setAdminRole(new AdminRoleDAO().find(adminRole));
 			new AdminDAO().edit(adm);
 			LogUtils.logs(myId, "Cập nhật tài khoản quản trị " + adm.getName() + " thành công");
-			return new Pair(1, Alert.createSuccessAlert("Cập nhật tài khoản quản trị thành công!"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Cập nhật tài khoản quản trị thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Cập nhật tài khoản quản trị không thành công");
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -295,17 +295,17 @@ public class AdminPermissionController {
 			int rs = new AdminDAO().changePassword(oldPass, newPass, id);
 			if (rs == 1) {
 				LogUtils.logs(myId, "Đổi mật khẩu thành công: " + id);
-				return new Pair(1, Alert.createSuccessAlert("Đổi mật khẩu thành công!"));
+				return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Đổi mật khẩu thành công!"));
 			} else if (!StringUtils.isEmpty(oldPass)) {
 				LogUtils.logs(myId, "Đổi mật khẩu thất bại: " + id);
-				return new Pair(0, Alert.createErrorAlert("Mật khẩu cũ không chính xác!"));
+				return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Mật khẩu cũ không chính xác!"));
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(myId, "Đổi mật khẩu thất bại: " + id);
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -341,11 +341,11 @@ public class AdminPermissionController {
 		try {
 			int moduleID = new AdminModuleDAO().create(module);
 			LogUtils.logs(admId, "Thêm module " + module.get("name").toString() + " thành công");
-			return new Pair(1, Alert.createSuccessAlert("Thêm module thành công!"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Thêm module thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(admId, "Thêm module thất bại");
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -366,11 +366,11 @@ public class AdminPermissionController {
 		try {
 			new AdminModuleDAO().edit(module);
 			LogUtils.logs(admId, "Cập nhật module " + module.get("name").toString() + " thành công");
-			return new Pair(1, Alert.createSuccessAlert("Cập nhật module thành công!"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Cập nhật module thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(admId, "Cập nhật module không thành công");
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -382,11 +382,11 @@ public class AdminPermissionController {
 		try {
 			new AdminModuleDAO().deleteModule(id);
 			LogUtils.logs(admId, "Xóa module thành công");
-			return new Pair(1, Alert.createSuccessAlert("Xóa module thành công! " + id));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công","Xóa module thành công! " + id));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(admId, "Xóa module không thành công");
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 
@@ -400,11 +400,11 @@ public class AdminPermissionController {
 			module.setIsShow(!module.getIsShow());
 			new AdminModuleDAO().edit(module);
 			LogUtils.logs(admId, (module.getIsShow() ? "Hiện" : "Ẩn") + " module thành công " + id);
-			return new Pair(1, Alert.createSuccessAlert((module.getIsShow() ? "Hiện" : "Ẩn") + " module thành công!"));
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS,"Thành công",(module.getIsShow() ? "Hiện" : "Ẩn") + " module thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LogUtils.logs(admId, "Cập nhật trạng thái module không thành công");
-			return new Pair(0, Alert.createErrorAlert("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
 	}
 }

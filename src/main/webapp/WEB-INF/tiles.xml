@@ -33,48 +33,66 @@
     
     <definition name="MessageLayout" template="/Views/Message/messagelayout.jsp"/>
     
-    <!-- ADMIN -->
-    
+    <!-- START ADMIN -->
+    	<!-- ADMIN LAYOUT -->
     <definition name="AdminLayout" template="/Views/Admin/adminlayout.jsp"/>
+    
+    	<!-- ADMIN LOGIN -->
     <definition name="AdminLogin" template="/Views/Admin/Auth/login.jsp"/>
     <definition name="Ajax.ChangePassword" template="/Views/Admin/Auth/changepassword_ajax.jsp"/>
     
     <definition name="AdminIndex" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/index.jsp" />
     </definition>
-    
+    	
+    	<!--  START ADMIN DASHBOARD -->
+     <definition name="AdminDashboard" extends="AdminLayout">
+        <put-attribute name="Content" value="/Views/Admin/Home/dashboard.jsp" />
+    </definition>
+    <definition name="Ajax.AdminDashboard" template="/Views/Admin/Home/dashboard_ajax.jsp"/>    
+    	<!-- END ADMIN DASHBOARD -->
+    	<!-- START ADMIN PERMISSION -->
+    		<!-- ADMIN PERMISSION MODULE -->
     <definition name="AdminListModule" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Permission/list_module.jsp" />
     </definition>
     <definition name="Ajax.AdminListModule" template="/Views/Admin/Permission/list_module_ajax.jsp"/>    
     <definition name="Ajax.AdminListModuleViewInsert" template="/Views/Admin/Permission/list_module_insert_modal.jsp"/>
     <definition name="Ajax.AdminListModuleViewEdit" template="/Views/Admin/Permission/list_module_edit_modal.jsp"/>
-    
-    <definition name="AdminInformation" extends="AdminLayout">
-        <put-attribute name="Content" value="/Views/Admin/Permission/list_role.jsp" />
-    </definition>
-    <definition name="Ajax.AdminInformation" template="/Views/Admin/information.jsp_ajax.jsp"/>    
-    
+    		<!-- ADMIN PERMISSION ADMIN -->
     <definition name="AdminListAdmin" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Permission/list_admin.jsp" />
     </definition>    
     <definition name="Ajax.AdminListAdmin" template="/Views/Admin/Permission/list_admin_ajax.jsp"/>
     <definition name="Ajax.AdminListAdminViewInsert" template="/Views/Admin/Permission/list_admin_insert_ajax.jsp"/>
     <definition name="Ajax.AdminListAdminEditModal" template="/Views/Admin/Permission/list_admin_edit_ajax.jsp"/>
-    
+    		<!-- ADMIN PERMISSION ROLE -->
     <definition name="AdminListRole" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Permission/list_role.jsp" />
     </definition>
     <definition name="Ajax.AdminListRole" template="/Views/Admin/Permission/list_role_ajax.jsp"/>
     <definition name="Ajax.AdminListRoleInsertModal" template="/Views/Admin/Permission/list_role_insert_ajax.jsp"/>
     <definition name="Ajax.AdminListRoleChangePermision" template="/Views/Admin/Permission/list_role_change_permission_modal_ajax.jsp"/>
-    
-    <definition name="AdminListWebsiteModulePosition" extends="AdminLayout">
-        <put-attribute name="Content" value="/Views/Admin/Content/listmoduleposition.jsp" />
+    	<!--END ADMIN PERMISSION -->
+   
+    	<!-- START ADMIN COURSE -->
+    		<!-- ADMIN COURSE COURSE -->
+    <definition name="AdminListCourse" extends="AdminLayout">
+        <put-attribute name="Content" value="/Views/Admin/Course/list_course.jsp" />
     </definition>
-    <definition name="Ajax.AdminListWebsiteModulePosition" template="/Views/Admin/Content/listmoduleposition_ajax.jsp"/>
-    <definition name="Ajax.AdminListWebsiteModulePositionInsertModal" template="/Views/Admin/Content/listmoduleposition_insert_ajax.jsp"/>
-    <definition name="Ajax.AdminListWebsiteModulePositionEditModal" template="/Views/Admin/Content/listmoduleposition_edit_ajax.jsp"/>
-    
+    <definition name="Ajax.AdminListCourse" template="/Views/Admin/Course/list_course_ajax.jsp"/>
+    <definition name="Ajax.AdminListCourseInsertModal" template="/Views/Admin/Course/list_course_insert_ajax.jsp"/>
+    <definition name="Ajax.AdminListCourseEditModal" template="/Views/Admin/Course/list_course_edit_ajax.jsp"/>
+    	
+    <definition name="AdminListCourseSyllabus" extends="AdminLayout">
+        <put-attribute name="Content" value="/Views/Admin/Course/list_course_syllabus.jsp" />
+    </definition>
+    <definition name="Ajax.AdminListCourseSyllabus" template="/Views/Admin/Course/list_course_syllabus_ajax.jsp"/>	
+    	
+    	<!--END AMIN COURSE -->	
+    	
+    	
+    	
+    <!-- END ADMIN --> 
    
 </tiles-definitions>

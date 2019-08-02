@@ -65,6 +65,10 @@
             	</div>
             	<!-- END PAGE CONTENT -->
             	
+            	<!-- START LOANGDING -->
+            	<div id="loader" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            	<!-- END LOANGDING -->
+            	
             	<!-- footer content -->
 		        <footer>
 		          <div class="pull-right">
@@ -117,7 +121,6 @@
         <script src="${CONTEXTPATH}/Resources/shared/js/jquery.validate.js" type="text/javascript"></script>
         <script src="${CONTEXTPATH}/Resources/shared/js/jquery.validate.additional-methods.min.js" type="text/javascript"></script>
         <script src="${CONTEXTPATH}/Resources/shared/js/jquery.validate.messages_vi.js" type="text/javascript"></script>
-        <script type="text/javascript" src="${CONTEXTPATH}/Resources/shared/js/noty.min.js"></script>
         <script src="${CONTEXTPATH}/Resources/shared/js/serialize.js" type="text/javascript"></script>
 	    <!-- Bootstrap -->
 	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -133,6 +136,6 @@
 	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.buttons.js"></script>
 	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.nonblock.js"></script>
 	    <!-- Custom Theme Scripts -->
-	    <script src="${CONTEXTPATH}/Resources/Admin/build/js/custom.min.js"></script>              
+	    <script src="${CONTEXTPATH}/Resources/Admin/build/js/custom.min.js"></script> 
 </body>
 </html>

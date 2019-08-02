@@ -5,7 +5,26 @@
 <c:if test="${ADMIN_ID!=null}">
     <c:redirect url="/Admin" />
 </c:if>
-<style>
+<c:set value="${pageContext.request.contextPath}" var="CONTEXTPATH" scope="request" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learn Code | Quản trị hệ thống</title>
+        <link rel="icon" href="images/favicon.png"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
+        <!-- Custom styles for this template -->
+         <!-- Bootstrap -->
+	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+       	 <!-- Custom Theme Style -->
+	    <link href="${CONTEXTPATH}/Resources/Admin/build/css/custom.min.css" rel="stylesheet">
+       	<!-- PNotify -->
+	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">	
+    	<style>
 * {
     box-sizing: border-box;
     margin: 0;
@@ -251,17 +270,6 @@ form button:hover {
     }
 }
 </style>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Learn Code | Quản trị hệ thống</title>
-        <link rel="icon" href="images/favicon.png"/>
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
-        <!-- Custom styles for this template -->
     </head>
     <body>
         <div class="wrapper">
@@ -271,7 +279,7 @@ form button:hover {
                     <input name="username" type="text" placeholder="Tên đăng nhập">
                     <input name="password" type="password" placeholder="Mật khẩu">
                     <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LehgLAUAAAAAFZAtkNm0IWxz-nIQt7s4cJaANv1"></div>
-                    <button type="submit" id="login-button">Đăng nhập</button>
+                    <button disabled="disabled" class="btn-submit" type="submit" id="login-button">Đăng nhập</button>
                 </form>
             </div>
 
@@ -297,15 +305,20 @@ form button:hover {
         </div>
        
 		<script src="https://www.google.com/recaptcha/api.js"></script>
-		 <script src="../Resources/shared/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-        <script src="../Resources/shared/js/jquery.validate.js" type="text/javascript"></script>
-        <script src="../Resources/shared/js/jquery.validate.additional-methods.min.js" type="text/javascript"></script>
-        <script src="../Resources/shared/js/jquery.validate.messages_vi.js" type="text/javascript"></script>
-         <script type="text/javascript" src="../Resources/shared/js/noty.min.js"></script>
-        <script src="../Resources/shared/js/serialize.js" type="text/javascript"></script>
+		  <!-- jQuery -->
+	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/jquery/dist/jquery.min.js"></script>
+	    <script src="${CONTEXTPATH}/Resources/shared/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+        <script src="${CONTEXTPATH}/Resources/shared/js/jquery.validate.js" type="text/javascript"></script>
+        <script src="${CONTEXTPATH}/Resources/shared/js/jquery.validate.additional-methods.min.js" type="text/javascript"></script>
+        <script src="${CONTEXTPATH}/Resources/shared/js/jquery.validate.messages_vi.js" type="text/javascript"></script>
+        <script src="${CONTEXTPATH}/Resources/shared/js/serialize.js" type="text/javascript"></script>
+         <!-- PNotify -->
+	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.js"></script>
+	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.buttons.js"></script>
+	    <script src="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.nonblock.js"></script>
           <script>
             function recaptchaCallback() {
-                $('#login-form .btn-primary').removeAttr('disabled');
+                $('#login-form .btn-submit').removeAttr('disabled');
             }
         </script>
         <script>
@@ -333,16 +346,22 @@ form button:hover {
                         type: "POST",
                         data: $('#login-form').serializeObject(),
                         success: function (data) {
-
                             openAlert(data.value);
                             if (!data.key) {
                                 grecaptcha.reset();
                             }
                         },
                         error: function () {
-                            $('#myModal').modal('hide');
+                        	PNotify.removeAll();
                             openAlert(null, function () {
-                                new Noty({theme: 'nest',text: 'Have error. Try again later!', layout: 'topCenter', type: 'error'});
+                            	new PNotify({
+                                    title: 'Đã xảy ra lỗi !',
+                                    text: 'Vui lòng thử lại sau!',
+                                    type: 'error',
+                                    styling: 'bootstrap3',
+                                    addclass: 'pnotify-center'
+                                });
+                            	$('#login-form .btn-submit').attr('disabled','disabled');
                                 grecaptcha.reset();
                             });
                         }

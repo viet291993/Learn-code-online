@@ -64,7 +64,12 @@
                     });
                 }, error: function () {
                     openAlert(null, function () {
-                        new Noty({theme: 'nest',text: 'Đã xảy ra lỗi. Vui lòng thử lại sau!', layout: 'topCenter', type: 'error'});
+                    	new PNotify({
+                            title: 'Đã xảy ra lỗi !',
+                            text: 'Vui lòng thử lại sau!',
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
                         reloadAjaxContent();
                     });
                 }
