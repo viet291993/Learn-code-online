@@ -63,7 +63,7 @@ public class UserDAO extends AbstractDAO {
 		try {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
-				Query q = session.createSQLQuery("delete from Users where id=:id");
+				Query q = session.createSQLQuery("delete from [User] where id=:id");
 				q.setInteger("id", id);
 				q.executeUpdate();
 			}
@@ -79,7 +79,7 @@ public class UserDAO extends AbstractDAO {
 		try {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
-				Query q = session.createSQLQuery("select count(*) from Users where username=:username");
+				Query q = session.createSQLQuery("select count(*) from [User] where username=:username");
 				q.setString("username", username);
 				return (int) q.uniqueResult() != 0;
 			}
@@ -98,7 +98,7 @@ public class UserDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Query q = session
-						.createSQLQuery("select count(*) from Users where username=:username and password=:password");
+						.createSQLQuery("select count(*) from [User] where username=:username and password=:password");
 				q.setString("username", username);
 				q.setString("password", password);
 				return (int) q.uniqueResult() != 0;
