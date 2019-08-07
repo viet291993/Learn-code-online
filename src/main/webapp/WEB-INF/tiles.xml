@@ -14,13 +14,16 @@
     <definition name="HomeIndex" template="/Views/Home/index.jsp">
     </definition>
     
-    <definition name="HomeLearn" template="/Views/Home/learn.jsp">
+    <definition name="HomeLearn" template="/Views/Home/Learn/learn.jsp">
     </definition>
     
-    <definition name="HomeCourseDetail" template="/Views/Home/course.jsp">
+    <definition name="HomeCourseDetail" template="/Views/Home/Learn/course.jsp">
     </definition>
     
-    <definition name="HomeLessionDetail" template="/Views/Home/lession.jsp">
+    <definition name="HomeLessionDetail" template="/Views/Home/Learn/lession.jsp">
+    </definition>
+    
+    <definition name="HomeLessionDetailAjax" template="/Views/Home/Learn/lession_ajax.jsp">
     </definition>
     
     <definition name="HomeLogin" extends="HomeLayout">

@@ -32,11 +32,11 @@ public class Question implements java.io.Serializable {
 	private String instruction;
 	private String hint;
 	private String result;
-	private int order;
+	private Integer order;
 	private String description;
 	private String defaultCode;
 	private String code;
-	private int resultQuiz;
+	private Integer resultQuiz;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Quiz> quizs = new HashSet<Quiz>(0);
@@ -45,8 +45,8 @@ public class Question implements java.io.Serializable {
 	public Question() {
 	}
 
-	public Question(Lession lession, String instruction, String hint, String result, int order,
-			String description, String defaultCode, String code, int resultQuiz, boolean isActive,
+	public Question(Lession lession, String instruction, String hint, String result, Integer order,
+			String description, String defaultCode, String code, Integer resultQuiz, boolean isActive,
 			boolean isDeleted) {
 		this.lession = lession;
 		this.instruction = instruction;
@@ -61,8 +61,8 @@ public class Question implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
-	public Question(Lession lession, String instruction, String hint, String result, int order,
-			String description, String defaultCode, String code, int resultQuiz, boolean isActive,
+	public Question(Lession lession, String instruction, String hint, String result, Integer order,
+			String description, String defaultCode, String code, Integer resultQuiz, boolean isActive,
 			boolean isDeleted, Set<Quiz> quizs, Set<RecordQuestion> recordQuestions) {
 		this.lession = lession;
 		this.instruction = instruction;
@@ -92,7 +92,7 @@ public class Question implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Lession_id", nullable = false)
+	@JoinColumn(name = "Lession_id")
 	public Lession getLession() {
 		return this.lession;
 	}
@@ -101,7 +101,7 @@ public class Question implements java.io.Serializable {
 		this.lession = lession;
 	}
 
-	@Column(name = "instruction", nullable = false)
+	@Column(name = "instruction")
 	public String getInstruction() {
 		return this.instruction;
 	}
@@ -110,7 +110,7 @@ public class Question implements java.io.Serializable {
 		this.instruction = instruction;
 	}
 
-	@Column(name = "hint", nullable = false)
+	@Column(name = "hint")
 	public String getHint() {
 		return this.hint;
 	}
@@ -119,7 +119,7 @@ public class Question implements java.io.Serializable {
 		this.hint = hint;
 	}
 
-	@Column(name = "result", nullable = false)
+	@Column(name = "result")
 	public String getResult() {
 		return this.result;
 	}
@@ -128,16 +128,16 @@ public class Question implements java.io.Serializable {
 		this.result = result;
 	}
 
-	@Column(name = "order", nullable = false)
-	public int getOrder() {
+	@Column(name = "order")
+	public Integer getOrder() {
 		return this.order;
 	}
 
-	public void setOrder(int order) {
+	public void setOrder(Integer order) {
 		this.order = order;
 	}
 
-	@Column(name = "description", nullable = false)
+	@Column(name = "description")
 	public String getDescription() {
 		return this.description;
 	}
@@ -146,7 +146,7 @@ public class Question implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "default_code", nullable = false)
+	@Column(name = "default_code")
 	public String getDefaultCode() {
 		return this.defaultCode;
 	}
@@ -155,7 +155,7 @@ public class Question implements java.io.Serializable {
 		this.defaultCode = defaultCode;
 	}
 
-	@Column(name = "code", nullable = false, length = 32)
+	@Column(name = "code", length = 32)
 	public String getCode() {
 		return this.code;
 	}
@@ -164,16 +164,16 @@ public class Question implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "result_quiz", nullable = false)
-	public int getResultQuiz() {
+	@Column(name = "result_quiz")
+	public Integer getResultQuiz() {
 		return this.resultQuiz;
-	}
+	} 
 
-	public void setResultQuiz(int resultQuiz) {
+	public void setResultQuiz(Integer resultQuiz) {
 		this.resultQuiz = resultQuiz;
 	}
 
-	@Column(name = "isActive", nullable = false)
+	@Column(name = "isActive")
 	public boolean isIsActive() {
 		return this.isActive;
 	}
@@ -182,7 +182,7 @@ public class Question implements java.io.Serializable {
 		this.isActive = isActive;
 	}
 
-	@Column(name = "isDeleted", nullable = false)
+	@Column(name = "isDeleted")
 	public boolean isIsDeleted() {
 		return this.isDeleted;
 	}
