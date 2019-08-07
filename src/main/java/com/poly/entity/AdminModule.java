@@ -152,5 +152,4 @@ public class AdminModule implements java.io.Serializable {
 	public void setAdminModules(Set<AdminModule> adminModules) {
 		this.adminModules = adminModules;
 	}
-
 }

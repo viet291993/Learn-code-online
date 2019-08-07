@@ -99,5 +99,4 @@ public class Admin implements java.io.Serializable {
 	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
-
 }

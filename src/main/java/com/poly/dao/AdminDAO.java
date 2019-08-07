@@ -285,5 +285,4 @@ public class AdminDAO extends AbstractDAO {
 		}
 		return list;
 	}
-
 }
