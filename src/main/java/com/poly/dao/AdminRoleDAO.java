@@ -101,4 +101,5 @@ public class AdminRoleDAO extends AbstractDAO {
 		}
 		return result;
 	}
+	
 }

@@ -152,5 +152,4 @@ public class User implements java.io.Serializable {
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
-
 }

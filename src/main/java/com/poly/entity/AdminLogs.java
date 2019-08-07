@@ -73,5 +73,4 @@ public class AdminLogs implements java.io.Serializable {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
 }

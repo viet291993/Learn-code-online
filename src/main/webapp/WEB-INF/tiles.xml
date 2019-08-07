@@ -18,7 +18,7 @@
     </definition>
     
     <definition name="HomeCourseDetail" template="/Views/Home/Learn/course.jsp">
-    </definition>
+    </definition> 
     
     <definition name="HomeLessionDetail" template="/Views/Home/Learn/lession.jsp">
     </definition>

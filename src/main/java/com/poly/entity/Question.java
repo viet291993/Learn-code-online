@@ -208,5 +208,4 @@ public class Question implements java.io.Serializable {
 	public void setRecordQuestions(Set<RecordQuestion> recordQuestions) {
 		this.recordQuestions = recordQuestions;
 	}
-
 }

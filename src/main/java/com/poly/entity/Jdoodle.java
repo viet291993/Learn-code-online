@@ -41,5 +41,4 @@ public class Jdoodle {
 	public void setCpuTime(String cpuTime) {
 		this.cpuTime = cpuTime;
 	}
-	
 }

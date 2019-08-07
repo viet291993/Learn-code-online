@@ -60,4 +60,5 @@ public class AdminModuleInRoleDAO extends AbstractDAO {
 		}
 		return result;
 	}
+	
 }

@@ -108,5 +108,4 @@ public class AdminRole implements java.io.Serializable {
 	public void setAdmins(List<Admin> admins) {
 		this.admins = admins;
 	}
-
 }

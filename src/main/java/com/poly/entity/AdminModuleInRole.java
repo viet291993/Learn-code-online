@@ -65,5 +65,4 @@ public class AdminModuleInRole implements java.io.Serializable {
 	public void setAdminRole(AdminRole adminRole) {
 		this.adminRole = adminRole;
 	}
-
 }
