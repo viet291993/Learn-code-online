@@ -100,7 +100,7 @@ public class CourseDAO extends AbstractDAO {
 		}
 		return -1;
 	}
-	
+
 	public List<Course> fillAll(Boolean isDelete) {
 		Session session = null;
 		List<Course> list = null;
@@ -109,6 +109,8 @@ public class CourseDAO extends AbstractDAO {
 			if (session != null) {
 				Criteria cr = session.createCriteria(Course.class);
 				cr.add(Restrictions.eq("isDeleted", isDelete));
+				cr.createAlias("language", "language", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("language", FetchMode.JOIN);
 				list = (List<Course>) cr.list();
 			}
 		} catch (Exception e) {
@@ -118,7 +120,7 @@ public class CourseDAO extends AbstractDAO {
 		}
 		return list;
 	}
-	
+
 	public Course findCourseByIDEager(int id, String lang) {
 		Session session = null;
 		Course course = null;

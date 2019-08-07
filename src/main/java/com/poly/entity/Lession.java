@@ -38,6 +38,7 @@ public class Lession implements java.io.Serializable {
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
+	private boolean isPro;
 	private Set<Question> questions = new HashSet<Question>(0);
 	private Set<Record> records = new HashSet<Record>(0);
 
@@ -111,7 +112,7 @@ public class Lession implements java.io.Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
 	@Column(name = "nameAscii", nullable = false)
 	public String getNameAscii() {
 		return nameAscii;
@@ -146,6 +147,15 @@ public class Lession implements java.io.Serializable {
 
 	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	@Column(name = "isPro", nullable = false)
+	public boolean isIsPro() {
+		return this.isPro;
+	}
+
+	public void setIsPro(boolean isPro) {
+		this.isPro = isPro;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "lession")

@@ -3,6 +3,7 @@ package com.poly.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,13 +36,17 @@ public class Member implements java.io.Serializable {
 	private String profileimage;
 	private boolean isActive;
 	private boolean isDeleted;
+	private Timestamp createdDate;
+	private Timestamp trailExpiredDate;
+	private Timestamp proExpiredDate;
 	private Set<Record> records = new HashSet<Record>(0);
 
 	public Member() {
 	}
 
-	public Member(User user, String name, String email, String address, String profileimage,
-			boolean isActive, boolean isDeleted) {
+	public Member( User user, String name, String email, String address, String profileimage,
+			boolean isActive, boolean isDeleted, Timestamp createdDate, Timestamp trailExpiredDate,
+			Timestamp proExpiredDate) {
 		this.user = user;
 		this.name = name;
 		this.email = email;
@@ -49,10 +54,13 @@ public class Member implements java.io.Serializable {
 		this.profileimage = profileimage;
 		this.isActive = isActive;
 		this.isDeleted = isDeleted;
+		this.createdDate = createdDate;
+		this.trailExpiredDate = trailExpiredDate;
+		this.proExpiredDate = proExpiredDate;
 	}
 
-	public Member(User user, String name, String email, String address, String profileimage,
-			boolean isActive, boolean isDeleted, Set<Record> records) {
+	public Member(User user, String name, String email, String address, String profileimage, boolean isActive,
+			boolean isDeleted, Set<Record> records) {
 		this.user = user;
 		this.name = name;
 		this.email = email;
@@ -137,6 +145,33 @@ public class Member implements java.io.Serializable {
 
 	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	@Column(name = "createdDate", insertable = false, updatable = false)
+	public Timestamp getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Timestamp createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	@Column(name = "trailExpiredDate")
+	public Timestamp getTrailExpiredDate() {
+		return trailExpiredDate;
+	}
+
+	public void setTrailExpiredDate(Timestamp trailExpiredDate) {
+		this.trailExpiredDate = trailExpiredDate;
+	}
+
+	@Column(name = "proExpiredDat")
+	public Timestamp getProExpiredDate() {
+		return proExpiredDate;
+	}
+
+	public void setProExpiredDate(Timestamp proExpiredDate) {
+		this.proExpiredDate = proExpiredDate;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "member")

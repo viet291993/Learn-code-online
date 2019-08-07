@@ -7,6 +7,7 @@
                <tr>
                 <th style="width: 1%">ID </th>
                 <th>Tên khóa học</th>
+                <th>Ngôn ngữ</th>
                 <th>Trạng thái</th>
                 <th></th>  
                </tr>
@@ -16,6 +17,7 @@
                         <tr>
                             <td class="td-align-center">${course.id}</td>
                             <td>${course.name}</td>
+                            <td>${course.language.name}</td>
                             <td class="${course.isActive?'text-success':'text-danger'}">${course.isActive?'Bình thường':'Khóa'}</td>
                         	<td>
                         		<a class="btn btn-success btn-sm " data-toggle="tooltip" data-placement="top"  data-original-title="Thêm giáo trình cho khóa học" href="${CONTEXTPATH}/Admin/Course/ListCourse/Syllabus/${course.id}"><i class="fa fa-plus"></i></a>

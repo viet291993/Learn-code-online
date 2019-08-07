@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -31,6 +33,7 @@ public class Course implements java.io.Serializable {
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
+	private Language language;
 	private Set<Syllabus> syllabuses;
 
 	public Course() {
@@ -104,6 +107,16 @@ public class Course implements java.io.Serializable {
 
 	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Language_id", nullable = false)
+	public Language getLanguage() {
+		return this.language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "course")
