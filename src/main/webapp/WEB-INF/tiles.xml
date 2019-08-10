@@ -76,6 +76,10 @@
     <definition name="Ajax.AdminListRole" template="/Views/Admin/Permission/list_role_ajax.jsp"/>
     <definition name="Ajax.AdminListRoleInsertModal" template="/Views/Admin/Permission/list_role_insert_ajax.jsp"/>
     <definition name="Ajax.AdminListRoleChangePermision" template="/Views/Admin/Permission/list_role_change_permission_modal_ajax.jsp"/>
+    		<!-- ADMIN PERMISSION LOGGER -->
+    <definition name="AdminLogger" extends="AdminLayout">
+        <put-attribute name="Content" value="/Views/Admin/Permission/logger.jsp" />
+    </definition>
     	<!--END ADMIN PERMISSION -->
    
     	<!-- START ADMIN COURSE -->
@@ -91,10 +95,23 @@
         <put-attribute name="Content" value="/Views/Admin/Course/list_course_syllabus.jsp" />
     </definition>
     <definition name="Ajax.AdminListCourseSyllabus" template="/Views/Admin/Course/list_course_syllabus_ajax.jsp"/>	
-    	
+    		<!-- ADMIN COURSE SETTING -->
+    <definition name="AdminSettingCourse" extends="AdminLayout">
+        <put-attribute name="Content" value="/Views/Admin/Course/setting_course.jsp" />
+    </definition>
+    <definition name="Ajax.AdminSettingCourseLessionType" template="/Views/Admin/Course/setting_course_lessionType_ajax.jsp"/>
+    <definition name="Ajax.AdminSettingCourseLanguage" template="/Views/Admin/Course/setting_course_language_ajax.jsp"/>
+    		
     	<!--END AMIN COURSE -->	
     	
-    	
+    	<!-- START ADMIN MEMBER -->
+    <definition name="AdminListMember" extends="AdminLayout">
+        <put-attribute name="Content" value="/Views/Admin/Member/list_member.jsp" />
+    </definition>    
+    <definition name="Ajax.AdminListMember" template="/Views/Admin/Member/list_member_ajax.jsp"/>
+    <definition name="Ajax.AdminListMemberViewInsert" template="/Views/Admin/Member/list_member_insert_ajax.jsp"/>
+    <definition name="Ajax.AdminListMemberEditModal" template="/Views/Admin/Member/list_member_edit_ajax.jsp"/>
+    	<!-- END ADMIN MEMBER -->
     	
     <!-- END ADMIN --> 
    

@@ -253,4 +253,9 @@
         <function-class>com.poly.utils.CustomFunction</function-class>
         <function-signature>String generateValueDate(java.util.Date)</function-signature>
     </function>
+    <function>
+        <name>generateExpiredDate</name>
+        <function-class>com.poly.utils.CustomFunction</function-class>
+        <function-signature>String generateExpiredDate(java.util.Date)</function-signature>
+    </function>
 </taglib>
