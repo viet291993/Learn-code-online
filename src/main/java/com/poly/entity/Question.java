@@ -36,7 +36,6 @@ public class Question implements java.io.Serializable {
 	private String description;
 	private String defaultCode;
 	private String code;
-	private Integer resultQuiz;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Quiz> quizs = new HashSet<Quiz>(0);
@@ -128,15 +127,6 @@ public class Question implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	@Column(name = "result_quiz")
-	public Integer getResultQuiz() {
-		return this.resultQuiz;
-	} 
-
-	public void setResultQuiz(Integer resultQuiz) {
-		this.resultQuiz = resultQuiz;
 	}
 
 	@Column(name = "isActive")

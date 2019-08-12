@@ -26,6 +26,7 @@ public class Quiz implements java.io.Serializable {
 	private Integer id;
 	private Question question;
 	private String answer;
+	private boolean isTrue;
 	private boolean isActive;
 	private boolean isDeleted;
 
@@ -76,6 +77,15 @@ public class Quiz implements java.io.Serializable {
 		this.answer = answer;
 	}
 
+	@Column(name = "isTrue", nullable = false)
+	public boolean isIsTrue() {
+		return this.isTrue;
+	}
+
+	public void setIsTrue(boolean isTrue) {
+		this.isTrue = isTrue;
+	}
+	
 	@Column(name = "isActive", nullable = false)
 	public boolean isIsActive() {
 		return this.isActive;

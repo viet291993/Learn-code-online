@@ -29,19 +29,21 @@
                         <div>
                             <section class="overview__2OQdNuDXcNUf8E7S23Z9P_">
                                 <div class="overviewWrapper__1JqlocP92xaRJzLLGge2cZ">
-                                    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA">
-                                        <h3>Why Learn Java?</h3>
-                                        <p>Java is among the most popular programming languages out there, mainly because of how versatile and compatible it is. Java can be used for a large number of things, including software development, mobile applications, and large systems development. As of 2019, 88% market share of all smartphones run on Android, the mobile operating system written in Java. Knowing Java opens a great deal of doors for you as a developer.</p>
-                                    </div>
+                                    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA" style="padding: 50px;">${SELECTED_COURSE.content }</div>
                                 </div>
                                 <aside class="infoBox__1yWJoYd9Y14dLx01BziXjl">
-                                    <p>Join<span class="peopleCount__1OuKnXcUo3OQgMPVaOZciT">2,360,524</span>people who have taken this course</p>
+                                    <p>Có<span class="peopleCount__1OuKnXcUo3OQgMPVaOZciT">69</span>người đã tham gia vào khóa học này</p>
                                     <div>
-                                        <dl class="timeToComplete__1tcjB1aeG_L46ty_L6-_yR"><dt>Time to Complete</dt>
-                                            <dd>20 Hours</dd>
+                                        <dl class="timeToComplete__1tcjB1aeG_L46ty_L6-_yR"><dt>Thời gian hoàn thành</dt>
+                                            <dd>${SELECTED_COURSE.timeToComplete }</dd>
                                         </dl>
-                                        <dl class="prerequisites__ZBCzxqHt6r8qvOyMHobb2"><dt>Prerequisites</dt>
-                                            <dd data-testid="prerequisites">None</dd>
+                                        <dl class="prerequisites__ZBCzxqHt6r8qvOyMHobb2"><dt>Điều kiện yêu cầu</dt>
+                                            <dd>
+                                            <c:choose>
+                                            	<c:when test="${SELECTED_COURSE.prerequisite != null }">${SELECTED_COURSE.prerequisite}</c:when>
+                                            	<c:otherwise>Không</c:otherwise>
+                                            </c:choose>
+                                            </dd>
                                         </dl>
                                     </div>
                                 </aside>

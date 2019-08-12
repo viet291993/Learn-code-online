@@ -29,7 +29,10 @@ public class Course implements java.io.Serializable {
 	
 	private Integer id;
 	private String name;
+	private String content;
 	private String description;
+	private String timeToComplete;
+	private String prerequisite;
 	private String nameAscii;
 	private String code;
 	private boolean isActive;
@@ -61,6 +64,15 @@ public class Course implements java.io.Serializable {
 		this.name = name;
 	}
 
+	@Column(name = "content", nullable = false)
+	public String getContent() {
+		return this.content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 	@Column(name = "description", nullable = false)
 	public String getDescription() {
 		return this.description;
@@ -68,6 +80,24 @@ public class Course implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Column(name = "timeToComplete", nullable = false)
+	public String getTimeToComplete() {
+		return timeToComplete;
+	}
+
+	public void setTimeToComplete(String timeToComplete) {
+		this.timeToComplete = timeToComplete;
+	}
+
+	@Column(name = "prerequisite", nullable = false)
+	public String getPrerequisite() {
+		return prerequisite;
+	}
+
+	public void setPrerequisite(String prerequisite) {
+		this.prerequisite = prerequisite;
 	}
 
 	@Column(name = "nameAscii", nullable = false)
