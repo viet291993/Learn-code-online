@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
@@ -121,7 +122,7 @@ public class Course implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "course")
 	@Column(nullable = false, updatable = false, insertable = false)
-    @OrderColumn(name = "orderDisplay")
+	@OrderBy("orderDisplay ASC")
 	public Set<Syllabus> getSyllabuses() {
 		return this.syllabuses;
 	}

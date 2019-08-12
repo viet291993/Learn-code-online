@@ -165,7 +165,7 @@ public class Member implements java.io.Serializable {
 		this.trailExpiredDate = trailExpiredDate;
 	}
 
-	@Column(name = "proExpiredDat")
+	@Column(name = "proExpiredDate")
 	public Timestamp getProExpiredDate() {
 		return proExpiredDate;
 	}

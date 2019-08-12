@@ -27,24 +27,12 @@ public class LessionType implements java.io.Serializable {
 	private static final long serialVersionUID = -6046208921794533329L;
 	private Integer id;
 	private String name;
+	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Lession> lessions = new HashSet<Lession>(0);
 
 	public LessionType() {
-	}
-
-	public LessionType(String name, boolean isActive, boolean isDeleted) {
-		this.name = name;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public LessionType(String name, boolean isActive, boolean isDeleted, Set<Lession> lessions) {
-		this.name = name;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.lessions = lessions;
 	}
 
 	@Id
@@ -66,6 +54,15 @@ public class LessionType implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Column(name = "code", nullable = false) 
+	public String getCode() {
+		return this.code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	@Column(name = "isActive", nullable = false)

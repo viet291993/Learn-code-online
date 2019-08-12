@@ -26,8 +26,6 @@ public class CourseDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Course.class);
-				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("syllabuses", FetchMode.JOIN);
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
 				list = (List<Course>) cr.list();
@@ -47,7 +45,7 @@ public class CourseDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Course.class);
-				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
+				cr.createAlias("syllabuses", "syllabuses", JoinType.INNER_JOIN);
 				cr.setFetchMode("syllabuses", FetchMode.JOIN);
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
@@ -68,10 +66,10 @@ public class CourseDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Course.class);
-				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("syllabuses", FetchMode.JOIN);
-				cr.createAlias("syllabuses.lessions", "syllabuses.lessions", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("syllabuses.lessions", FetchMode.JOIN);
+				cr.createAlias("syllabuses", "syllabus", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("syllabus", FetchMode.JOIN);
+				cr.createAlias("syllabuses.lessions", "lession", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("lession", FetchMode.JOIN);
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
 				cr.add(Restrictions.eq("nameAscii", nameAscii));

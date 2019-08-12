@@ -32,7 +32,7 @@ public class Question implements java.io.Serializable {
 	private String instruction;
 	private String hint;
 	private String result;
-	private Integer order;
+	private Integer orderDisplay;
 	private String description;
 	private String defaultCode;
 	private String code;
@@ -43,40 +43,6 @@ public class Question implements java.io.Serializable {
 	private Set<RecordQuestion> recordQuestions = new HashSet<RecordQuestion>(0);
 
 	public Question() {
-	}
-
-	public Question(Lession lession, String instruction, String hint, String result, Integer order,
-			String description, String defaultCode, String code, Integer resultQuiz, boolean isActive,
-			boolean isDeleted) {
-		this.lession = lession;
-		this.instruction = instruction;
-		this.hint = hint;
-		this.result = result;
-		this.order = order;
-		this.description = description;
-		this.defaultCode = defaultCode;
-		this.code = code;
-		this.resultQuiz = resultQuiz;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public Question(Lession lession, String instruction, String hint, String result, Integer order,
-			String description, String defaultCode, String code, Integer resultQuiz, boolean isActive,
-			boolean isDeleted, Set<Quiz> quizs, Set<RecordQuestion> recordQuestions) {
-		this.lession = lession;
-		this.instruction = instruction;
-		this.hint = hint;
-		this.result = result;
-		this.order = order;
-		this.description = description;
-		this.defaultCode = defaultCode;
-		this.code = code;
-		this.resultQuiz = resultQuiz;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.quizs = quizs;
-		this.recordQuestions = recordQuestions;
 	}
 
 	@Id
@@ -128,13 +94,13 @@ public class Question implements java.io.Serializable {
 		this.result = result;
 	}
 
-	@Column(name = "order")
-	public Integer getOrder() {
-		return this.order;
+	@Column(name = "orderDisplay")
+	public Integer getOrderDisplay() {
+		return this.orderDisplay;
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setOrderDisplay(Integer orderDisplay) {
+		this.orderDisplay = orderDisplay;
 	}
 
 	@Column(name = "description")

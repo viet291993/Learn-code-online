@@ -86,7 +86,7 @@ public class Lession implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "orderDisplay", nullable = false)
+	@Column(name = "orderDisplay", nullable = false, unique = true)
 	public int getOrderDisplay() {
 		return this.orderDisplay;
 	}

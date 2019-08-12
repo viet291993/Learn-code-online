@@ -3,32 +3,37 @@
       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
 <tiles-definitions> 
-    <definition name="HomeLayout" template="/Views/Home/layout.jsp">
-        <put-attribute name="Header" value="/Header" />
-        <put-attribute name="Footer" value="/Footer" />
-    </definition>
-    <definition name="HomeError" extends="HomeLayout">
-        <put-attribute name="Content" value="/Views/Home/Content/error.jsp" />
-    </definition>    
+    <definition name="HomeLayout" template="/Views/Home/homelayout.jsp"/>
     
-    <definition name="HomeIndex" template="/Views/Home/index.jsp">
-    </definition>
-    
-    <definition name="HomeLearn" template="/Views/Home/Learn/learn.jsp">
-    </definition>
-    
-    <definition name="HomeCourseDetail" template="/Views/Home/Learn/course.jsp">
+    <definition name="HomeIndex" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/index.jsp" />
     </definition> 
     
-    <definition name="HomeLessionDetail" template="/Views/Home/Learn/lession.jsp">
+    <definition name="HomeLearn" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Learn/learn.jsp" />
     </definition>
     
-    <definition name="HomeLessionDetailAjax" template="/Views/Home/Learn/lession_ajax.jsp">
+    <definition name="HomeCourseDetail" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Learn/course.jsp" />
+    </definition>
+    
+    <definition name="HomeError" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Content/error.jsp" />
+    </definition>
+    
+    <definition name="HomeLessionProject" template="/Views/Home/Learn/lession_project.jsp">
+    </definition>
+    
+    <definition name="HomeLessionProjectAjax" template="/Views/Home/Learn/lession_project_ajax.jsp">
+    </definition>
+    
+    <definition name="HomeLessionQuiz" template="/Views/Home/Learn/lession_quiz.jsp">
     </definition>
     
     <definition name="HomeLogin" extends="HomeLayout">
         <put-attribute name="Content" value="/Views/Home/Auth/login.jsp" />
     </definition>
+    
     <definition name="HomeProfile" extends="HomeLayout">
         <put-attribute name="Content" value="/Views/Home/Auth/profile.jsp" />
     </definition>

@@ -116,7 +116,7 @@
 		</dependency>
 
 		<!-- ## CKFinder + CKEditor -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.ckfinder</groupId>
 			<artifactId>CKFinderPlugin-ImageResize</artifactId>
 			<version>2.6.1</version>
@@ -127,11 +127,6 @@
 			<version>2.6.1</version>
 		</dependency>
 		<dependency>
-			<groupId>net.coobird</groupId>
-			<artifactId>thumbnailator</artifactId>
-			<version>0.4.8</version>
-		</dependency>
-		<dependency>
 			<groupId>com.ckfinder</groupId>
 			<artifactId>CKFinderPlugin-FileEditor</artifactId>
 			<version>2.6.1</version>
@@ -140,6 +135,11 @@
 			<groupId>ck.finder</groupId>
 			<artifactId>CKFinder</artifactId>
 			<version>2.6.1</version>
+		</dependency> -->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ckeditor</groupId>
@@ -263,6 +263,14 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.1.0.jre8</version>
 		</dependency>
+		
+		<!-- Login with social -->
+		<dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>6.6.3</version>
+        </dependency>
+		
 	</dependencies>
 
 	<build>

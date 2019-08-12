@@ -1,5 +1,7 @@
 package com.poly.controller.user;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +20,11 @@ import com.google.gson.Gson;
 import com.poly.dao.CourseDAO;
 import com.poly.dao.LessionDAO;
 import com.poly.dao.QuestionDAO;
+import com.poly.dao.QuizDAO;
 import com.poly.entity.Course;
 import com.poly.entity.Jdoodle;
 import com.poly.entity.Lession;
+import com.poly.entity.Question;
 import com.poly.utils.Execute;
 
 @Controller
@@ -29,7 +34,7 @@ public class LearnController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView learn(@CookieValue(value = "lang", defaultValue = "vi") String lang, ModelMap mm,
 			HttpServletRequest request) throws Exception {
-		mm.put("LIST_COURSE", new CourseDAO().findAllCourse());
+		mm.put("LIST_COURSE", new CourseDAO().findAllCourseEager());
 		return new ModelAndView("HomeLearn");
 	}
 
@@ -37,7 +42,6 @@ public class LearnController {
 	public ModelAndView byNameAscii(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			@PathVariable(value = "nameAscii") String nameAscii, HttpServletRequest request,
 			HttpServletResponse response, ModelMap mm, HttpSession session) {
-		System.out.println("NameAscii: " + nameAscii);
 		Course course = new CourseDAO().findCoursebyNameAsciiEager(nameAscii, lang);
 		if (course != null) {
 			mm.put("SELECTED_COURSE", course);
@@ -53,10 +57,17 @@ public class LearnController {
 		Lession lession = new LessionDAO().findLessionByNameAscii2(nameAscii, nameAscii2, lang);
 		if (lession != null) {
 			mm.put("SELECTED_LESSION", lession);
-			if (lession.getLessionType().getName() != null && lession.getLessionType().getName().equals("Interactive Lesson")) {
-				mm.put("SELECTED_QUESTION", new QuestionDAO().findFirstQuestionByLession(lession));
+			if (lession.getLessionType().getCode() != null) {
+				if (lession.getLessionType().getCode().equals("L") || lession.getLessionType().getCode().equals("P")) {
+					mm.put("SELECTED_QUESTION", new QuestionDAO().findFirstQuestionByLession(lession));
+					return new ModelAndView("HomeLessionProject");
+				} else if (lession.getLessionType().getCode().equals("Q")){
+					Question question = new QuestionDAO().findFirstQuestionByLession(lession);
+					mm.put("SELECTED_QUESTION", question);
+					mm.put("LIST_QUIZ", new QuizDAO().getAllQuizByQuestion(question));
+					return new ModelAndView("HomeLessionQuiz");
+				}
 			}
-			return new ModelAndView("HomeLessionDetail");
 		}
 		return new ModelAndView("redirect:/learn");
 	}
@@ -77,6 +88,6 @@ public class LearnController {
 			mm.put("RESULT", jd.getOutput());
 			session.removeAttribute("TEMP_RESULT");
 		}
-		return new ModelAndView("HomeLessionDetailAjax");
+		return new ModelAndView("HomeLessionProjectAjax");
 	}
 }

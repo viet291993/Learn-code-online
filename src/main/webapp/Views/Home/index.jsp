@@ -1,272 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>SKWELA Learn</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="Resources/css/bootstrap.css">
-    <link rel="stylesheet" href="Resources/css/animate.css">
-    <link rel="stylesheet" href="Resources/css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="Resources/fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="Resources/fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="Resources/fonts/flaticon/font/flaticon.css">
-
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="Resources/css/style.css">
-  </head>
-  <body>
-    
-    <header role="banner">
-     
-      <nav class="navbar navbar-expand-md navbar-dark bg-light">
-        <div class="container">
-          <a class="navbar-brand absolute" href="index.html">Skwela</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="index.jsp">Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Online Courses</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="courses-html5.jsp">HTML</a>
-                  <a class="dropdown-item" href="courses-agul.jsp">Agularjs</a>
-                  <a class="dropdown-item" href="courses-webdev.jsp">Web Development</a>
-                  <a class="dropdown-item" href="courses-js.jsp">Javascript</a>
-                  <a class="dropdown-item" href="courses-pts.jsp">Photoshop</a>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<main class="main__jhBqo7rBIWmr8mS_EhZm">
+            <div class="container__t9cGpmzkTfzuZwSMDtCbX container__3PjvxeZ6sSvE7xKd3igw-0">
+                <div class="collageContainer__3KYXHdr0-SK5rejw9ST5Qq">
+                    <div class="titleContainer__2kdrhe6ZWYZpBOZ88grjVL">
+                        <h1>Học lập trình <br> dễ nhất trên <br> LearnCode!</h1></div><img src="<c:url value="/Resources/Home/img/6468a0de2ccbc914148505fec167b939.webp" />" alt="a happy Codecademy learner" class="learner__3vTyNPqZP4vapfuoSCveyY"><img src="<c:url value="/Resources/Home/img/daecb491e565bc6b7390756d03fc1ee1.svg"/>" alt="" class="bars__Ijm1fSi8r49Z09mMysanR"><img src="./index_files/f059ec67021b3dfeea1b6cb2eb373683.svg" alt=""><img src="<c:url value="/Resources/Home/img/3ce816c669e3c8a946f0895049a01e44.svg"/>" alt="" class="triangle__2R2-HQOXNIN6Chb-e2rmPA"><img src="<c:url value="/Resources/Home/img/5c537833d79f7065497b565eaa7bca64.svg" />" alt="" class="rectangle__nu9ra5e_9o2QOhALFTPgN"></div>
+                <div class="formContainer__2l_MfQ1gY1nLmc15QoiqRe">
+                    <div class="formContents__11wRcREszRNutLneB6TOP3">
+                        <h2 class="formHeader__ewADzegSmio5jLLTQF2Rr">Gia nhập với chúng tôi</h2>
+                        <h1 class="mobileTitle__28xF0P4BAQnIezH7OTNsWa">Join the Millions Learning to Code With Codecademy</h1>
+                        <div class="formContainer__3T4BH0jFLpXLvUq8rS6dF2">
+                            <div class="registrationContainer__2QEroVip0rj6VbrALiBz8V">
+                                <form novalidate="" method="POST">
+                                    <fieldset class="fieldset__90L8T9R_uCnS1Uv2DXnSl">
+                                        <input type="hidden" name="authenticity_token" value="h0VOrcfcmC1AJpE1KTahxvrfnvwrI7L0XhEUbvHEtns=">
+                                        <input type="hidden" name="signing_up_from_exercise" value="false">
+                                        <input type="hidden" name="referring_page" value="">
+                                        <input type="hidden" name="redirect" value="">
+                                        <div class="">
+                                            <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__2f7GlHvZXKIMvaIzaJuPIp">
+                                                <label for="sign_up_form_email" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Email hoặc tài khoản</label>
+                                                <div class="inputWrapper__1QrvHYrz5fvfSM_ybUnPYg">
+                                                    <input type="text" data-testid="email-field" name="email" required="" data-resource="user" autofocus="" id="sign_up_form_email" class="Input__B0I6a45-Vc4Eo8Lqz3nSE" value="" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__2f7GlHvZXKIMvaIzaJuPIp">
+                                                <label for="sign_up_form_password" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Mật khẩu</label>
+                                                <div class="inputWrapper__1QrvHYrz5fvfSM_ybUnPYg">
+                                                    <input type="password" data-testid="password-field" name="password" required="" pattern=".{6,128}" data-resource="user" id="sign_up_form_password" class="Input__B0I6a45-Vc4Eo8Lqz3nSE" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button data-btn="true" type="submit" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI large__3uWKqXQr23vJ_9n9mwRvVa submitButton__34k4InI5TII_ayjcKIwCLO" id="sign_up_form_submit">Học ngay và luôn</button>
+                                        <p class="tos__2irFvmVYzLt-zbObC3_2D8">Đăng ký trở thành thành viên để học học lập trình và gia nhập cộng đồng LearnCode.</p>
+                                    </fieldset>
+                                </form>
+                                <div>
+                                    <h2 class="heading__2FI6Ms_rz_pbgjzF-Rgw_e">Hoặc đăng nhập tài khoản:</h2>
+                                    <div class="btnContainer__3Ldc1PXDuChiV56wYQugYC">
+                                        <div class="btnContainerItem__3kFJlOyX7257vaaAwEWbPP">
+                                            <a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u socialAuthButton__37xPl0ozPFfWqDPqxOZliK" href="${GOOGLE_OAUTH_LINK}"><img alt="Log in with Google" src="<c:url value="/Resources/Home/img/google-login.svg" />" class="icon__2vDktWxPDSLCOvKmj71yjI" /></a>
+                                        </div>
+                                        <div class="btnContainerItem__3kFJlOyX7257vaaAwEWbPP">
+                                            <a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u socialAuthButton__37xPl0ozPFfWqDPqxOZliK" href="${FACEBOOK_OAUTH_LINK}"><img alt="Log in with Facebook" src="<c:url value="/Resources/Home/img/facebook-login.svg" />" class="icon__2vDktWxPDSLCOvKmj71yjI" /></a>
+                                        </div>
+                                        <div class="btnContainerItem__3kFJlOyX7257vaaAwEWbPP">
+                                            <a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u socialAuthButton__37xPl0ozPFfWqDPqxOZliK" href="https://www.codecademy.com/users/auth/github?scope=public_repo%2Cuser%3Aemail"><img alt="Log in with Github" src="<c:url value="/Resources/Home/img/github-login.svg" />" class="icon__2vDktWxPDSLCOvKmj71yjI" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-              </li>
-
-              
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav absolute-right">
-              <li class="nav-item">
-                <a href="login.jsp" class="nav-link">Login</a>
-              </li>
-              <li class="nav-item">
-                <a href="register.jsp" class="nav-link">Register</a>
-              </li>
-            </ul>
-            
-          </div>
-        </div>
-      </nav>
-    </header>
-    <!-- END header -->
-
-    <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_1.jpg);">
-      <div class="container">
-        <div class="row align-items-center site-hero-inner justify-content-center">
-          <div class="col-md-8 text-center">
-
-            <div class="mb-5 element-animate">
-              <h1>Learn From Doing</h1>
-              <p class="lead">Learn something new every day with skwela lorem ipsum dolor sit amet.</p>
-              <p><a href="register.jsp" class="btn btn-primary">Sign up and get a 7-day free trial</a></p>
             </div>
-
-            
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
-
-    <section class="school-features d-flex" style="background-image: url(images/big_image_3.jpg);">
-
-      <div class="inner">
-        <div class="media d-block feature">
-          <div class="icon"><span class="flaticon-video-call"></span></div>
-          <div class="media-body">
-            <h3 class="mt-0">Online trainings from experts</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora fuga suscipit numquam esse saepe quam, eveniet iure assumenda dignissimos aliquam!</p>
-          </div>
-        </div>
-
-        <div class="media d-block feature">
-          <div class="icon"><span class="flaticon-student"></span></div>
-          <div class="media-body">
-            <h3 class="mt-0">Learn anywhere in the world</h3>
-            <p>Delectus fuga voluptatum minus amet, mollitia distinctio assumenda voluptate quas repellat eius quisquam odio. Aliquam, laudantium, optio? Error velit, alias.</p>
-          </div>
-        </div>
-
-        <div class="media d-block feature">
-          <div class="icon"><span class="flaticon-video-player-1"></span></div>
-          <div class="media-body">
-            <h3 class="mt-0">Creative learning video</h3>
-            <p>Delectus fuga voluptatum minus amet, mollitia distinctio assumenda voluptate quas repellat eius quisquam odio. Aliquam, laudantium, optio? Error velit, alias.</p>
-          </div>
-        </div>
-
-
-        <div class="media d-block feature">
-          <div class="icon"><span class="flaticon-audiobook"></span></div>
-          <div class="media-body">
-            <h3 class="mt-0">Audio learning</h3>
-            <p>Harum, adipisci, aspernatur. Vero repudiandae quos ab debitis, fugiat culpa obcaecati, voluptatibus ad distinctio cum soluta fugit sed animi eaque?</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
-	<section class="site-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center">
-            <h2>Top Courses</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum magnam illum maiores adipisci pariatur, eveniet.</p>
-          </div>
-        </div>
-        <div class="row top-course">
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="courses-webdev.jsp" class="course">
-              <img src="images/webdesign.jpg" alt="Image placeholder">
-              <h2>Web Design 101</h2>
-              <p>Enroll Now</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="course">
-              <img src="images/wordpress.jpg" alt="Image placeholder">
-              <h2>Learn How To Develop WordPress Plugin</h2>
-              <p>Enroll Now</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="course">
-              <img src="images/javascript.jpg" alt="Image placeholder">
-              <h2>JavaScript 101</h2>
-              <p>Enroll Now</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="course">
-              <img src="images/photoshop.jpg" alt="Image placeholder">
-              <h2>Photoshop Design 101</h2>
-              <p>Enroll Now</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="course">
-              <img src="images/reactjs.jpg" alt="Image placeholder">
-              <h2>Learn Native ReactJS</h2>
-              <p>Enroll Now</p>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-            <a href="#" class="course">
-              <img src="images/angularjs.jpg" alt="Image placeholder">
-              <h2>Learn AngularJS 2</h2>
-              <p>Enroll Now</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
-  
-    <section class="overflow">
-      <div class="container">
-        <div class="row justify-content-center align-items-center">
-          
-          
-          <div class="col-lg-7 order-lg-3 order-1 mb-lg-0 mb-5">
-            <img src="images/person_testimonial_1.jpg" alt="Image placeholder" class="img-md-fluid">
-          </div>
-          <div class="col-lg-1 order-lg-2"></div>
-          <div class="col-lg-4 order-lg-1 order-2 mb-lg-0 mb-5">
-            <blockquote class="testimonial">
-              &ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt nihil ab cumque molestiae commodi. &rdquo;
-            </blockquote>
-            <p>&mdash; John Doe, Certified ReactJS Student</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
-  
-    <footer class="site-footer" style="background-image: url(images/big_image_3.jpg);">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-4">
-            <h3>About</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
-          </div>
-          <div class="col-md-6 ml-auto">
-            <div class="row">
-              <div class="col-md-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Company</a></li>
-                  <li><a href="#">Teachers</a></li>
-                  <li><a href="#">Courses</a></li>
-                  <li><a href="#">Categories</a></li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Company</a></li>
-                  <li><a href="#">Teachers</a></li>
-                  <li><a href="#">Courses</a></li>
-                  <li><a href="#">Categories</a></li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Company</a></li>
-                  <li><a href="#">Teachers</a></li>
-                  <li><a href="#">Courses</a></li>
-                  <li><a href="#">Categories</a></li>
-                </ul>
-              </div>
+            <div class="ctaSection__36_vX81vkCA8SpLCytuVZ3">
+                <div class="container__t9cGpmzkTfzuZwSMDtCbX"><img src="<c:url value="/Resources/Home/img/ad31cc5d0e772afeb709ff2eb8533388.svg" />" alt="" class="intersectingOvalsImg__1gExzHIE5Mn2S0LJqwsUVm"><img src="<c:url value="/Resources/Home/img/22ec3e0cc58cb2335431228f470553ae.svg" />" alt="" class="pieChartImg__1uArqVg9AvfqchFXiz4AuY"><img src="<c:url value="/Resources/Home/img/75e370504e7e835443ce65fa47062325.svg" />" alt="" class="togglesImg__2t3KchlrgDHtt14jpQckcK">
+                    <div class="ctaSectionContent__2ritis0K0nd-ZVgDtf4eDw">
+                        <h2 class="ctaHeader__2rtm70gsy41omgpzTodBkn">It’s time to start <br> investing in yourself</h2>
+                        <p class="ctaContent__-GIe7aYRIo8D0yKMcml_d">Because learning to code might be the easiest way to change your career.</p><a data-btn="true" aria-label="Get Started with Codecademy" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 large__3uWKqXQr23vJ_9n9mwRvVa outline__1jukYfNsJOsNuah6o7d8HZ round__1_1AZP9jaqNLqK0tnoeljL ctaButton__8PFyoYkGc0t8vM3ApK1c7" href="https://www.codecademy.com/register">Get Started</a></div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- END footer -->
-    
-    <!-- loader -->
-    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
-
-    <script src="Resources/js/jquery-3.2.1.min.js"></script>
-    <script src="Resources/js/jquery-migrate-3.0.0.js"></script>
-    <script src="Resources/js/popper.min.js"></script>
-    <script src="Resources/js/bootstrap.min.js"></script>
-    <script src="Resources/js/owl.carousel.min.js"></script>
-    <script src="Resources/js/jquery.waypoints.min.js"></script>
-    <script src="Resources/js/jquery.stellar.min.js"></script>
-
-    
-    <script src="Resources/js/main.js"></script>
-  </body>
-</html>
+        </main>
