@@ -16,7 +16,7 @@ public class LogUtils {
 			session = HibernateConfiguration.getInstance().openSession();
 			trans = session.beginTransaction();
 			AdminLogs log = new AdminLogs();
-			log.setAdminId((Admin) session.get(Admin.class, adminID));
+			log.setAdmin((Admin) session.get(Admin.class, adminID));
 			log.setLogContent(content);
 			session.save(log);
 			HibernateConfiguration.getInstance().commitTransaction(trans);

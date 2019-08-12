@@ -33,7 +33,7 @@ public class AdminDAO extends AbstractDAO {
 		super(Admin.class);
 	}
 
-	public List<Admin> fillAll(Boolean isDeleted) {
+	public List<Admin> fillAll( ) {
 		Session session = null;
 		List<Admin> list = null;
 		try {
@@ -264,25 +264,4 @@ public class AdminDAO extends AbstractDAO {
 		return obj;
 	}
 
-	public List findadminByCompanyID(Integer companyID) {
-		Session session = null;
-		List list = null;
-		try {
-			session = HibernateConfiguration.getInstance().openSession();
-			if (session != null) {
-				Criteria cr = session.createCriteria(Admin.class);
-				cr.createAlias("companyID", "companyID", JoinType.LEFT_OUTER_JOIN);
-				cr.createAlias("adminRoleId", "adminRoleId", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("companyID", FetchMode.JOIN);
-				cr.setFetchMode("adminRoleId", FetchMode.JOIN);
-				cr.add(Restrictions.eq("companyID.id", companyID));
-				list = (List<Admin>) cr.list();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			HibernateConfiguration.getInstance().closeSession(session);
-		}
-		return list;
-	}
 }

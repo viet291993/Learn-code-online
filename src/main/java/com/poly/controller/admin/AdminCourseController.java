@@ -17,7 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.poly.bean.Alert;
 import com.poly.dao.CourseDAO;
+import com.poly.dao.LanguageDAO;
+import com.poly.dao.LessionTypeDAO;
 import com.poly.entity.Course;
+import com.poly.entity.Language;
+import com.poly.entity.LessionType;
 import com.poly.utils.LogUtils;
 import com.poly.utils.StaticEnum;
 
@@ -82,4 +86,15 @@ public class AdminCourseController {
 		mm.put("COURSE", course);
 		return new ModelAndView("Ajax.AdminListCourseSyllabus");
 	}
+	
+	/* Setting */
+	@RequestMapping(value = "/Setting", method = RequestMethod.GET)
+	public String Setting(ModelMap mm) {
+		List<Language> list_language = new LanguageDAO().fillAll();
+		mm.put("LIST_LANGUAGE", list_language);
+		List<LessionType> list_lessionType = new LessionTypeDAO().fillAll();
+		mm.put("LIST_LESSIONTYPE", list_lessionType);
+		return "AdminSettingCourse";
+	}
+	
 }

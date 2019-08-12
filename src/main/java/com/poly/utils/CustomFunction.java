@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -552,6 +553,27 @@ public class CustomFunction {
 			code = "0" + code;
 		}
 		return text + code;
+	}
+
+	public static String generateExpiredDate(Date time) {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("<span class='");
+		Date timeCurrent = new Date();
+		if (time != null) {
+			if (time.before(timeCurrent)) {
+				sb.append("text-danger'> Đã hết hạn </span>");
+			} else {
+				Calendar c1 = Calendar.getInstance();
+				Calendar c2 = Calendar.getInstance();
+				c1.setTime(timeCurrent);
+				c2.setTime(time);
+				long noDay = (c2.getTime().getTime() - c1.getTime().getTime()) / (24 * 3600 * 1000);
+				sb.append("text-primary'> Còn ").append(noDay).append(" ngày  </span>");
+			}
+		}else {
+			sb.append("text-warning'> Chưa đăng ký </span>");
+		}
+		return sb.toString();
 	}
 
 }

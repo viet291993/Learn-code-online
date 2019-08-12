@@ -3,6 +3,8 @@ package com.poly.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +32,8 @@ public class Admin implements java.io.Serializable {
 	private String name;
 	private boolean isActive;
 	private boolean isDeleted;
+	private List<AdminLogs> adminLogs;
+	
 
 	public Admin() {
 	}
@@ -99,4 +104,14 @@ public class Admin implements java.io.Serializable {
 	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "admin")
+	public List<AdminLogs> getAdminLogs() {
+		return adminLogs;
+	}
+
+	public void setAdminLogs(List<AdminLogs> adminLogs) {
+		this.adminLogs = adminLogs;
+	}
+	
 }

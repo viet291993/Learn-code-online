@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.poly.bean.Alert;
-import com.poly.bean.Pager;
 import com.poly.dao.AdminDAO;
+import com.poly.dao.AdminLogsDAO;
 import com.poly.dao.AdminModuleDAO;
 import com.poly.dao.AdminModuleInRoleDAO;
 import com.poly.dao.AdminRoleDAO;
@@ -126,7 +126,7 @@ public class AdminPermissionController {
 
 	@RequestMapping(value = "/ListAdmin", method = RequestMethod.GET)
 	public String ListAdmin(ModelMap mm) {
-		List result = new AdminDAO().fillAll(true);
+		List result = new AdminDAO().fillAll();
 		mm.put("ITEMS_LIST", result);
 		return "AdminListAdmin";
 	}
@@ -134,7 +134,7 @@ public class AdminPermissionController {
 	@RequestMapping(value = "/ListAdmin/Ajax", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView ListAdminAjax(ModelMap mm) {
-		List result = new AdminDAO().fillAll(true);
+		List result = new AdminDAO().fillAll();
 		mm.put("ITEMS_LIST", result);
 		return new ModelAndView("Ajax.AdminListAdmin");
 	}
@@ -406,5 +406,12 @@ public class AdminPermissionController {
 			LogUtils.logs(admId, "Cập nhật trạng thái module không thành công");
 			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR,"Đã xảy ra lỗi","Vui lòng thử lại sau!"));
 		}
+	}
+	
+	@RequestMapping(value = "/Logger", method = RequestMethod.GET)
+	public String Logger(ModelMap mm) {
+		List result = new AdminLogsDAO().findAll();
+		mm.put("ITEMS_LIST", result);
+		return "AdminLogger";
 	}
 }

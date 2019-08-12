@@ -23,7 +23,7 @@ public class AdminLogs implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1555781330310552538L;
 	private int id;
-	private Admin adminId;
+	private Admin admin;
 	private String logContent;
 	private Date createdDate;
 
@@ -45,14 +45,14 @@ public class AdminLogs implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "AdminID")
-	public Admin getAdminId() {
-		return this.adminId;
+	public Admin getAdmin() {
+		return this.admin;
 	}
 
-	public void setAdminId(Admin adminId) {
-		this.adminId = adminId;
+	public void setAdmin(Admin adminId) {
+		this.admin = adminId;
 	}
 
 	@Column(name = "LogContent")
