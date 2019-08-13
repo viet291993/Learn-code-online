@@ -24,7 +24,10 @@
     <definition name="HomeLessionProject" template="/Views/Home/Learn/lession_project.jsp">
     </definition>
     
-    <definition name="HomeLessionProjectAjax" template="/Views/Home/Learn/lession_project_ajax.jsp">
+    <definition name="HomeLessionProjectAjaxResult" template="/Views/Home/Learn/lession_project_ajax_result.jsp">
+    </definition>
+    
+    <definition name="HomeLessionProjectAjaxButton" template="/Views/Home/Learn/lession_project_ajax_button.jsp">
     </definition>
     
     <definition name="HomeLessionQuiz" template="/Views/Home/Learn/lession_quiz.jsp">

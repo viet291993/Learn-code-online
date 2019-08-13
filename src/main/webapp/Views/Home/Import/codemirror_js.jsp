@@ -31,4 +31,8 @@
 <!-- js -->
 <script src="<c:url value="/Resources/Admin/js/main.js" />"
 	type="text/javascript"></script>
-</head>
+<style>
+	.cm-s-custom.CodeMirror {
+		height: 100%;
+	}
+</style>

@@ -140,7 +140,7 @@ public class Course implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Language_id", nullable = false)
 	public Language getLanguage() {
 		return this.language;

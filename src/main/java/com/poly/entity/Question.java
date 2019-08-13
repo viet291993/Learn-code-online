@@ -29,15 +29,16 @@ public class Question implements java.io.Serializable {
 	private static final long serialVersionUID = 4965841764265309538L;
 	private Integer id;
 	private Lession lession;
-	private String instruction;
-	private String hint;
-	private String result;
+	private String title;
+	private String content;
 	private Integer orderDisplay;
 	private String description;
+	private String fileName;
 	private String defaultCode;
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
+	private Set<QuestionInstruction> instruction = new HashSet<QuestionInstruction>(0);
 	private Set<Quiz> quizs = new HashSet<Quiz>(0);
 	private Set<RecordQuestion> recordQuestions = new HashSet<RecordQuestion>(0);
 
@@ -66,31 +67,22 @@ public class Question implements java.io.Serializable {
 		this.lession = lession;
 	}
 
-	@Column(name = "instruction")
-	public String getInstruction() {
-		return this.instruction;
+	@Column(name = "content")
+	public String getContent() {
+		return this.content;
 	}
 
-	public void setInstruction (String instruction) {
-		this.instruction = instruction;
+	public void setContent (String content) {
+		this.content = content;
+	}
+	
+	@Column(name = "title")
+	public String getTitle() {
+		return this.title;
 	}
 
-	@Column(name = "hint")
-	public String getHint() {
-		return this.hint;
-	}
-
-	public void setHint (String hint) {
-		this.hint = hint;
-	}
-
-	@Column(name = "result")
-	public String getResult() {
-		return this.result;
-	}
-
-	public void setResult (String result) {
-		this.result = result;
+	public void setTitle (String title) {
+		this.title = title;
 	}
 
 	@Column(name = "orderDisplay")
@@ -111,6 +103,15 @@ public class Question implements java.io.Serializable {
 		this.description = description;
 	}
 
+	@Column(name = "fileName")
+	public String getFileName() {
+		return this.fileName;
+	}
+
+	public void setFileName (String fileName) {
+		this.fileName = fileName;
+	}
+	
 	@Column(name = "default_code")
 	public String getDefaultCode() {
 		return this.defaultCode;
@@ -147,6 +148,15 @@ public class Question implements java.io.Serializable {
 		this.isDeleted = isDeleted;
 	}
 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "question")
+	public Set<QuestionInstruction> getInstruction() {
+		return this.instruction;
+	}
+
+	public void setInstruction(Set<QuestionInstruction> instruction) {
+		this.instruction = instruction;
+	}
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
 	public Set<Quiz> getQuizs() {
 		return this.quizs;

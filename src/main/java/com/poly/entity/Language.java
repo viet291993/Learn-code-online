@@ -27,6 +27,8 @@ public class Language implements java.io.Serializable {
 	private static final long serialVersionUID = -6046208921794533329L;
 	private Integer id;
 	private String name;
+	private String codeMirror;
+	private String codeJdoodle;
 	private boolean isDeleted;
 	private Set<Course> courses = new HashSet<Course>(0);
 
@@ -65,6 +67,23 @@ public class Language implements java.io.Serializable {
 		this.name = name;
 	}
 
+	@Column(name = "codeMirror", nullable = false)
+	public String getCodeMirror() {
+		return this.codeMirror;
+	}
+
+	public void setCodeMirror(String codeMirror) {
+		this.codeMirror = codeMirror;
+	}
+	
+	@Column(name = "codeJdoodle", nullable = false)
+	public String getCodeJdoodle() {
+		return this.codeJdoodle;
+	}
+
+	public void setCodeJdoodle(String codeJdoodle) {
+		this.codeJdoodle = codeJdoodle;
+	}
 
 	@Column(name = "isDeleted", nullable = false)
 	public boolean isIsDeleted() {

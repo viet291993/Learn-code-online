@@ -37,5 +37,6 @@
         <mapping class="com.poly.entity.AdminModule"/>
         <mapping class="com.poly.entity.LessionType"/>
         <mapping class="com.poly.entity.Language"/>
+        <mapping class="com.poly.entity.QuestionInstruction"/>
     </session-factory>
 </hibernate-configuration>
