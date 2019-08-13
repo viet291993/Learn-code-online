@@ -17,6 +17,16 @@ $(document).on('click', '.btn-send-ajax-alert', function () {
     }
 });
 
+$(document).on('click', '.btn-send-ajax-2', function () {
+    var url = $(this).data('controller');
+    if (url) {
+        sendAjax(url, 'GET', null, function (data) {
+            reloadAjaxContent();
+            reloadAjaxContent2();
+        });
+    }
+});
+
 function sendAjax(url, type, data, handle) {
     $.ajax({
         url: url,
@@ -45,10 +55,18 @@ function sendAjaxWithJsonObj(url, type, data, handle) {
         }
     });
 }
+
 function reloadAjaxContent() {
     var url = $('#reloadController').val();
     sendAjax(url, 'GET', null, function (data) {
         $('.ajax-content').html(data);
+    });
+}
+
+function reloadAjaxContent2() {
+    var url = $('#reloadController2').val();
+    sendAjax(url, 'GET', null, function (data) {
+        $('.ajax-content-2').html(data);
     });
 }
 

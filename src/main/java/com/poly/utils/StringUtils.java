@@ -100,4 +100,13 @@ public class StringUtils {
         }
         return sb.toString();
     }
+    
+    public static boolean equalsCode(String input, String result) {
+    	input = input.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
+    	result = result.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
+    	if (input.toLowerCase().contains(result.toLowerCase())) {
+    		return true;
+    	}
+    	return false;
+    }
 }

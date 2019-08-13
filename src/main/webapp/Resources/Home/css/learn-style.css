@@ -3403,7 +3403,7 @@ a.fcn-button:hover {
 	width: 14px;
 	height: 14px;
 	background-size: 14px 14px;
-	background-image: url(/assets/francine/spinner.svg);
+	background-image: url(../img/spinner.svg);
 	-webkit-animation-name: spinner;
 	animation-name: spinner;
 	-webkit-animation-iteration-count: infinite;
@@ -3714,6 +3714,7 @@ a.fcn-button:hover {
 	font-family: Consolas, monospace;
 	line-height: 25px;
 	height: 100%;
+	padding-top: 8px;
 }
 
 .CodeMirror-simplescroll-vertical {
@@ -3746,4 +3747,12 @@ a.fcn-button:hover {
 		url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAATlBMVEVHcEz///////////////////////////////////////////////////////////////////////////////////////////////////+IpfdaAAAAGXRSTlMADhHHamP9zNT+AmUEp6BCQdvaqpQDZpyhrCx+5gAAAUpJREFUaN7t2NlygzAMQFFDF0TSNntb//+P1qwFrORJ1y/R/QBONIOY2CF4nud5IRx3vPH2/vnBGzHSSmfQymCwymSQyr6djNge8Dli+2rxwNvjOfYmv/q3xucIQZoaN4LEtUIYCVkpiNEhC4UxemRWIGNARoUyRqRXMGNCksIZMxJPiz3/DhASsTk0xN7IEcDIEMLYIoixRc5VASQ2dQEEUfJXGFCUZbRXFMRe0RBzRUWsFR0xVi6N3rXACcjznqjd9c6uXSyV6kX/bEgooNgidxRjRFesEVUxRzTFHlEUAMkVAgnVuQCyOKthyNYgkMwAkNywRxTDHFnekZ0gZHUHMO+LcMb/VgpozIqQxqQIaoyKsMagCGz0itBGpwhuJOXHfM+Vu/AbPodRB/M7fe0/8Bc+x0IhjUlhjUGhjU7hjaQc/RToeZ6X+gPrxlp9Qs6HYQAAAABJRU5ErkJggg==')
 		50% 50% no-repeat;
 	background-size: 100%;
+}
+
+.CodeMirror-wrap pre {
+	padding-left: 12px;
+}
+
+#i-expand,#i-collapse {
+	max-width: 200px;
 }

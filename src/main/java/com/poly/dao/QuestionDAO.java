@@ -1,9 +1,12 @@
 package com.poly.dao;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 
 import com.poly.config.HibernateConfiguration;
 import com.poly.entity.Lession;
@@ -48,6 +51,77 @@ public class QuestionDAO extends AbstractDAO{
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("lession", lessionId));
 				cr.add(Restrictions.eq("orderDisplay", order));
+				question = (Question) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return question;
+	}
+	
+	public Question findQuestionEager(Lession lessionId, Integer order) {
+		Session session = null;
+		Question question = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Question.class);
+				cr.createAlias("lession", "les", JoinType.INNER_JOIN);
+				cr.createAlias("les.syllabus", "syl", JoinType.INNER_JOIN);
+				cr.createAlias("syl.course", "cou", JoinType.INNER_JOIN);
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("lession", lessionId));
+				cr.add(Restrictions.eq("orderDisplay", order));
+				question = (Question) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return question;
+	}
+	
+	public Integer getCountQuestion(Lession lessionId) {
+		Session session = null;
+		Integer count = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Question.class);
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("lession", lessionId));
+				cr.setProjection(Projections.rowCount());
+				count = ((Long) cr.uniqueResult()).intValue();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return count;
+	}
+	
+	public Question findQuestion(Integer questionId) {
+		Session session = null;
+		Question question = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Question.class);
+				cr.createAlias("lession", "les", JoinType.INNER_JOIN);
+				cr.setFetchMode("les", FetchMode.SELECT);
+				cr.createAlias("les.syllabus", "syl", JoinType.INNER_JOIN);
+				cr.setFetchMode("syl", FetchMode.SELECT);
+				cr.createAlias("syl.course", "cou", JoinType.INNER_JOIN);
+				cr.setFetchMode("cou", FetchMode.SELECT);
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("id", questionId));
 				question = (Question) cr.uniqueResult();
 			}
 		} catch (Exception e) {

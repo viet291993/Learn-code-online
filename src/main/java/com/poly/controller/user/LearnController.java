@@ -1,7 +1,5 @@
 package com.poly.controller.user;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +22,9 @@ import com.poly.entity.Course;
 import com.poly.entity.Jdoodle;
 import com.poly.entity.Lession;
 import com.poly.entity.Question;
+import com.poly.entity.QuestionInstruction;
 import com.poly.utils.Execute;
+import com.poly.utils.StringUtils;
 
 @Controller
 @RequestMapping(value = { "/learn", "/hoc" })
@@ -59,7 +58,8 @@ public class LearnController {
 			mm.put("SELECTED_LESSION", lession);
 			if (lession.getLessionType().getCode() != null) {
 				if (lession.getLessionType().getCode().equals("L") || lession.getLessionType().getCode().equals("P")) {
-					mm.put("SELECTED_QUESTION", new QuestionDAO().findFirstQuestionByLession(lession));
+					mm.put("SELECTED_QUESTION", new QuestionDAO().findQuestionEager(lession, 1));
+					mm.put("QUESTION_COUNT", new QuestionDAO().getCountQuestion(lession));
 					return new ModelAndView("HomeLessionProject");
 				} else if (lession.getLessionType().getCode().equals("Q")){
 					Question question = new QuestionDAO().findFirstQuestionByLession(lession);
@@ -73,21 +73,44 @@ public class LearnController {
 	}
 	
 	@RequestMapping(value = "/execute", method = RequestMethod.POST)
-	public void execute(@CookieValue(value = "lang", defaultValue = "vi") String lang, @RequestParam("code") String code,
+	public void execute(@CookieValue(value = "lang", defaultValue = "vi") String lang, @RequestParam("code") String code, @RequestParam("questionId") Integer questionId,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
-		session.setAttribute("TEMP_RESULT", Execute.execute(code, "java"));
+		Question question = new QuestionDAO().findQuestion(questionId);
+		session.setAttribute("SESSION_QUESTION_COUNT", new QuestionDAO().getCountQuestion(question.getLession()));
+		Jdoodle jdoodle = Execute.execute(code, question.getLession().getSyllabus().getCourse().getLanguage().getCodeJdoodle());
+		session.setAttribute("JDOODLE", jdoodle);
+		if (jdoodle.getCpuTime() != null && jdoodle.getStatusCode().equals("200")) {
+			boolean rs = true;
+			for (QuestionInstruction questionInstruction : question.getInstruction()) {
+				if (!StringUtils.equalsCode(jdoodle.getOutput(), questionInstruction.getResult())) {
+					rs = false;
+				}
+			}
+			session.setAttribute("SESSION_IS_TRUE", rs); 
+		} else {
+			session.setAttribute("SESSION_IS_TRUE", false);
+		}
 	}
 	
 	@RequestMapping(value = "/ajax", method = RequestMethod.GET)
 	public ModelAndView load_result(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
-		System.out.println("temp result: " + session.getAttribute("TEMP_RESULT"));
-		System.out.println("reload result");
-		if (session.getAttribute("TEMP_RESULT") != null) {
-			Jdoodle jd = new Gson().fromJson((String) session.getAttribute("TEMP_RESULT"), Jdoodle.class);
-			mm.put("RESULT", jd.getOutput());
-			session.removeAttribute("TEMP_RESULT");
+		if (session.getAttribute("JDOODLE") != null) {
+			mm.put("RESULT", ((Jdoodle) session.getAttribute("JDOODLE")).getOutput());
+			session.removeAttribute("SESSION_RESULT");
 		}
-		return new ModelAndView("HomeLessionProjectAjax");
+		return new ModelAndView("HomeLessionProjectAjaxResult");
+	}
+	
+	@RequestMapping(value = "/ajax2", method = RequestMethod.GET)
+	public ModelAndView load_button(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		if (session.getAttribute("SESSION_IS_TRUE") != null) {
+			mm.put("ISTRUE", session.getAttribute("SESSION_IS_TRUE"));
+			session.removeAttribute("SESSION_IS_TRUE");
+			mm.put("QUESTION_COUNT", session.getAttribute("SESSION_QUESTION_COUNT"));
+			session.removeAttribute("SESSION_QUESTION_COUNT");
+		}
+		return new ModelAndView("HomeLessionProjectAjaxButton");
 	}
 }
