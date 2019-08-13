@@ -21,6 +21,10 @@ public class StringUtils {
     public static boolean isEmpty(String input) {
         return input == null || input.trim().length() == 0;
     }
+    
+    public static boolean isEmpty(Object input) {
+        return input == null ;
+    }
 
     public static String escapeHtmlEntity(String value) {
         String[] specialCharacters = {"<", ">", "&", "¢", "£", "¥", "€", "©", "®"};

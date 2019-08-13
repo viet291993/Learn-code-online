@@ -38,6 +38,7 @@ import com.google.gson.Gson;
 import com.poly.bean.Pager;
 import com.poly.dao.AdminDAO;
 import com.poly.dao.AdminRoleDAO;
+import com.poly.dao.LanguageDAO;
 import com.poly.entity.Admin;
 import com.poly.entity.AdminModuleInRole;
 
@@ -242,7 +243,10 @@ public class CustomFunction {
 	 */
 
 	public static String formatDate(Date date) {
-		return new SimpleDateFormat("MMMM dd, yyyy").format(date);
+		if (date != null) {
+			return new SimpleDateFormat("dd-MM-yyyy").format(date);
+		}
+		return "";
 	}
 
 	public static String customFormatDate(String format, Date date) {
@@ -293,6 +297,10 @@ public class CustomFunction {
 
 	public static List findAllAvailableRoleAdmin() {
 		return new AdminRoleDAO().findAll();
+	}
+	
+	public static List findAllLanguage() {
+		return new LanguageDAO().findAll();
 	}
 
 	public static List<AdminModuleInRole> filterModuleInRoleList(List<AdminModuleInRole> moduleInRoles,
@@ -570,10 +578,25 @@ public class CustomFunction {
 				long noDay = (c2.getTime().getTime() - c1.getTime().getTime()) / (24 * 3600 * 1000);
 				sb.append("text-primary'> Còn ").append(noDay).append(" ngày  </span>");
 			}
-		}else {
+		} else {
 			sb.append("text-warning'> Chưa đăng ký </span>");
 		}
 		return sb.toString();
 	}
 
+	public static String generateLessionTypy(String str1, String str2) {
+		final StringBuilder sb = new StringBuilder();
+		for (String s : str1.split(",")) {
+			sb.append("<div class='checkbox value'><label class='custom-control-label'>")
+					.append("<input class='custom-control-input value-property' type='checkbox' name='value' value='")
+					.append(s).append("'");
+			for (String i : str2.split(",")) {
+				if (s.equals(i)) {
+					sb.append(" checked");
+				}
+			}
+			sb.append("/>" + s + "</label></div></div>");
+		}
+		return sb.toString();
+	}
 }

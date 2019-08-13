@@ -8,16 +8,17 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <div class="modal-title">
                     <div class="content-title">
-                        <h3 class="text-center">Thêm mới khóa học</h3>
+                        <h3 class="text-center">Sửa thông tin khóa học</h3>
                     </div>
                 </div>
             </div>
-            <form id="form-insert-course" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Course/ListCourse/Insert'/>">
-                <div class="modal-body"> 
+            <form id="form-insert-course" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Course/ListCourse/Edit'/>">
+                <div class="modal-body">
+                   <input type="hidden" name="id" value="${SELECTED_LANGUAGE.id}"> 
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Tên khóa học</label>
                         <div class="col-sm-9">
-                            <input type="text" id="name" required name="name" class="form-control" placeholder="">
+                            <input type="text" id="name" required name="name" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.name}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -26,7 +27,7 @@
                         	<select class="form-control" required name="languageID">
                                 <option value="" selected disabled>--Lựa chọn ngôn ngữ--</option>
                                 <c:forEach items="${f:findAllLanguage()}" var="language">
-                                    <option value='${language.id}'>${language.name}</option>
+                                    <option  ${SELECTED_LANGUAGE.language.id==language.id?'selected':''} value='${language.id}'>${language.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -34,31 +35,31 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Miêu tả</label>
                         <div class="col-sm-9">
-                            <textarea  id="description" required name="description" class="form-control" placeholder=""></textarea>
+                            <textarea type="text" id="description" required name="description" class="form-control" placeholder="" >${SELECTED_LANGUAGE.description}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Nội dung</label>
                         <div class="col-sm-9">
-                            <textarea  id="content" required name="content" class="form-control" placeholder=""></textarea>
+                            <textarea id="content" required name="content" class="form-control" placeholder="" >${SELECTED_LANGUAGE.content}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Điều kiện</label>
                         <div class="col-sm-9">
-                            <input type="text" id="prerequisite"  name="prerequisite" class="form-control" placeholder="">
+                            <input type="text" id="prerequisite"  name="prerequisite" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.prerequisite}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Thời gian hoàn thành</label>
                         <div class="col-sm-9">
-                            <input type="text" id="timeToComplete" required name="timeToComplete" class="form-control" placeholder="">
+                            <input type="text" id="timeToComplete" required name="timeToComplete" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.timeToComplete}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Đường dẫn</label>
                         <div class="col-sm-9">
-                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" placeholder="">
+                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.nameAscii}">
                         </div>
                     </div>
                 </div>

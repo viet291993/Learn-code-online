@@ -8,34 +8,51 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <div class="modal-title">
                     <div class="content-title">
-                        <h3 class="text-center">Sửa thông tin tài khoản</h3>
+                        <h3 class="text-center">Sửa thông tin học viên</h3>
                     </div>
                 </div>
             </div>
             <div class="modal-body">
-                <form id="form-insert-module" class="form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Permission/ListAdmin/Edit'/>">
-                    <input type="hidden" name="id" value="${SELECTED_ADMIN.id}">
+                <form id="form-insert-module" class="form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Member/ListMember/Edit'/>">
+                    <input type="hidden" name="id" value="${MODULE_EDIT.id}">
                     <div class="form-group">
                         <label class="control-label col-sm-3">Tên</label>
                         <div class="col-sm-9">
-                            <input type="text" id="nameDataWarehouse" name="name" required  class="form-control" value="${SELECTED_ADMIN.name}" >
+                            <input type="text" id="nameDataWarehouse" name="name" required  class="form-control" value="${MODULE_EDIT.name}" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Tên đăng nhập</label>
                         <div class="col-sm-9">
-                            <input type="text" id="nameDataWarehouse" name="username" required  class="form-control" value="${SELECTED_ADMIN.user.username}" disabled>
+                            <input type="text" id="nameDataWarehouse" name="username" required  class="form-control" value="${MODULE_EDIT.user.username}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3">Quyền quản trị</label>
+                        <label class="control-label col-sm-3">Email</label>
                         <div class="col-sm-9">
-                            <select class="form-control" required name="adminRoleId">
-                                <option disabled>---${SELECTED_ADMIN.adminRole.name}---</option>
-                                <c:forEach items="${f:findAllAvailableRoleAdmin()}" var="role">
-                                    <option ${SELECTED_ADMIN.adminRole.id==role.id?'selected':''} value='${role.id}'>${role.name}</option>
-                                </c:forEach>
-                            </select>
+                            <input type="text" id="nameDataWarehouse" name="email" required  class="form-control" value="${MODULE_EDIT.email}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Địa chỉ</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nameDataWarehouse" name="address" required  class="form-control" value="${MODULE_EDIT.address}" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Ngày hết hạn dùng thử</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="trailExpiredDate" placeholder="dd-MM-yyyy" value="${f:formatDate(MODULE_EDIT.trailExpiredDate)}" 
+                                   pattern="(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))-(?:(?:0[1-9]|1[0-2])-(?:19|20)[0-9]{2}|^$" 
+                                   title="dd-MM-yyyy"/>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-sm-3">Ngày hết hạn PRO</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="proExpiredDate" placeholder="dd-MM-yyyy" value="${f:formatDate(MODULE_EDIT.proExpiredDate)}" 
+                                   pattern="(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))-(?:(?:0[1-9]|1[0-2])-(?:19|20)[0-9]{2}|^$" 
+                                   title="dd-MM-yyyy"/>
                         </div>
                     </div>
                     <div class="form-group text-center clearfix">
