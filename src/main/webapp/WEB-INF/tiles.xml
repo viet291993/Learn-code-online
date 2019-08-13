@@ -99,7 +99,9 @@
     <definition name="AdminListCourseSyllabus" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Course/list_course_syllabus.jsp" />
     </definition>
-    <definition name="Ajax.AdminListCourseSyllabus" template="/Views/Admin/Course/list_course_syllabus_ajax.jsp"/>	
+    <definition name="Ajax.AdminListCourseSyllabus" template="/Views/Admin/Course/list_course_syllabus_ajax.jsp"/>
+    <definition name="Ajax.AdminListCourseSyllabusInsertModal" template="/Views/Admin/Course/list_course_syllabus_insert_ajax.jsp"/>
+    <definition name="Ajax.AdminListCourseSyllabusEditModal" template="/Views/Admin/Course/list_course_syllabus_edit_ajax.jsp"/>	
     		<!-- ADMIN COURSE SETTING -->
     <definition name="AdminSettingCourse" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Course/setting_course.jsp" />
