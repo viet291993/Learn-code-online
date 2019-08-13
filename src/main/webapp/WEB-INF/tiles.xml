@@ -107,8 +107,8 @@
     <definition name="AdminSettingCourse" extends="AdminLayout">
         <put-attribute name="Content" value="/Views/Admin/Course/setting_course.jsp" />
     </definition>
-    <definition name="Ajax.AdminSettingCourseLessionType" template="/Views/Admin/Course/setting_course_lessionType_ajax.jsp"/>
-    <definition name="Ajax.AdminSettingCourseLanguage" template="/Views/Admin/Course/setting_course_language_ajax.jsp"/>
+   
+    <definition name="Ajax.AdminSettingCourse" template="/Views/Admin/Course/setting_course_ajax.jsp"/>
     		
     	<!--END AMIN COURSE -->	
     	

@@ -9,7 +9,7 @@
                 <th>Tên khóa học</th>
                 <th>Ngôn ngữ</th>
                 <th>Trạng thái</th>
-                <th></th>  
+                <th style="width: 15%"></th>  
                </tr>
              </thead>
              <tbody>
@@ -21,7 +21,7 @@
                             <td class="${course.isActive?'text-success':'text-danger'}">${course.isActive?'Bình thường':'Khóa'}</td>
                         	<td>
                         		<a class="btn btn-success btn-sm " data-toggle="tooltip" data-placement="top"  data-original-title="Thêm giáo trình cho khóa học" href="${CONTEXTPATH}/Admin/Course/ListCourse/Syllabus/${course.id}"><i class="fa fa-plus"></i></a>
-                        		<a class="btn btn-warning btn-sm " data-toggle="tooltip" data-placement="top"  data-original-title="Sửa khóa học" href="/Admin/Course/ListCourse/Edit/${course.id}"><i class="fa fa-edit"></i></a>
+                        		<a class="btn btn-warning btn-sm btn-open-modal" data-toggle="tooltip" data-placement="top"  data-original-title="Sửa khóa học" href="#"  data-controller="<c:url value='/Admin/Course/ListCourse/ViewEdit/${course.id}'/>"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger btn-sm  btn-send-ajax" data-toggle="tooltip" data-placement="top"  data-original-title="Xóa khóa học" href="javascript:void(0)" data-controller="<c:url value='/Admin/Course/ListCourse/Delete/${role.id}'/>"><i class="fa fa-trash"></i></a>
                         	</td>
                         </tr>

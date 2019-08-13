@@ -3,16 +3,12 @@ package com.poly.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.sql.JoinType;
 
 import com.poly.config.HibernateConfiguration;
 import com.poly.entity.Language;
-import com.poly.entity.Question;
 
 public class LanguageDAO extends AbstractDAO {
 
@@ -20,7 +16,7 @@ public class LanguageDAO extends AbstractDAO {
 		super(Language.class);
 	}
 
-	public List<Language> fillAll( ) {
+	public List<Language> fillAll() {
 		Session session = null;
 		List<Language> list = null;
 		try {
@@ -36,6 +32,23 @@ public class LanguageDAO extends AbstractDAO {
 			HibernateConfiguration.getInstance().closeSession(session);
 		}
 		return list;
+	}
+
+	@Override
+	public Language find(Integer id) {
+		Session session = null;
+		Language obj = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			Criteria cr = session.createCriteria(Language.class);
+			cr.add(Restrictions.eq("id", id));
+			obj = (Language) cr.uniqueResult();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return obj;
 	}
 
 }

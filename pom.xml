@@ -263,14 +263,14 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.1.0.jre8</version>
 		</dependency>
-		
+
 		<!-- Login with social -->
 		<dependency>
-            <groupId>com.github.scribejava</groupId>
-            <artifactId>scribejava-apis</artifactId>
-            <version>6.6.3</version>
-        </dependency>
-		
+			<groupId>com.github.scribejava</groupId>
+			<artifactId>scribejava-apis</artifactId>
+			<version>6.6.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

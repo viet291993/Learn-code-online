@@ -28,6 +28,7 @@ public class LessionType implements java.io.Serializable {
 	private Integer id;
 	private String name;
 	private String code;
+	private String input;
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Lession> lessions = new HashSet<Lession>(0);
@@ -63,6 +64,15 @@ public class LessionType implements java.io.Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+	
+	@Column(name = "input") 
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
 	}
 
 	@Column(name = "isActive", nullable = false)
