@@ -38,7 +38,7 @@ public class Question implements java.io.Serializable {
 	private String code;
 	private boolean isActive;
 	private boolean isDeleted;
-	private Set<QuestionInstruction> instruction = new HashSet<QuestionInstruction>(0);
+	private Set<QuestionInstruction> instructions = new HashSet<QuestionInstruction>(0);
 	private Set<Quiz> quizs = new HashSet<Quiz>(0);
 	private Set<RecordQuestion> recordQuestions = new HashSet<RecordQuestion>(0);
 
@@ -149,12 +149,12 @@ public class Question implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "question")
-	public Set<QuestionInstruction> getInstruction() {
-		return this.instruction;
+	public Set<QuestionInstruction> getInstructions() {
+		return this.instructions;
 	}
 
-	public void setInstruction(Set<QuestionInstruction> instruction) {
-		this.instruction = instruction;
+	public void setInstructions(Set<QuestionInstruction> instruction) {
+		this.instructions = instruction;
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")

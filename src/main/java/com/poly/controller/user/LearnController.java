@@ -18,6 +18,7 @@ import com.poly.dao.CourseDAO;
 import com.poly.dao.LessionDAO;
 import com.poly.dao.QuestionDAO;
 import com.poly.dao.QuizDAO;
+import com.poly.dao.SyllabusDAO;
 import com.poly.entity.Course;
 import com.poly.entity.Jdoodle;
 import com.poly.entity.Lession;
@@ -81,11 +82,13 @@ public class LearnController {
 		session.setAttribute("JDOODLE", jdoodle);
 		if (jdoodle.getCpuTime() != null && jdoodle.getStatusCode().equals("200")) {
 			boolean rs = true;
-			for (QuestionInstruction questionInstruction : question.getInstruction()) {
+			for (QuestionInstruction questionInstruction : question.getInstructions()) {
 				if (!StringUtils.equalsCode(jdoodle.getOutput(), questionInstruction.getResult())) {
 					rs = false;
 				}
 			}
+			if (rs)
+				session.setAttribute("SESSION_QUESTION", question);
 			session.setAttribute("SESSION_IS_TRUE", rs); 
 		} else {
 			session.setAttribute("SESSION_IS_TRUE", false);
@@ -110,7 +113,27 @@ public class LearnController {
 			session.removeAttribute("SESSION_IS_TRUE");
 			mm.put("QUESTION_COUNT", session.getAttribute("SESSION_QUESTION_COUNT"));
 			session.removeAttribute("SESSION_QUESTION_COUNT");
+			mm.put("SELECTED_QUESTION", session.getAttribute("SESSION_QUESTION"));
+			session.removeAttribute("SESSION_QUESTION");
 		}
 		return new ModelAndView("HomeLessionProjectAjaxButton");
+	}
+	
+	@RequestMapping(value = "/next", method = RequestMethod.POST)
+	public void nextQuestion(@CookieValue(value = "lang", defaultValue = "vi") String lang, HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session,
+			@RequestParam(value = "nameAscii") String nameAscii, @RequestParam(value = "nameAscii2") String nameAscii2, @RequestParam(value = "questionId") Integer questionId) {
+		Lession lession = new LessionDAO().findLessionByNameAscii2(nameAscii, nameAscii2, lang);
+		session.setAttribute("SESSION_LESSION", lession);
+		session.setAttribute("SESSION_QUESTION", new QuestionDAO().findQuestionEager(lession, questionId));
+	}
+	
+	@RequestMapping(value = "/next/ajax", method = RequestMethod.GET)
+	public ModelAndView nextQuestion_ajax(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		mm.put("SELECTED_LESSION", session.getAttribute("SESSION_LESSION"));
+		session.removeAttribute("SESSION_LESSION");
+		mm.put("SELECTED_QUESTION", session.getAttribute("SESSION_QUESTION"));
+		session.removeAttribute("SESSION_QUESTION");
+		return new ModelAndView("HomeLessionProjectAjax");
 	}
 }

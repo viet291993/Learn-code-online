@@ -54,7 +54,7 @@ public class CourseDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Course.class);
-				cr.createAlias("syllabuses", "syllabuses", JoinType.INNER_JOIN);
+				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
 				cr.setFetchMode("syllabuses", FetchMode.JOIN);
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
