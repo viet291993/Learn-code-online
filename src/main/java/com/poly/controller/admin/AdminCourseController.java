@@ -20,11 +20,13 @@ import com.poly.dao.CourseDAO;
 import com.poly.dao.LanguageDAO;
 import com.poly.dao.LessionDAO;
 import com.poly.dao.LessionTypeDAO;
+import com.poly.dao.QuestionDAO;
 import com.poly.dao.SyllabusDAO;
 import com.poly.entity.Course;
 import com.poly.entity.Language;
 import com.poly.entity.Lession;
 import com.poly.entity.LessionType;
+import com.poly.entity.Question;
 import com.poly.entity.Syllabus;
 import com.poly.utils.LogUtils;
 import com.poly.utils.StaticEnum;
@@ -328,6 +330,93 @@ public class AdminCourseController {
 		}
 	}
 	
+	/* Question */
+	@RequestMapping(value = "/ListCourse/Question/ViewInsert/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView ListCourseQuestionViewInsert(@PathVariable(value = "id") Integer id, ModelMap mm,
+			HttpSession session) {
+		Question question  = (Question) new QuestionDAO().findEager(id);
+		mm.put("SELECTED_LESSION", question);
+		return new ModelAndView("Ajax.AdminListCourseQuestionInsertModal");
+	}
+
+	@RequestMapping(value = "/ListCourse/Question/Insert", method = RequestMethod.POST)
+	@ResponseBody
+	public Pair InsertQuestion(@RequestBody Map module, ModelMap mm, HttpSession session) {
+		Map adminSession = (Map) session.getAttribute("ADMIN");
+		int myId = (int) adminSession.get("ADMIN_ID");
+		try {
+			new QuestionDAO().create(module);
+			LogUtils.logs(myId, "Tạo câu hỏi " + module.get("name") + " thành công");
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công", "Tạo câu hỏi thành công"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.logs(myId, "Tạo câu hỏi thất bại");
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Tạo câu hỏi không thành công"));
+		}
+	}
+
+	@RequestMapping(value = "/ListCourse/Question/ViewEdit/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView ListCourseQuestionViewEdit(@PathVariable(value = "id") Integer id, ModelMap mm,
+			HttpSession session) {
+		Question question = (Question) new QuestionDAO().findEager(id);
+		mm.put("SELECTED_LESSION", question);
+		return new ModelAndView("Ajax.AdminListCourseQuestionEditModal");
+	}
+
+	@RequestMapping(value = "/ListCourse/Question/Edit", method = RequestMethod.POST)
+	@ResponseBody
+	public Pair EditQuestion(@RequestBody Map module, ModelMap mm, HttpSession session) {
+		Map adminSession = (Map) session.getAttribute("ADMIN");
+		int myId = (int) adminSession.get("ADMIN_ID");
+		try {
+			new QuestionDAO().edit(module);
+			LogUtils.logs(myId, "Cập nhật câu hỏi " + module.get("name") + " thành công");
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công", "Cập nhật câu hỏi thành công"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.logs(myId, "Cập nhật câu hỏi thất bại");
+			return new Pair(0,
+					Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Cập nhật câu hỏi không thành công"));
+		}
+	}
+
+	@RequestMapping(value = "/ListCourse/Question/Delete/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Pair deleteQuestion(@PathVariable(value = "id") Integer id, ModelMap mm, HttpSession session) {
+		Map adminSession = (Map) session.getAttribute("ADMIN");
+		int admId = (int) adminSession.get("ADMIN_ID");
+		try {
+			new QuestionDAO().deleteQuestion(id);
+			LogUtils.logs(admId, "Xóa câu hỏi thành công");
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công", "Xóa câu hỏi thành công! " + id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.logs(admId, "Xóa câu hỏi không thành công");
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Vui lòng thử lại sau!"));
+		}
+	}
+
+	@RequestMapping(value = "/ListCourse/Question/ChangeStatus/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Pair changeStatusQuestion(@PathVariable(value = "id") Integer id, ModelMap mm, HttpSession session) {
+		Map adminSession = (Map) session.getAttribute("ADMIN");
+		int admId = (int) adminSession.get("ADMIN_ID");
+		try {
+			Question question = (Question) new QuestionDAO().find(id);
+			question.setIsActive(!question.isIsActive());
+			new SyllabusDAO().edit(question);
+			LogUtils.logs(admId, (question.isIsActive() ? "Hiện" : "Ẩn") + " câu hỏi " + question.getTitle()
+					+ " thành công " + id);
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công",
+					(question.isIsActive() ? "Hiện" : "Ẩn") + " câu hỏi " + question.getTitle() + " thành công!"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.logs(admId, "Cập nhật trạng thái câu hỏi không thành công");
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Vui lòng thử lại sau!"));
+		}
+	}
 	
 	/* Setting */
 	@RequestMapping(value = "/Setting", method = RequestMethod.GET)

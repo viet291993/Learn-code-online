@@ -8133,6 +8133,10 @@ a.text-dark:focus {
 .pl-52{
 	padding-left: 52px;
 }
+
+.pl-100{
+	padding-left: 100px;
+}
 .float-left;
 {
 	float: left;
@@ -8142,6 +8146,7 @@ a.text-dark:focus {
 {
 	float: right;
 }
+
 /* LOANGDING */
 .lds-spinner {
   color: official;
