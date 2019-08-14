@@ -410,7 +410,7 @@ public class AdminPermissionController {
 	
 	@RequestMapping(value = "/Logger", method = RequestMethod.GET)
 	public String Logger(ModelMap mm) {
-		List result = new AdminLogsDAO().findAll();
+		List result = new AdminLogsDAO().fillAllEager();
 		mm.put("ITEMS_LIST", result);
 		return "AdminLogger";
 	}

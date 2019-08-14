@@ -45,7 +45,7 @@ public class AdminLogs implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AdminID")
 	public Admin getAdmin() {
 		return this.admin;

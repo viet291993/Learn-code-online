@@ -8019,6 +8019,14 @@ a.text-danger:focus {
   color: #d43f3a;
 }
 
+.text-dark {
+  color: #777;
+}
+a.text-dark:hover,
+a.text-dark:focus {
+  color: #777;
+}
+
 /* Treeview */
 
 .tree, .tree ul {

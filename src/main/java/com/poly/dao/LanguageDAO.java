@@ -16,13 +16,14 @@ public class LanguageDAO extends AbstractDAO {
 		super(Language.class);
 	}
 
-	public List<Language> fillAll() {
+	public List<Language> findAll() {
 		Session session = null;
 		List<Language> list = null;
 		try {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Language.class);
+				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
 				list = (List<Language>) cr.list();
 			}

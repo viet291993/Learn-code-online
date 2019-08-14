@@ -30,7 +30,7 @@
                      <div class="form-group">
                         <label class="control-label col-sm-3">Khóa học</label>
                         <div class="col-sm-9">
-                            <label class="control-label"><b class="bold-red"> ${SELECTED_COURSE.name}</b></label>
+                            <label class="control-label"><b class="bold-red"> ${SELECTED_SYLLABUS.course.name}</b></label>
                             <input type="hidden" class="form-control" name="course" value='${SELECTED_SYLLABUS.course.id}' readonly>
                         </div>
                     </div>
