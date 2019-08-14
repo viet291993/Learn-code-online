@@ -21,10 +21,12 @@ import com.poly.dao.CourseDAO;
 import com.poly.dao.LanguageDAO;
 import com.poly.dao.LessionTypeDAO;
 import com.poly.dao.MemberDAO;
+import com.poly.dao.SyllabusDAO;
 import com.poly.entity.Course;
 import com.poly.entity.Language;
 import com.poly.entity.LessionType;
 import com.poly.entity.Member;
+import com.poly.entity.Syllabus;
 import com.poly.utils.LogUtils;
 import com.poly.utils.StaticEnum;
 
@@ -71,13 +73,13 @@ public class AdminCourseController {
 			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Tạo khóa học không thành công"));
 		}
 	}
-	
+
 	@RequestMapping(value = "/ListCourse/ViewEdit/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView getListCourseEditView(@PathVariable(value = "id") Integer id, ModelMap mm,
 			HttpSession session) {
 		Course module = (Course) new CourseDAO().find(id);
-		mm.put("SELECTED_LANGUAGE", module);
+		mm.put("SELECTED_COURSE", module);
 		return new ModelAndView("Ajax.AdminListCourseEditModal");
 	}
 
@@ -112,6 +114,59 @@ public class AdminCourseController {
 		Course course = new CourseDAO().findCourseByIDEager(id, lang);
 		mm.put("COURSE", course);
 		return new ModelAndView("Ajax.AdminListCourseSyllabus");
+	}
+
+	@RequestMapping(value = "/ListCourse/Syllabus/ViewInsert/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView ListCourseSyllabusViewInsert(@PathVariable(value = "id") Integer id, ModelMap mm,
+			HttpSession session) {
+		Course course = (Course) new CourseDAO().find(id);
+		mm.put("SELECTED_COURSE", course);
+		return new ModelAndView("Ajax.AdminListCourseSyllabusInsertModal");
+	}
+	
+	@RequestMapping(value = "/ListCourse/Syllabus/Insert", method = RequestMethod.POST)
+	@ResponseBody
+	public Pair InsertSyllabus(@RequestBody Map module, ModelMap mm, HttpSession session) {
+		Map adminSession = (Map) session.getAttribute("ADMIN");
+		int myId = (int) adminSession.get("ADMIN_ID");
+		try {
+			new SyllabusDAO().create(module);
+			LogUtils.logs(myId, "Tạo giáo trình " + module.get("name") + " thành công");
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công", "Tạo giáo trình thành công"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.logs(myId, "Tạo giáo trình thất bại");
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Tạo giáo trình không thành công"));
+		}
+	}
+	
+
+	@RequestMapping(value = "/ListCourse/Syllabus/ViewEdit/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView ListCourseSyllabusViewEdit(@PathVariable(value = "id") Integer id, ModelMap mm,
+			HttpSession session) {
+		Syllabus syllabus = (Syllabus) new SyllabusDAO().find(id);
+		Course course = (Course) new CourseDAO().find(syllabus.getCourse().getId());
+		mm.put("SELECTED_SYLLABUS", syllabus);
+		mm.put("SELECTED_COURSE", course);
+		return new ModelAndView("Ajax.AdminListCourseSyllabusEditModal");
+	}
+	
+	@RequestMapping(value = "/ListCourse/Syllabus/Edit", method = RequestMethod.POST)
+	@ResponseBody
+	public Pair EditSyllabus(@RequestBody Map module, ModelMap mm, HttpSession session) {
+		Map adminSession = (Map) session.getAttribute("ADMIN");
+		int myId = (int) adminSession.get("ADMIN_ID");
+		try {
+			new SyllabusDAO().edit(module);
+			LogUtils.logs(myId, "Cập nhật giáo trình " + module.get("name") + " thành công");
+			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công", "Cập nhật giáo trình thành công"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.logs(myId, "Cập nhật giáo trình thất bại");
+			return new Pair(0, Alert.createAlert(Alert.TYPE_ERROR, "Đã xảy ra lỗi", "Cập nhật giáo trình không thành công"));
+		}
 	}
 
 	/* Setting */

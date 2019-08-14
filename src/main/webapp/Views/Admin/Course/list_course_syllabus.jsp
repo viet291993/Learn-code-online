@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="f" uri="/WEB-INF/tlds/functions.tld" %>
-<input type="hidden" id="reloadController" value="<c:url value='/Admin/Permission/ListModule/Ajax'/>"><div class="">
+<input type="hidden" id="reloadController" value="<c:url value='/Admin/Course/ListCourse/Syllabus/Ajax/${COURSE.id}'/>"><div class="">
 	<div class="page-title">
 		<div class="title_left">
 			<h3>Quản lý khóa học </h3>

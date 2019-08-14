@@ -14,11 +14,11 @@
             </div>
             <form id="form-insert-course" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Course/ListCourse/Edit'/>">
                 <div class="modal-body">
-                   <input type="hidden" name="id" value="${SELECTED_LANGUAGE.id}"> 
+                   <input type="hidden" name="id" value="${SELECTED_COURSE.id}"> 
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Tên khóa học</label>
                         <div class="col-sm-9">
-                            <input type="text" id="name" required name="name" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.name}">
+                            <input type="text" id="name" required name="name" class="form-control" placeholder="" value="${SELECTED_COURSE.name}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -27,7 +27,7 @@
                         	<select class="form-control" required name="languageID">
                                 <option value="" selected disabled>--Lựa chọn ngôn ngữ--</option>
                                 <c:forEach items="${f:findAllLanguage()}" var="language">
-                                    <option  ${SELECTED_LANGUAGE.language.id==language.id?'selected':''} value='${language.id}'>${language.name}</option>
+                                    <option  ${SELECTED_COURSE.language.id==language.id?'selected':''} value='${language.id}'>${language.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -35,31 +35,31 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Miêu tả</label>
                         <div class="col-sm-9">
-                            <textarea type="text" id="description" required name="description" class="form-control" placeholder="" >${SELECTED_LANGUAGE.description}</textarea>
+                            <textarea type="text" id="description" required name="description" class="form-control" placeholder="" >${SELECTED_COURSE.description}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Nội dung</label>
                         <div class="col-sm-9">
-                            <textarea id="content" required name="content" class="form-control" placeholder="" >${SELECTED_LANGUAGE.content}</textarea>
+                            <textarea id="content" required name="content" class="form-control" placeholder="" >${SELECTED_COURSE.content}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Điều kiện</label>
                         <div class="col-sm-9">
-                            <input type="text" id="prerequisite"  name="prerequisite" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.prerequisite}">
+                            <input type="text" id="prerequisite"  name="prerequisite" class="form-control" placeholder="" value="${SELECTED_COURSE.prerequisite}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Thời gian hoàn thành</label>
                         <div class="col-sm-9">
-                            <input type="text" id="timeToComplete" required name="timeToComplete" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.timeToComplete}">
+                            <input type="text" id="timeToComplete" required name="timeToComplete" class="form-control" placeholder="" value="${SELECTED_COURSE.timeToComplete}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Đường dẫn</label>
                         <div class="col-sm-9">
-                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" placeholder="" value="${SELECTED_LANGUAGE.nameAscii}">
+                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" placeholder="" value="${SELECTED_COURSE.nameAscii}">
                         </div>
                     </div>
                 </div>
