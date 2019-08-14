@@ -107,8 +107,12 @@ public class StringUtils {
     
     public static boolean equalsCode(String input, String result) {
     	input = input.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
-    	result = result.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
-    	if (input.toLowerCase().contains(result.toLowerCase())) {
+    	String resultLower = result.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
+    	if (input.toLowerCase().contains(resultLower.toLowerCase())) {
+    		return true;
+    	}
+    	
+    	if (input.matches(result)) {
     		return true;
     	}
     	return false;

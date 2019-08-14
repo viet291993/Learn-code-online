@@ -70,6 +70,20 @@ function reloadAjaxContent2() {
     });
 }
 
+function reloadAjaxContent3() {
+    var url = $('#reloadController3').val();
+    sendAjax(url, 'GET', null, function (data) {
+        $('.ajax-content-3').html(data);
+    });
+}
+
+function reloadAjaxContent4() {
+    var url = $('#reloadController4').val();
+    sendAjax(url, 'GET', null, function (data) {
+        $('.ajax-content-4').html(data);
+    });
+}
+
 /*
 
 $(document).on('show.bs.dropdown', '.table-responsive', function () {
