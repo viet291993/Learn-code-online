@@ -125,6 +125,6 @@ public class Syllabus implements java.io.Serializable {
 
 	public void setLessions(Set<Lession> lessions) {
 		this.lessions = lessions;
-	}
+	} 
 
 }
