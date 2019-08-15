@@ -8137,6 +8137,12 @@ a.text-dark:focus {
 .pl-100{
 	padding-left: 100px;
 }
+.pt-10{
+	padding-top: 10px;
+}
+.mt-10{
+	margin-top: 10px;
+}
 .float-left;
 {
 	float: left;
@@ -8246,3 +8252,8 @@ a.text-dark:focus {
 	color: silver;
 	cursor: not-allowed;
 }
+.panel-title .fa{
+	display: inline !important;
+	color: #d9534f;
+}
+

@@ -68,6 +68,27 @@ public class LessionDAO extends AbstractDAO {
 		}
 		return syllabus;
 	}
+	
+	public Lession findLessionType(Integer id) {
+		Session session = null;
+		Lession syllabus = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Lession.class);
+				cr.createAlias("lessionType", "lessionType", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("lessionType", FetchMode.JOIN);
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("id", id));
+				syllabus = (Lession) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return syllabus;
+	}
 
 	public Integer create(Map module) throws Exception {
 		Transaction trans = null;

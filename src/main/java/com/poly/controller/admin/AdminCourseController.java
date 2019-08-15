@@ -318,7 +318,7 @@ public class AdminCourseController {
 		try {
 			Lession lession = (Lession) new LessionDAO().find(id);
 			lession.setIsActive(!lession.isIsActive());
-			new SyllabusDAO().edit(lession);
+			new LessionDAO().edit(lession);
 			LogUtils.logs(admId, (lession.isIsActive() ? "Hiện" : "Ẩn") + " bài học " + lession.getName()
 					+ " thành công " + id);
 			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công",
@@ -335,8 +335,8 @@ public class AdminCourseController {
 	@ResponseBody
 	public ModelAndView ListCourseQuestionViewInsert(@PathVariable(value = "id") Integer id, ModelMap mm,
 			HttpSession session) {
-		Question question  = (Question) new QuestionDAO().findEager(id);
-		mm.put("SELECTED_LESSION", question);
+		Lession lession  = (Lession) new LessionDAO().findLessionType(id);
+		mm.put("SELECTED_LESSION", lession);
 		return new ModelAndView("Ajax.AdminListCourseQuestionInsertModal");
 	}
 
@@ -361,7 +361,7 @@ public class AdminCourseController {
 	public ModelAndView ListCourseQuestionViewEdit(@PathVariable(value = "id") Integer id, ModelMap mm,
 			HttpSession session) {
 		Question question = (Question) new QuestionDAO().findEager(id);
-		mm.put("SELECTED_LESSION", question);
+		mm.put("SELECTED_QUESTION", question);
 		return new ModelAndView("Ajax.AdminListCourseQuestionEditModal");
 	}
 
@@ -372,7 +372,7 @@ public class AdminCourseController {
 		int myId = (int) adminSession.get("ADMIN_ID");
 		try {
 			new QuestionDAO().edit(module);
-			LogUtils.logs(myId, "Cập nhật câu hỏi " + module.get("name") + " thành công");
+			LogUtils.logs(myId, "Cập nhật câu hỏi " + module.get("title") + " thành công");
 			return new Pair(1, Alert.createAlert(Alert.TYPE_SUCCESS, "Thành công", "Cập nhật câu hỏi thành công"));
 		} catch (Exception e) {
 			e.printStackTrace();
