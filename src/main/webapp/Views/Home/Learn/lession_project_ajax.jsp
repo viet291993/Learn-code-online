@@ -122,4 +122,71 @@
 					  editor.setOption("theme", "custom");
 					  var mac = CodeMirror.keyMap.default == CodeMirror.keyMap.macDefault;
 					  CodeMirror.keyMap.default[(mac ? "Cmd" : "Ctrl") + "-Space"] = "autocomplete";
+					  
+					  $("#run-button").click(function(e) {
+						    e.preventDefault();
+						    $("#run-text").attr('style', 'display: none;');
+						    $("#spinner").attr('style', 'display: block;');
+						    $("button#run-button").attr('disabled', '');
+						    $.ajax({
+						        type: "POST",
+						        url: "<c:url value="/learn/execute" />",
+						        data: {
+						        	code: editor.getValue(),
+						        	questionId: ${SELECTED_QUESTION.id}
+						        },
+						        success: function(result) {
+						        	reloadAjaxContent();
+						        	reloadAjaxContent2();
+						        	$("#run-text").attr('style', 'display: block;');
+								    $("#spinner").attr('style', 'display: none;');
+								    $("button#run-button").removeAttr('disabled')
+						        }
+						    });
+						});
+					  
+					    $("#hint").click(function(e) {
+						    e.preventDefault();
+						    if ($("#hint").hasClass("hintOpen__RsbfmDvRC3hFZypEL9yov")) {
+						    	$("#hint").removeClass("hintOpen__RsbfmDvRC3hFZypEL9yov");
+						    	$("#hint-hide").attr("style", "display: block;");
+						    	$("#hint-display").attr("style", "display: none;");
+						    } else {
+						    	$("#hint").addClass("hintOpen__RsbfmDvRC3hFZypEL9yov");
+						    	$("#hint-hide").attr("style", "display: none;");
+						    	$("#hint-display").attr("style", "display: block;");
+						    }
+						});
+					    
+					    function reloadAjax4() {
+				        	$.ajax({
+						        type: "POST",
+						        url: "<c:url value="/learn/next/ajax2" />",
+						        data: {
+						        	nameAscii: "${SELECTED_QUESTION.lession.syllabus.course.nameAscii}",
+						        	nameAscii2: "${SELECTED_QUESTION.lession.nameAscii}",
+						        	questionId: ${SELECTED_QUESTION.orderDisplay + 1}
+						        },
+						        success: function(result) {
+						        	reloadAjaxContent4();
+						        }
+						    });
+				        }
 		            </script>
+		   <script>
+			$("#i-expand").click(function() {
+				$("#discovery-resize-03").attr('style', 'position: absolute; top: 0%; right: 95.6667%; bottom: 0%; left: 0%;');
+				$("#discovery-resize-14").attr('style', 'position: absolute; top: 0%; right: 4.33333%; bottom: 0%; left: 4.33333%;');
+				$("#discovery-resize-25").attr('style', 'position: absolute; top: 0%; right: 0%; bottom: 0%; left: 95.6667%;');
+				$("#i-expand").attr('style', 'display: none;');
+				$("#i-collapse").removeAttr('style');
+			});
+			
+			$("#i-collapse").click(function() {
+				$("#discovery-resize-03").attr('style', 'position: absolute; top: 0%; right: 66.6667%; bottom: 0%; left: 0%;');
+				$("#discovery-resize-14").attr('style', 'position: absolute; top: 0%; right: 33.3333%; bottom: 0%; left: 33.3333%;');
+				$("#discovery-resize-25").attr('style', 'position: absolute; top: 0%; right: 0%; bottom: 0%; left: 66.6667%;');
+				$("#i-collapse").attr('style', 'display: none;');
+				$("#i-expand").removeAttr('style');
+			});
+		</script>

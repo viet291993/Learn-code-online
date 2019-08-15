@@ -115,6 +115,7 @@ public class LearnController {
 			session.removeAttribute("SESSION_QUESTION_COUNT");
 			mm.put("SELECTED_QUESTION", session.getAttribute("SESSION_QUESTION"));
 			session.removeAttribute("SESSION_QUESTION");
+			mm.put("QUESTION_COUNT", new QuestionDAO().getCountQuestion(((Question) mm.get("SELECTED_QUESTION")).getLession()));
 		}
 		return new ModelAndView("HomeLessionProjectAjaxButton");
 	}
@@ -135,5 +136,27 @@ public class LearnController {
 		mm.put("SELECTED_QUESTION", session.getAttribute("SESSION_QUESTION"));
 		session.removeAttribute("SESSION_QUESTION");
 		return new ModelAndView("HomeLessionProjectAjax");
+	}
+	
+	@RequestMapping(value = "/next/ajax2", method = RequestMethod.POST)
+	public ModelAndView nextQuestion2_ajax(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session,
+			@RequestParam(value = "nameAscii") String nameAscii, @RequestParam(value = "nameAscii2") String nameAscii2, @RequestParam(value = "questionId") Integer questionId) {
+		System.out.println(nameAscii + " " + nameAscii2 + " " + questionId);
+		Lession lession = new LessionDAO().findLessionByNameAscii2(nameAscii, nameAscii2, lang);
+		session.setAttribute("SESSION_LESSION", lession);
+		session.setAttribute("SESSION_QUESTION", new QuestionDAO().findQuestionEager(lession, questionId));
+		return new ModelAndView("HomeLessionProjectAjaxNav");
+	}
+	
+	@RequestMapping(value = "/next/ajax2", method = RequestMethod.GET)
+	public ModelAndView nextQuestion2_ajax2(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		mm.put("SELECTED_LESSION", session.getAttribute("SESSION_LESSION"));
+		session.removeAttribute("SESSION_LESSION");
+		mm.put("SELECTED_QUESTION", session.getAttribute("SESSION_QUESTION"));
+		session.removeAttribute("SESSION_QUESTION");
+		mm.put("QUESTION_COUNT", new QuestionDAO().getCountQuestion((Lession) mm.get("SELECTED_LESSION")));
+		return new ModelAndView("HomeLessionProjectAjaxNav");
 	}
 }
