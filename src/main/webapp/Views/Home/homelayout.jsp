@@ -9,7 +9,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" type="image/x-icon" href="${CONTEXTPATH}/Resources/Images/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/Resources/Images/favicon.ico"/>" />
 		    
 		<script src="<c:url value="/Resources/shared/js/jquery-2.2.4.min.js"/>"></script>
 	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/65.54ab6f1fdbffb97caaae.chunk.css" />">
