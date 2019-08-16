@@ -63,7 +63,7 @@
 	        <nav class="wrapper___FtNJJFPKOjBRYeSq7eqS container__xxmPAuPFUsKguF73jKO3Q">
 	            <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4 contentWrapper__2MvNFVWRnpySbai8R2WkFr">
 	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionLeft__1ZxE4qxswlSZVqzj66Yx4I">
-	                    <a href="#/" class="logo__1-a_TiXBS6TEV02nagx3gR"><img alt=" logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="<c:url value="/Resources/Home/img/logo-white.png" />"></a>
+	                    <a href="<c:url value="/" />" class="logo__1-a_TiXBS6TEV02nagx3gR"><img alt=" logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="<c:url value="/Resources/Home/img/logo-white.png" />"></a>
 	                </div>
 	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM centerSection__1R92W4oxyC1LUfW_4FNc67">
 	                    <div class="container__3M91uhwpGTJe92wMn8jAZq">
