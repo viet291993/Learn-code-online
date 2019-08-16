@@ -8129,6 +8129,9 @@ a.text-dark:focus {
 .pl-45{
 	padding-left: 45px;
 }
+.pl-65{
+	padding-left: 65px;
+}
 
 .pl-52{
 	padding-left: 52px;
@@ -8255,5 +8258,11 @@ a.text-dark:focus {
 .panel-title .fa{
 	display: inline !important;
 	color: #d9534f;
+}
+.modal-footer button .fa{
+	display: inline;
+}
+#addQuiz i,#addInstruction i{
+	display: inline-flex;
 }
 

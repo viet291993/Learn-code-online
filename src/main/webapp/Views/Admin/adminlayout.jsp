@@ -46,6 +46,7 @@
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">	
+	    
 </head>
 <body class="nav-md">
  		<!-- START PAGE CONTAINER -->

@@ -43,6 +43,10 @@
         <put-attribute name="Content" value="/Views/Home/Auth/login.jsp" />
     </definition>
     
+    <definition name="HomeRegister" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Auth/register.jsp" />
+    </definition>
+    
     <definition name="HomeProfile" extends="HomeLayout">
         <put-attribute name="Content" value="/Views/Home/Auth/profile.jsp" />
     </definition>

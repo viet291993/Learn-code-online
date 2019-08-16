@@ -48,7 +48,7 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-		                        <label for=""content"" class="control-label col-sm-3">Nội dung</label>
+		                        <label for="content" class="control-label col-sm-3">Nội dung</label>
 		                        <div class="col-sm-9">
 		                            <textarea  id="content" required name="content"  class="form-control editor" placeholder=""></textarea>
 		                        </div>
@@ -62,7 +62,7 @@
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Code mặc định</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="defaultCode" required name="defaultCode"  class="form-control" placeholder=""></textarea>
+		                            <textarea  id="defaultCode" required name="defaultCode" rows="7" class="form-control" placeholder=""></textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
@@ -82,10 +82,10 @@
                         <!-- Instruction -->
                         <c:if test="${SELECTED_LESSION.lessionType.code != 'Q' && SELECTED_LESSION.lessionType.code != 'A'}">
                         <div role="tabpanel" class="tab-pane fade" id="tab_instruction" aria-labelledby="instruction-tab">
-                         <a class="btn btn-success btn-sm btn-open-modal panel-title" href="javascript:void(0)" id="addInstruction">Thêm yêu cầu mới</a>
                           <div class="accordion" id="instruction" role="tablist" aria-multiselectable="false">
 		                    
 		                  </div>
+		                    <a id="addInstruction" class="text-info pl-65" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm yêu cầu mới</a>
                         </div>
                         </c:if>
                         
@@ -94,7 +94,7 @@
                         	<div role="tabpanel" class="tab-pane fade" id="tab_quiz" aria-labelledby="quiz-tab">
 		                        <div id="quiz">
 		                        </div>
-			                    <a id="addQuiz" class="text-info" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm đáp án mới</a>
+			                    <a id="addQuiz" class="text-info pl-65" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm đáp án mới</a>
 	                        </div>
                         </c:if>
                       </div>

@@ -63,7 +63,7 @@
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Code mặc định</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="defaultCode"  name="defaultCode"  class="form-control" placeholder="">${SELECTED_QUESTION.defaultCode}</textarea>
+		                            <textarea  id="defaultCode"  name="defaultCode"  class="form-control" rows="7" placeholder="">${SELECTED_QUESTION.defaultCode}</textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
@@ -83,7 +83,6 @@
                         <!-- Instruction -->
                         <c:if test="${SELECTED_QUESTION.lession.lessionType.code != 'Q' && SELECTED_QUESTION.lession.lessionType.code != 'A'}">
                         <div role="tabpanel" class="tab-pane fade" id="tab_instruction" aria-labelledby="instruction-tab">
-                         <a class="btn btn-success btn-sm btn-open-modal panel-title" href="javascript:void(0)" id="addInstruction">Thêm yêu cầu mới</a>
                           <div class="accordion" id="instruction" role="tablist" aria-multiselectable="false">
 		                    <c:forEach items="${SELECTED_QUESTION.instructions}" var="INSTRUCTION" varStatus="loop">
 		                      <div class="panel">
@@ -128,6 +127,7 @@
 		                      </div>
 		                    </c:forEach>
 		                  </div>
+		                  <a id="addInstruction" class="text-info pl-65" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm yêu cầu mới</a>
                         </div>
                         </c:if>
                         
@@ -147,7 +147,7 @@
 		                          	</div>
 		                        </c:forEach>
 		                        </div>
-			                    <a id="addQuiz" class="text-info" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm đáp án mới</a>
+			                    <a id="addQuiz" class="text-info pl-65" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm đáp án mới</a>
 	                        </div>
                         </c:if>
                       </div>
