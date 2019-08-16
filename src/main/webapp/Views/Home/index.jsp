@@ -38,7 +38,7 @@
                                             </div>
                                         </div>
                                         <button data-btn="true" type="submit" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI large__3uWKqXQr23vJ_9n9mwRvVa submitButton__34k4InI5TII_ayjcKIwCLO" id="sign_up_form_submit">Học ngay và luôn</button>
-                                        <p class="tos__2irFvmVYzLt-zbObC3_2D8">Đăng ký trở thành thành viên để học học lập trình và gia nhập cộng đồng LearnCode.</p>
+                                        <p class="tos__2irFvmVYzLt-zbObC3_2D8"><a href="<c:url value="/register"/>">Đăng ký</a> trở thành thành viên để học học lập trình và gia nhập cộng đồng LearnCode.</p>
                                     </fieldset>
                                 </form>
                                 <div>

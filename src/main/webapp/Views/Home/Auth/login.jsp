@@ -41,5 +41,5 @@
                     </div>
                 </div>
             </div>
-        </div><a href="/register" class="outLink__1CAKaBwcDc48Oex0b-CAlj">Chưa là thành viên? <b>Đăng ký</b></a></div>
+        </div><a href="<c:url value="/register"/>" class="outLink__1CAKaBwcDc48Oex0b-CAlj">Chưa là thành viên? <b>Đăng ký</b></a></div>
 </main>

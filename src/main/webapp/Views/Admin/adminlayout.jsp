@@ -30,6 +30,10 @@
 
         <!-- Bootstrap -->
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- ckeditor -->
+	    <script src="${CONTEXTPATH}/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="${CONTEXTPATH}/ckeditor/config.js" type="text/javascript"></script>
+	    <script src="${CONTEXTPATH}/ckfinder/ckfinder.js" type="text/javascript"></script>
 	    <!-- Font Awesome -->
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	    <!-- NProgress -->
@@ -42,6 +46,7 @@
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">	
+	    
 </head>
 <body class="nav-md">
  		<!-- START PAGE CONTAINER -->

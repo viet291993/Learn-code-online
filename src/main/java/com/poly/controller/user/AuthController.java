@@ -36,6 +36,7 @@ import com.poly.entity.GoogleUserInfo;
 import com.poly.entity.Member;
 import com.poly.entity.User;
 import com.poly.utils.ConfigUtils;
+import com.poly.utils.CustomFunction;
 
 import javafx.util.Pair;
 
@@ -212,8 +213,7 @@ public class AuthController {
 							member.setUser(usr);
 							member.setEmail(info.getEmail());
 							member.setName(info.getName());
-							member.setProfileimage(
-									"http://graph.facebook.com/" + info.getId() + "/picture?type=large");
+							member.setProfileimage("http://graph.facebook.com/" + info.getId() + "/picture?type=large");
 							member.setIsActive(true);
 							member.setIsDeleted(false);
 							Member result2 = (Member) new MemberDAO().create(member);
@@ -244,8 +244,8 @@ public class AuthController {
 							Member member2 = (Member) new MemberDAO().create(member);
 							if (member2 != null) {
 								request.getSession().setAttribute("MEMBER", member2);
-								rs = new Pair<>(1, Alert
-										.createScript("window.location.href='" + request.getContextPath() + "/learn';"));
+								rs = new Pair<>(1, Alert.createScript(
+										"window.location.href='" + request.getContextPath() + "/learn';"));
 							} else {
 								rs = new Pair<>(1, Alert.createScript(
 										"window.location.href='" + request.getContextPath() + "/login';"));
@@ -270,6 +270,53 @@ public class AuthController {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register(ModelMap mm, HttpServletRequest request) {
+		return new ModelAndView("HomeRegister");
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView register(@RequestParam(value = "username") String username,
+			@RequestParam(value = "name") String name, @RequestParam(value = "email") String email,
+			@RequestParam(value = "address") String address, @RequestParam(value = "password") String password,
+			ModelMap mm, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (new UserDAO().checkUsernameExist(username)) {
+			System.out.println("Username đã tồn tại!");
+			return new ModelAndView("redirect:/login");
+		}
+		try {
+			User temp = new User();
+			String salt = CustomFunction.randomKey();
+			temp.setUsername(username);
+			temp.setPassword(CustomFunction.passwordEncryption(password, salt));
+			temp.setSalt(salt);
+			User usr = (User) new UserDAO().create(temp);
+			if (usr != null) {
+				Member member = new Member();
+				member.setName(name);
+				member.setUser(usr);
+				member.setEmail(email);
+				member.setAddress(address);
+				member.setIsActive(true);
+				member.setIsDeleted(false);	
+				if (new MemberDAO().create(member) != null) {
+					System.out.println("Đăng ký thành công!");
+					return new ModelAndView("redirect:/login");
+				} else {
+					new UserDAO().deleteUserWhenRegError(usr.getId());
+					return new ModelAndView("redirect:/register");
+				}
+			} else {
+				return new ModelAndView("redirect:/register");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("redirect:/register");
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
