@@ -28,15 +28,13 @@
 	                                        </button>
 	                                    </div>
 	                                </div>
-	                                <div>
-	                                    <div data-testid="header-avatar" id="header-avatar" class="tab__1Vw1A1yuPy-TnRg11IKht">
-	                                        <div class="wrapper__6QRVYmjk_3YS02hd62vt_">
-	                                            <button aria-label="my account dropdown toggle" class="toggle__304aSMDrfBOZgFLaPhzXIa" id="dropdown-toggle" type="button">
-	                                                <div class="avatar__Cb1WP643p3tcQpIWLY9R8 round__3de1LBOIa74IvzHDeRG3lQ small__3duTmSpEyR9eEpaRITuulp"><img alt="Avatar" aria-label="my account dropdown toggle" class="image__1Q4r5fS8Aj_N6s2tLcrFks" src="<c:url value="/Resources/Home/shared/css/picture " />"></div>
-	                                            </button>
-	                                        </div>
-	                                    </div>
-	                                </div>
+                                    <div data-testid="header-avatar" id="header-avatar" class="tab__1Vw1A1yuPy-TnRg11IKht">
+                                        <div class="wrapper__6QRVYmjk_3YS02hd62vt_">
+                                            <button aria-label="my account dropdown toggle" class="toggle__304aSMDrfBOZgFLaPhzXIa" id="dropdown-toggle" type="button">
+                                                <div id="button-avatar" class="avatar__Cb1WP643p3tcQpIWLY9R8 round__3de1LBOIa74IvzHDeRG3lQ small__3duTmSpEyR9eEpaRITuulp"><img alt="Avatar" aria-label="my account dropdown toggle" class="image__1Q4r5fS8Aj_N6s2tLcrFks" src="<c:if test="${MEMBER.profileimage == null}"><c:url value="/Resources/Home/img/guest.png" /></c:if><c:if test="${MEMBER.profileimage != null}">${MEMBER.profileimage}</c:if>"></div>
+                                            </button>
+                                        </div>
+                                    </div>
 	                            </div>
 	                            <div class="headerList__2cFXAvupVnCAG6idZMcZeQ showOnMobile__1OZznV0-PypUlpSlqeVOCi">
 	                                <div id="open-menu-mobile">
@@ -108,15 +106,17 @@
 	                                </button>
 	                            </form>
 	                            <div class="headerList__10S3eaI5d9_EMEWGPR9cIo">
-	                                <div><a id="catalog" href="/catalog/subject/all" data-testid="header-catalog" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Catalog</a></div>
-	                                <div><a href="/pro/membership" data-testid="header-pricing" id="pricing" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Pricing</a></div>
+	                                <div><a id="catalog" href="/catalog/subject/all" data-testid="header-catalog" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Danh mục</a></div>
+	                                <div><a href="/pro/membership" data-testid="header-pricing" id="pricing" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Giá cả</a></div>
 	                                <div>
-	                                    <button data-btn="true" class="basicBtn dropDown__2-ccs0vt2m_kB3Lma6LG25 navLink__3gwBQdmDpuPvlVr4s7Z4cN" data-testid="userdropdown-button">huyTrn9968194265
-	                                        <svg fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	                                            <title>Chevron Down Icon</title>
-	                                            <path d="M20.293 7.293l1.414 1.414L12 18.414 2.293 8.707l1.414-1.414L12 15.586z"></path>
-	                                        </svg>
+	                                    <button data-btn="true" class="basicBtn dropDown__2-ccs0vt2m_kB3Lma6LG25 navLink__3gwBQdmDpuPvlVr4s7Z4cN" data-testid="userdropdown-button"><c:if test="${MEMBER.name != null }">${MEMBER.name }</c:if><c:if test="${MEMBER.name == null }">Cài đặt cá nhân</c:if>
 	                                    </button>
+	                                    <div class="userOptionsContainer__30GA4HQNF4iP0uVJ8EuE80" data-testid="user-options-container">
+										    <div class="userOptionsLink__324nKW_gSCbjnKsLQusE6v"><a href="/profiles/me">Hồ sơ của bạn</a></div>
+										    <div class="userOptionsLink__324nKW_gSCbjnKsLQusE6v"><a data-testid="edit-account-link" href="/account">Cài đặt tài khoản</a></div>
+										    <div class="userOptionsLink__324nKW_gSCbjnKsLQusE6v"><a data-testid="help-link" href="/help">Help</a></div>
+										    <div class="userOptionsLink__324nKW_gSCbjnKsLQusE6v"><a data-testid="sign-out-link" href="<c:url value="/logout" />">Đăng xuất</a></div>
+										</div>
 	                                </div>
 	                                <div class="navButtonContainer__1WVLA7lgxd4hQgcu55Ef5e">
 	                                    <div>

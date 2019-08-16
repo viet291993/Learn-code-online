@@ -21,17 +21,17 @@ public class UserDAO extends AbstractDAO {
 		User usr = null;
 		try {
 			session = HibernateConfiguration.getInstance().openSession();
-			if (session != null) {
+			if (session != null && username != null && password != null) {
 				Criteria cr = session.createCriteria(User.class);
 				cr.add(Restrictions.eq("username", username));
 				usr = (User) cr.uniqueResult();
-				if (password != null) {
+				if (usr != null) {
 					if (!CustomFunction.passwordEncryption(password, usr.getSalt()).equals(usr.getPassword())) {
 						return null;
 					}
 				}
 			}
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			throw e;
 		} finally {
 			HibernateConfiguration.getInstance().closeSession(session);

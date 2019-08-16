@@ -119,6 +119,9 @@
 	                    </div>
 	                </div>
 	            </div>
+	            
+	            <div id="menu-profile" style="display: none;" class="overlay__3LeDG7tuQrrJdjPm8agkmx fixed__1dVANA0vWS60mCGpsRBU8T type-transparent__19iohvkXZv5eOsVMRAvvLQ"><div id="profile-position" align="right" offset="20" class="content__fQv0JV6LGGkYLrzWHtg7t popover__2vSb5RYj187vezgJCHUZI1 below-right__XT76WV7zCz6PFSFnddn2A" style="top: 74px; z-index: 50;;"><div><div class="" style="opacity: 1;"><div class="shadow__3DzEF2DlOL8n2FXGHNWRBW"><div class="flex__1yBdRTf7dKVh6F1j8s6UAN col__DIiQrF0Z1S7t-hWOmyXlD menu__e94OfrzcqoePgW_YvhDCp"><nav><div><a class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/profiles/me">Hồ sơ của tôi</a><a data-testid="edit-account-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/account" id="edit-account-link">Cài đặt tài khoản</a><a data-testid="help-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/help" id="help-link">Help</a><a data-testid="sign-out-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="<c:url value="/logout" />" id="sign-out-link">Đăng xuất</a></div></nav></div></div></div></div></div></div>
+	            
 	    <script>
 	        $('#nav-search').hide();
 	        $("#header-search").click(function(e) {
@@ -139,6 +142,7 @@
 	
 	        $(document).click(function() {
 	            $('#nav-search').hide("100");
+	            $("#menu-profile").fadeOut("100");
 	        });
 	
 	        $('#close-menu-mobile').hide();
@@ -157,6 +161,16 @@
 	            $('#nav-mobile').hide("100");
 	            $('#close-menu-mobile').hide();
 	            $('#open-menu-mobile').show();
+	        });
+	        
+	        $("#button-avatar").click(function(e) {
+	        	e.preventDefault();
+	            e.stopPropagation();
+	            var temp = $("#header-avatar").position().left;
+	            var width = 83;
+	            var left = temp + width;
+	            $("#profile-position").attr("style", "top: 74px; left: " + left + "px");
+	            $("#menu-profile").fadeIn("100");
 	        });
 	    </script>
 	

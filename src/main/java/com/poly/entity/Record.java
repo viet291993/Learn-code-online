@@ -26,7 +26,7 @@ public class Record implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 3098402535888938134L;
 	private Integer id;
-	private Lession lession;
+	private Course course;
 	private Member member;
 	private boolean correct;
 	private boolean isActive;
@@ -34,24 +34,6 @@ public class Record implements java.io.Serializable {
 	private Set<RecordQuestion> recordQuestions = new HashSet<RecordQuestion>(0);
 
 	public Record() {
-	}
-
-	public Record(Lession lession, Member member, boolean correct, boolean isActive, boolean isDeleted) {
-		this.lession = lession;
-		this.member = member;
-		this.correct = correct;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public Record(Lession lession, Member member, boolean correct, boolean isActive, boolean isDeleted,
-			Set<RecordQuestion> recordQuestions) {
-		this.lession = lession;
-		this.member = member;
-		this.correct = correct;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.recordQuestions = recordQuestions;
 	}
 
 	@Id
@@ -67,17 +49,17 @@ public class Record implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Lession_id", nullable = false)
-	public Lession getLession() {
-		return this.lession;
+	@JoinColumn(name = "Course_id", nullable = false)
+	public Course getCourse() {
+		return this.course;
 	}
 
-	public void setLession(Lession lession) {
-		this.lession = lession;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Customer_id", nullable = false)
+	@JoinColumn(name = "Member_id", nullable = false)
 	public Member getMember() {
 		return this.member;
 	}
@@ -95,7 +77,7 @@ public class Record implements java.io.Serializable {
 		this.correct = correct;
 	}
 
-	@Column(name = "isActive", nullable = false)
+	@Column(name = "isActive")
 	public boolean isIsActive() {
 		return this.isActive;
 	}
@@ -104,7 +86,7 @@ public class Record implements java.io.Serializable {
 		this.isActive = isActive;
 	}
 
-	@Column(name = "isDeleted", nullable = false)
+	@Column(name = "isDeleted")
 	public boolean isIsDeleted() {
 		return this.isDeleted;
 	}

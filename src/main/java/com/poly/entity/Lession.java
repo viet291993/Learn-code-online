@@ -43,7 +43,6 @@ public class Lession implements java.io.Serializable {
 	private boolean isDeleted;
 	private boolean isPro;
 	private Set<Question> questions = new HashSet<Question>(0);
-	private Set<Record> records = new HashSet<Record>(0);
 
 	public Lession() {
 	}
@@ -171,14 +170,4 @@ public class Lession implements java.io.Serializable {
 	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "lession")
-	public Set<Record> getRecords() {
-		return this.records;
-	}
-
-	public void setRecords(Set<Record> records) {
-		this.records = records;
-	}
-
 }

@@ -3,6 +3,7 @@ package com.poly.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -41,6 +42,7 @@ public class Course implements java.io.Serializable {
 	private boolean isDeleted;
 	private Language language;
 	private Set<Syllabus> syllabuses;
+	private Set<Record> records = new HashSet<Record>(0);
 
 	public Course() {
 	}
@@ -150,6 +152,15 @@ public class Course implements java.io.Serializable {
 
 	public void setLanguage(Language language) {
 		this.language = language;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	public Set<Record> getRecords() {
+		return this.records;
+	}
+
+	public void setRecords(Set<Record> records) {
+		this.records = records;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "course")

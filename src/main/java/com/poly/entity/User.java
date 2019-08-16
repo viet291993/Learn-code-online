@@ -39,27 +39,6 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(String username, String password, String salt, boolean isActive, boolean isDeleted) {
-		this.username = username;
-		this.password = password;
-		this.salt = salt;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-	}
-
-	public User(String username, String password, String salt, boolean isActive, boolean isDeleted,
-			Set<Member> members, Set<Topic> topics, Set<Admin> admins, Set<Post> posts) {
-		this.username = username;
-		this.password = password;
-		this.salt = salt;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
-		this.members = members;
-		this.topics = topics;
-		this.admins = admins;
-		this.posts = posts;
-	}
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
@@ -81,7 +60,7 @@ public class User implements java.io.Serializable {
 		this.username = username;
 	}
 
-	@Column(name = "password", nullable = false)
+	@Column(name = "password")
 	public String getPassword() {
 		return this.password;
 	}
@@ -90,7 +69,7 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "salt", nullable = false)
+	@Column(name = "salt")
 	public String getSalt() {
 		return this.salt;
 	}

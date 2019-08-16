@@ -18,12 +18,17 @@ import com.poly.dao.CourseDAO;
 import com.poly.dao.LessionDAO;
 import com.poly.dao.QuestionDAO;
 import com.poly.dao.QuizDAO;
+import com.poly.dao.RecordDAO;
+import com.poly.dao.RecordQuestionDAO;
 import com.poly.dao.SyllabusDAO;
 import com.poly.entity.Course;
 import com.poly.entity.Jdoodle;
 import com.poly.entity.Lession;
+import com.poly.entity.Member;
 import com.poly.entity.Question;
 import com.poly.entity.QuestionInstruction;
+import com.poly.entity.Record;
+import com.poly.entity.RecordQuestion;
 import com.poly.utils.Execute;
 import com.poly.utils.StringUtils;
 
@@ -54,20 +59,39 @@ public class LearnController {
 	public ModelAndView byNameAscii2(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			@PathVariable(value = "nameAscii") String nameAscii, @PathVariable(value = "nameAscii2") String nameAscii2,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
-		mm.put("SELECTED_COURSE", new CourseDAO().findCoursebyNameAscii(nameAscii, lang));
-		Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
-		if (lession != null) {
-			mm.put("SELECTED_LESSION", lession);
-			if (lession.getLessionType().getCode() != null) {
-				if (lession.getLessionType().getCode().equals("L") || lession.getLessionType().getCode().equals("P")) {
-					mm.put("SELECTED_QUESTION", new QuestionDAO().findQuestionEager(lession, 1));
-					mm.put("QUESTION_COUNT", new QuestionDAO().getCountQuestion(lession));
-					return new ModelAndView("HomeLessionProject");
-				} else if (lession.getLessionType().getCode().equals("Q")){
-					Question question = new QuestionDAO().findFirstQuestionByLession(lession);
-					mm.put("SELECTED_QUESTION", question);
-					mm.put("LIST_QUIZ", new QuizDAO().getAllQuizByQuestion(question));
-					return new ModelAndView("HomeLessionQuiz");
+		Course course = new CourseDAO().findCoursebyNameAscii(nameAscii, lang);
+		mm.put("SELECTED_COURSE", course);
+		Record record = new Record();
+		record = new RecordDAO().findRecord(course, (Member) session.getAttribute("MEMBER"));
+		if (record == null) {
+			record = new Record();
+			record.setCorrect(false);
+			record.setCourse(course);
+			record.setMember((Member) session.getAttribute("MEMBER"));
+			record.setIsActive(true);
+			record.setIsDeleted(false);
+			try {
+				record = (Record) new RecordDAO().create(record);
+			} catch (Exception e) {
+				e.printStackTrace();
+				record = null;
+			}
+		}
+		if (record != null) {
+			Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
+			if (lession != null) {
+				mm.put("SELECTED_LESSION", lession);
+				if (lession.getLessionType().getCode() != null) {
+					if (lession.getLessionType().getCode().equals("L") || lession.getLessionType().getCode().equals("P")) {
+						mm.put("SELECTED_QUESTION", new QuestionDAO().findQuestionEager(lession, 1));
+						mm.put("QUESTION_COUNT", new QuestionDAO().getCountQuestion(lession));
+						return new ModelAndView("HomeLessionProject");
+					} else if (lession.getLessionType().getCode().equals("Q")){
+						Question question = new QuestionDAO().findFirstQuestionByLession(lession);
+						mm.put("SELECTED_QUESTION", question);
+						mm.put("LIST_QUIZ", new QuizDAO().getAllQuizByQuestion(question));
+						return new ModelAndView("HomeLessionQuiz");
+					}
 				}
 			}
 		}
@@ -81,18 +105,34 @@ public class LearnController {
 		session.setAttribute("SESSION_QUESTION_COUNT", new QuestionDAO().getCountQuestion(question.getLession()));
 		Jdoodle jdoodle = Execute.execute(code, question.getLession().getSyllabus().getCourse().getLanguage().getCodeJdoodle());
 		session.setAttribute("JDOODLE", jdoodle);
+		boolean isExactly = true;
 		if (jdoodle.getCpuTime() != null && jdoodle.getStatusCode().equals("200")) {
-			boolean rs = true;
 			for (QuestionInstruction questionInstruction : question.getInstructions()) {
 				if (!StringUtils.equalsCode(jdoodle.getOutput(), questionInstruction.getResult())) {
-					rs = false;
+					isExactly = false;
 				}
 			}
-			if (rs)
+			if (isExactly) {
 				session.setAttribute("SESSION_QUESTION", question);
-			session.setAttribute("SESSION_IS_TRUE", rs); 
+			}
+			session.setAttribute("SESSION_IS_TRUE", isExactly); 
 		} else {
 			session.setAttribute("SESSION_IS_TRUE", false);
+		}
+		Record record = new RecordDAO().findRecord(question.getLession().getSyllabus().getCourse().getId(), (Member )session.getAttribute("MEMBER"));
+		RecordQuestion recordQuestion = new RecordQuestionDAO().findRecordQuestion(record, question);
+		if (recordQuestion == null) {
+			recordQuestion = new RecordQuestion();
+			recordQuestion.setQuestion(question);
+			recordQuestion.setRecord(record);
+			recordQuestion.setTempCode(code);
+			recordQuestion.setIsActive(true);
+			recordQuestion.setIsDeleted(false);
+			try {
+				new RecordQuestionDAO().create(recordQuestion);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -127,6 +167,7 @@ public class LearnController {
 		Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
 		session.setAttribute("SESSION_LESSION", lession);
 		session.setAttribute("SESSION_QUESTION", new QuestionDAO().findQuestionEager(lession, questionId));
+		
 	}
 	
 	@RequestMapping(value = "/next/ajax", method = RequestMethod.GET)

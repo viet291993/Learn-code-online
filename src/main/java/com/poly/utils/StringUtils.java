@@ -106,7 +106,7 @@ public class StringUtils {
     }
     
     public static boolean equalsCode(String input, String result) {
-    	if (input == null)
+    	if (input == null || result.trim().length() == 0)
     		return true;
     	input = input.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
     	String resultLower = result.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");

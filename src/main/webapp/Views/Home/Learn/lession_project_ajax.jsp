@@ -172,6 +172,21 @@
 						        }
 						    });
 				        }
+					    
+					    function reloadAjax4_2() {
+				        	$.ajax({
+						        type: "POST",
+						        url: "<c:url value="/learn/next/ajax2" />",
+						        data: {
+						        	nameAscii: "${SELECTED_QUESTION.lession.syllabus.course.nameAscii}",
+						        	nameAscii2: "${SELECTED_QUESTION.lession.nameAscii}",
+						        	questionId: ${SELECTED_QUESTION.orderDisplay - 1}
+						        },
+						        success: function(result) {
+						        	reloadAjaxContent4();
+						        }
+						    });
+				        }
 		            </script>
 		   <script>
 			$("#i-expand").click(function() {
