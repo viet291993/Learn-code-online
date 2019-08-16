@@ -51,7 +51,7 @@
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Nội dung</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="content"  name="content"  class="form-control" placeholder="">${SELECTED_QUESTION.content}</textarea>
+		                            <textarea  id="content"  name="content"  class="form-control editor" placeholder="">${SELECTED_QUESTION.content}</textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
@@ -96,13 +96,13 @@
 		                          	<div class="form-group">
 				                        <label for="name" class="control-label col-sm-3">Nội dung</label>
 				                        <div class="col-sm-9">
-				                            <textarea  id="insContent" required data-name="insContent"  class="form-control" placeholder="">${INSTRUCTION.content}</textarea>
+				                            <textarea  id="insContent" required data-name="insContent"  class="form-control editor" placeholder="">${INSTRUCTION.content}</textarea>
 				                        </div>
 				                    </div>
 				                    <div class="form-group">
 				                        <label for="name" class="control-label col-sm-3">Hướng dẫn</label>
 				                        <div class="col-sm-9">
-				                            <textarea  id="insHint" required data-name="insHint"  class="form-control" placeholder="">${INSTRUCTION.hint}</textarea>
+				                            <textarea  id="ckeditor" required data-name="insHint"  class="form-control editor" placeholder="">${INSTRUCTION.hint}</textarea>
 				                        </div>
 				                    </div>
 				                    <div class="form-group">
@@ -247,5 +247,6 @@
     $(document).on('click', '.deleteQuiz', function () {
     	$(this).parents('div .form-group').remove();
     });
-    
+   
+   editorCK();
 </script>

@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="f" uri="/WEB-INF/tlds/functions.tld" %>
 <div class="modal modal-insert-customer" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Tên khóa học</label>
                         <div class="col-sm-9">
-                            <input type="text" id="name" required name="name" class="form-control" placeholder="">
+                            <input type="text" id="name" required name="name" onkeyup="$('#nameAscii[readonly]').val(removeUnicodeURL($(this).val()))" class="form-control" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,9 +38,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="control-label col-sm-3">Nội dung</label>
+                        <label for="ckeditor" class="control-label col-sm-3">Nội dung</label>
                         <div class="col-sm-9">
-                            <textarea  id="content" required name="content" class="form-control" placeholder=""></textarea>
+                            <textarea  id="ckeditor" required name="content" class="form-control ckeditor-content" rows="5" placeholder=""></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -58,7 +58,12 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Đường dẫn</label>
                         <div class="col-sm-9">
-                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" placeholder="">
+                        <div class="input-group">
+                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" readonly placeholder="">
+                        	<span class="input-group-btn">
+                                <button class="btn btn-info" onclick="$('#nameAscii').removeAttr('readonly')"  type="button">Sửa</button>
+                            </span>
+                        </div>    
                         </div>
                     </div>
                 </div>
@@ -100,5 +105,10 @@
                 }
             });
         }
+    });
+    
+    CKEDITOR.replace('ckeditor', {
+        language: 'vi',
+        height: 200
     });
 </script>

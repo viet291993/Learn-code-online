@@ -48,9 +48,9 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-		                        <label for="name" class="control-label col-sm-3">Nội dung</label>
+		                        <label for=""content"" class="control-label col-sm-3">Nội dung</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="content" required name="content"  class="form-control" placeholder=""></textarea>
+		                            <textarea  id="content" required name="content"  class="form-control editor" placeholder=""></textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
@@ -191,4 +191,5 @@
     	$(this).parents('div .form-group').remove();
     });
     
+    editorCK();
 </script>

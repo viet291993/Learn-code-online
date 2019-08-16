@@ -30,6 +30,10 @@
 
         <!-- Bootstrap -->
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- ckeditor -->
+	    <script src="${CONTEXTPATH}/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="${CONTEXTPATH}/ckeditor/config.js" type="text/javascript"></script>
+	    <script src="${CONTEXTPATH}/ckfinder/ckfinder.js" type="text/javascript"></script>
 	    <!-- Font Awesome -->
 	    <link href="${CONTEXTPATH}/Resources/Admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	    <!-- NProgress -->

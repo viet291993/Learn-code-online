@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Tên bài học</label>
                         <div class="col-sm-9">
-                            <input type="text" id="name" required name="name" class="form-control" placeholder="">
+                            <input type="text" id="name" required name="name" onkeyup="$('#nameAscii[readonly]').val(removeUnicodeURL($(this).val()))" class="form-control" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,7 +54,12 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3">Đường dẫn</label>
                         <div class="col-sm-9">
-                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" placeholder="">
+                        <div class="input-group">
+                            <input type="text" id="nameAscii" required name="nameAscii" class="form-control" readonly placeholder="">
+                        	<span class="input-group-btn">
+                                <button class="btn btn-info" onclick="$('#nameAscii').removeAttr('readonly')"  type="button">Sửa</button>
+                            </span>
+                         </div>   
                         </div>
                     </div>
                     <div class="form-group">
