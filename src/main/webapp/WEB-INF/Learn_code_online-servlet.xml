@@ -35,8 +35,10 @@
         <mvc:interceptor>
             <mvc:mapping path="/learn" />
             <mvc:mapping path="/learn/**" />
-            <mvc:mapping path="/login" />
-            <mvc:mapping path="/register" />
+            <mvc:mapping path="/"/>
+            <mvc:mapping path="/home"/>
+            <mvc:mapping path="/login"/>
+            <mvc:mapping path="/register"/>
             <bean class="com.poly.interceptor.UserAuthenticationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

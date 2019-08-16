@@ -69,6 +69,29 @@ public class MemberDAO extends AbstractDAO {
 		}
 		return obj;
 	}
+	
+	public Member findByUsername(String username) {
+		Session session = null;
+		Member obj = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Member.class);
+				User usr = new UserDAO().getUser(username);
+				if (usr != null) {
+					cr.add(Restrictions.eq("user", usr));
+					cr.add(Restrictions.eq("isActive", true));
+					cr.add(Restrictions.eq("isDeleted", false));
+					obj = (Member) cr.uniqueResult();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return obj;
+	}
 
 	public void block(Integer id, Boolean status) throws Exception {
 		Session session = null;
