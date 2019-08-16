@@ -163,6 +163,7 @@ public class Question implements java.io.Serializable {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+	@Where(clause= "isDeleted = 0")
 	public Set<Quiz> getQuizs() {
 		return this.quizs;
 	}
