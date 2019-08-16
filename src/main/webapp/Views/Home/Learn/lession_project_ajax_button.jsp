@@ -32,27 +32,7 @@
 		        data: {
 		        	nameAscii: "${SELECTED_QUESTION.lession.syllabus.course.nameAscii}",
 		        	nameAscii2: "${SELECTED_QUESTION.lession.nameAscii}",
-		        	questionId: ${SELECTED_QUESTION.orderDisplay + -}
-		        },
-		        success: function(result) {
-		        	reloadAjaxContent3();
-				    reloadAjax4();
-		        }
-		    });
-		});
-        
-        $("#back-button").click(function(e) {
-        	e.preventDefault();
-		    $("#back-text").attr('style', 'display: none;');
-		    $("#back-spinner").attr('style', 'display: block;');
-		    $("button#back-button").attr('disabled', '');
-		    $.ajax({
-		        type: "POST",
-		        url: "<c:url value="/learn/next" />",
-		        data: {
-		        	nameAscii: "${SELECTED_QUESTION.lession.syllabus.course.nameAscii}",
-		        	nameAscii2: "${SELECTED_QUESTION.lession.nameAscii}",
-		        	questionId: ${SELECTED_QUESTION.orderDisplay - 1}
+		        	questionId: ${SELECTED_QUESTION.orderDisplay + 1}
 		        },
 		        success: function(result) {
 		        	reloadAjaxContent3();
@@ -63,3 +43,26 @@
         </script>
 	</c:otherwise>
 </c:choose>
+<c:if test="${SELECTED_QUESTION.orderDisplay != 1}">
+<script>
+$("#back-button").click(function(e) {
+	e.preventDefault();
+    $("#back-text").attr('style', 'display: none;');
+    $("#back-spinner").attr('style', 'display: block;');
+    $("button#back-button").attr('disabled', '');
+    $.ajax({
+        type: "POST",
+        url: "<c:url value="/learn/next" />",
+        data: {
+        	nameAscii: "${SELECTED_QUESTION.lession.syllabus.course.nameAscii}",
+        	nameAscii2: "${SELECTED_QUESTION.lession.nameAscii}",
+        	questionId: ${SELECTED_QUESTION.orderDisplay - 1}
+        },
+        success: function(result) {
+        	reloadAjaxContent3();
+		    reloadAjax4_2();
+        }
+    });
+});
+</script>
+</c:if>

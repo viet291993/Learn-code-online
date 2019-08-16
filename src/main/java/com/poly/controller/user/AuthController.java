@@ -2,7 +2,6 @@ package com.poly.controller.user;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,24 +19,16 @@ import com.github.scribejava.apis.FacebookApi;
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth20Service;
-import com.poly.bean.Alert;
-import com.poly.dao.AdminDAO;
-import com.poly.dao.CourseDAO;
 import com.poly.dao.MemberDAO;
-import com.poly.entity.Admin;
 import com.poly.entity.Member;
-import com.poly.utils.CaptchaUtil;
 import com.poly.utils.ConfigUtils;
-import com.poly.utils.StringUtils;
-
-import javafx.util.Pair;
 
 @Controller
 @RequestMapping("")
-public class HomeController {
-
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public ModelAndView Index(@CookieValue(value = "lang", defaultValue = "vi") String lang, ModelMap mm,
+public class AuthController {
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(@CookieValue(value = "lang", defaultValue = "vi") String lang, ModelMap mm,
 			HttpServletRequest request) throws Exception {
 		String configPath = request.getServletContext().getRealPath("/WEB-INF/config.oauth.properties");
 		java.util.Properties props = new ConfigUtils().getProperties(configPath);
@@ -64,13 +54,38 @@ public class HomeController {
 				.build();
 		mm.put("GOOGLE_OAUTH_LINK", authorizationUrl);
 		mm.put("FACEBOOK_OAUTH_LINK", facebookService.getAuthorizationUrl());
-		return new ModelAndView("HomeIndex");
+		return new ModelAndView("HomeLogin");
 	}
 
-	@RequestMapping(value = { "/learn" }, method = RequestMethod.GET)
-	public ModelAndView syllabus(@CookieValue(value = "lang", defaultValue = "vi") String lang, ModelMap mm,
-			HttpServletRequest request) {
-		mm.put("LIST_COURSE", new CourseDAO().findAllCourse());
-		return new ModelAndView("HomeLearn");
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView login(@RequestParam(value = "username") String username,
+			@RequestParam(value = "password") String password, ModelMap mm, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		System.out.println(password + username);
+		try {
+			Member member = new MemberDAO().checkLogin(username, password);
+			if (member == null) {
+				System.out.println("wrong member!");
+				return new ModelAndView("redirect:/login");
+			}
+			if (!member.isIsActive()) {
+				System.out.println("blocked!");
+				return new ModelAndView("redirect:/login");
+			}
+			
+			session.setAttribute("MEMBER", member);
+			return new ModelAndView("redirect:/learn");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("redirect:/login");
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView logout(ModelMap mm, HttpServletRequest request) {
+		request.getSession().removeAttribute("MEMBER");
+		return new ModelAndView("redirect:/");
 	}
 }

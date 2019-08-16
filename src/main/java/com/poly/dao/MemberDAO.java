@@ -143,7 +143,7 @@ public class MemberDAO extends AbstractDAO {
 		}
 	}
 
-	public Member checkLogin(String username, String password) throws Exception {
+	public Member checkLogin(String username, String password) {
 		Session session = null;
 		Member result = null;
 		try {
@@ -151,12 +151,14 @@ public class MemberDAO extends AbstractDAO {
 			User usr = null;
 			if (session != null) {
 				usr = new UserDAO().getUserLogin(username, password);
-				Criteria cr = session.createCriteria(Member.class);
-				cr.add(Restrictions.eq("user", usr));
-				cr.add(Restrictions.eq("isDeleted", false));
-				result = (Member) cr.uniqueResult();
+				if (usr != null) {
+					Criteria cr = session.createCriteria(Member.class);
+					cr.add(Restrictions.eq("user", usr));
+					cr.add(Restrictions.eq("isDeleted", false));
+					result = (Member) cr.uniqueResult();
+				}
 			}
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			throw e;
 		} finally {
 			HibernateConfiguration.getInstance().closeSession(session);

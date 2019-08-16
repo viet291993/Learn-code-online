@@ -82,15 +82,17 @@ public class LearnController {
 		Jdoodle jdoodle = Execute.execute(code, question.getLession().getSyllabus().getCourse().getLanguage().getCodeJdoodle());
 		session.setAttribute("JDOODLE", jdoodle);
 		if (jdoodle.getCpuTime() != null && jdoodle.getStatusCode().equals("200")) {
-			boolean rs = true;
+			boolean isExactly = true;
 			for (QuestionInstruction questionInstruction : question.getInstructions()) {
 				if (!StringUtils.equalsCode(jdoodle.getOutput(), questionInstruction.getResult())) {
-					rs = false;
+					isExactly = false;
 				}
 			}
-			if (rs)
+			if (isExactly) {
 				session.setAttribute("SESSION_QUESTION", question);
-			session.setAttribute("SESSION_IS_TRUE", rs); 
+				
+			}
+			session.setAttribute("SESSION_IS_TRUE", isExactly); 
 		} else {
 			session.setAttribute("SESSION_IS_TRUE", false);
 		}
@@ -127,6 +129,7 @@ public class LearnController {
 		Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
 		session.setAttribute("SESSION_LESSION", lession);
 		session.setAttribute("SESSION_QUESTION", new QuestionDAO().findQuestionEager(lession, questionId));
+		
 	}
 	
 	@RequestMapping(value = "/next/ajax", method = RequestMethod.GET)
