@@ -56,10 +56,11 @@ public class Execute {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println(result);
         return jdoodle;
 	}
 	
 	public static String formatScript(String script) {
-		return script.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n");
+		return script.replaceAll("	", " ").replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\\t", " ");
 	}
 }

@@ -32,16 +32,22 @@
 	            <div class="modalContent__2nyerWJYwhtqNMxqgzbzMr">
 	                <div id="content-menu-lession" class="modal__300H-z8Emtp72To9jo_ZSJ ">
 	                    <div>
-	                        <div class="courseNavButtonContainer__1_gUv3bTN8HAQQf58MIDeP"><a href="/learn/learn-java" class="courseNavButton__2PvUR3d_4qWLyQfxjVCQN3"><span class="leftArrowIcon___-pCF5NI_CCZZ-qpS3uZ1 new-cc-icon icon-heavyleftarrow"></span>Hello World</a></div>
+	                        <div class="courseNavButtonContainer__1_gUv3bTN8HAQQf58MIDeP"><a href="/learn/learn-java" class="courseNavButton__2PvUR3d_4qWLyQfxjVCQN3"><span class="leftArrowIcon___-pCF5NI_CCZZ-qpS3uZ1 new-cc-icon icon-heavyleftarrow"></span>${SELECTED_LESSION.name }</a></div>
 	                        <div>
-	                            <h1 class="heading__32zZOICnFS_W6-JZlLrX2y">Hello World</h1>
-	                            <h3 class="subheading__rVwyi7V09bKM8slOtu_0E">LESSON</h3>
+	                            <h1 class="heading__32zZOICnFS_W6-JZlLrX2y">${SELECTED_QUESTION.title }</h1>
+	                            <!-- <h3 class="subheading__rVwyi7V09bKM8slOtu_0E">LESSON</h3> -->
 	                            <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA description__31qWax7kNh79yVS9bXfg3z">
-	                                <p>Learn about the Java programming language and write your first programs while practicing Java conventions.</p>
+	                                <p>${SELECTED_QUESTION.description }</p>
 	                            </div>
 	                            <section class="exerciseSection__1HM1WD1vDQSTvLlS5WmosL">
-	                                <div class="groupHeading__3uTQEYNxl6MJgzXZZ13yw9">Exercises</div>
-	                                <button class="navButton__ZnqfRpK9Q_YnPIBDOqHmg completedListItem__1eHiHnR2W0vFWdZk6zSmIu">
+	                                <div class="groupHeading__3uTQEYNxl6MJgzXZZ13yw9">Bài tập
+	                                </div>
+	                                <c:forEach items="${SELECTED_LESSION.questions}" var="question" varStatus="status">
+	                                	<button class="navButton__ZnqfRpK9Q_YnPIBDOqHmg completedListItem__1eHiHnR2W0vFWdZk6zSmIu<c:if test="${SELECTED_QUESTION.orderDisplay == question.orderDisplay}"> activeListItem__1WDYeFpcYdIS35PyYU08C</c:if>">
+	                                    	<div class="listItemTitle__3NeTJtrYNQfK-bf7JqWTlG">${status.index + 1}. ${question.title }</div><i class="navButtonIcon__3CZM0V7800cC4DShLnggjR fcn-icon fcn-icon-checkmark"></i></button>
+	                                </c:forEach>
+	                                
+	                                <!-- <button class="navButton__ZnqfRpK9Q_YnPIBDOqHmg completedListItem__1eHiHnR2W0vFWdZk6zSmIu">
 	                                    <div class="listItemTitle__3NeTJtrYNQfK-bf7JqWTlG">1. Introduction to Java</div><i class="navButtonIcon__3CZM0V7800cC4DShLnggjR fcn-icon fcn-icon-checkmark"></i></button>
 	                                <button class="navButton__ZnqfRpK9Q_YnPIBDOqHmg completedListItem__1eHiHnR2W0vFWdZk6zSmIu activeListItem__1WDYeFpcYdIS35PyYU08C">
 	                                    <div class="listItemTitle__3NeTJtrYNQfK-bf7JqWTlG">2. Hello Java File!</div><i class="navButtonIcon__3CZM0V7800cC4DShLnggjR fcn-icon fcn-icon-checkmark"></i></button>
@@ -54,7 +60,7 @@
 	                                <button class="navButton__ZnqfRpK9Q_YnPIBDOqHmg lockedListItem__3ypfptVCWmhSnn9dgtue5B">
 	                                    <div class="listItemTitle__3NeTJtrYNQfK-bf7JqWTlG">6. Compilation: Creating Executables</div><i class="navButtonIcon__3CZM0V7800cC4DShLnggjR fcn-icon fcn-icon-lock"></i></button>
 	                                <button class="navButton__ZnqfRpK9Q_YnPIBDOqHmg lockedListItem__3ypfptVCWmhSnn9dgtue5B">
-	                                    <div class="listItemTitle__3NeTJtrYNQfK-bf7JqWTlG">7. Java Review: Putting It All Together</div><i class="navButtonIcon__3CZM0V7800cC4DShLnggjR fcn-icon fcn-icon-lock"></i></button>
+	                                    <div class="listItemTitle__3NeTJtrYNQfK-bf7JqWTlG">7. Java Review: Putting It All Together</div><i class="navButtonIcon__3CZM0V7800cC4DShLnggjR fcn-icon fcn-icon-lock"></i></button> -->
 	                            </section>
 	                        </div>
 	                    </div>

@@ -22,7 +22,7 @@ public class GeneralContextListener implements ServletContextListener {
 		String nameServer = new ConfigUtils().getProperties(configPathERP).getProperty(("config.mapping"));
 		Properties props = new ConfigUtils().getProperties(configPath);
 		Boolean on = Boolean.valueOf(props.getProperty("support.enable"));
-		if (!on) {
+		if (!on) { 
 			try {
 				HibernateConfiguration.getInstance().shutdown();
 			} catch (Exception e) {

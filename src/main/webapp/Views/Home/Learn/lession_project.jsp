@@ -66,11 +66,11 @@
 	                        <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionLeft__1ZxE4qxswlSZVqzj66Yx4I">
 	                            <div class="headerList__3Dz7kGRsAtPu7fgp1SB-_r">
 	                                <div class="headerListItem__2R-ZTH7tMkbBlnciRHIXyB">
-	                                    <a href="https://www.codecademy.com/" class="logo__2DTA1Sw8FycapLrAZBP6fX"><img alt="Codecademy logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="./introduction-to-java_files/696ac7b69b4b4181dffebe55c4d54fb7.svg"></a>
+	                                    <a href="<c:url value="/" />" class="logo__2DTA1Sw8FycapLrAZBP6fX"><img alt="Codecademy logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="<c:url value="/Resources/Home/img/logo-white.png" />"></a>
 	                                </div>
 	                            </div>
 	                        </div>
-	                        <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM"><a class="headerTitle__3WUka8CNchRN8beZfFQLl6 headerTitleLink__2cFJc_8BXEM5-BKr5Q0vZv" href="https://www.codecademy.com/learn/learn-java" data-testid="header-title"><i class="navIcon__3ui-P5-6cHJhc2niSk_YQh fcn-icon fcn-icon-arrowPrev"></i>Learn Java</a></div>
+	                        <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM"><a class="headerTitle__3WUka8CNchRN8beZfFQLl6 headerTitleLink__2cFJc_8BXEM5-BKr5Q0vZv" href="<c:url value="/learn/${SELECTED_COURSE.nameAscii }" />" data-testid="header-title"><i class="navIcon__3ui-P5-6cHJhc2niSk_YQh fcn-icon fcn-icon-arrowPrev"></i>${SELECTED_COURSE.name}</a></div>
 	                        <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionRight__2x_UrYa_JCgcfdfLU2FgeF">
 	                            <div class="headerList__3Dz7kGRsAtPu7fgp1SB-_r">
 	                                <div class="headerListItem__2R-ZTH7tMkbBlnciRHIXyB">

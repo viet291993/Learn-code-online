@@ -106,6 +106,8 @@ public class StringUtils {
     }
     
     public static boolean equalsCode(String input, String result) {
+    	if (input == null)
+    		return true;
     	input = input.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
     	String resultLower = result.replaceAll(" +", " ").replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
     	if (input.toLowerCase().contains(resultLower.toLowerCase())) {

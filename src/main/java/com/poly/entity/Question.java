@@ -45,7 +45,7 @@ public class Question implements java.io.Serializable {
 	public Question() {
 	}
 
-	@Id
+	@Id 
 	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)

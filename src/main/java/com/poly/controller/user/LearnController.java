@@ -54,7 +54,8 @@ public class LearnController {
 	public ModelAndView byNameAscii2(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			@PathVariable(value = "nameAscii") String nameAscii, @PathVariable(value = "nameAscii2") String nameAscii2,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
-		Lession lession = new LessionDAO().findLessionByNameAscii2(nameAscii, nameAscii2, lang);
+		mm.put("SELECTED_COURSE", new CourseDAO().findCoursebyNameAscii(nameAscii, lang));
+		Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
 		if (lession != null) {
 			mm.put("SELECTED_LESSION", lession);
 			if (lession.getLessionType().getCode() != null) {
@@ -123,7 +124,7 @@ public class LearnController {
 	@RequestMapping(value = "/next", method = RequestMethod.POST)
 	public void nextQuestion(@CookieValue(value = "lang", defaultValue = "vi") String lang, HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session,
 			@RequestParam(value = "nameAscii") String nameAscii, @RequestParam(value = "nameAscii2") String nameAscii2, @RequestParam(value = "questionId") Integer questionId) {
-		Lession lession = new LessionDAO().findLessionByNameAscii2(nameAscii, nameAscii2, lang);
+		Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
 		session.setAttribute("SESSION_LESSION", lession);
 		session.setAttribute("SESSION_QUESTION", new QuestionDAO().findQuestionEager(lession, questionId));
 	}
@@ -139,14 +140,12 @@ public class LearnController {
 	}
 	
 	@RequestMapping(value = "/next/ajax2", method = RequestMethod.POST)
-	public ModelAndView nextQuestion2_ajax(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+	public void nextQuestion2_ajax(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session,
 			@RequestParam(value = "nameAscii") String nameAscii, @RequestParam(value = "nameAscii2") String nameAscii2, @RequestParam(value = "questionId") Integer questionId) {
-		System.out.println(nameAscii + " " + nameAscii2 + " " + questionId);
-		Lession lession = new LessionDAO().findLessionByNameAscii2(nameAscii, nameAscii2, lang);
+		Lession lession = new LessionDAO().findLessionByNameAsciiEager2(nameAscii, nameAscii2, lang);
 		session.setAttribute("SESSION_LESSION", lession);
 		session.setAttribute("SESSION_QUESTION", new QuestionDAO().findQuestionEager(lession, questionId));
-		return new ModelAndView("HomeLessionProjectAjaxNav");
 	}
 	
 	@RequestMapping(value = "/next/ajax2", method = RequestMethod.GET)

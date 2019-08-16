@@ -15,7 +15,7 @@ public class LessionDAO extends AbstractDAO{
 		super(Lession.class);
 	}
 	
-	public Lession findLessionByNameAscii2(String nameAscii, String nameAscii2, String lang) {
+	public Lession findLessionByNameAsciiEager2(String nameAscii, String nameAscii2, String lang) {
 		Session session = null;
 		Lession lession = null;
 		try {
@@ -24,6 +24,8 @@ public class LessionDAO extends AbstractDAO{
 				Criteria cr = session.createCriteria(Lession.class);
 				cr.createAlias("syllabus", "syllabus", JoinType.INNER_JOIN);
 				cr.createAlias("syllabus.course", "syllabus.course", JoinType.INNER_JOIN);
+				cr.createAlias("questions", "ques", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("ques", FetchMode.JOIN);
 				cr.add(Restrictions.eq("isDeleted", false));
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("syllabus.course.id", new CourseDAO().findIdByNameAscii(nameAscii, lang)));

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**
@@ -159,6 +160,7 @@ public class Lession implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "lession")
+	@OrderBy("orderDisplay ASC")
 	public Set<Question> getQuestions() {
 		return this.questions;
 	}

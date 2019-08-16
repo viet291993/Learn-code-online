@@ -21,8 +21,8 @@
 			                                <div class="flex__1yBdRTf7dKVh6F1j8s6UAN align-center__3pP1dhYX-0GkrkR1JBXNzk learn-header"><em class="i__1n_wxJKd0dxJmK7QpTmi97 ikona-instructions__1jJAc700jGA7WBpQP6Okrd headerIcon__3PJznhF504VDDQyiK5lQKy" name="instructions"></em>Các yêu cầu</div>
 			                            </div>
 			                            <c:forEach items="${SELECTED_QUESTION.instructions}" var="instruction">
-		                                	<div class="fcn-checkpoint">
-		                                		${instruction.orderDisplay}. ${instruction.content}
+		                                	<div class="fcn-checkpoint spacing-tight__YTkj-JgyxXu1yRjOr_AFW">
+		                                		<div style="float:left;">${instruction.orderDisplay}.&nbsp;</div>${instruction.content}
 		                                	</div>
 	                                	</c:forEach>
 	                                	<div id="hint" class="hint__s8UXcPBvebZWKmIHL1iLP">
@@ -41,7 +41,7 @@
 											    </div>
 											    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA hintBody__Xlfb7YxNNyRdyb2SB9sb1">
 											        <c:forEach items="${SELECTED_QUESTION.instructions}" var="instruction">
-											        	${instruction.orderDisplay}. ${instruction.hint}
+											        	<div style="float:left;">${instruction.orderDisplay}.&nbsp;</div>${instruction.hint}
 											        </c:forEach>
 											    </div>
 										    </div>

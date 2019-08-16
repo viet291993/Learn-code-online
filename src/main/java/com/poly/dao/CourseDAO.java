@@ -67,6 +67,26 @@ public class CourseDAO extends AbstractDAO {
 		}
 		return list;
 	}
+	
+	public Course findCoursebyNameAscii(String nameAscii, String lang) {
+		Session session = null;
+		Course course = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Course.class);
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("nameAscii", nameAscii));
+				course = (Course) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return course;
+	}
 
 	public Course findCoursebyNameAsciiEager(String nameAscii, String lang) {
 		Session session = null;
