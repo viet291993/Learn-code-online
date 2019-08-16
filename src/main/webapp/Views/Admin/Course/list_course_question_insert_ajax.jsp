@@ -15,6 +15,7 @@
             <form id="form-insert-question" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Course/ListCourse/Question/Insert'/>">
                 <div class="modal-body"> 
                 	<div class="" role="tabpanel" data-example-id="togglable-tabs">
+                	<input type="hidden" name="lessionType" value="${SELECTED_LESSION.lessionType.code}">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                         <li role="question" class="active"><a href="#tab_question" id="question-tab" role="tab" data-toggle="tab" aria-expanded="true">Câu hỏi </a>
                         </li>
@@ -90,10 +91,11 @@
                         
                         <!-- Quiz -->
                         <c:if test="${SELECTED_LESSION.lessionType.code == 'Q'}">
-                        <div role="tabpanel" class="tab-pane fade" id="tab_quiz" aria-labelledby="quiz-tab">
-                        	Quiz
-                        
-                        </div>
+                        	<div role="tabpanel" class="tab-pane fade" id="tab_quiz" aria-labelledby="quiz-tab">
+		                        <div id="quiz">
+		                        </div>
+			                    <a id="addQuiz" class="text-info" href="javascript:void(0)"><i class="fa fa-plus" ></i> Thêm đáp án mới</a>
+	                        </div>
                         </c:if>
                       </div>
                     </div>
@@ -112,8 +114,14 @@
     $('#form-insert-question').validate({
         submitHandler: function () {
             var objData = $('#form-insert-question').serializeObject();
-            objData['listInstruction'] = getListInstruction();
+            <c:if test="${SELECTED_LESSION.lessionType.code != 'Q' && SELECTED_LESSION.lessionType.code != 'A'}">
+           		objData['listInstruction'] = getListInstruction();
+            </c:if>
+            <c:if test="${SELECTED_LESSION.lessionType.code == 'Q'}">
+           		objData['listQuiz'] = getListQuiz();
+            </c:if>
             var data = JSON.stringify(objData);
+            console.log(data);
             var url = $('#form-insert-question').attr('action');
             $.ajax({
                 url: url,
@@ -144,12 +152,12 @@
         var list = [];
         $('#instruction').find('.panel').each(function (i, target) {
 			var inputID = $(target).children('input:first');
-			var nameID = inputID.attr("name");
+			var nameID = inputID.data('name');
 			var inputOrder = $(target).find('input:last');
-			var nameOrder = inputOrder.attr("name");
+			var nameOrder = inputOrder.data('name');
 			var text = '{"'+nameID+'":"'+inputID.val()+'"';
         	$(target).find('textarea').each(function (i, target) {
-				text += ',"'+this.name+'":"'+$(target).val()+'"';
+				text += ',"'+$(target).data('name')+'":"'+$(target).val()+'"';
 			})
 			text +=',"'+nameOrder+'":"'+inputOrder.val()+'"}'
 			var obj = JSON.parse(text);
@@ -158,8 +166,29 @@
         return list;
  	}
     
+    function getListQuiz() {
+        var list = [];
+        $('#quiz').find('.form-group').each(function (i, target) {
+			var text = '{';
+        	$(target).find('input').each(function (i, target) {
+        		if(i>0){
+        			text+= ',';
+        		}
+				text += '"'+$(target).data('name')+'":"'+($(target).attr('type')=='radio'?$(target).is(':checked'):$(target).val())+'"';
+			})
+			text +='}'
+			var obj = JSON.parse(text);
+			list.push(obj);
+        });
+        return list;
+ 	}
+    
     $(document).on('click', '.deleteInstruction', function () {
     	$(this).parents('div .panel').remove();
+    });
+    
+    $(document).on('click', '.deleteQuiz', function () {
+    	$(this).parents('div .form-group').remove();
     });
     
 </script>

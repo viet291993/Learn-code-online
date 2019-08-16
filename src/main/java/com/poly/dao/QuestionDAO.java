@@ -17,6 +17,7 @@ import com.poly.config.HibernateConfiguration;
 import com.poly.entity.Lession;
 import com.poly.entity.Question;
 import com.poly.entity.QuestionInstruction;
+import com.poly.entity.Quiz;
 import com.poly.utils.StringUtils;
 
 public class QuestionDAO extends AbstractDAO {
@@ -184,35 +185,68 @@ public class QuestionDAO extends AbstractDAO {
 					module.get("orderDisplay") == null ? null : Integer.valueOf(module.get("orderDisplay").toString()));
 			question.setIsActive(Boolean.valueOf(module.get("isActive").toString()));
 			session.update(question);
-			session.createSQLQuery("update Question_Instruction set isDeleted=1 where Question_id=:QuestionId").setParameter("QuestionId", question.getId())
-					.executeUpdate();
-			if (module.get("listInstruction") != null) {
-				List listInstruction = (List) module.get("listInstruction");
-				for (Object o : listInstruction) {
-					Map m = (Map) o;
-					if (m.get("insID") != null && !m.get("insID").toString().equals("")) {
-						Integer id = Integer.valueOf(m.get("insID").toString());
-						QuestionInstruction instruction = (QuestionInstruction) new QuestionInstructionDAO().find(id);
-						instruction.setContent((String) m.get("insContent"));
-						instruction.setHint((String) m.get("insHint"));
-						instruction.setRequiredCode((String) m.get("insRequiredCode"));
-						instruction.setResult((String) m.get("insResult"));
-						instruction.setOrderDisplay(Integer.valueOf(m.get("insOrderDisplay").toString()));
-						instruction.setQuestion(question);
-						instruction.setIsDeleted(false);
-						session.update(instruction);
-					} else {
-						QuestionInstruction instruction = new QuestionInstruction();
-						instruction.setContent((String) m.get("insContent"));
-						instruction.setHint((String) m.get("insHint"));
-						instruction.setRequiredCode((String) m.get("insRequiredCode"));
-						instruction.setResult((String) m.get("insResult"));
-						instruction.setOrderDisplay(Integer.valueOf(m.get("insOrderDisplay").toString()));
-						instruction.setQuestion(question);
-						instruction.setIsDeleted(false);
-						session.save(instruction);
+			switch (module.get("lessionType").toString()) {
+			case "L":
+			case "P":
+				session.createSQLQuery("update Question_Instruction set isDeleted=1 where Question_id=:QuestionId")
+						.setParameter("QuestionId", question.getId()).executeUpdate();
+				if (module.get("listInstruction") != null) {
+					List listInstruction = (List) module.get("listInstruction");
+					for (Object o : listInstruction) {
+						Map m = (Map) o;
+						if (m.get("insID") != null && !m.get("insID").toString().equals("")) {
+							Integer id = Integer.valueOf(m.get("insID").toString());
+							QuestionInstruction instruction = session.get(QuestionInstruction.class, id);
+							instruction.setContent((String) m.get("insContent"));
+							instruction.setHint((String) m.get("insHint"));
+							instruction.setRequiredCode((String) m.get("insRequiredCode"));
+							instruction.setResult((String) m.get("insResult"));
+							instruction.setOrderDisplay(Integer.valueOf(m.get("insOrderDisplay").toString()));
+							instruction.setQuestion(question);
+							instruction.setIsDeleted(false);
+							session.update(instruction);
+						} else {
+							QuestionInstruction instruction = new QuestionInstruction();
+							instruction.setContent((String) m.get("insContent"));
+							instruction.setHint((String) m.get("insHint"));
+							instruction.setRequiredCode((String) m.get("insRequiredCode"));
+							instruction.setResult((String) m.get("insResult"));
+							instruction.setOrderDisplay(Integer.valueOf(m.get("insOrderDisplay").toString()));
+							instruction.setQuestion(question);
+							instruction.setIsDeleted(false);
+							session.save(instruction);
+						}
 					}
 				}
+				break;
+			case "Q":
+				session.createSQLQuery("update Quiz set isDeleted=1 where Question_id=:QuestionId")
+						.setParameter("QuestionId", question.getId()).executeUpdate();
+				if (module.get("listQuiz") != null) {
+					List listInstruction = (List) module.get("listQuiz");
+					for (Object o : listInstruction) {
+						Map m = (Map) o;
+						if (m.get("quizId") != null && !m.get("quizId").toString().equals("")) {
+							Integer id = Integer.valueOf(m.get("quizId").toString());
+							Quiz quiz = session.get(Quiz.class, id);
+							quiz.setAnswer((String) m.get("answer"));
+							quiz.setIsTrue(Boolean.valueOf(m.get("isTrue").toString()));
+							quiz.setQuestion(question);
+							quiz.setIsDeleted(false);
+							session.update(quiz);
+						} else {
+							Quiz quiz = new Quiz();
+							quiz.setAnswer((String) m.get("answer"));
+							quiz.setIsTrue(Boolean.valueOf(m.get("isTrue").toString()));
+							quiz.setQuestion(question);
+							quiz.setIsDeleted(false);
+							session.save(quiz);
+						}
+					}
+				}
+				break;
+			default:
+				break;
 			}
 			session.flush();
 			HibernateConfiguration.getInstance().commitTransaction(trans);
@@ -245,23 +279,44 @@ public class QuestionDAO extends AbstractDAO {
 			Integer questionID = (Integer) session.createSQLQuery("select top 1 id from Question order by id desc")
 					.uniqueResult();
 			question.setId(questionID);
-			if (module.get("listInstruction") != null) {
-				List listInstruction = (List) module.get("listInstruction");
-				for (Object o : listInstruction) {
-					Map m = (Map) o;
-					QuestionInstruction instruction = new QuestionInstruction();
-					instruction.setContent((String) m.get("insContent"));
-					instruction.setHint((String) m.get("insHint"));
-					instruction.setRequiredCode((String) m.get("insRequiredCode"));
-					instruction.setResult((String) m.get("insResult"));
-					instruction.setOrderDisplay(Integer.valueOf(m.get("insOrderDisplay").toString()));
-					instruction.setQuestion(question);
-					session.save(instruction);
+			switch (module.get("lessionType").toString()) {
+			case "L":
+			case "P":
+				if (module.get("listInstruction") != null) {
+					List listInstruction = (List) module.get("listInstruction");
+					for (Object o : listInstruction) {
+						Map m = (Map) o;
+						QuestionInstruction instruction = new QuestionInstruction();
+						instruction.setContent((String) m.get("insContent"));
+						instruction.setHint((String) m.get("insHint"));
+						instruction.setRequiredCode((String) m.get("insRequiredCode"));
+						instruction.setResult((String) m.get("insResult"));
+						instruction.setOrderDisplay(Integer.valueOf(m.get("insOrderDisplay").toString()));
+						instruction.setQuestion(question);
+						session.save(instruction);
+					}
 				}
+				break;
+			case "Q":
+				if (module.get("listQuiz") != null) {
+					List listInstruction = (List) module.get("listQuiz");
+					for (Object o : listInstruction) {
+						Map m = (Map) o;
+						Quiz quiz = new Quiz();
+						quiz.setAnswer((String) m.get("answer"));
+						quiz.setIsTrue(Boolean.valueOf(m.get("isTrue").toString()));
+						quiz.setQuestion(question);
+						quiz.setIsDeleted(false);
+						session.save(quiz);
+					}
+				}
+				break;
 			}
 			session.flush();
 			HibernateConfiguration.getInstance().commitTransaction(trans);
-		} catch (HibernateException e) {
+		} catch (
+
+		HibernateException e) {
 			HibernateConfiguration.getInstance().rollbackTransaction(trans);
 			throw e;
 		} finally {

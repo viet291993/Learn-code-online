@@ -15,7 +15,7 @@ import com.poly.entity.Quiz;
 public class QuizDAO extends AbstractDAO{
 
 	public QuizDAO() {
-		super(Lession.class);
+		super(Quiz.class);
 	}
 	
 	public List<Quiz> getAllQuizByQuestion(Question question) {

@@ -15,6 +15,7 @@
             <form id="form-insert-question" class="form-insert form-horizontal" novalidate method="POST" action="<c:url value='/Admin/Course/ListCourse/Question/Edit'/>">
                 <div class="modal-body"> 
                 	<div class="" role="tabpanel" data-example-id="togglable-tabs">
+                	<input type="hidden" name="lessionType" value="${SELECTED_QUESTION.lession.lessionType.code}">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                         <li role="question" class="active"><a href="#tab_question" id="question-tab" role="tab" data-toggle="tab" aria-expanded="true">Câu hỏi </a>
                         </li>
@@ -38,31 +39,31 @@
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Tiêu đề</label>
 		                        <div class="col-sm-9">
-		                            <input type="text" id="title" required name="title" value="${SELECTED_QUESTION.title}" class="form-control" placeholder="">
+		                            <input type="text" id="title" name="title" value="${SELECTED_QUESTION.title}" class="form-control" placeholder="">
 		                        </div>
 		                    </div>
 		                     <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Mô tả</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="description" required name="description"  class="form-control" placeholder="">${SELECTED_QUESTION.description}</textarea>
+		                            <textarea  id="description"  name="description"  class="form-control" placeholder="">${SELECTED_QUESTION.description}</textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Nội dung</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="content" required name="content"  class="form-control" placeholder="">${SELECTED_QUESTION.content}</textarea>
+		                            <textarea  id="content"  name="content"  class="form-control" placeholder="">${SELECTED_QUESTION.content}</textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Tên file</label>
 		                        <div class="col-sm-9">
-		                            <input type="text" id="fileName" required name="fileName" value="${SELECTED_QUESTION.fileName}" class="form-control" placeholder="">
+		                            <input type="text" id="fileName"  name="fileName" value="${SELECTED_QUESTION.fileName}" class="form-control" placeholder="">
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="name" class="control-label col-sm-3">Code mặc định</label>
 		                        <div class="col-sm-9">
-		                            <textarea  id="defaultCode" required name="defaultCode"  class="form-control" placeholder="">${SELECTED_QUESTION.defaultCode}</textarea>
+		                            <textarea  id="defaultCode"  name="defaultCode"  class="form-control" placeholder="">${SELECTED_QUESTION.defaultCode}</textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
@@ -89,37 +90,37 @@
 		                        <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapse${loop.index}" aria-expanded="true" aria-controls="collapseOne">
 		                          <h4 class="panel-title">Yêu cầu ${INSTRUCTION.orderDisplay} <i class="fa fa-trash pull-right deleteInstruction"></i></h4>
 		                        </a>
-		                        <input type="hidden" name="insID" value="${INSTRUCTION.id}">
+		                        <input type="hidden" data-name="insID" value="${INSTRUCTION.id}">
 		                        <div id="collapse${loop.index}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" style="">
 		                          <div class="panel-body">
 		                          	<div class="form-group">
 				                        <label for="name" class="control-label col-sm-3">Nội dung</label>
 				                        <div class="col-sm-9">
-				                            <textarea  id="insContent" required name="insContent"  class="form-control" placeholder="">${INSTRUCTION.content}</textarea>
+				                            <textarea  id="insContent" required data-name="insContent"  class="form-control" placeholder="">${INSTRUCTION.content}</textarea>
 				                        </div>
 				                    </div>
 				                    <div class="form-group">
 				                        <label for="name" class="control-label col-sm-3">Hướng dẫn</label>
 				                        <div class="col-sm-9">
-				                            <textarea  id="insHint" required name="insHint"  class="form-control" placeholder="">${INSTRUCTION.hint}</textarea>
+				                            <textarea  id="insHint" required data-name="insHint"  class="form-control" placeholder="">${INSTRUCTION.hint}</textarea>
 				                        </div>
 				                    </div>
 				                    <div class="form-group">
 				                        <label for="name" class="control-label col-sm-3">Code yêu cầu</label>
 				                        <div class="col-sm-9">
-				                            <textarea  id="insRequiredCode"  name="insRequiredCode"  class="form-control" placeholder="">${INSTRUCTION.requiredCode}</textarea>
+				                            <textarea  id="insRequiredCode"  data-name="insRequiredCode"  class="form-control" placeholder="">${INSTRUCTION.requiredCode}</textarea>
 				                        </div>
 				                    </div>		
 				                    <div class="form-group">
 				                        <label for="name" class="control-label col-sm-3">Kết quả</label>
 				                        <div class="col-sm-9">
-				                            <textarea  id="insResult"  name="insResult"  class="form-control" placeholder="">${INSTRUCTION.result}</textarea>
+				                            <textarea  id="insResult"  data-name="insResult"  class="form-control" placeholder="">${INSTRUCTION.result}</textarea>
 				                        </div>
 				                    </div>
 				                     <div class="form-group">
 				                        <label class="control-label col-sm-3">Thứ tự</label>
 				                        <div class="col-sm-9">
-				                            <input type="number" id="insOrderDisplay" name="insOrderDisplay" class="form-control" value="${INSTRUCTION.orderDisplay}">
+				                            <input type="number" id="insOrderDisplay" data-name="insOrderDisplay" class="form-control" value="${INSTRUCTION.orderDisplay}">
 				                        </div>
 				                    </div>		
 		                          </div>
@@ -136,12 +137,13 @@
 		                        <div id="quiz">
 		                        <c:forEach items="${SELECTED_QUESTION.quizs}" var="QUIZ" varStatus="loop">
 		                        	<div class="form-group">
-		                                <input type="radio"  ${QUIZ.isTrue?'checked':''} class="col-sm-2 mt-10"  name="Quiz">
+		                                <input type="radio" data-name="isTrue"  ${QUIZ.isTrue?'checked':''} class="col-sm-2 mt-10"  name="Quiz">
 		                            	<div class="col-sm-7">
-		                            		<input type="text" class="form-control" value="${QUIZ.answer}">
+		                            		<input type="text" class="form-control" data-name="answer" value="${QUIZ.answer}">
+		                            		<input type="hidden" data-name="quizId" value="${QUIZ.id}">
 		                            	</div>
 		                            	<a class="text-danger" href="javascript:void(0)"><i class="fa fa-trash deleteQuiz col-sm-3 pt-10"></i></a>
-		                            	<input type="hidden" data-id="quizId" value="${QUIZ.id}">
+		                            	
 		                          	</div>
 		                        </c:forEach>
 		                        </div>
@@ -169,8 +171,14 @@
     $('#form-insert-question').validate({
         submitHandler: function () {
             var objData = $('#form-insert-question').serializeObject();
-            objData['listInstruction'] = getListInstruction();
+            <c:if test="${SELECTED_QUESTION.lession.lessionType.code != 'Q' && SELECTED_QUESTION.lession.lessionType.code != 'A'}">
+           		objData['listInstruction'] = getListInstruction();
+            </c:if>
+            <c:if test="${SELECTED_QUESTION.lession.lessionType.code == 'Q'}">
+           		objData['listQuiz'] = getListQuiz();
+            </c:if>
             var data = JSON.stringify(objData);
+            console.log(data);
             var url = $('#form-insert-question').attr('action');
             $.ajax({
                 url: url,
@@ -201,14 +209,31 @@
         var list = [];
         $('#instruction').find('.panel').each(function (i, target) {
 			var inputID = $(target).children('input:first');
-			var nameID = inputID.attr("name");
+			var nameID = inputID.data('name');
 			var inputOrder = $(target).find('input:last');
-			var nameOrder = inputOrder.attr("name");
+			var nameOrder = inputOrder.data('name');
 			var text = '{"'+nameID+'":"'+inputID.val()+'"';
         	$(target).find('textarea').each(function (i, target) {
-				text += ',"'+this.name+'":"'+$(target).val()+'"';
+				text += ',"'+$(target).data('name')+'":"'+$(target).val()+'"';
 			})
 			text +=',"'+nameOrder+'":"'+inputOrder.val()+'"}'
+			var obj = JSON.parse(text);
+			list.push(obj);
+        });
+        return list;
+ 	}
+    
+    function getListQuiz() {
+        var list = [];
+        $('#quiz').find('.form-group').each(function (i, target) {
+			var text = '{';
+        	$(target).find('input').each(function (i, target) {
+        		if(i>0){
+        			text+= ',';
+        		}
+				text += '"'+$(target).data('name')+'":"'+($(target).attr('type')=='radio'?$(target).is(':checked'):$(target).val())+'"';
+			})
+			text +='}'
 			var obj = JSON.parse(text);
 			list.push(obj);
         });
