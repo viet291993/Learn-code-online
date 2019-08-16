@@ -68,6 +68,11 @@
         <function-class>com.poly.utils.CustomFunction</function-class>
         <function-signature>List findAllLanguage()</function-signature>
     </function>
+     <function>
+        <name>findAllLessionType</name>
+        <function-class>com.poly.utils.CustomFunction</function-class>
+        <function-signature>List findAllLessionType()</function-signature>
+    </function>
     <function>
         <name>checkModuleInrole</name>
         <function-class>com.poly.utils.CustomFunction</function-class>

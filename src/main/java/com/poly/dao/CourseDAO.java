@@ -159,6 +159,12 @@ public class CourseDAO extends AbstractDAO {
 				cr.setFetchMode("syllabuses", FetchMode.JOIN);
 				cr.createAlias("syllabuses.lessions", "syllabuses.lessions", JoinType.LEFT_OUTER_JOIN);
 				cr.setFetchMode("syllabuses.lessions", FetchMode.JOIN);
+				cr.createAlias("syllabuses.lessions.questions", "syllabuses.lessions.questions",
+						JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("syllabuses.lessions.questions", FetchMode.JOIN);
+				cr.createAlias("syllabuses.lessions.lessionType", "syllabuses.lessions.lessionType",
+						JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("syllabuses.lessions.lessionType", FetchMode.JOIN);
 				cr.add(Restrictions.eq("isDeleted", false));
 				cr.add(Restrictions.eq("id", id));
 				course = (Course) cr.uniqueResult();

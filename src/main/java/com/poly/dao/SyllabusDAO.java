@@ -22,6 +22,27 @@ public class SyllabusDAO extends AbstractDAO {
 		super(Syllabus.class);
 	}
 
+	public Syllabus findEager(Integer id) {
+		Session session = null;
+		Syllabus syllabus = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(Syllabus.class);
+				cr.createAlias("course", "course", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("course", FetchMode.JOIN);
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("id", id));
+				syllabus =(Syllabus) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return syllabus;
+	}
+
 	public Integer create(Map module) throws Exception {
 		Transaction trans = null;
 		Session session = null;

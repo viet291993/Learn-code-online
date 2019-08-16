@@ -18,7 +18,7 @@ public class AdminLogsDAO extends AbstractDAO {
 		super(AdminLogs.class);
 	}
 
-	public List<AdminLogs> fillAll() {
+	public List<AdminLogs> fillAllEager() {
 		Session session = null;
 		List<AdminLogs> list = null;
 		try {

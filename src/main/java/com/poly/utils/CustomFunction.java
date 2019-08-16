@@ -7,7 +7,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
-import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,6 +38,8 @@ import com.poly.bean.Pager;
 import com.poly.dao.AdminDAO;
 import com.poly.dao.AdminRoleDAO;
 import com.poly.dao.LanguageDAO;
+import com.poly.dao.LessionDAO;
+import com.poly.dao.LessionTypeDAO;
 import com.poly.entity.Admin;
 import com.poly.entity.AdminModuleInRole;
 
@@ -131,11 +132,6 @@ public class CustomFunction {
 				+ pager.getKeyword();
 		return url;
 	}
-
-	/*
-	 * public static List findAllAvailableAdminRole() { return new
-	 * AdminRoleDAO().findAll(); }
-	 */
 
 	public static boolean checkAdminModuleInRole(List<AdminModuleInRole> AdminModuleInRoles, int moduleId) {
 		return AdminModuleInRoles.stream().filter(m -> {
@@ -301,6 +297,10 @@ public class CustomFunction {
 	
 	public static List findAllLanguage() {
 		return new LanguageDAO().findAll();
+	}
+	
+	public static List findAllLessionType() {
+		return new LessionTypeDAO().findAll();
 	}
 
 	public static List<AdminModuleInRole> filterModuleInRoleList(List<AdminModuleInRole> moduleInRoles,
@@ -584,19 +584,4 @@ public class CustomFunction {
 		return sb.toString();
 	}
 
-	public static String generateLessionTypy(String str1, String str2) {
-		final StringBuilder sb = new StringBuilder();
-		for (String s : str1.split(",")) {
-			sb.append("<div class='checkbox value'><label class='custom-control-label'>")
-					.append("<input class='custom-control-input value-property' type='checkbox' name='value' value='")
-					.append(s).append("'");
-			for (String i : str2.split(",")) {
-				if (s.equals(i)) {
-					sb.append(" checked");
-				}
-			}
-			sb.append("/>" + s + "</label></div></div>");
-		}
-		return sb.toString();
-	}
 }

@@ -8019,6 +8019,14 @@ a.text-danger:focus {
   color: #d43f3a;
 }
 
+.text-dark {
+  color: #777;
+}
+a.text-dark:hover,
+a.text-dark:focus {
+  color: #777;
+}
+
 /* Treeview */
 
 .tree, .tree ul {
@@ -8125,6 +8133,16 @@ a.text-danger:focus {
 .pl-52{
 	padding-left: 52px;
 }
+
+.pl-100{
+	padding-left: 100px;
+}
+.pt-10{
+	padding-top: 10px;
+}
+.mt-10{
+	margin-top: 10px;
+}
 .float-left;
 {
 	float: left;
@@ -8134,6 +8152,7 @@ a.text-danger:focus {
 {
 	float: right;
 }
+
 /* LOANGDING */
 .lds-spinner {
   color: official;
@@ -8233,3 +8252,8 @@ a.text-danger:focus {
 	color: silver;
 	cursor: not-allowed;
 }
+.panel-title .fa{
+	display: inline !important;
+	color: #d9534f;
+}
+
