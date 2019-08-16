@@ -268,4 +268,9 @@
         <function-class>com.poly.utils.CustomFunction</function-class>
         <function-signature>String generateExpiredDate(java.util.Date)</function-signature>
     </function>
+    <function>
+        <name>textJS</name>
+        <function-class>com.poly.utils.CustomFunction</function-class>
+        <function-signature>String textJS(java.lang.String)</function-signature>
+    </function>
 </taglib>

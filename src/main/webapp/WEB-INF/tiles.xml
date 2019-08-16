@@ -21,6 +21,9 @@
         <put-attribute name="Content" value="/Views/Home/Content/error.jsp" />
     </definition>
     
+    <definition name="HomeLessionArticle" template="/Views/Home/Learn/lession_article.jsp">
+    </definition>
+    
     <definition name="HomeLessionProject" template="/Views/Home/Learn/lession_project.jsp">
     </definition>
     

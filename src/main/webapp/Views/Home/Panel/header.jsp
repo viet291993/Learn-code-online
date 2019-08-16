@@ -12,8 +12,8 @@
 	                                </div>
 	                            </div>
 	                            <div class="headerList__2cFXAvupVnCAG6idZMcZeQ showOnDesktop__x7795RqOCp8DJ5csmbNfA">
-	                                <div><a id="catalog" href="https://www.codecademy.com/catalog/subject/all" data-testid="header-catalog" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Danh mục</a></div>
-	                                <div><a href="https://www.codecademy.com/pro/membership" data-testid="header-pricing" id="pricing" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Diễn đàn</a></div>
+	                                <div><a id="catalog" href="#/catalog/subject/all" data-testid="header-catalog" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Danh mục</a></div>
+	                                <div><a href="#/pro/membership" data-testid="header-pricing" id="pricing" class="tab__1Vw1A1yuPy-TnRg11IKht navLink__1vFiVOfSXmydFMhnUFq3wn">Diễn đàn</a></div>
 	                            </div>
 	                        </div>
 	                        <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionRight__2x_UrYa_JCgcfdfLU2FgeF">

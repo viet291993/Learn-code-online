@@ -3,6 +3,8 @@ package com.poly.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,6 +30,8 @@ public class RecordQuestion implements java.io.Serializable {
 	private Record record;
 	private String tempCode;
 	private int resultQuiz;
+	private boolean isPass;
+	private Date lastUpdate;
 	private boolean isActive;
 	private boolean isDeleted;
 
@@ -94,6 +98,24 @@ public class RecordQuestion implements java.io.Serializable {
 		this.resultQuiz = resultQuiz;
 	}
 
+	@Column(name = "isPass", nullable = false)
+	public boolean isIsPass() {
+		return this.isPass;
+	}
+
+	public void setIsPass(boolean isPass) {
+		this.isPass = isPass;
+	}
+	
+	@Column(name = "lastUpdate", nullable = false)
+	public Date getLastUpdate() {
+		return this.lastUpdate;
+	}
+
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+	
 	@Column(name = "isActive", nullable = false)
 	public boolean isIsActive() {
 		return this.isActive;

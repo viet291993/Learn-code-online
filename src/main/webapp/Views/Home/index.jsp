@@ -51,7 +51,7 @@
                                             <a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u socialAuthButton__37xPl0ozPFfWqDPqxOZliK" href="${FACEBOOK_OAUTH_LINK}"><img alt="Log in with Facebook" src="<c:url value="/Resources/Home/img/facebook-login.svg" />" class="icon__2vDktWxPDSLCOvKmj71yjI" /></a>
                                         </div>
                                         <div class="btnContainerItem__3kFJlOyX7257vaaAwEWbPP">
-                                            <a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u socialAuthButton__37xPl0ozPFfWqDPqxOZliK" href="https://www.codecademy.com/users/auth/github?scope=public_repo%2Cuser%3Aemail"><img alt="Log in with Github" src="<c:url value="/Resources/Home/img/github-login.svg" />" class="icon__2vDktWxPDSLCOvKmj71yjI" /></a>
+                                            <a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u socialAuthButton__37xPl0ozPFfWqDPqxOZliK" href="#/users/auth/github?scope=public_repo%2Cuser%3Aemail"><img alt="Log in with Github" src="<c:url value="/Resources/Home/img/github-login.svg" />" class="icon__2vDktWxPDSLCOvKmj71yjI" /></a>
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                 <div class="container__t9cGpmzkTfzuZwSMDtCbX"><img src="<c:url value="/Resources/Home/img/ad31cc5d0e772afeb709ff2eb8533388.svg" />" alt="" class="intersectingOvalsImg__1gExzHIE5Mn2S0LJqwsUVm"><img src="<c:url value="/Resources/Home/img/22ec3e0cc58cb2335431228f470553ae.svg" />" alt="" class="pieChartImg__1uArqVg9AvfqchFXiz4AuY"><img src="<c:url value="/Resources/Home/img/75e370504e7e835443ce65fa47062325.svg" />" alt="" class="togglesImg__2t3KchlrgDHtt14jpQckcK">
                     <div class="ctaSectionContent__2ritis0K0nd-ZVgDtf4eDw">
                         <h2 class="ctaHeader__2rtm70gsy41omgpzTodBkn">It’s time to start <br> investing in yourself</h2>
-                        <p class="ctaContent__-GIe7aYRIo8D0yKMcml_d">Because learning to code might be the easiest way to change your career.</p><a data-btn="true" aria-label="Get Started with Codecademy" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 large__3uWKqXQr23vJ_9n9mwRvVa outline__1jukYfNsJOsNuah6o7d8HZ round__1_1AZP9jaqNLqK0tnoeljL ctaButton__8PFyoYkGc0t8vM3ApK1c7" href="https://www.codecademy.com/register">Get Started</a></div>
+                        <p class="ctaContent__-GIe7aYRIo8D0yKMcml_d">Because learning to code might be the easiest way to change your career.</p><a data-btn="true" aria-label="Get Started with Codecademy" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 large__3uWKqXQr23vJ_9n9mwRvVa outline__1jukYfNsJOsNuah6o7d8HZ round__1_1AZP9jaqNLqK0tnoeljL ctaButton__8PFyoYkGc0t8vM3ApK1c7" href="#/register">Get Started</a></div>
                 </div>
             </div>
         </main>

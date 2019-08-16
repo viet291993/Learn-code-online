@@ -9,7 +9,7 @@
 	                            <div class="avatarContainer__1kp-4fjZlS-NX4vrB_Ydtk"><img class="avatarImage__1CPb8XZ3IHWdJ-JtT5_uqJ" src="<c:if test="${MEMBER.profileimage == null}"><c:url value="/Resources/Home/img/guest.png" /></c:if><c:if test="${MEMBER.profileimage != null}">${MEMBER.profileimage}</c:if>" alt="avatar"></div>
 	                            <div class="userDetailsContainer__ZQKAngqGJvAfFiP17BVRo">
 	                                <div class="usernameContainer__3v4c5LW-wE2MT8wndddkRh">
-	                                    <h1 class="username__2XadxoeCL3__ps0TM7GI6k">${MEMBER.name}</h1><a data-btn="true" class="basicBtn btn btn-white__1e0kCCItRnEi-EDNpmLuX1 outline__1jukYfNsJOsNuah6o7d8HZ fit-text__1GvxCv4KPqP6bG2s0Ub63x editButton__1MFirzSrrM2a3_2XgEQHne" href="https://www.codecademy.com/account">Cài đặt</a></div>
+	                                    <h1 class="username__2XadxoeCL3__ps0TM7GI6k">${MEMBER.name}</h1><a data-btn="true" class="basicBtn btn btn-white__1e0kCCItRnEi-EDNpmLuX1 outline__1jukYfNsJOsNuah6o7d8HZ fit-text__1GvxCv4KPqP6bG2s0Ub63x editButton__1MFirzSrrM2a3_2XgEQHne" href="#/account">Cài đặt</a></div>
 	                                <div data-testid="role-label">Pro Trial
 	                                    <!-- -->
 	                                    <!-- -->Member</div>
@@ -34,7 +34,7 @@
 	                        <div class="container__2RMTkGzEKsFyUsjdRKT2cR">
 	                            <!-- trial -->
 	                            <%-- <div>
-	                                <a href="https://www.codecademy.com/subscriptions/proAnnualV3/checkout?redirect_url=%2Flearn" data-testid="pro-trial-banner-notification" event="click" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb">
+	                                <a href="#/subscriptions/proAnnualV3/checkout?redirect_url=%2Flearn" data-testid="pro-trial-banner-notification" event="click" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb">
 	                                    <div class="shell__1vPVBkwGbqEYx_R1DkguFu hoverShadow__2P3Dk0LBqbAZba0DPjm8Xx trialBannerCardShell__1OyWEdaBCjxPzUXrzfLeRS">
 	                                        <div class="standardPadding__2Qfs_mGV0Kt7Y3sHTOhHtm trialBannerContainer__1KqMO2s1Jf3CamhulVbzi-">
 	                                            <div class="bannerBodyContainer__3oq8W9WXy21mNcUKWtUNUB">
@@ -60,7 +60,7 @@
 	                                    <div class="container__1LHkLcTMPAPmlQ86aliTpo">
 	                                        <h2 class="label__1c-NhKMh11N-kMbi6bWMj7">Học tiếp nào</h2>
 	                                        <div class="cardContainer__26G4CmQ3G7JvV7A3JdpDhW">
-	                                            <div class="container__cuX97vmKHPeJOlFDN-Nj"><a class="titleAnchor__1sxr029PzvMHeg2pU4Q9ll" href="https://www.codecademy.com/learn/learn-java"><h3 class="title__adLVN1BiJBwVFyBElQmGh">Lập trình Java</h3></a>
+	                                            <div class="container__cuX97vmKHPeJOlFDN-Nj"><a class="titleAnchor__1sxr029PzvMHeg2pU4Q9ll" href="#/learn/learn-java"><h3 class="title__adLVN1BiJBwVFyBElQmGh">Lập trình Java</h3></a>
 	                                                <div class="progressContainer__1DM3sxy-Sm7QOzDKiNa9pN">
 	                                                    <svg viewBox="0 0 100 100" height="70" width="70" class="progress__1oXtqEwJLTsJtxSgw7SSkH">
 	                                                        <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" fill="none" opacity=".2"></circle>
@@ -86,7 +86,7 @@
 	                                                                </svg>
 	                                                            </div>
 	                                                            <div class="type__2Ur2qNLTi9ODBD0inE0Gee">Câu hỏi</div>
-	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U"><a href="https://www.codecademy.com/courses/learn-java/quizzes/java-hello-world-quiz">Hello World</a></div>
+	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U"><a href="#/courses/learn-java/quizzes/java-hello-world-quiz">Hello World</a></div>
 	                                                        </li>
 	                                                        <li class="container__2QurwX46lLbI1SbXhka4QN" style="opacity: 1; transform: none;">
 	                                                            <div class="iconContainer__3SvjzyfVuhdn8Mnzr9zGQ7 activeIcon__3KyvCTzrYtqTGAx45hwT_J">
@@ -96,7 +96,7 @@
 	                                                                </svg>
 	                                                            </div>
 	                                                            <div class="type__2Ur2qNLTi9ODBD0inE0Gee activeText__ADKyAngSMTI8Cr7gXp0Ru">Dự án</div>
-	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U activeText__ADKyAngSMTI8Cr7gXp0Ru"><a href="https://www.codecademy.com/courses/learn-java/projects/planting-a-tree">Vẽ hình</a></div>
+	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U activeText__ADKyAngSMTI8Cr7gXp0Ru"><a href="#/courses/learn-java/projects/planting-a-tree">Vẽ hình</a></div>
 	                                                        </li>
 	                                                        <li class="container__2QurwX46lLbI1SbXhka4QN" style="opacity: 1; transform: none;">
 	                                                            <div class="iconContainer__3SvjzyfVuhdn8Mnzr9zGQ7">
@@ -106,12 +106,12 @@
 	                                                                </svg>
 	                                                            </div>
 	                                                            <div class="type__2Ur2qNLTi9ODBD0inE0Gee">Lý thuyết</div>
-	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U"><a href="https://www.codecademy.com/courses/learn-java/articles/what-is-an-ide">IDE là gì?</a></div>
+	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U"><a href="#/courses/learn-java/articles/what-is-an-ide">IDE là gì?</a></div>
 	                                                        </li>
 	                                                    </div>
 	                                                </div>
 	                                            </div>
-	                                            <div class="container__3bWnETqaVFvjw-gQ9IcZi3"><a data-btn="true" class="basicBtn button__1s6zPiTEPT2vvONVqVYFba basicLink__1ntEiXSqZV9fADVnrfvmjQ" data-testid="today-resume-button" href="https://www.codecademy.com/courses/learn-java/projects/planting-a-tree">Tiếp tục <svg class="icon__1H1ClqSZH9JXzbQTCxIIdj" fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Right Arrow Icon</title><path d="M4 10.92v2h12l-5.5 5.5 1.42 1.42 7.92-7.92L11.92 4 10.5 5.42l5.5 5.5z" fill-rule="nonzero"></path></svg></a></div>
+	                                            <div class="container__3bWnETqaVFvjw-gQ9IcZi3"><a data-btn="true" class="basicBtn button__1s6zPiTEPT2vvONVqVYFba basicLink__1ntEiXSqZV9fADVnrfvmjQ" data-testid="today-resume-button" href="#/courses/learn-java/projects/planting-a-tree">Tiếp tục <svg class="icon__1H1ClqSZH9JXzbQTCxIIdj" fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Right Arrow Icon</title><path d="M4 10.92v2h12l-5.5 5.5 1.42 1.42 7.92-7.92L11.92 4 10.5 5.42l5.5 5.5z" fill-rule="nonzero"></path></svg></a></div>
 	                                        </div>
 	                                    </div>
 	                                    <div class="container__20DrPJXdoseDV5hCjyPwHO" data-testid="today-practice-section">
@@ -162,7 +162,7 @@
 	                                                <div>
 	                                                    <h5 class="title__ALUVeosZQKUBmbN0W5zXC">Kênh YouTube</h5>
 	                                                    <p class="description__1V0R1gkmyhRS6i8PCyQ0Q">Những video sẽ giúp bạn học lập trình dễ dàng hơn</p>
-	                                                </div><a class="noUnderline__1SC6_eVwcicCvkuSVbHlDb linkWrapper__1BKx4Tx8Z4YwQc8vCkwkO-" href="https://www.codecademy.com/pro/community" target="_self" event="click"><span class="linkText__yYmD2aPevO6tl0RpLyK3g">Learn More</span></a></div>
+	                                                </div><a class="noUnderline__1SC6_eVwcicCvkuSVbHlDb linkWrapper__1BKx4Tx8Z4YwQc8vCkwkO-" href="#/pro/community" target="_self" event="click"><span class="linkText__yYmD2aPevO6tl0RpLyK3g">Learn More</span></a></div>
 	                                        </div>
 	                                        <div class="container__T7_ulay5K9GrttnMEMvUZ"><img src="<c:url value="/Resources/Home/img/facebook-logo.svg " />" class="socialMediaIcon__3bhPN6cdz-jGxs7Wftkd8W" alt="">
 	                                            <div>

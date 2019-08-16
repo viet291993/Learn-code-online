@@ -19,8 +19,6 @@ public class UserAuthenticationInterceptor extends HandlerInterceptorAdapter {
                 return false;
             }
         } else {
-        	System.out.println("url " + request.getContextPath().toLowerCase() + "/learn");
-        	System.out.println("uri " + uri);
         	if (uri.contains(request.getContextPath().toLowerCase() + "/login") || uri.contains(request.getContextPath().toLowerCase() + "/register") 
         			|| uri.equals(request.getContextPath().toLowerCase() + "/") || uri.contains(request.getContextPath().toLowerCase() + "/home")) {
             	response.sendRedirect(request.getContextPath() + "/learn");

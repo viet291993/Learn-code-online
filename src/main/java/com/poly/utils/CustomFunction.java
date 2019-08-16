@@ -584,4 +584,7 @@ public class CustomFunction {
 		return sb.toString();
 	}
 
+	public static String textJS(String text) {
+		return text.replaceAll("\\", "\\\\").replaceAll("\n", "\\n").replaceAll("\t", "\\t").replaceAll("\"", "\\\"");
+	}
 }
