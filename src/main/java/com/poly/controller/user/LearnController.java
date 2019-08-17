@@ -295,6 +295,8 @@ public class LearnController {
 		Record record = new Record();
 		record = new RecordDAO().findRecord(course, (Member) session.getAttribute("MEMBER"));
 		session.setAttribute("SESSION_RECORD_QUESTION", new RecordQuestionDAO().findRecordQuestion(record, question));
+		Lession nextLession = new LessionDAO().getLession(question.getLession().getSyllabus(), question.getLession().getOrderDisplay() + 1);
+		session.setAttribute("SESSION_NEXT_LESSION", nextLession);
 	}
 	
 	@RequestMapping(value = "/next/ajax2", method = RequestMethod.GET)
@@ -311,9 +313,12 @@ public class LearnController {
 		if (recordQuestion != null) {
 			if (recordQuestion.isIsPass() && recordQuestion.getQuestion().getOrderDisplay() != questionCount)
 				mm.put("ISTRUE", true);
-			else if (recordQuestion.isIsPass() && recordQuestion.getQuestion().getOrderDisplay() == questionCount)
+			else if (recordQuestion.isIsPass() && recordQuestion.getQuestion().getOrderDisplay() == questionCount) {
+				mm.put("NEXT_LESSION", session.getAttribute("SESSION_NEXT_LESSION"));
 				mm.put("IS_DONE", true);
+			}
 		}
+		session.removeAttribute("SESSION_NEXT_LESSION");
 		return new ModelAndView("HomeLessionProjectAjaxNav");
 	}
 }

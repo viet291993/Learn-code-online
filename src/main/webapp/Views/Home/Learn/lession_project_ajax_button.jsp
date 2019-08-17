@@ -23,7 +23,7 @@
 		                    </div>
 		                    <p class="description__3cgsIkECuQhOg3L4r5uUTG">${NEXT_LESSION.description }
 		                    </p>
-		                    <!-- <a data-btn="true" data-testid="cta-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr large__3uWKqXQr23vJ_9n9mwRvVa button__Zt57SVQQmQdjciVsAfogV" href="/pro/membership">Upgrade to Pro</a> -->
+		                    <!-- <a data-btn="true" data-testid="cta-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr large__3uWKqXQr23vJ_9n9mwRvVa button__Zt57SVQQmQdjciVsAfogV" href="">Upgrade to Pro</a> -->
 		                    <a data-btn="true" data-testid="cta-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr large__3uWKqXQr23vJ_9n9mwRvVa button__Zt57SVQQmQdjciVsAfogV" href="<c:url value="/learn/${NEXT_LESSION.syllabus.course.nameAscii}/${NEXT_LESSION.nameAscii}"/>">Bắt đầu ngay</a></div>
 		            </div>
 		            <button class="screenReaderOnly__1SyakAQGSIs3AM051DW1dt" type="button">Close and return to main application</button>
