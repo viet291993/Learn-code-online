@@ -178,8 +178,8 @@
            		objData['listQuiz'] = getListQuiz();
             </c:if>
             var data = JSON.stringify(objData);
-            console.log(data);
             var url = $('#form-insert-question').attr('action');
+            console.log(data);
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -214,10 +214,15 @@
 			var nameOrder = inputOrder.data('name');
 			var text = '{"'+nameID+'":"'+inputID.val()+'"';
         	$(target).find('textarea').each(function (i, target) {
-				text += ',"'+$(target).data('name')+'":"'+$(target).val()+'"';
+        		if($(target).hasClass('editor')){
+        			console.log(CKEDITOR.instances[$(target).attr('id')].getData());
+        			text += ',"'+$(target).data('name')+'":"'+CKEDITOR.instances[$(target).attr('id')].getData().replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r\n/g, '').replace(/\n/g, '').replace(/\r/g, '')+'"';
+        		}else{
+        			text += ',"'+$(target).data('name')+'":"'+$(target).val().replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r\n/g, '').replace(/\n/g, '').replace(/\r/g, '')+'"';
+        		}
 			})
-			text +=',"'+nameOrder+'":"'+inputOrder.val()+'"}'
-			var obj = JSON.parse(text);
+			text +=',"'+nameOrder+'":"'+inputOrder.val()+'"}';
+			var obj = JSON.parse(text.replace(/\n/g, ""));
 			list.push(obj);
         });
         return list;
