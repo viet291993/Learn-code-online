@@ -15,6 +15,7 @@
         <property name="hibernate.connection.release_mode">auto</property>
         <property name="hibernate.connection.autoReconnect">true</property>
         <property name="hibernate.transaction.flush_before_completion">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</property>
         
         <mapping class="com.poly.entity.AdminLogs"/>
         <mapping class="com.poly.entity.RecordQuestion"/>

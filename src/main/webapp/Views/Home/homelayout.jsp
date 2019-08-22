@@ -85,40 +85,13 @@
 	            <!-- START PAGE CONTENT -->
 	            <t:insertAttribute name="Content" ignore="true" />
 	            <div class="footerContainer__1lX4xMFd1eOmayhSXXv_V7" role="contentinfo">
-	                <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4">
-	                    <div class="flex__1yBdRTf7dKVh6F1j8s6UAN footerLinkContainer__1fVEJLlXFdmwmH23Hzrq8m">
-	                        <div class="">
-	                            <div class="linkArea__YiBJzcGLU5cCSSNZc5_7Y">
-	                                <div aria-level="2" class="linkHeader__2FrXvHMMf6o_tUxeTz_p-t" role="heading">Codecademy</div><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/about">About</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://shop.codecademy.com/">Shop</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/stories">Stories</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/about/careers">We're Hiring</a>
-	                                <div class="wrapper__2xWKIMh5bLsavkrY8XKWS6"><a aria-label="Follow us on Twitter" class="icon__3IsAK7_O14HUVOx9_moIPM" href="https://twitter.com/Codecademy"><em name="twitter" class="i__1n_wxJKd0dxJmK7QpTmi97 ikona-twitter__cCqm_ej_st4SQtQDPYyRJ"></em></a><a aria-label="Like us on Facebook" class="icon__3IsAK7_O14HUVOx9_moIPM" href="https://codecademy.com/users/redirect?redirect_url=https://www.facebook.com/groups/codecademy.community"><em name="facebook" class="i__1n_wxJKd0dxJmK7QpTmi97 ikona-facebook__3kXIGTcUyhoreTPuSDw31h"></em></a><a aria-label="Follow us on Instagram" class="icon__3IsAK7_O14HUVOx9_moIPM" href="https://instagram.com/codecademy"><em name="instagram" class="i__1n_wxJKd0dxJmK7QpTmi97 ikona-instagram__UqRXjYiSISQlehxaiqcb3"></em></a><a aria-label="Subscribe to Codecademy on YouTube" class="icon__3IsAK7_O14HUVOx9_moIPM" href="https://www.youtube.com/channel/UC5CMtpogD_P3mOoeiDHD5eQ"><em name="youtube" class="i__1n_wxJKd0dxJmK7QpTmi97 ikona-youtube__1p0dkn_EOva7rL7cw2SeZR"></em></a></div>
-	                            </div>
-	                        </div>
-	                        <div class="courses__2VXoPcL4m-CbI9cFVP-_F4">
-	                            <div aria-level="2" class="linkHeader__2FrXvHMMf6o_tUxeTz_p-t" role="heading">Catalog</div>
-	                            <nav class="container__2cd2iSviy9GLzdidfncbsH">
-	                                <div class="column__52XfuA5fJllEtFV6-MbWl">
-	                                    <h3 class="columnHeader__wHF9k9UsU3EC5E6UodJ4k">By Subject</h3>
-	                                    <div class="linkSection__3roC9s5UyE9YLaEaMoGBoP"><a href="https://www.codecademy.com/catalog/subject/all" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Full Catalog</a><a href="https://www.codecademy.com/catalog/subject/web-development" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Web Development</a><a href="https://www.codecademy.com/catalog/subject/programming" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Programming</a><a href="https://www.codecademy.com/catalog/subject/data-science" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Data Science</a><a href="https://www.codecademy.com/catalog/subject/partnerships" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Partnerships</a><a href="https://www.codecademy.com/catalog/subject/design" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Design</a><a href="https://www.codecademy.com/catalog/subject/game-development" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Game Development</a></div>
-	                                </div>
-	                                <div class="column__52XfuA5fJllEtFV6-MbWl">
-	                                    <h3 class="columnHeader__wHF9k9UsU3EC5E6UodJ4k">By Language</h3>
-	                                    <div class="linkSectionLanguage__1Vf9BiuHRsQUN3rFXxCOPJ"><a href="https://www.codecademy.com/catalog/language/html-css" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">HTML &amp; CSS</a><a href="https://www.codecademy.com/catalog/language/python" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Python</a><a href="https://www.codecademy.com/catalog/language/javascript" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">JavaScript</a><a href="https://www.codecademy.com/catalog/language/java" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Java</a><a href="https://www.codecademy.com/catalog/language/sql" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">SQL</a><a href="https://www.codecademy.com/catalog/language/bash" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Bash/Shell</a><a href="https://www.codecademy.com/catalog/language/ruby" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">Ruby</a><a href="https://www.codecademy.com/catalog/language/c-plus-plus" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">C++</a><a href="https://www.codecademy.com/catalog/language/r" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">R</a><a href="https://www.codecademy.com/catalog/language/c-sharp" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">C#</a><a href="https://www.codecademy.com/catalog/language/php" class="noUnderline__1SC6_eVwcicCvkuSVbHlDb filterLink__21EtDs3yWnfAItB_tr_HVB" event="click">PHP</a></div>
-	                                </div>
-	                            </nav>
-	                        </div>
-	                        <div class="">
-	                            <div class="linkArea__YiBJzcGLU5cCSSNZc5_7Y">
-	                                <div aria-level="2" class="linkHeader__2FrXvHMMf6o_tUxeTz_p-t" role="heading">Resources</div><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/beta-catalog">Beta Courses</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/articles">Articles</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://discuss.codecademy.com/">Forums</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/help">Help</a><a class="footerReference__hLFux-8KzqKxLD9_gf5BE" href="https://www.codecademy.com/blog">Blog</a></div>
-	                        </div>
-	                    </div>
-	                </div>
 	                <div class="legalLocalDivider__3R_kPtdcnK2Bmxt58p1-xC"></div>
 	                <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4">
 	                    <div class="legalLocalContainer__svIS7zurAcagN3R_mnPB0">
-	                        <div class="legalLinks__15oguwSH9xMtUWyzrt11tz"><a class="legalLink__Sm_XiNRw9HAHKjAJ1oviH" href="https://www.codecademy.com/policy">Privacy Policy</a><span class="divider__1k3N_s0H2aR9vPHGQYVh43"></span><a class="legalLink__Sm_XiNRw9HAHKjAJ1oviH" href="https://www.codecademy.com/terms">Terms</a></div>
-	                        <div class="madeIn__uLbnO-9RYq5yUowYUjl55">Made with<span aria-label="love" class="helloFellowKids__3iZ3CrhjPJ6VfdUDLNFA-d" role="img">️❤️</span>in NYC ©
+	                        <div class="legalLinks__15oguwSH9xMtUWyzrt11tz"><a class="legalLink__Sm_XiNRw9HAHKjAJ1oviH" href="#/policy">Privacy Policy</a><span class="divider__1k3N_s0H2aR9vPHGQYVh43"></span><a class="legalLink__Sm_XiNRw9HAHKjAJ1oviH" href="#/terms">Terms</a></div>
+	                        <div class="madeIn__uLbnO-9RYq5yUowYUjl55">Dự án 2<span aria-label="love" class="helloFellowKids__3iZ3CrhjPJ6VfdUDLNFA-d" role="img"> ❤️</span>by VHH ©
 	                            <!-- -->2019
-	                            <!-- -->Codecademy</div>
+	                            <!-- -->LearnCode</div>
 	                    </div>
 	                </div>
 	            </div>

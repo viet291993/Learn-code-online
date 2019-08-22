@@ -38,10 +38,36 @@ public class RecordQuestionDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(RecordQuestion.class);
+				cr.createAlias("question", "ques", JoinType.INNER_JOIN);
+				cr.setFetchMode("ques", FetchMode.JOIN);
 				cr.add(Restrictions.eq("record", record));
 				cr.add(Restrictions.eq("question", question));
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
+				recordQuestion = (RecordQuestion) cr.uniqueResult();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return recordQuestion;
+	}
+	
+	public RecordQuestion findLastPassQuestion(Record record) {
+		Session session = null;
+		RecordQuestion recordQuestion = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(RecordQuestion.class);
+				cr.createAlias("question", "ques", JoinType.INNER_JOIN);
+				cr.setFetchMode("ques", FetchMode.JOIN);
+				cr.add(Restrictions.eq("record", record));
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.addOrder(Order.desc("lastUpdate"));
+				cr.setMaxResults(1);
 				recordQuestion = (RecordQuestion) cr.uniqueResult();
 			}
 		} catch (Exception e) {

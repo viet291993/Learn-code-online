@@ -54,8 +54,10 @@ public class CourseDAO extends AbstractDAO {
 			session = HibernateConfiguration.getInstance().openSession();
 			if (session != null) {
 				Criteria cr = session.createCriteria(Course.class);
-				cr.createAlias("syllabuses", "syllabuses", JoinType.LEFT_OUTER_JOIN);
-				cr.setFetchMode("syllabuses", FetchMode.JOIN);
+				cr.createAlias("syllabuses", "sys", JoinType.LEFT_OUTER_JOIN);
+				cr.setFetchMode("sys", FetchMode.JOIN);
+				cr.add(Restrictions.eq("sys.isActive", true));
+				cr.add(Restrictions.eq("sys.Deleted", false));
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
 				list = (List<Course>) cr.list();
@@ -99,6 +101,10 @@ public class CourseDAO extends AbstractDAO {
 				cr.setFetchMode("syllabus", FetchMode.JOIN);
 				cr.createAlias("syllabuses.lessions", "lession", JoinType.LEFT_OUTER_JOIN);
 				cr.setFetchMode("lession", FetchMode.JOIN);
+				cr.add(Restrictions.eq("syllabus.isActive", true));
+				cr.add(Restrictions.eq("syllabus.isDeleted", false));
+				cr.add(Restrictions.eq("lession.isActive", true));
+				cr.add(Restrictions.eq("lession.isDeleted", false));
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));
 				cr.add(Restrictions.eq("nameAscii", nameAscii));

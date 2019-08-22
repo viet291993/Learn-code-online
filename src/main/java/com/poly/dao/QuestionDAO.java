@@ -122,11 +122,8 @@ public class QuestionDAO extends AbstractDAO {
 			if (session != null) {
 				Criteria cr = session.createCriteria(Question.class);
 				cr.createAlias("lession", "les", JoinType.INNER_JOIN);
-				cr.setFetchMode("les", FetchMode.SELECT);
 				cr.createAlias("les.syllabus", "syl", JoinType.INNER_JOIN);
-				cr.setFetchMode("syl", FetchMode.SELECT);
 				cr.createAlias("syl.course", "cou", JoinType.INNER_JOIN);
-				cr.setFetchMode("cou", FetchMode.SELECT);
 				cr.add(Restrictions.eq("isDeleted", false));
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("id", questionId));

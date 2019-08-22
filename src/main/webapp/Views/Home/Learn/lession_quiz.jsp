@@ -63,14 +63,14 @@
 	        <nav class="wrapper___FtNJJFPKOjBRYeSq7eqS container__xxmPAuPFUsKguF73jKO3Q">
 	            <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4 contentWrapper__2MvNFVWRnpySbai8R2WkFr">
 	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionLeft__1ZxE4qxswlSZVqzj66Yx4I">
-	                    <a href="https://www.codecademy.com/" class="logo__1-a_TiXBS6TEV02nagx3gR"><img alt="Codecademy logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="./java-hello-world-quiz_files/696ac7b69b4b4181dffebe55c4d54fb7.svg"></a>
+	                    <a href="<c:url value="/" />" class="logo__1-a_TiXBS6TEV02nagx3gR"><img alt=" logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="<c:url value="/Resources/Home/img/logo-white.png" />"></a>
 	                </div>
 	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM centerSection__1R92W4oxyC1LUfW_4FNc67">
 	                    <div class="container__3M91uhwpGTJe92wMn8jAZq">
-	                        <div class="label__2xFo_wajxXeT2VlZraCjJC">1/7</div>
+	                        <div class="label__2xFo_wajxXeT2VlZraCjJC">1/${COUNT_QUESTION }</div>
 	                        <div class="barContainer__2UtncDC_qTsINg7-8uZ4HF">
 	                            <div class="under__3KC2mcSalFKogCqsO-Mk9U"></div>
-	                            <div class="over__1Z--GbqpV9Vo7ozJC5xI0X" style="width: 0%;"></div>
+	                            <div class="over__1Z--GbqpV9Vo7ozJC5xI0X" style="width: 100%;"></div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -83,7 +83,7 @@
 	                                <path d="M12 16.125a4.125 4.125 0 1 1 0-8.25 4.125 4.125 0 0 1 0 8.25zm0-.917a3.208 3.208 0 1 0 0-6.416 3.208 3.208 0 0 0 0 6.416z" fill-rule="nonzero"></path>
 	                                <path d="M12 20.25a8.25 8.25 0 1 1 0-16.5 8.25 8.25 0 0 1 0 16.5zm0-1.833a6.417 6.417 0 1 0 0-12.834 6.417 6.417 0 0 0 0 12.834z" fill-rule="nonzero"></path>
 	                            </g>
-	                        </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Get Help</span></button>
+	                        </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Trợ giúp</span></button>
 	                    <div></div>
 	                </div>
 	            </div>
@@ -92,7 +92,7 @@
 	            <div class="container__2ZkNUvVpS2bqFetXuLBHoA assessmentContainer__2c-hykrF8Z4rZtvaI_Rpfr">
 	                <div>
 	                    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh title__1LSXbz8gGigHcyOZLK-21d">
-	                        ${SELECTED_QUESTION.instruction}
+	                        ${SELECTED_QUESTION.content}
 	                    </div><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined codeBlock__3BmC2Ep4l-IJw14DpH9DAF">
 	                    <div class="CodeMirror">${SELECTED_QUESTION.defaultCode}</div>
 	                </span>

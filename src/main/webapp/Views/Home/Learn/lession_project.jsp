@@ -77,7 +77,7 @@
 	                                    <div class="tab__2ljjSH5-qmXY9nlv1MxTHu">
 	                                        <div class="wrapper__6QRVYmjk_3YS02hd62vt_">
 	                                            <button aria-label="my account dropdown toggle" class="toggle__304aSMDrfBOZgFLaPhzXIa" id="dropdown-toggle" type="button">
-	                                                <div class="avatar__Cb1WP643p3tcQpIWLY9R8 round__3de1LBOIa74IvzHDeRG3lQ small__3duTmSpEyR9eEpaRITuulp"><img alt="Avatar" aria-label="my account dropdown toggle" class="image__1Q4r5fS8Aj_N6s2tLcrFks" src="./introduction-to-java_files/a9d735b88f98a17f019f098655376eaf"></div>
+	                                                <div class="avatar__Cb1WP643p3tcQpIWLY9R8 round__3de1LBOIa74IvzHDeRG3lQ small__3duTmSpEyR9eEpaRITuulp"><img alt="Avatar" aria-label="my account dropdown toggle" class="image__1Q4r5fS8Aj_N6s2tLcrFks" src="<c:if test="${MEMBER.profileimage == null}"><c:url value="/Resources/Home/img/guest.png" /></c:if><c:if test="${MEMBER.profileimage != null}">${MEMBER.profileimage}</c:if>">"></div>
 	                                            </button>
 	                                        </div>
 	                                    </div>
@@ -100,7 +100,7 @@
 	    <div class="leTrialBanner__3VOkodnhfWeF-L5t7tA6KV">
 	        <div class="leTrialBannerRelative__3mIq5_XeADd_mE-8hSnMet"></div>
 	    </div>
+	    
 	</section>
-	
 </body>
 </html>
