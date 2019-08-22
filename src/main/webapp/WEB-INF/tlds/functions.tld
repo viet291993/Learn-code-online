@@ -269,6 +269,16 @@
         <function-signature>String generateExpiredDate(java.util.Date)</function-signature>
     </function>
     <function>
+        <name>generateHomeHeaderPro</name>
+        <function-class>com.poly.utils.CustomFunction</function-class>
+        <function-signature>String generateHomeHeaderPro(com.poly.entity.Member)</function-signature>
+    </function>
+      <function>
+        <name>generateHomePro</name>
+        <function-class>com.poly.utils.CustomFunction</function-class>
+        <function-signature>String generateHomePro(com.poly.entity.Member)</function-signature>
+    </function>
+    <function>
         <name>textJS</name>
         <function-class>com.poly.utils.CustomFunction</function-class>
         <function-signature>String textJS(java.lang.String)</function-signature>

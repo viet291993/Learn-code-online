@@ -72,6 +72,7 @@
 		<link data-chunk="corporate-scenes-Landing" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/117.d90da474ed7e38418585.chunk.css" />">
 		<link data-chunk="corporate-scenes-Landing" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/143.0049802d33aabeb3d3a8.chunk.css" />">
 		<link data-chunk="corporate-scenes-Landing" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/corporate-scenes-LogIn.bd18520b3432b9589489.chunk.css" />">
+		<link href="<c:url value="/Resources/Home/css/custom.css"/>" rel="stylesheet">
 	</head>
 		<body>
 	            <%@include file="/Views/Home/Panel/header.jsp" %>
@@ -97,7 +98,14 @@
 	            </div>
 	            
 	            <div id="menu-profile" style="display: none;" class="overlay__3LeDG7tuQrrJdjPm8agkmx fixed__1dVANA0vWS60mCGpsRBU8T type-transparent__19iohvkXZv5eOsVMRAvvLQ"><div id="profile-position" align="right" offset="20" class="content__fQv0JV6LGGkYLrzWHtg7t popover__2vSb5RYj187vezgJCHUZI1 below-right__XT76WV7zCz6PFSFnddn2A" style="top: 74px; z-index: 50;;"><div><div class="" style="opacity: 1;"><div class="shadow__3DzEF2DlOL8n2FXGHNWRBW"><div class="flex__1yBdRTf7dKVh6F1j8s6UAN col__DIiQrF0Z1S7t-hWOmyXlD menu__e94OfrzcqoePgW_YvhDCp"><nav><div><a class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/profiles/me">Hồ sơ của tôi</a><a data-testid="edit-account-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/account" id="edit-account-link">Cài đặt tài khoản</a><a data-testid="help-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/help" id="help-link">Help</a><a data-testid="sign-out-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="<c:url value="/logout" />" id="sign-out-link">Đăng xuất</a></div></nav></div></div></div></div></div></div>
-	            
+	    
+	      <!-- jQuery -->
+	    <script src="<c:url value="/Resources/Admin/vendors/jquery/dist/jquery.min.js"/>"></script>
+	    <script src="<c:url value="/Resources/shared/js/jquery-2.2.4.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/Resources/shared/js/jquery.validate.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/Resources/shared/js/jquery.validate.additional-methods.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/Resources/shared/js/jquery.validate.messages_vi.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/Resources/shared/js/serialize.js"/>" type="text/javascript"></script>        
 	    <script>
 	        $('#nav-search').hide();
 	        $("#header-search").click(function(e) {

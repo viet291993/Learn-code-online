@@ -325,4 +325,16 @@ public class AuthController {
 		request.getSession().removeAttribute("MEMBER");
 		return new ModelAndView("redirect:/");
 	}
+	
+	@RequestMapping(value = "/checkUsername", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkUsername(@RequestParam(value = "username", required = false) String username, ModelMap mm) {
+        return !new UserDAO().checkUsernameExist(username);
+    }
+	
+	@RequestMapping(value = "/checkEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkEmail(@RequestParam(value = "email", required = false) String email, ModelMap mm) {
+        return new MemberDAO().checkEmailExist(email);
+    }
 }

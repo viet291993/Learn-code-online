@@ -112,3 +112,4 @@ public class UserDAO extends AbstractDAO {
 		return false;
 	}
 }
+	

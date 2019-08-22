@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set value="${pageContext.request.contextPath}" var="CONTEXTPATH" scope="request" />
 
 <main class="container__t9cGpmzkTfzuZwSMDtCbX main__1DMoBwZbxA88IbaOPHt5Kt">
     <div class="spacer__3lbNVH1ntz2_5fW__RluYl">
@@ -7,7 +8,7 @@
         <div class="formContainer__3T4BH0jFLpXLvUq8rS6dF2">
             <div class="container__2si8atrp7hFFC6f1RpWOV0">
                 <div class="flex__1yBdRTf7dKVh6F1j8s6UAN col__DIiQrF0Z1S7t-hWOmyXlD loginForm__1K1cNujviqnhXD9q0KnQjN">
-                    <form action="<c:url value="/register" />" autocomplete="on" method="POST" class="Form__2gFgmT5F5DNzwRqsquqz2j">
+                    <form id="formRegister" action="<c:url value="/register" />" autocomplete="on" method="POST" class="Form__2gFgmT5F5DNzwRqsquqz2j">
                         <div class="formGroups__2LQTSt-JbfaioCwGDyDBOX">
                             <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__29BXXbmwYSKxj7NCqvlRuU">
                                 <label for="username" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Tên tài khoản</label>
@@ -19,7 +20,7 @@
                             </div>
                             <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__29BXXbmwYSKxj7NCqvlRuU">
                                 <label for="repassword" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Nhập lại mật khẩu</label>
-                                <input type="password" required name="repassword" id="repassword" class="Input__B0I6a45-Vc4Eo8Lqz3nSE">
+                                <input type="password" required name="confirm_password" id="confirm_password" class="Input__B0I6a45-Vc4Eo8Lqz3nSE">
                             </div>
                             <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__29BXXbmwYSKxj7NCqvlRuU">
                                 <label for="name" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Họ và tên</label>
@@ -41,3 +42,84 @@
             </div>
         </div><a href="<c:url value="/login"/>"class="outLink__1CAKaBwcDc48Oex0b-CAlj">Bạn đã là thành viên <b>Đăng nhập</b></a></div>
 </main>
+<script>
+$(document).ready(function() {
+	$("#formRegister").validate({
+				rules: {
+					username: {
+						required: true,
+						minlength: 6,
+						 remote: {
+			                    url: "${CONTEXTPATH}/checkUsername",
+			                    type: "POST",
+			                    data: {
+			                        username: function () {
+			                            return $("#username").val();
+			                        }
+			                    }
+			                }
+					},
+					password: {
+						required: true,
+						minlength: 6
+					},
+					confirm_password: {
+						required: true,
+						minlength: 6,
+						equalTo: "#password"
+					},
+					name: {
+						required: true,
+						minlength: 2
+					},
+					email: {
+						required: true,
+						email: true,
+						remote: {
+		                    url: "${CONTEXTPATH}/checkEmail",
+		                    type: "POST",
+		                    data: {
+		                        username: function () {
+		                            return $("#email").val();
+		                        }
+		                    }
+		                }
+					},
+					address: {
+						required: true,
+						minlength: 2
+					},
+				},
+				messages: {
+					username: {
+						required:"Vui lòng nhập tên tài khoản",
+						minlength: "Tên tài khoản phải từ 6 ký tự trở lên",
+						remote:"Tên tài khoản đã được sử dụng",
+					},
+					password: {
+						required: 'Vui lòng nhập mật khẩu',
+						minlength: 'Vui lòng nhập ít nhất 6 kí tự'
+					},
+					confirm_password: {
+						required: 'Vui lòng nhập mật khẩu',
+						minlength: 'Vui lòng nhập ít nhất 6 kí tự',
+						equalTo: 'Mật khẩu không trùng'
+					},
+					name: {
+						required: "Vui lòng nhập họ và tên",
+						minlength: "Họ tên ngắn vậy, chém gió ah?"
+					},
+					email: {
+						required:"Vui lòng nhập email",
+						minlength: "Sai định dạng email",
+						remote:"Email đã được sử dụng",
+					},
+					address: {
+						required: "Vui lòng nhập địa chỉ",
+						minlength: "Địa chỉ ngắn vậy, chém gió ah?"
+					},
+				}
+			});
+});
+
+</script>

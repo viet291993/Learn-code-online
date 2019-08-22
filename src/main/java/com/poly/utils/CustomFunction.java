@@ -38,10 +38,11 @@ import com.poly.bean.Pager;
 import com.poly.dao.AdminDAO;
 import com.poly.dao.AdminRoleDAO;
 import com.poly.dao.LanguageDAO;
-import com.poly.dao.LessionDAO;
 import com.poly.dao.LessionTypeDAO;
+import com.poly.dao.MemberDAO;
 import com.poly.entity.Admin;
 import com.poly.entity.AdminModuleInRole;
+import com.poly.entity.Member;
 
 public class CustomFunction {
 
@@ -294,11 +295,11 @@ public class CustomFunction {
 	public static List findAllAvailableRoleAdmin() {
 		return new AdminRoleDAO().findAll();
 	}
-	
+
 	public static List findAllLanguage() {
 		return new LanguageDAO().findAll();
 	}
-	
+
 	public static List findAllLessionType() {
 		return new LessionTypeDAO().findAll();
 	}
@@ -561,6 +562,47 @@ public class CustomFunction {
 			code = "0" + code;
 		}
 		return text + code;
+	}
+
+	public static String generateHomeHeaderPro(Member member) {
+		final StringBuilder sb = new StringBuilder();
+		sb.append(
+				"<a data-btn='true' data-testid='upgrade-link' data-cxlid='upgrade-link' target='_self' rel='noopener noreferrer' class='basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI' ");
+		Date timeCurrent = new Date();
+		Calendar c1 = Calendar.getInstance();
+		Calendar c2 = Calendar.getInstance();
+		c1.setTime(timeCurrent);
+		if (member.getProExpiredDate() != null) {
+			if (member.getProExpiredDate().after(timeCurrent)) {
+				c2.setTime(member.getProExpiredDate());
+				long noDay = (c2.getTime().getTime() - c1.getTime().getTime()) / (24 * 3600 * 1000);
+				sb.append("href=''>PRO - Còn ").append(noDay).append(" ngày </a>");
+				return sb.toString();
+			}
+		} else if (member.getTrailExpiredDate() != null) {
+			if (member.getTrailExpiredDate().after(timeCurrent)) {
+				c2.setTime(member.getTrailExpiredDate());
+				long noDay = (c2.getTime().getTime() - c1.getTime().getTime()) / (24 * 3600 * 1000);
+				sb.append("href=''>Dùng thử PRO - Còn ").append(noDay).append(" ngày </a>");
+				return sb.toString();
+			}
+		}
+		sb.append("href=''>Nâng cấp tài khoản</a>");
+		return sb.toString();
+	}
+
+	public static String generateHomePro(Member member) {
+		Date timeCurrent = new Date();
+		if (member.getProExpiredDate() != null) {
+			if (member.getProExpiredDate().after(timeCurrent)) {
+				return "Học viên PRO";
+			}
+		} else if (member.getTrailExpiredDate() != null) {
+			if (member.getTrailExpiredDate().after(timeCurrent)) {
+				return "Học viên dùng thử PRO";
+			}
+		}
+		return "Học viên";
 	}
 
 	public static String generateExpiredDate(Date time) {
