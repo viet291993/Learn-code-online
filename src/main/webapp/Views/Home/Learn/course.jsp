@@ -32,7 +32,6 @@
                                     <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA" style="padding: 50px;">${SELECTED_COURSE.content }</div>
                                 </div>
                                 <aside class="infoBox__1yWJoYd9Y14dLx01BziXjl">
-                                    <p>Có<span class="peopleCount__1OuKnXcUo3OQgMPVaOZciT">69</span>người đã tham gia vào khóa học này</p>
                                     <div>
                                         <dl class="timeToComplete__1tcjB1aeG_L46ty_L6-_yR"><dt>Thời gian hoàn thành</dt>
                                             <dd>${SELECTED_COURSE.timeToComplete }</dd>

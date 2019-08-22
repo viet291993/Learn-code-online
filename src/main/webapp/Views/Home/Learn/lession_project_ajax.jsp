@@ -109,6 +109,11 @@
 		                    </div>
 		                </div>
 		            </div>
+		            <style>
+		            	.CodeMirror {
+		            		color: white!important;
+		            	}
+		            </style>
 		            <script>
 		            var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
 						lineNumbers: true,
