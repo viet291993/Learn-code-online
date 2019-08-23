@@ -80,7 +80,7 @@ public class RecordQuestion implements java.io.Serializable {
 		this.record = record;
 	}
 
-	@Column(name = "temp_code", nullable = false)
+	@Column(name = "temp_code")
 	public String getTempCode() {
 		return this.tempCode;
 	}
@@ -89,7 +89,7 @@ public class RecordQuestion implements java.io.Serializable {
 		this.tempCode = tempCode;
 	}
 
-	@Column(name = "result_quiz", nullable = false)
+	@Column(name = "result_quiz")
 	public int getResultQuiz() {
 		return this.resultQuiz;
 	}

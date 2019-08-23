@@ -86,21 +86,41 @@ public class LearnController {
 			Integer questionCount = new QuestionDAO().getCountQuestion(lession);
 			mm.put("QUESTION_COUNT", questionCount);
 			Integer order = null;
-			if (recordQuestion != null && recordQuestion.isIsPass()) {
-				if (recordQuestion.getQuestion().getOrderDisplay() == questionCount) {
-					order = questionCount;
-					mm.put("IS_DONE", true);
-					mm.put("TEMP_CODE", recordQuestion.getTempCode());
-					Lession nextLession = new LessionDAO().getLession(lession.getSyllabus(), lession.getOrderDisplay() + 1);
-					mm.put("NEXT_LESSION", nextLession);
+			if (lession.getLessionType().getCode().equals("Q")) {
+				if (recordQuestion != null) {
+					if (recordQuestion.getQuestion().getOrderDisplay() == questionCount) {
+						order = questionCount;
+						mm.put("IS_DONE", true);
+						Lession nextLession = new LessionDAO().getLession(lession.getSyllabus(), lession.getOrderDisplay() + 1);
+						mm.put("NEXT_LESSION", nextLession);
+						Integer r = new RecordQuestionDAO().getCountResult(record, lession, true);
+						Integer w = new RecordQuestionDAO().getCountResult(record, lession, false);
+						mm.put("RIGHT", r);
+						mm.put("WRONG", w);
+						mm.put("SELECTED_LESSION", lession);
+					} else {
+						order = recordQuestion.getQuestion().getOrderDisplay() + 1;
+					}
 				} else {
-					order = recordQuestion.getQuestion().getOrderDisplay() + 1;
+					order = 1;
 				}
-			} else if (recordQuestion != null && !recordQuestion.isIsPass()) {
-				order = recordQuestion.getQuestion().getOrderDisplay();
-				mm.put("TEMP_CODE", recordQuestion.getTempCode());
 			} else {
-				order = 1;
+				if (recordQuestion != null && recordQuestion.isIsPass()) {
+					if (recordQuestion.getQuestion().getOrderDisplay() == questionCount) {
+						order = questionCount;
+						mm.put("IS_DONE", true);
+						mm.put("TEMP_CODE", recordQuestion.getTempCode());
+						Lession nextLession = new LessionDAO().getLession(lession.getSyllabus(), lession.getOrderDisplay() + 1);
+						mm.put("NEXT_LESSION", nextLession);
+					} else {
+						order = recordQuestion.getQuestion().getOrderDisplay() + 1;
+					}
+				} else if (recordQuestion != null && !recordQuestion.isIsPass()) {
+					order = recordQuestion.getQuestion().getOrderDisplay();
+					mm.put("TEMP_CODE", recordQuestion.getTempCode());
+				} else {
+					order = 1;
+				}
 			}
 			if (lession != null) {
 				mm.put("SELECTED_LESSION", lession);
@@ -111,7 +131,6 @@ public class LearnController {
 						mm.put("SELECTED_QUESTION", question);
 						return new ModelAndView("HomeLessionProject");
 					} else if (lession.getLessionType().getCode().equals("Q")){
-						System.out.println(order);
 						question = new QuestionDAO().findQuestionEager(lession, order);
 						mm.put("COUNT_QUESTION", new QuestionDAO().getCountQuestion(lession));
 						mm.put("SELECTED_QUESTION", question);
@@ -330,22 +349,19 @@ public class LearnController {
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
 		session.setAttribute("SESSION_QUESTION_ID", questionId);
 		session.setAttribute("SESSION_ANSWER_ID", answerId); 
-		Quiz quiz = new QuizDAO().checkQuiz(answerId);
-		if (quiz != null && quiz.isIsTrue())
-			session.setAttribute("SESSION_IS_TRUE", true);
 	}
 	
 	@RequestMapping(value = "/quiz2", method = RequestMethod.GET)
 	public ModelAndView quiz2(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
-		if (session.getAttribute("SESSION_IS_TRUE") != null) {
+		Quiz quiz = new QuizDAO().findQuiz((Integer) session.getAttribute("SESSION_ANSWER_ID"));
+		if (quiz != null && quiz.isIsTrue()) {
 			mm.put("IS_TRUE", true);
 		} else {
 			mm.put("IS_TRUE", false);
 		}
 		Question question = new QuestionDAO().findQuestion((Integer) session.getAttribute("SESSION_QUESTION_ID"));
-		mm.put("ANSWER_ID", (Integer) session.getAttribute("SESSION_ANSWER_ID"));
-		session.removeAttribute("SESSION_ANSWER_ID");
+		mm.put("ANSWER_ID", quiz.getId());
 		mm.put("SELECTED_QUESTION", question);
 		mm.put("LIST_QUIZ", new QuizDAO().getAllQuizByQuestion(question));
 		return new ModelAndView("HomeLessionQuizAnswer");
@@ -354,15 +370,115 @@ public class LearnController {
 	@RequestMapping(value = "/quiz3", method = RequestMethod.GET)
 	public ModelAndView quiz3(@CookieValue(value = "lang", defaultValue = "vi") String lang,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
-		if (session.getAttribute("SESSION_IS_TRUE") != null) {
+		Quiz quiz = new QuizDAO().findQuiz((Integer) session.getAttribute("SESSION_ANSWER_ID"));
+		if (quiz != null && quiz.isIsTrue()) {
 			mm.put("IS_TRUE", true);
-			session.removeAttribute("SESSION_IS_TRUE");
 		} else {
 			mm.put("IS_TRUE", false);
 		}
 		Question question = new QuestionDAO().findQuestion((Integer) session.getAttribute("SESSION_QUESTION_ID"));
-		session.removeAttribute("SESSION_QUESTION_ID");
 		mm.put("SELECTED_QUESTION", question);
+		mm.put("SELECTED_QUIZ", quiz);
+		if (question.getOrderDisplay() == new QuestionDAO().getCountQuestion(question.getLession())) {
+			mm.put("IS_DONE", true);
+		} else {
+			mm.put("IS_DONE", false);
+		}
+		session.removeAttribute("SESSION_QUESTION_ID");
+		session.removeAttribute("SESSION_ANSWER_ID");
 		return new ModelAndView("HomeLessionQuizButton");
+	}
+	
+	@RequestMapping(value = "/nextquiz", method = RequestMethod.POST)
+	public void nextquiz(@CookieValue(value = "lang", defaultValue = "vi") String lang, @RequestParam("orderDisplay") Integer order, @RequestParam("lessionId") Integer lessionId,
+			@RequestParam("isTrue") Boolean isTrue, @RequestParam("quiz") Integer quizId, HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		session.setAttribute("SESSION_ORDER", order);
+		session.setAttribute("SESSION_LESSION_ID", lessionId);
+		Lession lession = new LessionDAO().findEager(lessionId);
+		Record record = new RecordDAO().findRecord(lession.getSyllabus().getCourse().getId(), (Member )session.getAttribute("MEMBER"));
+		Question question = new QuestionDAO().findQuestion(lession, order);
+		RecordQuestion recordQuestion = new RecordQuestion();
+		recordQuestion.setQuestion(question);
+		recordQuestion.setRecord(record);
+		recordQuestion.setIsActive(true);
+		recordQuestion.setIsDeleted(false);
+		recordQuestion.setResultQuiz(quizId);
+		if (isTrue == null) {
+			isTrue = false;
+		}
+		recordQuestion.setIsPass(isTrue);
+		recordQuestion.setLastUpdate(new Date());
+		try {
+			new RecordQuestionDAO().create(recordQuestion);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value = "/nextquiz2", method = RequestMethod.GET)
+	public ModelAndView nextquiz2(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		Lession lession = new LessionDAO().findEager((Integer) session.getAttribute("SESSION_LESSION_ID"));
+		Question question = new QuestionDAO().findQuestionEager(lession, ((Integer) session.getAttribute("SESSION_ORDER")) + 1);
+		mm.put("COUNT_QUESTION", new QuestionDAO().getCountQuestion(lession));
+		mm.put("SELECTED_QUESTION", question);
+		mm.put("LIST_QUIZ", new QuizDAO().getAllQuizByQuestion(question));
+		System.out.println("LOL: " + new QuizDAO().getAllQuizByQuestion(question).size());
+		mm.put("SELECTED_LESSION", lession);
+		session.removeAttribute("SESSION_ORDER");
+		session.removeAttribute("SESSION_LESSION_ID");
+		return new ModelAndView("HomeLessionQuizAjax");
+	}
+	
+	@RequestMapping(value = "/quizresult", method = RequestMethod.POST)
+	public void quizresult(@CookieValue(value = "lang", defaultValue = "vi") String lang, @RequestParam("orderDisplay") Integer order, @RequestParam("lessionId") Integer lessionId,
+			@RequestParam("isTrue") Boolean isTrue, @RequestParam("quiz") Integer quizId,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		Lession lession = new LessionDAO().findEager(lessionId);
+		Record record = new RecordDAO().findRecord(lession.getSyllabus().getCourse().getId(), (Member )session.getAttribute("MEMBER"));
+		Question question = new QuestionDAO().findQuestion(lession, order);
+		RecordQuestion recordQuestion = new RecordQuestion();
+		recordQuestion.setQuestion(question);
+		recordQuestion.setRecord(record);
+		recordQuestion.setIsActive(true);
+		recordQuestion.setIsDeleted(false);
+		recordQuestion.setResultQuiz(quizId);
+		if (isTrue == null) {
+			isTrue = false;
+		}
+		recordQuestion.setIsPass(isTrue);
+		recordQuestion.setLastUpdate(new Date());
+		try {
+			new RecordQuestionDAO().create(recordQuestion);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("SESSION_LESSION_ID", lessionId);
+	}
+	
+	@RequestMapping(value = "/quizresult2", method = RequestMethod.GET)
+	public ModelAndView viewresult(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		mm.put("IS_DONE", true);
+		Lession lession = new LessionDAO().findEager((Integer) session.getAttribute("SESSION_LESSION_ID"));
+		mm.put("SELECTED_LESSION", lession);
+		mm.put("SELECTED_COURSE", lession.getSyllabus().getCourse());
+		Record record = new RecordDAO().findRecord(lession.getSyllabus().getCourse().getId(), (Member )session.getAttribute("MEMBER"));
+		Integer r = new RecordQuestionDAO().getCountResult(record, lession, true);
+		Integer w = new RecordQuestionDAO().getCountResult(record, lession, false);
+		mm.put("RIGHT", r);
+		mm.put("WRONG", w);
+		Lession nextLession = new LessionDAO().getLession(lession.getSyllabus(), lession.getOrderDisplay() + 1);
+		mm.put("NEXT_LESSION", nextLession);
+		session.removeAttribute("SESSION_LESSION_ID");
+		return new ModelAndView("HomeLessionQuiz");
+	}
+	
+	@RequestMapping(value = "/resetlession", method = RequestMethod.GET)
+	public void resetlession(@CookieValue(value = "lang", defaultValue = "vi") String lang,
+			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
+		
 	}
 }

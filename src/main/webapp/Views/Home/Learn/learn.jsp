@@ -95,7 +95,7 @@
 	                                                                </svg>
 	                                                            </div>
 	                                                            <div class="type__2Ur2qNLTi9ODBD0inE0Gee activeText__ADKyAngSMTI8Cr7gXp0Ru">Dự án</div>
-	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U activeText__ADKyAngSMTI8Cr7gXp0Ru"><a href="#/courses/learn-java/projects/planting-a-tree">Vẽ hình</a></div>
+	                                                            <div class="title__1signZCcPI-V8yQkVyXQ0U activeText__ADKyAngSMTI8Cr7gXp0Ru"><a href="/hello-world">Vẽ hình</a></div>
 	                                                        </li>
 	                                                        <li class="container__2QurwX46lLbI1SbXhka4QN" style="opacity: 1; transform: none;">
 	                                                            <div class="iconContainer__3SvjzyfVuhdn8Mnzr9zGQ7">
@@ -110,7 +110,7 @@
 	                                                    </div>
 	                                                </div>
 	                                            </div>
-	                                            <div class="container__3bWnETqaVFvjw-gQ9IcZi3"><a data-btn="true" class="basicBtn button__1s6zPiTEPT2vvONVqVYFba basicLink__1ntEiXSqZV9fADVnrfvmjQ" data-testid="today-resume-button" href="#/courses/learn-java/projects/planting-a-tree">Tiếp tục <svg class="icon__1H1ClqSZH9JXzbQTCxIIdj" fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Right Arrow Icon</title><path d="M4 10.92v2h12l-5.5 5.5 1.42 1.42 7.92-7.92L11.92 4 10.5 5.42l5.5 5.5z" fill-rule="nonzero"></path></svg></a></div>
+	                                            <div class="container__3bWnETqaVFvjw-gQ9IcZi3"><a data-btn="true" class="basicBtn button__1s6zPiTEPT2vvONVqVYFba basicLink__1ntEiXSqZV9fADVnrfvmjQ" data-testid="today-resume-button" href="/hello-world">Tiếp tục <svg class="icon__1H1ClqSZH9JXzbQTCxIIdj" fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Right Arrow Icon</title><path d="M4 10.92v2h12l-5.5 5.5 1.42 1.42 7.92-7.92L11.92 4 10.5 5.42l5.5 5.5z" fill-rule="nonzero"></path></svg></a></div>
 	                                        </div>
 	                                    </div>
 	                                    <div class="container__20DrPJXdoseDV5hCjyPwHO" data-testid="today-practice-section">

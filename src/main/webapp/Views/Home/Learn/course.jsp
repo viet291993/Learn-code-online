@@ -5,11 +5,11 @@
         <div data-testid="course-landing-page" id="course-landing-page">
             <header class="header__24U-03TosybsS_ZhgIhsYj" style="background-color:#2daaa6">
                 <h1>${SELECTED_COURSE.name }</h1>
-                <p data-testid="header-course-description">${SELECTED_COURSE.description }</p><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="#/courses/learn-java/projects/planting-a-tree">Start</a>
+                <p data-testid="header-course-description">${SELECTED_COURSE.description }</p><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="/hello-world">Start</a>
                 <div class="resetProgress__3FYBz5-A5jzIDQnJg31RYl">
                     <div>
                         <div>
-                            <button data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u resetProgressLinkResumeCard__24LOR1KVm4RlFF39QuWSGw resetProgressLinkResumeCard__24LOR1KVm4RlFF39QuWSGw">
+                            <button data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u resetProgressLinkResumeCard__24LOR1KVm4RlFF39QuWSGw resetProgressLinkResumeCard__24LOR1KVm4RlFF39QuWSGw" style="background: #f65a5b;">
                                 <svg class="resetIconResumeCard__fEBiHC4FnHYTPDVggvd2e" fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <title>Reset Icon</title>
                                     <path d="M5.338 10.91A6.752 6.752 0 0 1 12 5.25c1.868 0 3.533.776 4.748 2.003l-3.623 3.622H21V3l-2.644 2.644A8.953 8.953 0 0 0 12 3c-4.621 0-8.488 3.426-9 7.91m15.724 2.265a6.752 6.752 0 0 1-6.648 5.575c-1.867 0-3.532-.776-4.747-2.003l3.622-3.622H3.076V21l2.644-2.644A8.953 8.953 0 0 0 12.076 21 9.002 9.002 0 0 0 21 13.177"></path>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </main>
-            <div class="courseResume__1wY7WQdQEbjdupYt_Q3aGN" style="background-color:#2daaa6"><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="#/courses/learn-java/projects/planting-a-tree">Start</a></div>
+            <div class="courseResume__1wY7WQdQEbjdupYt_Q3aGN" style="background-color:#2daaa6"><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="/hello-world">Start</a></div>
         </div>
         <script>
         	<c:forEach items="${SELECTED_COURSE.syllabuses}" varStatus="status">

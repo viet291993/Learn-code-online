@@ -78,4 +78,29 @@ public class RecordQuestionDAO extends AbstractDAO {
 		}
 		return recordQuestion;
 	}
+	
+	public Integer getCountResult(Record record, Lession lession, boolean isTrue) {
+		Session session = null;
+		Integer rs = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Criteria cr = session.createCriteria(RecordQuestion.class);
+				cr.createAlias("question", "ques", JoinType.INNER_JOIN);
+				cr.setFetchMode("ques", FetchMode.JOIN);
+				cr.add(Restrictions.eq("ques.lession.id", lession.getId()));
+				cr.add(Restrictions.eq("record", record));
+				cr.add(Restrictions.eq("isActive", true));
+				cr.add(Restrictions.eq("isDeleted", false));
+				cr.add(Restrictions.eq("isPass", isTrue));
+				cr.setProjection(Projections.rowCount());
+				rs = ((Long) cr.uniqueResult()).intValue();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return rs;
+	}
 }

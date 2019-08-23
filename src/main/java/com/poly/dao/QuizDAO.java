@@ -27,7 +27,7 @@ public class QuizDAO extends AbstractDAO{
 			if (session != null) {
 				Criteria cr = session.createCriteria(Quiz.class);
 				cr.add(Restrictions.eq("isDeleted", false));
-				cr.add(Restrictions.eq("isActive", true));
+				//cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("question", question));
 				list = (List<Quiz>) cr.list();
 			}
@@ -39,7 +39,7 @@ public class QuizDAO extends AbstractDAO{
 		return list;
 	}
 	
-	public Quiz checkQuiz(Integer quizId) {
+	public Quiz findQuiz(Integer quizId) {
 		Session session = null;
 		Quiz quiz = null;
 		try {
@@ -47,9 +47,8 @@ public class QuizDAO extends AbstractDAO{
 			if (session != null) {
 				Criteria cr = session.createCriteria(Quiz.class);
 				cr.add(Restrictions.eq("isDeleted", false));
-				cr.add(Restrictions.eq("isActive", true));
+				//cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("id", quizId));
-				cr.add(Restrictions.eq("isTrue", true));
 				cr.setMaxResults(1);
 				quiz = (Quiz) cr.uniqueResult();
 			}
@@ -69,7 +68,7 @@ public class QuizDAO extends AbstractDAO{
 			if (session != null) {
 				Criteria cr = session.createCriteria(Quiz.class);
 				cr.add(Restrictions.eq("isDeleted", false));
-				cr.add(Restrictions.eq("isActive", true));
+				//cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("question", question));
 				cr.setProjection(Projections.rowCount());
 				count = ((Long) cr.uniqueResult()).intValue();

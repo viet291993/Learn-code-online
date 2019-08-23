@@ -4,9 +4,9 @@
 <c:choose>
 	<c:when test="${IS_TRUE != null && IS_TRUE == true }">
 		<c:forEach items="${LIST_QUIZ}" var="quiz" varStatus="status">
-         	<div id="${quiz.id}" class="answer__10-7SUQvwpIXkWp66wqf_S answer__10-7SUQvwpIXkWp66wqf_S <c:if test="${quiz.isTrue}">correct__31olAPDSEUokD9R7dsahWi</c:if>" data-testid="multiple-choice-answer-0">
+         	<div id="${quiz.id}" class="answer__10-7SUQvwpIXkWp66wqf_S <c:if test="${quiz.isTrue}">correct__31olAPDSEUokD9R7dsahWi</c:if>">
               <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh">
-                  <p>${quiz.answer }</p>
+                  <p>${quiz.answer}</p>
               </div>
           </div>
          </c:forEach>
@@ -14,7 +14,7 @@
 	
 	<c:when test="${IS_TRUE != null && IS_TRUE == false }">
 		<c:forEach items="${LIST_QUIZ}" var="quiz" varStatus="status">
-         	<div id="${quiz.id}" class="answer__10-7SUQvwpIXkWp66wqf_S answer__10-7SUQvwpIXkWp66wqf_S <c:if test="${quiz.isTrue}">correctNotSelected__29UjEBVd1V9GKHPIdld45v</c:if> <c:if test="${quiz.id == ANSWER_ID}">incorrect__2l8o8zx18QQoWtVEyhnKuM</c:if>" data-testid="multiple-choice-answer-0">
+         	<div id="${quiz.id}" class="answer__10-7SUQvwpIXkWp66wqf_S <c:if test="${quiz.isTrue}">correctNotSelected__29UjEBVd1V9GKHPIdld45v</c:if> <c:if test="${quiz.id == ANSWER_ID}">incorrect__2l8o8zx18QQoWtVEyhnKuM</c:if>">
               <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh">
                   <p>${quiz.answer }</p>
               </div>
@@ -24,7 +24,7 @@
 	
 	<c:otherwise>
 		<c:forEach items="${LIST_QUIZ}" var="quiz" varStatus="status">
-        	<button id="${quiz.id}" class="answer__10-7SUQvwpIXkWp66wqf_S answer__10-7SUQvwpIXkWp66wqf_S" data-testid="multiple-choice-answer-0" type="button">
+        	<button id="${quiz.id}" class="answer__10-7SUQvwpIXkWp66wqf_S" data-testid="multiple-choice-answer-0" type="button">
              <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh">
                  <p>${quiz.answer }</p>
              </div>

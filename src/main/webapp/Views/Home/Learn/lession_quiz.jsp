@@ -53,77 +53,22 @@
 <link data-chunk="platform-scenes-course" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/132.9d19691ec9bd06ebdbe2.chunk.css" />">
 <link data-chunk="platform-scenes-course" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/137.cf6c9951e6cb1425f0f2.chunk.css" />">
 <link data-chunk="platform-scenes-course" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/170.98f26fa29675cd34485a.chunk.css" />">
-
+<link data-chunk="platform-scenes-course" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/platform-scenes-quiz.d7ee99d5f8adbbc1a614.chunk.css" />">
 <%@include file="/Views/Home/Import/codemirror_js.jsp" %>
 
 </head>
 <body>
-	<div class="react-root" data-react-class="PlatformRouter">
-	    <section data-testid="platform-page" class="platform__2wPufOUWAR_i_cz8ZEknBS">
-	        <input type="hidden" id="reloadController3" value="<c:url value='/learn/quiz4'/>">
-	        <div class="ajax-content-3">
-	        	<c:import url="/Views/Home/Learn/lession_quiz_nav.jsp" />
-	        </div>
-	        <div class="container__2-8VOPaA031ycPslzGbMCq">
-	            <div class="container__2ZkNUvVpS2bqFetXuLBHoA assessmentContainer__2c-hykrF8Z4rZtvaI_Rpfr">
-	                <div>
-	                    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh title__1LSXbz8gGigHcyOZLK-21d">
-	                        ${SELECTED_QUESTION.content}
-	                    </div><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined codeBlock__3BmC2Ep4l-IJw14DpH9DAF">
-	                    <c:if test="${SELECTED_QUESTION.defaultCode != null}">
-	                    	<div class="CodeMirror">${SELECTED_QUESTION.defaultCode}</div>
-	                    </c:if>
-	                </span>
-	                <input type="hidden" id="reloadController" value="<c:url value='/learn/quiz2'/>">
-					<div class="ajax-content">
-	                	<c:import url="/Views/Home/Learn/lession_quiz_answer.jsp" />
-	                </div>
-	                </div>
-	        </div>
-	</div>
-	<input type="hidden" id="reloadController2" value="<c:url value='/learn/quiz3'/>">
-	<div class="ajax-content-2">
-		<c:import url="/Views/Home/Learn/lession_quiz_button.jsp" />
-	</div>
-	
-	</section>
-	</div>
-	<style>
-		.CodeMirror {
-			overflow: hidden!important;
-			padding: 0.5rem 1rem;
-		}
-		
-		.CodeBlock__1F3rKYW3tV11w2KEKvALNg .CodeMirror {
-			padding: 5px 16px;
-		}
-		
-		.CodeMirror-scroll {
-			overflow: hidden!important;
-		}
-	</style>
-		<script>
-		
-		$('.CodeMirror').each(function() {
-		    
-		    var $this = $(this),
-		        $code = $this.html(),
-		        $unescaped = $('<div/>').html($code).text();
-		   
-		    $this.empty();
-		
-		    CodeMirror(this, {
-		        value: $unescaped,
-		        mode: 'text/x-java',
-		        lineNumbers: false,
-				lineWrapping: true,
-				matchBrackets: true,
-				autoCloseBrackets: true,
-				autoCloseTags: true,
-		        readOnly: true
-		    });
-			    
-		});
-		</script>
+	<input type="hidden" id="reloadController4" value="<c:url value='/learn/quizresult2'/>">
+		<div class="ajax-content-4">
+			<c:if test="${IS_DONE == null || IS_DONE == false }">
+				<input type="hidden" id="reloadController3" value="<c:url value='/learn/nextquiz2'/>">
+				<div class="ajax-content-3">
+					<%@include file="/Views/Home/Learn/lession_quiz_ajax.jsp" %>
+				</div>
+			</c:if>
+			<c:if test="${IS_DONE != null && IS_DONE == true}">
+				<%@include file="/Views/Home/Learn/lession_quiz_result.jsp" %>
+			</c:if>
+		</div>
 </body>
 </html>
