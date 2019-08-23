@@ -70,7 +70,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="${pageContext.request.contextPath}/admin/logout">
+              <a data-toggle="tooltip" data-placement="top" title="Đăng xuất" href="${pageContext.request.contextPath}/admin/logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>

@@ -25,17 +25,16 @@
                     <div class="grid-col-6 grid-col--no-spacing">
                         <form accept-charset="UTF-8" action="<c:url value='/password'/>" class="formPassword"  id="formPassword" method="post">
                             <div style="margin:0;padding:0;display:inline">
-                                <input name="utf8" type="hidden" value="✓">
-                                <input name="_method" type="hidden" value="put">
-                                <input name="authenticity_token" type="hidden" value="3MOcacBxhuc9Xc+MguVytxmuK2POmsC4SiJ5+vobzCk=">
+                                <input name="userId" id="userId" type="hidden" value="${MEMBER.user.id}">
                             </div>
-                            <div class="margin-bottom--1">
-                                <label for="passwordOld">
-                                    Mật khẩu cũ
-                                </label>
-                                <input id="passwordOld" name="passwordOld" placeholder="Mật khẩu cũ" size="30" type="password" class="Input__B0I6a45-Vc4Eo8Lqz3nSE"  style="border-color: rgba(62,62,64,0.5);">
-                            </div>
-                            
+                            <c:if test="${f:checkPasswordNull(MEMBER.user.id)}">
+	                            <div class="margin-bottom--1">
+	                                <label for="passwordOld">
+	                                    Mật khẩu cũ
+	                                </label>
+	                                <input id="passwordOld" name="passwordOld" placeholder="Mật khẩu cũ" size="30" type="password" class="Input__B0I6a45-Vc4Eo8Lqz3nSE"  style="border-color: rgba(62,62,64,0.5);">
+	                            </div>
+                            </c:if>
                             <div class="margin-bottom--1">
                                 <label for="passwordNew">
                                     Mật khẩu mới
@@ -57,6 +56,8 @@
             </div>
         </article>
     </main>
+${Alert}
+<% request.getSession().removeAttribute("Alert"); %> 
 <script>
 $(document).ready(function() {
 	$("#formPassword").validate({
@@ -64,19 +65,11 @@ $(document).ready(function() {
 					passwordOld: {
 						required: true,
 						minlength: 6,
-						remote: {
-		                    url: "${CONTEXTPATH}/checkPasswordOld",
-		                    type: "POST",
-		                    data: {
-		                        username: function () {
-		                            return $("#passwordOld").val();
-		                        }
-		                    }
-		                }
 					},
 					passwordNew: {
 						required: true,
-						minlength: 6
+						minlength: 6,
+						notEqualTo :"#passwordOld"
 					},
 					confirm_password: {
 						required: true,
@@ -88,16 +81,16 @@ $(document).ready(function() {
 					passwordOld: {
 						required: 'Vui lòng nhập mật khẩu cũ',
 						minlength: 'Vui lòng nhập ít nhất 6 kí tự',
-						remote:"Mật khẩu cũ không đúng",
 					},
 					passwordNew: {
 						required: 'Vui lòng nhập mật khẩu mới',
-						minlength: 'Vui lòng nhập ít nhất 6 kí tự'
+						minlength: 'Vui lòng nhập ít nhất 6 kí tự',
+						notEqualTo: 'Mật khẩu mới phải khác mật khẩu cũ',
 					},
 					confirm_password: {
 						required: 'Vui lòng nhập mật khẩu',
 						minlength: 'Vui lòng nhập ít nhất 6 kí tự',
-						equalTo: 'Mật khẩu không trùng'
+						equalTo: 'Mật khẩu không trùng',
 					},
 					
 				}

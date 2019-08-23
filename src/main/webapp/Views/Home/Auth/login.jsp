@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <main class="container__t9cGpmzkTfzuZwSMDtCbX main__1DMoBwZbxA88IbaOPHt5Kt">
     <div class="spacer__3lbNVH1ntz2_5fW__RluYl">
         <h1 class="pageHeading__1aq3EfrTRp4zrnnSfHS3Ha">Đăng nhập</h1>
@@ -12,11 +11,11 @@
                         <div class="formGroups__2LQTSt-JbfaioCwGDyDBOX">
                             <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__29BXXbmwYSKxj7NCqvlRuU">
                                 <label for="user_login" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Email hoặc tên tài khoản</label>
-                                <input type="text" name="username" id="username" class="Input__B0I6a45-Vc4Eo8Lqz3nSE">
+                                <input required="required" type="text" name="username" id="username" class="Input__B0I6a45-Vc4Eo8Lqz3nSE">
                             </div>
                             <div class="FormGroup__39QatB_F57UEfXnAOZGyOu formGroup__29BXXbmwYSKxj7NCqvlRuU">
                                 <label for="login__user_password" class="FormGroupLabel__34U-iOLGgVsuayOOXmOr_X">Mật khẩu</label>
-                                <input type="password" name="password" id="password" class="Input__B0I6a45-Vc4Eo8Lqz3nSE">
+                                <input required="required" type="password" name="password" id="password" class="Input__B0I6a45-Vc4Eo8Lqz3nSE">
                             </div>
                         </div>
                         <div class="padBottomIfNotEmpty__1RQgubdoyzRrSZhCsyi2Z5"></div>
@@ -43,3 +42,6 @@
             </div>
         </div><a href="<c:url value="/register"/>" class="outLink__1CAKaBwcDc48Oex0b-CAlj">Chưa là thành viên? <b>Đăng ký</b></a></div>
 </main>
+${Alert}
+<% request.getSession().removeAttribute("Alert"); %>
+

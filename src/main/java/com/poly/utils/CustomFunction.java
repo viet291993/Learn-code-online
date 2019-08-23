@@ -643,7 +643,7 @@ public class CustomFunction {
 	}
 	
 	public static boolean checkPasswordNull(Integer id) {
-		return ((User) new UserDAO().find(id)).getPassword().equals("")?true:false;
+		return ((User) new UserDAO().find(id)).getPassword() == null?false:true;
 	}
 	
 

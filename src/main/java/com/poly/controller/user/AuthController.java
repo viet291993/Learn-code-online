@@ -84,10 +84,14 @@ public class AuthController {
 			Member member = new MemberDAO().checkLogin(username, password);
 			if (member == null) {
 				System.out.println("wrong member!");
+				session.setAttribute("Alert",
+						"<script>swal('Lỗi đăng nhâp!', 'Tài khoản hoặc mặc khẩu không đúng!', 'error')</script>");
 				return new ModelAndView("redirect:/login");
 			}
 			if (!member.isIsActive()) {
 				System.out.println("blocked!");
+				session.setAttribute("Alert",
+						"<script>swal('Lỗi đăng nhập', 'Tài khoản đã bị khóa!', 'error')</script>");
 				return new ModelAndView("redirect:/login");
 			}
 
@@ -284,16 +288,13 @@ public class AuthController {
 			@RequestParam(value = "address") String address, @RequestParam(value = "password") String password,
 			ModelMap mm, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if (new UserDAO().checkUsernameExist(username)) {
-			System.out.println("Username đã tồn tại!");
-			return new ModelAndView("redirect:/login");
-		}
 		try {
 			User temp = new User();
 			String salt = CustomFunction.randomKey();
 			temp.setUsername(username);
 			temp.setPassword(CustomFunction.passwordEncryption(password, salt));
 			temp.setSalt(salt);
+			temp.setIsActive(true);
 			User usr = (User) new UserDAO().create(temp);
 			if (usr != null) {
 				Member member = new Member();
@@ -302,15 +303,19 @@ public class AuthController {
 				member.setEmail(email);
 				member.setAddress(address);
 				member.setIsActive(true);
-				member.setIsDeleted(false);	
+				member.setIsDeleted(false);
 				if (new MemberDAO().create(member) != null) {
 					System.out.println("Đăng ký thành công!");
-					return new ModelAndView("redirect:/login");
+					session.setAttribute("Alert",
+							"<script>swal('Thành công', 'Tạo tài khoản thành công!', 'success')</script>");
+					return new ModelAndView("redirect:/register");
 				} else {
 					new UserDAO().deleteUserWhenRegError(usr.getId());
+					session.setAttribute("Alert", "<script>swal('Lỗi', 'Tạo tài khoản thất bại!', 'error')</script>");
 					return new ModelAndView("redirect:/register");
 				}
 			} else {
+				session.setAttribute("Alert", "<script>swal('Lỗi', 'Tạo tài khoản thất bại!', 'error')</script>");
 				return new ModelAndView("redirect:/register");
 			}
 		} catch (Exception e) {
@@ -325,42 +330,68 @@ public class AuthController {
 		request.getSession().removeAttribute("MEMBER");
 		return new ModelAndView("redirect:/");
 	}
-	
+
 	@RequestMapping(value = "/checkUsername", method = RequestMethod.POST)
-    @ResponseBody
-    public boolean checkUsername(@RequestParam(value = "username", required = false) String username, ModelMap mm) {
-        return !new UserDAO().checkUsernameExist(username);
-    }
-	
-	@RequestMapping(value = "/checkPasswordOld", method = RequestMethod.POST)
-    @ResponseBody
-    public boolean checkPasswordOld(@RequestParam(value = "passwordold", required = false) String passwordold, ModelMap mm) {
-        return new UserDAO().checkPasswordOld(passwordold);
-    }
-	
-	@RequestMapping(value = "/checkEmail", method = RequestMethod.POST)
-    @ResponseBody
-    public boolean checkEmail(@RequestParam(value = "email", required = false) String email, ModelMap mm) {
-        return new MemberDAO().checkEmailExist(email);
-    }
-	
+	@ResponseBody
+	public boolean checkUsername(@RequestParam(value = "username", required = false) String username, ModelMap mm) {
+		return !new UserDAO().checkUsernameExist(username);
+	}
+
+
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public ModelAndView account(ModelMap mm, HttpServletRequest request) {
 		return new ModelAndView("HomeAccount");
 	}
-	
+
 	@RequestMapping(value = "/account", method = RequestMethod.POST)
-	public ModelAndView accountUpdate(ModelMap mm, HttpServletRequest request) {
-		return new ModelAndView("HomeAccount");
+	public ModelAndView accountUpdate(@RequestParam(value = "memberId", required = true) Integer memberId,
+			@RequestParam(value = "name", required = true) String name,
+			@RequestParam(value = "address", required = true) String address, ModelMap mm, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		try {
+			Member member = (Member) new MemberDAO().find(memberId);
+			member.setName(name);
+			member.setAddress(address);
+			new MemberDAO().edit(member);
+			session.setAttribute("MEMBER", member);
+			session.setAttribute("Alert",
+					"<script>swal('Thành công', 'Thay đổi thông tin thành công!', 'success')</script>");
+		} catch (Exception e) {
+			session.setAttribute("Alert", "<script>swal('Lỗi', 'Thay đổi thông tin thất bại!', 'error')</script>");
+		}
+		return new ModelAndView("redirect:/account");
 	}
-	
+
 	@RequestMapping(value = "/password", method = RequestMethod.GET)
 	public ModelAndView password(ModelMap mm, HttpServletRequest request) {
 		return new ModelAndView("HomePassword");
 	}
-	
+
 	@RequestMapping(value = "/password", method = RequestMethod.POST)
-	public ModelAndView passwordUpdate(ModelMap mm, HttpServletRequest request) {
-		return new ModelAndView("HomePassword");
+	public ModelAndView passwordUpdate(@RequestParam(value = "userId", required = true) Integer userId,
+			@RequestParam(value = "passwordOld", required = false) String passwordold,
+			@RequestParam(value = "passwordNew", required = true) String passwordNew, ModelMap mm,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		try {
+			if (new UserDAO().checkPasswordOld(userId, passwordold)) {
+				User user = (User) new UserDAO().find(userId);
+				if (user.getSalt() == null) {
+					String salt = CustomFunction.randomKey();
+					user.setPassword(CustomFunction.passwordEncryption(passwordNew, salt));
+					user.setSalt(salt);
+				} else {
+					user.setPassword(CustomFunction.passwordEncryption(passwordNew, user.getSalt()));
+				}
+				new UserDAO().edit(user);
+				session.setAttribute("Alert",
+						"<script>swal('Thành công', 'Thay đổi mật khẩu thành công!', 'success')</script>");
+			}else {
+				session.setAttribute("Alert", "<script>swal('Thất bại', 'Mật khẩu cũ không đúng!', 'error')</script>");
+			}
+		} catch (Exception e) {
+			session.setAttribute("Alert", "<script>swal('Đã có lỗi xảy ra', 'Thay đổi mật khẩu thất bại!', 'error')</script>");
+		}
+		return new ModelAndView("redirect:/password");
 	}
 }

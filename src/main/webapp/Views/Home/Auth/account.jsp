@@ -25,9 +25,7 @@
                     <div class="grid-col-6 grid-col--no-spacing">
                         <form accept-charset="UTF-8" action="<c:url value='/account'/>" class="edit_user" enctype="multipart/form-data" id="edit_user_5d2bdd945256dca6cf000352" method="post">
                             <div style="margin:0;padding:0;display:inline">
-                                <input name="utf8" type="hidden" value="✓">
-                                <input name="_method" type="hidden" value="put">
-                                <input name="authenticity_token" type="hidden" value="3MOcacBxhuc9Xc+MguVytxmuK2POmsC4SiJ5+vobzCk=">
+                            	<input name="memberId" id="memberId" type="hidden" value="${MEMBER.id}">
                             </div>
                             <div class="margin-bottom--1">
                                 <label for="username">
@@ -44,7 +42,7 @@
                                     Họ và tên
                                 </label>
                                 <div class="field field--text">
-                                    <input id="name" name="name" placeholder="Họ và tên" size="30" type="text" value="${MEMBER.name}">
+                                    <input required="required" id="name" name="name" placeholder="Họ và tên" size="30" type="text" value="${MEMBER.name}">
                                     <div class="field__status-icon "></div>
                                 </div>
                             </div>
@@ -65,7 +63,7 @@
                                     Địa chỉ
                                 </label>
                                 <div class="field field--text">
-                                    <input id="address" name="address" placeholder="Địa chỉ" size="30" type="text" value="${MEMBER.address}">
+                                    <input required="required" id="address" name="address" placeholder="Địa chỉ" size="30" type="text" value="${MEMBER.address}">
                                     <div class="field__status-icon "></div>
                                 </div>
 
@@ -75,13 +73,12 @@
 					            Ảnh đại diện
 					          </label>
 							   <div class="field field--image">
-								  	<img alt="image" src="${MEMBER.profileimage}">
+								  	<img alt="image" src="<c:if test="${MEMBER.profileimage == null}"><c:url value="/Resources/Home/img/guest.png" /></c:if><c:if test="${MEMBER.profileimage != null}">${MEMBER.profileimage}</c:if>">
 								    <input id="image" name="image" type="file">
 								</div>
 					
 					        </div>
-
-                            <input class="button" name="commit" type="submit" value="Update Profile">
+                            <input class="button" name="commit" type="submit" value="Cập nhật">
                         </form>
                     </div>
                 </div>
@@ -89,3 +86,5 @@
             </div>
         </article>
     </main>
+${Alert}
+<% request.getSession().removeAttribute("Alert"); %>    

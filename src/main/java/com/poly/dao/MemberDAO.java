@@ -80,7 +80,6 @@ public class MemberDAO extends AbstractDAO {
 				User usr = new UserDAO().getUser(username);
 				if (usr != null) {
 					cr.add(Restrictions.eq("user", usr));
-					cr.add(Restrictions.eq("isActive", true));
 					cr.add(Restrictions.eq("isDeleted", false));
 					obj = (Member) cr.uniqueResult();
 				}
