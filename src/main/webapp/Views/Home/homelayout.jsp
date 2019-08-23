@@ -145,6 +145,7 @@
     <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/portal-lite.408b62e22a39cb153288.chunk.css"/>">
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="<c:url value="/Resources/Home/shared/css/translateelement.css "/>">
 	<link href="<c:url value="/Resources/Home/css/custom.css"/>" rel="stylesheet">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 		<body>
 	            <%@include file="/Views/Home/Panel/header.jsp" %>
@@ -176,6 +177,7 @@
         <script src="<c:url value="/Resources/shared/js/jquery.validate.additional-methods.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/Resources/shared/js/jquery.validate.messages_vi.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/Resources/shared/js/serialize.js"/>" type="text/javascript"></script>        
+	    
 	    <script>
 	        $('#nav-search').hide();
 	        $("#header-search").click(function(e) {

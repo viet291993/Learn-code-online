@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,6 +37,7 @@ public class ContentController {
 	@RequestMapping(value = "/promembership", method = RequestMethod.POST)
 	public ModelAndView proMemberUpdate(@RequestParam(value = "idMember") Integer idMember, ModelMap mm,
 			HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		try {
 			Member member = (Member) new MemberDAO().find(idMember);
 			Calendar cal = Calendar.getInstance();
@@ -43,10 +45,15 @@ public class ContentController {
 			Timestamp date = new Timestamp(cal.getTimeInMillis());
 			member.setTrailExpiredDate(date);
 			new MemberDAO().edit(member);
+			session.setAttribute("Alert", "<script>swal('Thành công', 'Đăng ký dùng thử PRO thành công!', 'success')</script>");
 		} catch (Exception e) {
-			e.printStackTrace();
+			session.setAttribute("Alert", "<script>swal('Lỗi', 'Đăng ký dùng thử PRO thất bại!', 'error')</script>");
 		}
-		return new ModelAndView("HomeProMembership");
+		return new ModelAndView("redirect:/promembership");
 	}
 
+	@RequestMapping(value = "/forums", method = RequestMethod.GET)
+	public ModelAndView forums(ModelMap mm, HttpServletRequest request) {
+		return new ModelAndView("HomeForums");
+	}
 }

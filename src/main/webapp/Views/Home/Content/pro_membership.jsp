@@ -97,3 +97,5 @@
             </div>
         </div>
     </div>
+${Alert}
+<% request.getSession().removeAttribute("Alert"); %>

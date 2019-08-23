@@ -41,6 +41,8 @@
             </div>
         </div><a href="<c:url value="/login"/>"class="outLink__1CAKaBwcDc48Oex0b-CAlj">Bạn đã là thành viên <b>Đăng nhập</b></a></div>
 </main>
+${Alert}
+<% request.getSession().removeAttribute("Alert"); %>   
 <script>
 $(document).ready(function() {
 	$("#formRegister").validate({
@@ -78,7 +80,7 @@ $(document).ready(function() {
 		                    url: "${CONTEXTPATH}/checkEmail",
 		                    type: "POST",
 		                    data: {
-		                        username: function () {
+		                    	email: function () {
 		                            return $("#email").val();
 		                        }
 		                    }
