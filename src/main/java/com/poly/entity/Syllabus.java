@@ -35,7 +35,7 @@ public class Syllabus implements java.io.Serializable {
 	private String name;
 	private int orderDisplay;
 	private String description;
-	private String code;
+	private String code; 
 	private boolean isActive;
 	private boolean isDeleted;
 	private Set<Lession> lessions = new HashSet<Lession>(0);
