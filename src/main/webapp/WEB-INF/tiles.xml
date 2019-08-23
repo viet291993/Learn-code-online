@@ -54,6 +54,13 @@
         <put-attribute name="Content" value="/Views/Home/Auth/profile.jsp" />
     </definition>
    
+    <definition name="HomeSearch" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Content/search.jsp" />
+    </definition>
+    
+    <definition name="HomeProMembership" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Content/pro_membership.jsp" />
+    </definition>
     
     <definition name="MessageLayout" template="/Views/Message/messagelayout.jsp"/>
     

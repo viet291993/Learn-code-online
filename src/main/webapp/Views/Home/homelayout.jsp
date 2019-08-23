@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="t"%>
+<c:set value="${pageContext.request.requestURL}" var="URL" scope="request" />
 <!DOCTYPE html>
 <html>
 	<head>
@@ -72,7 +73,66 @@
 		<link data-chunk="corporate-scenes-Landing" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/117.d90da474ed7e38418585.chunk.css" />">
 		<link data-chunk="corporate-scenes-Landing" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/143.0049802d33aabeb3d3a8.chunk.css" />">
 		<link data-chunk="corporate-scenes-Landing" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/corporate-scenes-LogIn.bd18520b3432b9589489.chunk.css" />">
-		<link href="<c:url value="/Resources/Home/css/custom.css"/>" rel="stylesheet">
+		<link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/98.b0ca2c49a6d3e4f35cbc.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/125.45c94b376e545cb4c285.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/142.de70b8e4058477231cd7.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/146.06b3522d6a165918162f.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/35.c2e56ddc298af3dce9de.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/61.1de3ee7702429c781aac.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/85.7e8787fe44d119620a42.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/140.90a3f88ebc92d62e4561.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/144.e9aeb5e6bd4793363f2c.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/147.58a541e5d9ee32970687.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/181.ce2f59d12a3d0378a60c.chunk.css"/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/185.605f6fe264edbc371735.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/24.98c46a006dd97e6b7fc8.chunk.css"/>"> 
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/47.7f073534d3dcf0b2ec46.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/7.4826cfd574f8ad583e02.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/18.258c486ee3fb1db73a8a.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/19.05c23bf84f96a8653e36.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/52.f7da5aa48a63b01405d8.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/56.a5c8c55fe600594be00e.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/75.4d25fc59927673d76475.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/76.d8a38b3b0b64ef2adf13.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/87.f3282e474d2edb8de331.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/123.f84faf848ac7871a4122.chunk.css"/>">
+	    <link data-chunk="portal-scenes-Search" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/portal-scenes-Search.22c15de0f041aa597f37.chunk.css"/>">
+		<link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/71.54ab6f1fdbffb97caaae.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/99.b0ca2c49a6d3e4f35cbc.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/104.45c94b376e545cb4c285.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/143.de70b8e4058477231cd7.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/147.06b3522d6a165918162f.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/37.c2e56ddc298af3dce9de.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/63.1de3ee7702429c781aac.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/141.e863343cf4a92f501f6b.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/145.d78ab9d210139c150285.chunk.css "/>">
+	    <link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/148.58a541e5d9ee32970687.chunk.css "/>">
+		<link data-chunk="portal" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/188.b50a20dc453f64adc2bf.chunk.css "/>">
+    
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/23.50272209b500e6da1140.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/26.98c46a006dd97e6b7fc8.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/28.1d7b37ebaf4c3cd7f0c5.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/34.eaba1b55c7e27d905e67.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/47.bbaf6f269e644081b3fa.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/49.7f073534d3dcf0b2ec46.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/85.e324a0e3dc9451a511ec.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/101.954631063b884a9c0a94.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/103.21668f872ea70e5f4a34.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/121.dc93540d473951e0b1cb.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/126.6850b1254c419c10a10b.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/127.3f084dfb41d1e1a3cf80.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/13.7e8787fe44d119620a42.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/27.b439532de703944b80bf.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/102.d803e06b6ca2b421f9ad.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/123.e96df2b662230d8d1849.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/128.d90da474ed7e38418585.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/152.ab1a582b20fdbb7bfef8.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/179.6360617f1e307cf7bc86.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/187.eab59c10ccfecf0dd083.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/196.312055630392a1cb8419.chunk.css "/>">
+    <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/portal-scenes-PaymentCheckout.520d71b8a11e12966d3f.chunk.css "/>">
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="<c:url value="/Resources/Home/shared/css/translateelement.css "/>">
+	<link href="<c:url value="/Resources/Home/css/custom.css"/>" rel="stylesheet">
 	</head>
 		<body>
 	            <%@include file="/Views/Home/Panel/header.jsp" %>

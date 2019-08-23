@@ -21,9 +21,6 @@
 	                            <c:if test="${MEMBER == null }">
 	                            	<div class="headerList__2cFXAvupVnCAG6idZMcZeQ showOnDesktop__x7795RqOCp8DJ5csmbNfA">
 									    <div>
-									        <div id="pro-button" class="tab__1Vw1A1yuPy-TnRg11IKht"><a data-btn="true" data-testid="upgrade-link" data-cxlid="upgrade-link" target="_self" rel="noopener noreferrer" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI" href="">Nâng cấp tài khoản</a></div>
-									    </div>
-									    <div>
 									        <div id="header-search" class="tab__1Vw1A1yuPy-TnRg11IKht">
 									            <button data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-red__QyPlW8b4Oy99ink1-on-u searchButton__2KTNKvMt9TPJiavoQUJujx navIcon__1afXwT9LAGTVR9mbgskuX6" data-testid="header-search">
 									                <svg fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -101,18 +98,17 @@
 	                                    <title>Search Icon</title>
 	                                    <path d="M9.583 2a7.583 7.583 0 0 1 7.584 7.583 7.601 7.601 0 0 1-1.82 4.935l.315.315h.921l5.834 5.834-1.75 1.75-5.834-5.834v-.921l-.315-.315a7.601 7.601 0 0 1-4.935 1.82A7.583 7.583 0 0 1 9.583 2zm0 2.333a5.228 5.228 0 0 0-5.25 5.25 5.228 5.228 0 0 0 5.25 5.25 5.228 5.228 0 0 0 5.25-5.25 5.228 5.228 0 0 0-5.25-5.25z" fill-rule="nonzero"></path>
 	                                </svg>
-	                                <form class="search__1g5v3pS8JlxNKblyJTjXlN" id="search-form" action="file:///C:/search">
-	                                    <input name="query" type="search" id="header-search-bar" placeholder="Java, C#, Python,..." class="input__ELDaJDCKd6A2DOpNV6mXM" value="">
+	                                <form class="search__1g5v3pS8JlxNKblyJTjXlN" id="search-form" action="<c:url value="/search" />">
+	                                    <input name="keyword" type="search" id="header-search-bar" placeholder="<c:forEach items='${LIST_KEYWORD}' var='KEY'>${KEY.name},</c:forEach>..." class="input__ELDaJDCKd6A2DOpNV6mXM" value="${param.keyword==null?'':param.keyword}">
 	                                </form>
 	                            </div>
 	                        </div>
 	                        <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4 suggestionContainer__3mXYg3ZgQo0ZQC9YNUDUnk">
 	                            <h5>Phổ biến</h5>
 	                            <div class="displayHorizontal__56YzIjP3xMbhwvlrNyW1Z suggestionList__1zEpAuJU_ZN5M_qDRqFj28">
-	                                <button data-btn="true" class="basicBtn btn btn-blue__34yXHhvi2t651Fi7QF1Zjx flat__Gbu0EzdU2yQr9B87Peh09">Java</button>
-	                                <button data-btn="true" class="basicBtn btn btn-blue__34yXHhvi2t651Fi7QF1Zjx flat__Gbu0EzdU2yQr9B87Peh09">Python</button>
-	                                <button data-btn="true" class="basicBtn btn btn-blue__34yXHhvi2t651Fi7QF1Zjx flat__Gbu0EzdU2yQr9B87Peh09">C#</button>
-	                                <button data-btn="true" class="basicBtn btn btn-blue__34yXHhvi2t651Fi7QF1Zjx flat__Gbu0EzdU2yQr9B87Peh09">Java</button>
+	                            	<c:forEach items='${LIST_KEYWORD}' var='KEY'>
+	                                	<button data-btn="true" class="basicBtn btn btn-blue__34yXHhvi2t651Fi7QF1Zjx flat__Gbu0EzdU2yQr9B87Peh09">${KEY.name}</button>
+	                                </c:forEach>
 	                            </div>
 	                        </div>
 	                    </div>

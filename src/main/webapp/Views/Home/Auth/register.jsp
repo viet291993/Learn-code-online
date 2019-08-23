@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set value="${pageContext.request.contextPath}" var="CONTEXTPATH" scope="request" />
 
 <main class="container__t9cGpmzkTfzuZwSMDtCbX main__1DMoBwZbxA88IbaOPHt5Kt">
     <div class="spacer__3lbNVH1ntz2_5fW__RluYl">
