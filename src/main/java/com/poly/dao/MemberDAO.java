@@ -188,4 +188,22 @@ public class MemberDAO extends AbstractDAO {
 		}
 		return result;
 	}
+	
+	public boolean checkEmailExist(String email) {
+		Session session = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Query q = session.createSQLQuery("select count(*) from Member where email=:email");
+				q.setString("email", email);
+				return (int) q.uniqueResult() == 0;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return false;
+	}
 }

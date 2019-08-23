@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="/WEB-INF/tlds/functions.tld" %>
 
 <div class="trial__2RBesTd3jHUCAOvgDI_n0M" role="banner">
 	                <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4 container__15JcyFgxNtPEUg-viGwSY1 containerThin__3lklrutWDbul9IP7I0vy7q"><img class="backgroundImage__TBbhjtxjEmHDh8RfRPCWc" src="<c:url value="/Resources/Home/shared/css/15148e611c2a8cec71f0e9200d95affb.svg " />" alt="">
@@ -10,9 +11,7 @@
 	                            <div class="userDetailsContainer__ZQKAngqGJvAfFiP17BVRo">
 	                                <div class="usernameContainer__3v4c5LW-wE2MT8wndddkRh">
 	                                    <h1 class="username__2XadxoeCL3__ps0TM7GI6k">${MEMBER.name}</h1><a data-btn="true" class="basicBtn btn btn-white__1e0kCCItRnEi-EDNpmLuX1 outline__1jukYfNsJOsNuah6o7d8HZ fit-text__1GvxCv4KPqP6bG2s0Ub63x editButton__1MFirzSrrM2a3_2XgEQHne" href="#/account">Cài đặt</a></div>
-	                                <div data-testid="role-label">Pro Trial
-	                                    <!-- -->
-	                                    <!-- -->Member</div>
+	                                <div data-testid="role-label">${f:generateHomePro(MEMBER)}</div>
 	                            </div>
 	                        </div>
 	                    </div>

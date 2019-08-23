@@ -9,6 +9,7 @@ import javax.servlet.ServletContextListener;
 import org.hibernate.HibernateException;
 
 import com.poly.config.HibernateConfiguration;
+import com.poly.dao.LanguageDAO;
 import com.poly.dao.WebsiteConfigDAO;
 import com.poly.entity.WebsiteConfig;
 import com.poly.utils.ConfigUtils;
@@ -32,6 +33,7 @@ public class GeneralContextListener implements ServletContextListener {
 				HashMap<String, WebsiteConfig> websiteConfigs = new WebsiteConfigDAO().findAllConfigs();
 				sce.getServletContext().setAttribute("WEBSITE_CONFIGS", websiteConfigs);
 				sce.getServletContext().setAttribute("WEBSERVICE_NAMESERVER", nameServer);
+				sce.getServletContext().setAttribute("LIST_KEYWORD", new LanguageDAO().findAll());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

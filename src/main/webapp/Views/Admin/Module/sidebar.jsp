@@ -5,7 +5,7 @@
 <!-- START PAGE SIDEBAR -->
 <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="${CONTEXTPATH}/admin" class="site_title"><img src="${CONTEXTPATH}/Resources/Images/favicon.ico" >  <span>Learn code !</span></a>
+              <a href="${CONTEXTPATH}/admin" class="site_title"><img src="${CONTEXTPATH}/Resources/Images/favicon.ico" ><span> Learn code !</span></a>
             </div>
 
             <div class="clearfix"></div>

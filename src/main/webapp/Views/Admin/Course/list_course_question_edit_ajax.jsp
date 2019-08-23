@@ -215,7 +215,6 @@
 			var text = '{"'+nameID+'":"'+inputID.val()+'"';
         	$(target).find('textarea').each(function (i, target) {
         		if($(target).hasClass('editor')){
-        			console.log(CKEDITOR.instances[$(target).attr('id')].getData());
         			text += ',"'+$(target).data('name')+'":"'+CKEDITOR.instances[$(target).attr('id')].getData().replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r\n/g, '').replace(/\n/g, '').replace(/\r/g, '')+'"';
         		}else{
         			text += ',"'+$(target).data('name')+'":"'+$(target).val().replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r\n/g, '').replace(/\n/g, '').replace(/\r/g, '')+'"';
