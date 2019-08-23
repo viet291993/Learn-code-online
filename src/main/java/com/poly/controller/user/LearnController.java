@@ -329,7 +329,7 @@ public class LearnController {
 	public void quiz(@CookieValue(value = "lang", defaultValue = "vi") String lang, @RequestParam("answer") Integer answerId, @RequestParam("questionId") Integer questionId,
 			HttpServletRequest request, HttpServletResponse response, ModelMap mm, HttpSession session) {
 		session.setAttribute("SESSION_QUESTION_ID", questionId);
-		session.setAttribute("SESSION_ANSWER_ID", answerId);
+		session.setAttribute("SESSION_ANSWER_ID", answerId); 
 		Quiz quiz = new QuizDAO().checkQuiz(answerId);
 		if (quiz != null && quiz.isIsTrue())
 			session.setAttribute("SESSION_IS_TRUE", true);
