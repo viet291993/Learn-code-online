@@ -21,7 +21,7 @@
                         <path d="M12 16.125a4.125 4.125 0 1 1 0-8.25 4.125 4.125 0 0 1 0 8.25zm0-.917a3.208 3.208 0 1 0 0-6.416 3.208 3.208 0 0 0 0 6.416z" fill-rule="nonzero"></path>
                         <path d="M12 20.25a8.25 8.25 0 1 1 0-16.5 8.25 8.25 0 0 1 0 16.5zm0-1.833a6.417 6.417 0 1 0 0-12.834 6.417 6.417 0 0 0 0 12.834z" fill-rule="nonzero"></path>
                     </g>
-                </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Get Help</span></button>
+                </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Trợ giúp</span></button>
             <div></div>
         </div>
     </div>

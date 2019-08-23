@@ -54,7 +54,7 @@ public class RecordQuestionDAO extends AbstractDAO {
 		return recordQuestion;
 	}
 	
-	public RecordQuestion findLastPassQuestion(Record record) {
+	public RecordQuestion findLastPassQuestion(Lession lession, Record record) {
 		Session session = null;
 		RecordQuestion recordQuestion = null;
 		try {
@@ -63,6 +63,7 @@ public class RecordQuestionDAO extends AbstractDAO {
 				Criteria cr = session.createCriteria(RecordQuestion.class);
 				cr.createAlias("question", "ques", JoinType.INNER_JOIN);
 				cr.setFetchMode("ques", FetchMode.JOIN);
+				cr.add(Restrictions.eq("ques.lession.id", lession.getId()));
 				cr.add(Restrictions.eq("record", record));
 				cr.add(Restrictions.eq("isActive", true));
 				cr.add(Restrictions.eq("isDeleted", false));

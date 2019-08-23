@@ -29,7 +29,7 @@
 	 * is defined. This event helps in handling pasted files, as it will automatically check if the files were pasted and
 	 * mark them to be uploaded.
 	 *
-	 * The upload widget helps to handle content that is uploaded asynchronously inside the editor. It solves issues such as:
+	 * The upload widTrợ giúps to handle content that is uploaded asynchronously inside the editor. It solves issues such as:
 	 * editing during upload, undo manager integration, getting data, removing or copying uploaded element.
 	 *
 	 * To create an upload widget you need to define two transformation methods:

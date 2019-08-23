@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Learn</title>
+<title>${SELECTED_COURSE.name}</title>
 <link href="<c:url value="/Resources/Home/shared/css/course_content_item-6a52c53688c573443de07a90fc9acc77.css" />" media="screen" rel="stylesheet" type="text/css">
 <link data-chunk="platform" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/10.1731936010866a73edf3.chunk.css" />">
 <link data-chunk="platform" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/21.50272209b500e6da1140.chunk.css" />">
@@ -77,7 +77,7 @@
 	                                    <div class="tab__2ljjSH5-qmXY9nlv1MxTHu">
 	                                        <div class="wrapper__6QRVYmjk_3YS02hd62vt_">
 	                                            <button aria-label="my account dropdown toggle" class="toggle__304aSMDrfBOZgFLaPhzXIa" id="dropdown-toggle" type="button">
-	                                                <div class="avatar__Cb1WP643p3tcQpIWLY9R8 round__3de1LBOIa74IvzHDeRG3lQ small__3duTmSpEyR9eEpaRITuulp"><img alt="Avatar" aria-label="my account dropdown toggle" class="image__1Q4r5fS8Aj_N6s2tLcrFks" src="<c:if test="${MEMBER.profileimage == null}"><c:url value="/Resources/Home/img/guest.png" /></c:if><c:if test="${MEMBER.profileimage != null}">${MEMBER.profileimage}</c:if>">"></div>
+	                                                <div class="avatar__Cb1WP643p3tcQpIWLY9R8 round__3de1LBOIa74IvzHDeRG3lQ small__3duTmSpEyR9eEpaRITuulp"><img alt="Avatar" aria-label="my account dropdown toggle" class="image__1Q4r5fS8Aj_N6s2tLcrFks" src="<c:if test="${MEMBER.profileimage == null}"><c:url value="/Resources/Home/img/guest.png" /></c:if><c:if test="${MEMBER.profileimage != null}">${MEMBER.profileimage}</c:if>"></div>
 	                                            </button>
 	                                        </div>
 	                                    </div>

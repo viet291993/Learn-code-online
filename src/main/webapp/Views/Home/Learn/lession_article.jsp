@@ -69,17 +69,9 @@
 	                            </div>
 	                        </div>
 	                    </div>
-	                    <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM"><a class="headerTitle__3WUka8CNchRN8beZfFQLl6 headerTitleLink__2cFJc_8BXEM5-BKr5Q0vZv" href="#/learn/learn-java" data-testid="header-title"><i class="navIcon__3ui-P5-6cHJhc2niSk_YQh fcn-icon fcn-icon-arrowPrev"></i>Java Program Structure</a></div>
+	                    <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM"><a class="headerTitle__3WUka8CNchRN8beZfFQLl6 headerTitleLink__2cFJc_8BXEM5-BKr5Q0vZv" href="<c:url value="/learn/${SELECTED_COURSE.nameAscii }" />" data-testid="header-title"><i class="navIcon__3ui-P5-6cHJhc2niSk_YQh fcn-icon fcn-icon-arrowPrev"></i>${SELECTED_COURSE.name}</a></div>
 	                    <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionRight__2x_UrYa_JCgcfdfLU2FgeF">
 	                        <div class="headerList__3Dz7kGRsAtPu7fgp1SB-_r">
-	                            <div class="headerListItem__2R-ZTH7tMkbBlnciRHIXyB"><a data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 outline__1jukYfNsJOsNuah6o7d8HZ round__1_1AZP9jaqNLqK0tnoeljL navLink__1UHZxn_YrsbXcxgQGNlewD hideOnMobile__19kdfNZTwHMJmC_5UTygSV proAd__1f7azXT5A4ZUIR2TwtKQ5j marginRight__3L669D4ASbk7dYYlU5nTrZ" data-testid="upgrade-link" data-cxlid="upgrade-link" target="_self" rel="noopener noreferrer" href="#/subscriptions/proAnnualV3/checkout?redirect_url=%2Fcourses%2Flearn-java%2Farticles%2Fjava-program-structure">Upgrade to Pro</a></div>
-	                            <div class="headerListItem__2R-ZTH7tMkbBlnciRHIXyB">
-	                                <div class="tab__2ljjSH5-qmXY9nlv1MxTHu">
-	                                    <div class="wrapper__6QRVYmjk_3YS02hd62vt_">
-	                                        <div class="flex__1yBdRTf7dKVh6F1j8s6UAN align-center__3pP1dhYX-0GkrkR1JBXNzk justify-center__NtC5FX5Z0p2mFDtXTk_mY menuBell__2Nr0ohYN0pFGGkYvuQTOW3"><span aria-label="notifications" event="click"><button class="bell__1YtD95EH2FFL2VPN2P9xf_ light__jng-fF_wEa-EuU4b-Am5w" type="button"><svg fill="currentColor" height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Bell Icon</title><path d="M16 17H8v-6.5C8 8 9.778 6 12 6s4 2 4 4.5V17zm2.118-1v-5.5c0-3.07-2.014-5.64-4.706-6.32V3.5c0-.828-.632-1.5-1.412-1.5-.78 0-1.412.672-1.412 1.5v.68c-2.7.68-4.706 3.25-4.706 6.32V16L4 18v1h16v-1l-1.882-2zM12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z"></path></svg></button></span></div>
-	                                    </div>
-	                                </div>
-	                            </div>
 	                            <div class="headerListItem__2R-ZTH7tMkbBlnciRHIXyB">
 	                                <div class="tab__2ljjSH5-qmXY9nlv1MxTHu">
 	                                    <div class="wrapper__6QRVYmjk_3YS02hd62vt_">
@@ -95,65 +87,18 @@
 	            </nav>
 	        </header>
 	        <div class="articleContainer__2hxre1mxnM1i-6bgdvDeN_">
-	            <h1 class="articleTitle__l3fgz5ewMOoIn34WA3BaW">Java Program Structure</h1>
-	            <p class="articleDescription__1lyawSMfQD58yPd-IYcGOt">Java programs have a specific structure. Let's take a closer look at the Hello World program — line by line!
-	            </p>
+	            <h1 class="articleTitle__l3fgz5ewMOoIn34WA3BaW">${SELECTED_QUESTION.title}</h1>
+	            <p class="articleDescription__1lyawSMfQD58yPd-IYcGOt">${SELECTED_QUESTION.description}</p>
 	            <div class="articleContentContainer__3li4h4Gfy3u6NWkVMoKFmX">
 	                <div class="spacing-loose__2wU972ajBAr7oy-pTcj6Ij markdown__9IJtFiBid4n5zXkbY44GA">
-	                    <p>Java programs have a specific structure in how the code is written. There are key elements that all Java programs share.</p>
-	                    <h2>The Program</h2>
-	                    <p>We have the text of a program inside the file called <strong>HelloWorld.java</strong>.</p>
-	                    <pre><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined language-java"><div class="CodeMirror"><span class="cm-comment">// This program outputs the message "Hello World!" to the monitor</span>
-	
-	<span class="cm-keyword">public</span> <span class="cm-keyword">class</span> <span class="cm-def">HelloWorld</span> {
-	  <span class="cm-keyword">public</span> <span class="cm-keyword">static</span> <span class="cm-type">void</span> <span class="cm-variable">main</span>(<span class="cm-type">String</span>[] <span class="cm-variable">args</span>) {
-	    <span class="cm-variable">System</span>.<span class="cm-variable">out</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Hello World!"</span>);
-	  }
-	}</div></span></pre>
-	                    <p>This program writes <code>Hello World!</code> to your terminal when run.</p>
-	                    <h3>Case-Sensitivity</h3>
-	                    <p>Java is a case-sensitive language. Case sensitivity means that <em>syntax</em>, the words our computer understands, must match the case. For example, the Java command for outputting text to the screen is <code>System.out.println()</code>. If you were to type <code>system.out.println()</code> or <code>System.Out.println()</code>, the compiler would not know that your intention was to use <code>System</code> or <code>out</code>.</p>
-	                    <p>Let’s go over this <strong>HelloWorld.java</strong> program line by line:</p>
-	                    <h3>Comments</h3>
-	                    <pre><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined language-java"><div class="CodeMirror"><span class="cm-comment">// This program outputs the message "Hello World!" to the monitor</span></div></span></pre>
-	                    <p>This is a single-line comment that documents the code. The compiler will ignore everything after <code>//</code> to the end of the line. Comments provide information outside the syntax of the language.</p>
-	                    <h3>Classes</h3>
-	                    <pre><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined language-java"><div class="CodeMirror"><span class="cm-keyword">public</span> <span class="cm-keyword">class</span> <span class="cm-def">HelloWorld</span> { 
-	  <span class="cm-comment">// class code</span>
-	}</div></span></pre>
-	                    <p>This is the class of the file. All Java programs are made of at least one class. The class name must match the file: our file is <strong>HelloWorld.java</strong> and our class is <code>HelloWorld</code>. We capitalize every word, a style known as <em>pascal case</em>. Java variables and methods are named in a similar style called <em>camel case</em> where every word <strong>after the first</strong> is capitalized. </p>
-	                    <p>The curly braces, <code>{</code> and <code>}</code>, mark the <em>scope</em> of the class. Everything inside the curly braces is part of the class.</p>
-	                    <h3>Methods</h3>
-	                    <pre><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined language-java"><div class="CodeMirror">  <span class="cm-keyword">public</span> <span class="cm-keyword">static</span> <span class="cm-type">void</span> <span class="cm-def">main</span>(<span class="cm-type">String</span>[] <span class="cm-variable">args</span>) {
-	   <span class="cm-comment">// Statements</span>
-	  }</div></span></pre>
-	                    <p>Every Java program must have a method called <code>main()</code>. A method is a sequence of tasks for the computer to execute. This <code>main()</code> method holds all of the instructions for our program.</p>
-	                    <h3>Statements</h3>
-	                    <pre><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined language-java"><div class="CodeMirror"><span class="cm-variable">System</span>.<span class="cm-variable">out</span>.<span class="cm-variable">println</span>(<span class="cm-string">"Hello World!"</span>);</div></span></pre>
-	                    <p>This code uses the method <code>println()</code> to send the text “Hello World!” to the terminal as output. <code>println()</code> comes from an <em>object</em> called <code>out</code>, which is responsible for various types of output. Objects are packages of state and behavior, and they’re often modeled on real-world things. </p>
-	                    <p><code>out</code> is located within <code>System</code>, which is another object responsible for representing our computer within the program! We can access parts of an object with a <code>.</code>, which is known as <em>dot notation</em>.</p>
-	                    <p>This line of code is a <em>statement</em>, because it performs a <strong>single</strong> task. Statements always conclude with a semicolon.</p>
-	                    <h3>Whitespace</h3>
-	                    <p>Java programs allow judicious use of whitespace (tabs, spaces, newlines) to create code that is easier to read. The compiler ignores whitespace, but humans need it! Use whitespace to indent and separate lines of code. Whitespace increases the readability of your code.</p>
-	                    <h3>Practice</h3>
-	                    <p>The structure of a Java program will feel familiar the more you work with this language. Continue learning at Codecademy and you’ll be a Java pro in no time!</p>
-	                    <hr>
-	                    <h4>For bookmarking:</h4>
-	                    <ul>
-	                        <li>
-	                            <p><a href="https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md" target="_blank" rel="noopener noreferrer">Twitter Java Style Guide</a></p>
-	                        </li>
-	                        <li>
-	                            <p><a href="https://google.github.io/styleguide/javaguide.html" target="_blank" rel="noopener noreferrer">Google Java Style Guide</a></p>
-	                        </li>
-	                    </ul>
+	                	${SELECTED_QUESTION.content}
 	                </div>
 	            </div>
 	        </div>
 	        <nav class="nav__z1NMy5KvO84P7uQPKB8Gg">
 	            <ul class="navList__2BiGArQpVoK3Z2GwZHrcYc">
 	                <li>
-	                    <button data-btn="true" data-testid="simple-footer-next-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr">Next</button>
+	                    <button data-btn="true" data-testid="simple-footer-next-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr">Tiếp tục</button>
 	                </li>
 	                <li class="navRight__2PrRi9hmHhrzCr2ithmfwC">
 	                    <button data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 flat__Gbu0EzdU2yQr9B87Peh09 helpButton__1jE9h5zuXz0tdagtnkPFgl" style="min-width: 6rem;">
@@ -164,7 +109,7 @@
 	                                <path d="M12 16.125a4.125 4.125 0 1 1 0-8.25 4.125 4.125 0 0 1 0 8.25zm0-.917a3.208 3.208 0 1 0 0-6.416 3.208 3.208 0 0 0 0 6.416z" fill-rule="nonzero"></path>
 	                                <path d="M12 20.25a8.25 8.25 0 1 1 0-16.5 8.25 8.25 0 0 1 0 16.5zm0-1.833a6.417 6.417 0 1 0 0-12.834 6.417 6.417 0 0 0 0 12.834z" fill-rule="nonzero"></path>
 	                            </g>
-	                        </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Get Help</span></button>
+	                        </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Trợ giúp</span></button>
 	                    <div></div>
 	                </li>
 	            </ul>

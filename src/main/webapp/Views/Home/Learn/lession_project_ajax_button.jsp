@@ -3,7 +3,7 @@
 <%@taglib prefix="f" uri="/WEB-INF/tlds/functions.tld"%>
 
 <c:choose>
-	<c:when test="${IS_DONE != null || IS_DONE == true }">
+	<c:when test="${IS_DONE != null && IS_DONE == true }">
 		<div class="fcn-nav-wrapper">
             <div class="fcn-nav-wrapper__center fcn-progress-container">
                 <button id="back-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-grey__2CLxsMlHUa-nJ9mXIHOdkK outline__1jukYfNsJOsNuah6o7d8HZ" style="min-width: 6rem;" <c:if test="${SELECTED_QUESTION.orderDisplay == 1}">disabled</c:if>><span id="back-text">Trở lại</span><div id="back-spinner" class="fcn-spinner" style="display: none;"></div></button>
