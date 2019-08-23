@@ -60,70 +60,42 @@
 <body>
 	<div class="react-root" data-react-class="PlatformRouter">
 	    <section data-testid="platform-page" class="platform__2wPufOUWAR_i_cz8ZEknBS">
-	        <nav class="wrapper___FtNJJFPKOjBRYeSq7eqS container__xxmPAuPFUsKguF73jKO3Q">
-	            <div class="contentContainer__3rYV5hCbkX8Z5A1gQ1uzq4 contentWrapper__2MvNFVWRnpySbai8R2WkFr">
-	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionLeft__1ZxE4qxswlSZVqzj66Yx4I">
-	                    <a href="<c:url value="/" />" class="logo__1-a_TiXBS6TEV02nagx3gR"><img alt=" logo" class="image__2CSw5dhd1g0C30kO8pF64Z" src="<c:url value="/Resources/Home/img/logo-white.png" />"></a>
-	                </div>
-	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionCenter__10feYk8tZf2FwdvtmnIfrM centerSection__1R92W4oxyC1LUfW_4FNc67">
-	                    <div class="container__3M91uhwpGTJe92wMn8jAZq">
-	                        <div class="label__2xFo_wajxXeT2VlZraCjJC">1/${COUNT_QUESTION }</div>
-	                        <div class="barContainer__2UtncDC_qTsINg7-8uZ4HF">
-	                            <div class="under__3KC2mcSalFKogCqsO-Mk9U"></div>
-	                            <div class="over__1Z--GbqpV9Vo7ozJC5xI0X" style="width: 100%;"></div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="section__3D8Pj6VoF7z2B78gHIMkm6 sectionRight__2x_UrYa_JCgcfdfLU2FgeF">
-	                    <button data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 flat__Gbu0EzdU2yQr9B87Peh09 helpButton__1jE9h5zuXz0tdagtnkPFgl" style="min-width: 6rem;">
-	                        <svg width="22" height="22" fill="currentColor" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	                            <title>Float Icon</title>
-	                            <g fill-rule="evenodd">
-	                                <path d="M5.227 8.631L8.18 10.44a4.134 4.134 0 0 0 .268 3.66L5.51 15.886a7.578 7.578 0 0 1-.284-7.256zm2.886-3.12a7.575 7.575 0 0 1 7.774 0l-1.788 2.937a4.132 4.132 0 0 0-4.198 0L8.113 5.511zm7.259 13.26a7.582 7.582 0 0 1-6.741.002l1.808-2.953a4.14 4.14 0 0 0 3.133-.005l1.8 2.957zm3.119-2.886l-2.933-1.796a4.134 4.134 0 0 0 .261-3.65l2.954-1.808a7.578 7.578 0 0 1-.282 7.254z"></path>
-	                                <path d="M12 16.125a4.125 4.125 0 1 1 0-8.25 4.125 4.125 0 0 1 0 8.25zm0-.917a3.208 3.208 0 1 0 0-6.416 3.208 3.208 0 0 0 0 6.416z" fill-rule="nonzero"></path>
-	                                <path d="M12 20.25a8.25 8.25 0 1 1 0-16.5 8.25 8.25 0 0 1 0 16.5zm0-1.833a6.417 6.417 0 1 0 0-12.834 6.417 6.417 0 0 0 0 12.834z" fill-rule="nonzero"></path>
-	                            </g>
-	                        </svg><span class="getHelpText__3lxfUyx0H9F4466aJbTTc6">Trợ giúp</span></button>
-	                    <div></div>
-	                </div>
-	            </div>
-	        </nav>
+	        <input type="hidden" id="reloadController3" value="<c:url value='/learn/quiz4'/>">
+	        <div class="ajax-content-3">
+	        	<c:import url="/Views/Home/Learn/lession_quiz_nav.jsp" />
+	        </div>
 	        <div class="container__2-8VOPaA031ycPslzGbMCq">
 	            <div class="container__2ZkNUvVpS2bqFetXuLBHoA assessmentContainer__2c-hykrF8Z4rZtvaI_Rpfr">
 	                <div>
 	                    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh title__1LSXbz8gGigHcyOZLK-21d">
 	                        ${SELECTED_QUESTION.content}
 	                    </div><span class="CodeBlock__1F3rKYW3tV11w2KEKvALNg wrap__1LR6hOLkoUYCHqQeJFO6HA defaults__1l9bk0Z91YqvzRByZKNgHF cc__1zsV8w8Rj_vs2ayVLJ-2x undefined codeBlock__3BmC2Ep4l-IJw14DpH9DAF">
-	                    <div class="CodeMirror">${SELECTED_QUESTION.defaultCode}</div>
+	                    <c:if test="${SELECTED_QUESTION.defaultCode != null}">
+	                    	<div class="CodeMirror">${SELECTED_QUESTION.defaultCode}</div>
+	                    </c:if>
 	                </span>
-	                <c:forEach items="${LIST_QUIZ}" var="quiz">
-	                	<button class="answer__10-7SUQvwpIXkWp66wqf_S answer__10-7SUQvwpIXkWp66wqf_S" data-testid="multiple-choice-answer-0" type="button">
-		                    <div class="spacing-tight__YTkj-JgyxXu1yRjOr_AFW markdown__9IJtFiBid4n5zXkbY44GA darkTheme__LoN8s5sxrbPRCul3yYBYh">
-		                        <p>${quiz.answer }</p>
-		                    </div>
-		                </button>
-	                </c:forEach>
-	            </div>
+	                <input type="hidden" id="reloadController" value="<c:url value='/learn/quiz2'/>">
+					<div class="ajax-content">
+	                	<c:import url="/Views/Home/Learn/lession_quiz_answer.jsp" />
+	                </div>
+	                </div>
 	        </div>
 	</div>
-	<div class="container__36jSDfZIHaBt6OZ7dpxSd8">
-	    <div class="gradient__2bgdYmOM4_blAOC2ImA1lW" style="opacity: 0;"></div>
-	    <div class="container__2ZkNUvVpS2bqFetXuLBHoA">
-	        <div style="opacity: 0; transform: translateY(60%) translateZ(0px);"></div>
-	        <div class="checkAnswer__3C7xBIy14T7r2Ayg-nFIAJ" style="transform: translateY(calc(3.25rem + 100%)) translateZ(0px);">
-	            <button data-btn="true" data-testid="check-answer-cta" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-blue__34yXHhvi2t651Fi7QF1Zjx block__3MKGyKYuSM5G_QH33nSE7J">Check Answer</button>
-	        </div>
-	    </div>
+	<input type="hidden" id="reloadController2" value="<c:url value='/learn/quiz3'/>">
+	<div class="ajax-content-2">
+		<c:import url="/Views/Home/Learn/lession_quiz_button.jsp" />
 	</div>
-	<div class="leTrialBanner__3VOkodnhfWeF-L5t7tA6KV">
-	    <div class="leTrialBannerRelative__3mIq5_XeADd_mE-8hSnMet"></div>
-	</div>
+	
 	</section>
 	</div>
 	<style>
 		.CodeMirror {
 			overflow: hidden!important;
 			padding: 0.5rem 1rem;
+		}
+		
+		.CodeBlock__1F3rKYW3tV11w2KEKvALNg .CodeMirror {
+			padding: 5px 16px;
 		}
 		
 		.CodeMirror-scroll {
@@ -152,7 +124,6 @@
 		    });
 			    
 		});
-		
 		</script>
 </body>
 </html>

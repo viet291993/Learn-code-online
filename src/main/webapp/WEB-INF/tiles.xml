@@ -42,6 +42,15 @@
     <definition name="HomeLessionQuiz" template="/Views/Home/Learn/lession_quiz.jsp">
     </definition>
     
+    <definition name="HomeLessionQuizAnswer" template="/Views/Home/Learn/lession_quiz_answer.jsp">
+    </definition>
+    
+    <definition name="HomeLessionQuizButton" template="/Views/Home/Learn/lession_quiz_button.jsp">
+    </definition>
+    
+    <definition name="HomeLessionQuizNav" template="/Views/Home/Learn/lession_quiz_nav.jsp">
+    </definition>
+    
     <definition name="HomeLogin" extends="HomeLayout">
         <put-attribute name="Content" value="/Views/Home/Auth/login.jsp" />
     </definition>
