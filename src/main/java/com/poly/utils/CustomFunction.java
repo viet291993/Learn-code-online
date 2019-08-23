@@ -40,9 +40,11 @@ import com.poly.dao.AdminRoleDAO;
 import com.poly.dao.LanguageDAO;
 import com.poly.dao.LessionTypeDAO;
 import com.poly.dao.MemberDAO;
+import com.poly.dao.UserDAO;
 import com.poly.entity.Admin;
 import com.poly.entity.AdminModuleInRole;
 import com.poly.entity.Member;
+import com.poly.entity.User;
 
 public class CustomFunction {
 
@@ -564,7 +566,7 @@ public class CustomFunction {
 		return text + code;
 	}
 
-	public static String generateHomeHeaderPro(Member member) {
+	public static String generateHomeHeaderPro(Member member, String contextPath) {
 		final StringBuilder sb = new StringBuilder();
 		sb.append(
 				"<a data-btn='true' data-testid='upgrade-link' data-cxlid='upgrade-link' target='_self' rel='noopener noreferrer' class='basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI' ");
@@ -587,7 +589,7 @@ public class CustomFunction {
 				return sb.toString();
 			}
 		}
-		sb.append("href=''>Nâng cấp tài khoản</a>");
+		sb.append("href='").append(contextPath).append("/promembership'>Nâng cấp tài khoản</a>");
 		return sb.toString();
 	}
 
@@ -603,6 +605,16 @@ public class CustomFunction {
 			}
 		}
 		return "Học viên";
+	}
+
+	public static String generateLablePro(Member member) {
+		Date timeCurrent = new Date();
+		if (member.getTrailExpiredDate() != null) {
+			if (member.getTrailExpiredDate().after(timeCurrent)) {
+				return "Đã đăng ký";
+			}
+		}
+		return "Đăng ký";
 	}
 
 	public static String generateExpiredDate(Date time) {
@@ -625,6 +637,15 @@ public class CustomFunction {
 		}
 		return sb.toString();
 	}
+	
+	public static String getUserName(Integer id) {
+		return ((User) new UserDAO().find(id)).getUsername();
+	}
+	
+	public static boolean checkPasswordNull(Integer id) {
+		return ((User) new UserDAO().find(id)).getPassword().equals("")?true:false;
+	}
+	
 
 	public static String textJS(String text) {
 		return text.replaceAll("\\", "\\\\").replaceAll("\n", "\\n").replaceAll("\t", "\\t").replaceAll("\"", "\\\"");

@@ -91,6 +91,24 @@ public class UserDAO extends AbstractDAO {
 		}
 		return false;
 	}
+	
+	public boolean checkPasswordOld(String password) {
+		Session session = null;
+		try {
+			session = HibernateConfiguration.getInstance().openSession();
+			if (session != null) {
+				Query q = session.createSQLQuery("select count(*) from [User] where username=:password");
+				q.setString("password", password);
+				return (int) q.uniqueResult() != 0;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			HibernateConfiguration.getInstance().closeSession(session);
+		}
+		return false;
+	}
 
 	public boolean checkUsernameAndPassword(String username, String password) {
 		Session session = null;

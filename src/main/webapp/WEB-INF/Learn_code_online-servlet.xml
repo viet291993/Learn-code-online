@@ -35,6 +35,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/learn" />
             <mvc:mapping path="/learn/**" />
+            <mvc:mapping path="/promembership" />
             <mvc:mapping path="/"/>
             <mvc:mapping path="/home"/>
             <mvc:mapping path="/login"/>

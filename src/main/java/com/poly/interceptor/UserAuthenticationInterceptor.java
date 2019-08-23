@@ -21,6 +21,10 @@ public class UserAuthenticationInterceptor extends HandlerInterceptorAdapter {
             	response.sendRedirect(request.getContextPath() + "/login");
                 return false;
             }
+            if (uri.contains(request.getContextPath().toLowerCase() + "/promembership")) {
+            	response.sendRedirect(request.getContextPath() + "/login");
+                return false;
+            }
         } else {
         	if (uri.contains(request.getContextPath().toLowerCase() + "/login") || uri.contains(request.getContextPath().toLowerCase() + "/register") 
         			|| uri.equals(request.getContextPath().toLowerCase() + "/") || uri.contains(request.getContextPath().toLowerCase() + "/home")) {

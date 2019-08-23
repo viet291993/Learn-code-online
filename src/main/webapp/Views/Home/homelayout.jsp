@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="t"%>
-<c:set value="${pageContext.request.requestURL}" var="URL" scope="request" />
+<c:set value="${pageContext.request.contextPath}" var="CONTEXTPATH" scope="request" />
 <!DOCTYPE html>
 <html>
 	<head>
@@ -131,6 +131,18 @@
     <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/187.eab59c10ccfecf0dd083.chunk.css "/>">
     <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/196.312055630392a1cb8419.chunk.css "/>">
     <link data-chunk="portal-scenes-PaymentCheckout" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/portal-scenes-PaymentCheckout.520d71b8a11e12966d3f.chunk.css "/>">
+    
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/5.4569a586897cd0f00d6b.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/7.b6e2f512d248c3d19cda.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/316.952cbbc5e41668b68bcf.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/8.4826cfd574f8ad583e02.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/18.89bfff06cfca5a9fa50e.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/20.258c486ee3fb1db73a8a.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/21.05c23bf84f96a8653e36.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/25.cf9b762005b507f28872.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/31.ef4f8bf1c45a70c96d4e.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/194.6bb58e3a8c3dd6387f14.chunk.css"/>">
+    <link data-chunk="portal-lite" rel="stylesheet" href="<c:url value="/Resources/Home/shared/css/portal-lite.408b62e22a39cb153288.chunk.css"/>">
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="<c:url value="/Resources/Home/shared/css/translateelement.css "/>">
 	<link href="<c:url value="/Resources/Home/css/custom.css"/>" rel="stylesheet">
 	</head>
@@ -156,9 +168,7 @@
 	                    </div>
 	                </div>
 	            </div>
-	            
-	            <div id="menu-profile" style="display: none;" class="overlay__3LeDG7tuQrrJdjPm8agkmx fixed__1dVANA0vWS60mCGpsRBU8T type-transparent__19iohvkXZv5eOsVMRAvvLQ"><div id="profile-position" align="right" offset="20" class="content__fQv0JV6LGGkYLrzWHtg7t popover__2vSb5RYj187vezgJCHUZI1 below-right__XT76WV7zCz6PFSFnddn2A" style="top: 74px; z-index: 50;;"><div><div class="" style="opacity: 1;"><div class="shadow__3DzEF2DlOL8n2FXGHNWRBW"><div class="flex__1yBdRTf7dKVh6F1j8s6UAN col__DIiQrF0Z1S7t-hWOmyXlD menu__e94OfrzcqoePgW_YvhDCp"><nav><div><a class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/profiles/me">Hồ sơ của tôi</a><a data-testid="edit-account-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/account" id="edit-account-link">Cài đặt tài khoản</a><a data-testid="help-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="/help" id="help-link">Help</a><a data-testid="sign-out-link" class="menuItem__1XAsFXFqLByEK4sD6lx3za no-underline" href="<c:url value="/logout" />" id="sign-out-link">Đăng xuất</a></div></nav></div></div></div></div></div></div>
-	    
+	            	    
 	      <!-- jQuery -->
 	    <script src="<c:url value="/Resources/Admin/vendors/jquery/dist/jquery.min.js"/>"></script>
 	    <script src="<c:url value="/Resources/shared/js/jquery-2.2.4.min.js"/>" type="text/javascript"></script>

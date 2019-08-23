@@ -33,7 +33,7 @@
                     <c:forEach items="${LIST_RESULTS}" var="RESULTS">
                         <li>
                             <a href="<c:url value="/learn/${RESULTS.nameAscii}" />" class="resultLink__t5uUGIWxRGQlJeR0Uk8bG">
-                                <div class="shell__1vPVBkwGbqEYx_R1DkguFu result__1H8LBMtqhGsaDZ6nXppDyY"><img class="graphic__3xXcR8iieViLb9btvy5C7T" src="./search_files/4f5ee61bacae45cfe7d5dc9c16415854.svg" alt="Learn Java">
+                                <div class="shell__1vPVBkwGbqEYx_R1DkguFu result__1H8LBMtqhGsaDZ6nXppDyY"><img class="graphic__3xXcR8iieViLb9btvy5C7T" src="<c:url value="/Resources/Home/img/imgcourse.webp" />" alt="Learn Java">
                                     <div class="standardPadding__2Qfs_mGV0Kt7Y3sHTOhHtm">
                                         <div class="type__PYBo0WrckLqfgQ-gQnd3G">Khóa học</div>
                                         <div class="title__3sKtpbrKLRKxJviSPPEYHM"><strong>${RESULTS.name}</strong></div>

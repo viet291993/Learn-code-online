@@ -13,6 +13,14 @@ $.fn.serializeObject = function () {
                     v = $(this).val();
                     o[$(this).attr('name')] = v;
                 }
+            } else if ($(this).is('textarea')) {
+                if ($(this).hasClass('editor')) {
+                    v = CKEDITOR.instances[$(this).attr('id')].getData().replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r\n/g, '').replace(/\n/g, '').replace(/\r/g, '');
+                    o[$(this).attr('name')] = v;
+                }else{
+                	 v = $(this).val();
+                     o[$(this).attr('name')] = v;
+                }
             } else if ($(this).val() === '') {
                 return;
             } else if ($(this).data('json')) {

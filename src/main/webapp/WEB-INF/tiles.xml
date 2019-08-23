@@ -62,6 +62,14 @@
         <put-attribute name="Content" value="/Views/Home/Content/pro_membership.jsp" />
     </definition>
     
+    <definition name="HomeAccount" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Auth/account.jsp" />
+    </definition>
+    
+    <definition name="HomePassword" extends="HomeLayout">
+        <put-attribute name="Content" value="/Views/Home/Auth/password.jsp" />
+    </definition>
+    
     <definition name="MessageLayout" template="/Views/Message/messagelayout.jsp"/>
     
     <!-- START ADMIN -->
