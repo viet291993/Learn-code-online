@@ -235,10 +235,10 @@
         		if(i>0){
         			text+= ',';
         		}
-				text += '"'+$(target).data('name')+'":"'+($(target).attr('type')=='radio'?$(target).is(':checked'):$(target).val())+'"';
+				text += '"'+$(target).data('name')+'":"'+($(target).attr('type')=='radio'?$(target).is(':checked'):$(target).val().replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r\n/g, '').replace(/\n/g, '').replace(/\r/g, ''))+'"';
 			})
 			text +='}'
-			var obj = JSON.parse(text);
+			var obj = JSON.parse(text.replace(/\n/g, ""));
 			list.push(obj);
         });
         return list;

@@ -98,7 +98,7 @@
 	        <nav class="nav__z1NMy5KvO84P7uQPKB8Gg">
 	            <ul class="navList__2BiGArQpVoK3Z2GwZHrcYc">
 	                <li>
-	                    <button data-btn="true" data-testid="simple-footer-next-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr">Tiếp tục</button>
+	                    <a href="<c:url value="/learn/${SELECTED_COURSE.nameAscii }/${NEXT_LESSION.nameAscii}" />" data-btn="true" data-testid="simple-footer-next-button" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-yellow__yMHS2uJ7H7WrTgbujzcMr">Tiếp tục</a>
 	                </li>
 	                <li class="navRight__2PrRi9hmHhrzCr2ithmfwC">
 	                    <button data-btn="true" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-white__1e0kCCItRnEi-EDNpmLuX1 flat__Gbu0EzdU2yQr9B87Peh09 helpButton__1jE9h5zuXz0tdagtnkPFgl" style="min-width: 6rem;">

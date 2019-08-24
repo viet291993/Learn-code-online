@@ -13,7 +13,7 @@
                         <h1>Học lập trình <br> dễ nhất trên <br> LearnCode!</h1></div><img src="<c:url value="/Resources/Home/img/banner-home.png" />" class="learner__3vTyNPqZP4vapfuoSCveyY"><img src="<c:url value="/Resources/Home/img/daecb491e565bc6b7390756d03fc1ee1.svg"/>" alt="" class="bars__Ijm1fSi8r49Z09mMysanR"><img src="./index_files/f059ec67021b3dfeea1b6cb2eb373683.svg" alt=""><img src="<c:url value="/Resources/Home/img/3ce816c669e3c8a946f0895049a01e44.svg"/>" alt="" class="triangle__2R2-HQOXNIN6Chb-e2rmPA"><img src="<c:url value="/Resources/Home/img/5c537833d79f7065497b565eaa7bca64.svg" />" alt="" class="rectangle__nu9ra5e_9o2QOhALFTPgN"></div>
                 <div class="formContainer__2l_MfQ1gY1nLmc15QoiqRe">
                     <div class="formContents__11wRcREszRNutLneB6TOP3">
-                        <h2 class="formHeader__ewADzegSmio5jLLTQF2Rr">Gia nhập với chúng tôi</h2>
+                        <h2 class="formHeader__ewADzegSmio5jLLTQF2Rr">Đăng nhập tài khoản</h2>
                         <h1 class="mobileTitle__28xF0P4BAQnIezH7OTNsWa">Học lập trình dễ nhất trên LearnCode!</h1>
                         <div class="formContainer__3T4BH0jFLpXLvUq8rS6dF2">
                             <div class="registrationContainer__2QEroVip0rj6VbrALiBz8V">
@@ -33,7 +33,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button data-btn="true" type="submit" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI large__3uWKqXQr23vJ_9n9mwRvVa submitButton__34k4InI5TII_ayjcKIwCLO" id="sign_up_form_submit">Học ngay và luôn</button>
+                                        <button data-btn="true" type="submit" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-purple__1JTaE-cUSI6K55KDmewKoI large__3uWKqXQr23vJ_9n9mwRvVa submitButton__34k4InI5TII_ayjcKIwCLO" id="sign_up_form_submit">Học ngay</button>
                                         <p class="tos__2irFvmVYzLt-zbObC3_2D8"><a href="<c:url value="/register"/>">Đăng ký</a> trở thành thành viên để học học lập trình và gia nhập cộng đồng LearnCode.</p>
                                     </fieldset>
                                 </form>

@@ -5,7 +5,7 @@
         <div data-testid="course-landing-page" id="course-landing-page">
             <header class="header__24U-03TosybsS_ZhgIhsYj" style="background-color:#2daaa6">
                 <h1>${SELECTED_COURSE.name }</h1>
-                <p data-testid="header-course-description">${SELECTED_COURSE.description }</p><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="/hello-world">Start</a>
+                <p data-testid="header-course-description">${SELECTED_COURSE.description }</p><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="java/hello-world">Start</a>
                 <div class="resetProgress__3FYBz5-A5jzIDQnJg31RYl">
                     <div>
                         <div>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </main>
-            <div class="courseResume__1wY7WQdQEbjdupYt_Q3aGN" style="background-color:#2daaa6"><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="/hello-world">Start</a></div>
+            <div class="courseResume__1wY7WQdQEbjdupYt_Q3aGN" style="background-color:#2daaa6"><a data-btn="true" aria-label="Start Course" class="basicBtn__1-6tM96NkcUhBOEjk8SDoR btn__1_GoaHrKjPXkaQLmvN_yom btn-brand-yellow__31ZfgMUoWJYXQdeJ8yGfRp large__3uWKqXQr23vJ_9n9mwRvVa round__1_1AZP9jaqNLqK0tnoeljL courseResumeButton__1Lkbl-B6WWX_GzxTFOWkhe" href="java/hello-world">Start</a></div>
         </div>
         <script>
         	<c:forEach items="${SELECTED_COURSE.syllabuses}" varStatus="status">

@@ -17,12 +17,8 @@
 	                    </div>
 	                    <div class="rightSection__1hrOF-xcqlakKFmPB2z2rm">
 	                        <div class="container__3K9CG0eN2YbNbdhc2MKYKj">
-	                            <div class="count__15egunoru_dNyrewQyvICt">0</div>
-	                            <div class="label__3moTm67Xk2WBdab2gHzrA5">Badges</div>
-	                        </div>
-	                        <div class="container__3K9CG0eN2YbNbdhc2MKYKj">
-	                            <div class="count__15egunoru_dNyrewQyvICt">2</div>
-	                            <div class="label__3moTm67Xk2WBdab2gHzrA5">Courses</div>
+	                            <div class="count__15egunoru_dNyrewQyvICt">1</div>
+	                            <div class="label__3moTm67Xk2WBdab2gHzrA5">Khóa học</div>
 	                        </div>
 	                    </div>
 	                </div>
