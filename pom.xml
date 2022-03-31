@@ -17,7 +17,7 @@
 		<jdk.version>1.8</jdk.version>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>5.1.4.RELEASE</spring.version>
+		<spring.version>5.3.18</spring.version>
 		<hibernate.version>5.0.0.Final</hibernate.version>
 		<hibernateogm.version>5.1.0.Final</hibernateogm.version>
 		<tiles.version>3.0.8</tiles.version>
